@@ -1,0 +1,27 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: DataNucleus Spatial
+Bundle-SymbolicName: org.datanucleus.store.types.spatial;singleton:=true
+Bundle-Version: 3.2.4
+Bundle-Localization: plugin
+Bundle-Vendor: DataNucleus
+Require-Bundle: org.datanucleus;bundle-version="3.2.0",
+ org.datanucleus.store.rdbms;bundle-version="3.2.0",
+ org.datanucleus.api.jdo;bundle-version="3.2.0";resolution:=optional
+Import-Package: com.esri.arcgis.geometry;resolution:=optional,
+ com.esri.arcgis.system;resolution:=optional,
+ com.linar.jintegra;resolution:=optional,
+ com.vividsolutions.jts.geom;resolution:=optional,
+ com.vividsolutions.jts.io;resolution:=optional,
+ com.vividsolutions.jts.io.oracle;resolution:=optional,
+ javax.jdo;version="3.0.0",
+ oracle.jdbc;resolution:=optional,
+ oracle.spatial.geometry;resolution:=optional,
+ oracle.spatial.util;resolution:=optional,
+ oracle.sql;resolution:=optional,
+ org.postgis;resolution:=optional,
+ org.postgis.binary;resolution:=optional,
+ org.postgis.jts;resolution:=optional
+Export-Package: com.esri.arcgis.geometry,
+ com.esri.arcgis.system,
+ com.linar.jintegra
