@@ -8,9 +8,9 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.datanucleus</groupId>
     <version>3.2.4-SNAPSHOT</version>
-    <artifactId>datanucleus-spatial</artifactId>
+    <artifactId>datanucleus-geospatial</artifactId>
     <name>DataNucleus Spatial</name>
-    <description>DataNucleus Spatial</description>
+    <description>DataNucleus Geospatial</description>
     <url>http://www.datanucleus.org</url>
 
     <properties>
@@ -25,9 +25,9 @@
     </licenses>
 
     <scm>
-        <connection>scm:svn:svn://andy_jefferson@svn.code.sf.net/p/datanucleus/code/platform/store.types.spatial/trunk</connection>
-        <developerConnection>scm:svn:svn+ssh://andy_jefferson@svn.code.sf.net/p/datanucleus/code/platform/store.types.spatial/trunk</developerConnection>
-        <url>http://svn.code.sf.net/p/datanucleus/code/platform/store.types.spatial/trunk</url>
+        <connection>scm:git:git://github.com/datanucleus/datanucleus-geospatial.git</connection>
+        <url>scm:git:git://github.com/datanucleus/datanucleus-geospatial.git</url>
+        <developerConnection>scm:git:git://github.com/datanucleus/datanucleus-geospatial.git</developerConnection>
     </scm>
 
     <developers>

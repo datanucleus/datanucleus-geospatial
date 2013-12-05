@@ -28,6 +28,45 @@ Contributors:
 
     <!-- JAVA TYPES -->
     <extension point="org.datanucleus.java_type">
+        <java-type name="java.awt.Point" dfg="true" embedded="true" 
+            wrapper-type="org.datanucleus.store.types.simple.Point" converter-name="dn.awtpoint-string"/>
+        <java-type name="java.awt.Rectangle" dfg="true" embedded="true"
+            wrapper-type="org.datanucleus.store.types.simple.Rectangle" converter-name="dn.awtrectangle-string"/>
+        <java-type name="java.awt.Polygon" dfg="true" embedded="true"
+            converter-name="dn.awtpolygon-string"/>
+        <java-type name="java.awt.geom.Line2D$Double" dfg="true" embedded="true"
+            wrapper-type="org.datanucleus.store.types.simple.Line2dDouble" converter-name="dn.awtlinedouble-string"/>
+        <java-type name="java.awt.geom.Line2D$Float" dfg="true" embedded="true"
+            wrapper-type="org.datanucleus.store.types.simple.Line2dFloat" converter-name="dn.awtlinefloat-string"/>
+        <java-type name="java.awt.geom.Point2D$Double" dfg="true" embedded="true"
+            wrapper-type="org.datanucleus.store.types.simple.Point2dDouble" converter-name="dn.awtpointdouble-string"/>
+        <java-type name="java.awt.geom.Point2D$Float" dfg="true" embedded="true"
+            wrapper-type="org.datanucleus.store.types.simple.Point2dFloat" converter-name="dn.awtpointfloat-string"/>
+        <java-type name="java.awt.geom.Rectangle2D$Double" dfg="true" embedded="true"
+            wrapper-type="org.datanucleus.store.types.simple.Rectangle2dDouble" converter-name="dn.awtrectangledouble-string"/>
+        <java-type name="java.awt.geom.Rectangle2D$Float" dfg="true" embedded="true"
+            wrapper-type="org.datanucleus.store.types.simple.Rectangle2dFloat" converter-name="dn.awtrectanglefloat-string"/>
+        <java-type name="java.awt.geom.Arc2D$Double" dfg="true" embedded="true"
+            wrapper-type="org.datanucleus.store.types.simple.Arc2dDouble" converter-name="dn.awtarcdouble-string"/>
+        <java-type name="java.awt.geom.Arc2D$Float" dfg="true" embedded="true"
+            wrapper-type="org.datanucleus.store.types.simple.Arc2dFloat" converter-name="dn.awtarcfloat-string"/>
+        <java-type name="java.awt.geom.CubicCurve2D$Double" dfg="true" embedded="true"
+            wrapper-type="org.datanucleus.store.types.simple.CubicCurve2dDouble" converter-name="dn.awtcubiccurvedouble-string"/>
+        <java-type name="java.awt.geom.CubicCurve2D$Float" dfg="true" embedded="true"
+            wrapper-type="org.datanucleus.store.types.simple.CubicCurve2dFloat" converter-name="dn.awtcubiccurvefloat-string"/>
+        <java-type name="java.awt.geom.Ellipse2D$Double" dfg="true" embedded="true"
+            wrapper-type="org.datanucleus.store.types.simple.Ellipse2dDouble" converter-name="dn.awtellipsedouble-string"/>
+        <java-type name="java.awt.geom.Ellipse2D$Float" dfg="true" embedded="true"
+            wrapper-type="org.datanucleus.store.types.simple.Ellipse2dFloat" converter-name="dn.awtellipsefloat-string"/>
+        <java-type name="java.awt.geom.QuadCurve2D$Double" dfg="true" embedded="true"
+            wrapper-type="org.datanucleus.store.types.simple.QuadCurve2dDouble" converter-name="dn.awtquadcurvedouble-string"/>
+        <java-type name="java.awt.geom.QuadCurve2D$Float" dfg="true" embedded="true"
+            wrapper-type="org.datanucleus.store.types.simple.QuadCurve2dFloat" converter-name="dn.awtquadcurvefloat-string"/>
+        <java-type name="java.awt.geom.RoundRectangle2D$Double" dfg="true" embedded="true"
+            wrapper-type="org.datanucleus.store.types.simple.RoundRectangle2dDouble" converter-name="dn.awtroundrectdouble-string"/>
+        <java-type name="java.awt.geom.RoundRectangle2D$Float" dfg="true" embedded="true"
+            wrapper-type="org.datanucleus.store.types.simple.RoundRectangle2dFloat" converter-name="dn.awtroundrectfloat-string"/>
+
         <!-- Oracle's JGeometry -->
         <java-type name="oracle.spatial.geometry.JGeometry" dfg="true" embedded="true"/>
 
@@ -56,8 +95,57 @@ Contributors:
         <java-type name="org.postgis.Polygon" dfg="true" embedded="true"/>
     </extension>
 
+    <!-- TYPE CONVERTERS -->
+    <extension point="org.datanucleus.type_converter">
+        <type-converter name="dn.awtpoint-string" member-type="java.awt.Point" datastore-type="java.lang.String"
+            converter-class="org.datanucleus.store.types.converters.PointStringConverter"/>
+        <type-converter name="dn.awtrectangle-string" member-type="java.awt.Rectangle" datastore-type="java.lang.String"
+            converter-class="org.datanucleus.store.types.converters.RectangleStringConverter"/>
+        <type-converter name="dn.awtpolygon-string" member-type="java.awt.Polygon" datastore-type="java.lang.String"
+            converter-class="org.datanucleus.store.types.converters.PolygonStringConverter"/>
+        <type-converter name="dn.awtlinedouble-string" member-type="java.awt.geom.Line2D$Double" datastore-type="java.lang.String"
+            converter-class="org.datanucleus.store.types.converters.Line2dDoubleStringConverter"/>
+        <type-converter name="dn.awtlinefloat-string" member-type="java.awt.geom.Line2D$Float" datastore-type="java.lang.String"
+            converter-class="org.datanucleus.store.types.converters.Line2dFloatStringConverter"/>
+        <type-converter name="dn-awtpointdouble-string" member-type="java.awt.geom.Point2D$Double" datastore-type="java.lang.String"
+            converter-class="org.datanucleus.store.types.converters.Point2dDoubleStringConverter"/>
+        <type-converter name="dn-awtpointfloat-string" member-type="java.awt.geom.Point2D$Float" datastore-type="java.lang.String"
+            converter-class="org.datanucleus.store.types.converters.Point2dFloatStringConverter"/>
+        <type-converter name="dn-awtrectangledouble-string" member-type="java.awt.geom.Rectangle2D$Double" datastore-type="java.lang.String"
+            converter-class="org.datanucleus.store.types.converters.Rectangle2dDoubleStringConverter"/>
+        <type-converter name="dn-awtrectanglefloat-string" member-type="java.awt.geom.Rectangle2D$Float" datastore-type="java.lang.String"
+            converter-class="org.datanucleus.store.types.converters.Rectangle2dFloatStringConverter"/>
+        <type-converter name="dn-awtarcdouble-string" member-type="java.awt.geom.Arc2D$Double" datastore-type="java.lang.String"
+            converter-class="org.datanucleus.store.types.converters.Arc2dDoubleStringConverter"/>
+        <type-converter name="dn-awtarcfloat-string" member-type="java.awt.geom.Arc2D$Float" datastore-type="java.lang.String"
+            converter-class="org.datanucleus.store.types.converters.Arc2dFloatStringConverter"/>
+        <type-converter name="dn-awtcubiccurvedouble-string" member-type="java.awt.geom.CubicCurve2D$Double" datastore-type="java.lang.String"
+            converter-class="org.datanucleus.store.types.converters.CubicCurve2dDoubleStringConverter"/>
+        <type-converter name="dn-awtcubiccurvefloat-string" member-type="java.awt.geom.CubicCurve2D$Float" datastore-type="java.lang.String"
+            converter-class="org.datanucleus.store.types.converters.CubicCurve2dFloatStringConverter"/>
+        <type-converter name="dn-awtellipsedouble-string" member-type="java.awt.geom.Ellipse2D$Double" datastore-type="java.lang.String"
+            converter-class="org.datanucleus.store.types.converters.Ellipse2dDoubleStringConverter"/>
+        <type-converter name="dn-awtellipsefloat-string" member-type="java.awt.geom.Ellipse2D$Float" datastore-type="java.lang.String"
+            converter-class="org.datanucleus.store.types.converters.Ellipse2dFloatStringConverter"/>
+        <type-converter name="dn-awtquadcurvedouble-string" member-type="java.awt.geom.QuadCurve2D$Double" datastore-type="java.lang.String"
+            converter-class="org.datanucleus.store.types.converters.QuadCurve2dDoubleStringConverter"/>
+        <type-converter name="dn-awtquadcurvefloat-string" member-type="java.awt.geom.QuadCurve2D$Float" datastore-type="java.lang.String"
+            converter-class="org.datanucleus.store.types.converters.QuadCurve2dFloatStringConverter"/>
+        <type-converter name="dn-awtroundrectdouble-string" member-type="java.awt.geom.RoundRectangle2D$Double" datastore-type="java.lang.String"
+            converter-class="org.datanucleus.store.types.converters.RoundRectangle2dDoubleStringConverter"/>
+        <type-converter name="dn-awtroundrectfloat-string" member-type="java.awt.geom.RoundRectangle2D$Float" datastore-type="java.lang.String"
+            converter-class="org.datanucleus.store.types.converters.RoundRectangle2dFloatStringConverter"/>
+    </extension>
+
     <!-- SQL EXPRESSIONS -->
     <extension point="org.datanucleus.store.rdbms.sql_expression">
+        <sql-expression mapping-class="org.datanucleus.store.rdbms.mapping.PointMapping" 
+            literal-class="org.datanucleus.store.rdbms.sql.expression.PointLiteral"
+            expression-class="org.datanucleus.store.rdbms.sql.expression.PointExpression"/>
+        <sql-expression mapping-class="org.datanucleus.store.rdbms.mapping.RectangleMapping" 
+            literal-class="org.datanucleus.store.rdbms.sql.expression.RectangleLiteral"
+            expression-class="org.datanucleus.store.rdbms.sql.expression.RectangleExpression"/>
+
         <sql-expression mapping-class="org.datanucleus.store.rdbms.mapping.jts.GeometryMapping" 
             literal-class="org.datanucleus.store.rdbms.sql.expression.GeometryLiteral"
             expression-class="org.datanucleus.store.rdbms.sql.expression.GeometryExpression"/>
@@ -158,6 +246,19 @@ Contributors:
 
     <!-- SQL METHODS -->
     <extension point="org.datanucleus.store.rdbms.sql_method">
+        <sql-method class="java.awt.Point" method="getX"
+            evaluator="org.datanucleus.store.rdbms.sql.method.PointGetXMethod"/>
+        <sql-method class="java.awt.Point" method="getY"
+            evaluator="org.datanucleus.store.rdbms.sql.method.PointGetYMethod"/>
+        <sql-method class="java.awt.Rectangle" method="getX"
+            evaluator="org.datanucleus.store.rdbms.sql.method.RectangleGetXMethod"/>
+        <sql-method class="java.awt.Rectangle" method="getY"
+            evaluator="org.datanucleus.store.rdbms.sql.method.RectangleGetYMethod"/>
+        <sql-method class="java.awt.Rectangle" method="getWidth"
+            evaluator="org.datanucleus.store.rdbms.sql.method.RectangleGetWidthMethod"/>
+        <sql-method class="java.awt.Rectangle" method="getHeight"
+            evaluator="org.datanucleus.store.rdbms.sql.method.RectangleGetHeightMethod"/>
+
         <sql-method method="MySQL.mbrEqual"
             evaluator="org.datanucleus.store.rdbms.sql.method.MySqlMbrEqualMethod" datastore="mysql"/>
         <sql-method method="MySQL.mbrDisjoint"
@@ -573,7 +674,7 @@ Contributors:
         <sql-method method="Spatial.asText"
             evaluator="org.datanucleus.store.rdbms.sql.method.SpatialAsTextMethod2" datastore="oracle"/>
        	<sql-method method="Spatial.asText"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialAsTextMethod3" datastore="postgresql"/>    
+            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialAsTextMethod3" datastore="postgresql"/>
         <sql-method method="Spatial.geogFromText"
             evaluator="org.datanucleus.store.rdbms.sql.method.SpatialGeographyFromTextMethod" datastore="postgresql"/>
         <sql-method method="Spatial.geometryType"
@@ -807,7 +908,7 @@ Contributors:
         <sql-method method="Spatial.geometryN"
             evaluator="org.datanucleus.store.rdbms.sql.method.SpatialGeometryNMethod3" datastore="postgresql"/>
         <sql-method method="Spatial.transform"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialGeomTransformMethod" datastore="postgresql"/>            
+            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialGeomTransformMethod" datastore="postgresql"/>
         <sql-method method="Spatial.geomFromWKB"
             evaluator="org.datanucleus.store.rdbms.sql.method.SpatialGeomFromWKBMethod"/>
         <sql-method method="Spatial.geomFromWKB"
@@ -889,6 +990,24 @@ Contributors:
     </extension>
 
     <!-- QUERY METHODS -->
+    <extension point="org.datanucleus.query_method_evaluators">
+        <query-method-evaluator class="java.awt.Point" method="getX"
+            evaluator="org.datanucleus.query.evaluator.memory.PointGetXMethodEvaluator"/>
+        <query-method-evaluator class="java.awt.Point" method="getY"
+            evaluator="org.datanucleus.query.evaluator.memory.PointGetYMethodEvaluator"/>
+        <query-method-evaluator class="java.awt.Rectangle" method="getX"
+            evaluator="org.datanucleus.query.evaluator.memory.RectangleGetXMethodEvaluator"/>
+        <query-method-evaluator class="java.awt.Rectangle" method="getY"
+            evaluator="org.datanucleus.query.evaluator.memory.RectangleGetYMethodEvaluator"/>
+        <query-method-evaluator class="java.awt.Rectangle" method="getWidth"
+            evaluator="org.datanucleus.query.evaluator.memory.RectangleGetWidthMethodEvaluator"/>
+        <query-method-evaluator class="java.awt.Rectangle" method="getHeight"
+            evaluator="org.datanucleus.query.evaluator.memory.RectangleGetHeightMethodEvaluator"/>
+        <query-method-evaluator class="java.awt.Rectangle" method="contains"
+            evaluator="org.datanucleus.query.evaluator.memory.RectangleContainsMethodEvaluator"/>
+    </extension>
+
+    <!-- QUERY METHOD PREFIXES -->
     <extension point="org.datanucleus.query_method_prefix">
         <query-method-prefix prefix="Spatial" alias="Spatial"/>
         <query-method-prefix prefix="MySQL" alias="MySQL"/>
@@ -898,6 +1017,26 @@ Contributors:
 
 	<!-- JAVA TYPES MAPPING -->
 	<extension point="org.datanucleus.store_mapping">
+        <mapping java-type="java.awt.Rectangle" mapping-class="org.datanucleus.store.rdbms.mapping.RectangleMapping"/>
+        <mapping java-type="java.awt.Point" mapping-class="org.datanucleus.store.rdbms.mapping.PointMapping"/>
+        <mapping java-type="java.awt.Polygon" mapping-class="org.datanucleus.store.rdbms.mapping.PolygonMapping"/>
+        <mapping java-type="java.awt.geom.Arc2D$Double" mapping-class="org.datanucleus.store.rdbms.mapping.Arc2dDoubleMapping"/>
+        <mapping java-type="java.awt.geom.Arc2D$Float" mapping-class="org.datanucleus.store.rdbms.mapping.Arc2dFloatMapping"/>
+        <mapping java-type="java.awt.geom.CubicCurve2D$Double" mapping-class="org.datanucleus.store.rdbms.mapping.CubicCurve2dDoubleMapping"/>
+        <mapping java-type="java.awt.geom.CubicCurve2D$Float" mapping-class="org.datanucleus.store.rdbms.mapping.CubicCurve2dFloatMapping"/>
+        <mapping java-type="java.awt.geom.Ellipse2D$Double" mapping-class="org.datanucleus.store.rdbms.mapping.Ellipse2dDoubleMapping"/>
+        <mapping java-type="java.awt.geom.Ellipse2D$Float" mapping-class="org.datanucleus.store.rdbms.mapping.Ellipse2dFloatMapping"/>
+        <mapping java-type="java.awt.geom.Line2D$Double" mapping-class="org.datanucleus.store.rdbms.mapping.Line2dDoubleMapping"/>
+        <mapping java-type="java.awt.geom.Line2D$Float" mapping-class="org.datanucleus.store.rdbms.mapping.Line2dFloatMapping"/>
+        <mapping java-type="java.awt.geom.Point2D$Double" mapping-class="org.datanucleus.store.rdbms.mapping.Point2dDoubleMapping"/>
+        <mapping java-type="java.awt.geom.Point2D$Float" mapping-class="org.datanucleus.store.rdbms.mapping.Point2dFloatMapping"/>
+        <mapping java-type="java.awt.geom.QuadCurve2D$Double" mapping-class="org.datanucleus.store.rdbms.mapping.QuadCurve2dDoubleMapping"/>
+        <mapping java-type="java.awt.geom.QuadCurve2D$Float" mapping-class="org.datanucleus.store.rdbms.mapping.QuadCurve2dFloatMapping"/>
+        <mapping java-type="java.awt.geom.Rectangle2D$Double" mapping-class="org.datanucleus.store.rdbms.mapping.Rectangle2dDoubleMapping"/>
+        <mapping java-type="java.awt.geom.Rectangle2D$Float" mapping-class="org.datanucleus.store.rdbms.mapping.Rectangle2dFloatMapping"/>
+        <mapping java-type="java.awt.geom.RoundRectangle2D$Double" mapping-class="org.datanucleus.store.rdbms.mapping.RoundRectangle2dDoubleMapping"/>
+        <mapping java-type="java.awt.geom.RoundRectangle2D$Float" mapping-class="org.datanucleus.store.rdbms.mapping.RoundRectangle2dFloatMapping"/>
+
 		<!-- Oracle's JGeometry -->
 		<mapping java-type="oracle.spatial.geometry.JGeometry"
              mapping-class="org.datanucleus.store.rdbms.mapping.jgeom.JGeometryMapping"/>
