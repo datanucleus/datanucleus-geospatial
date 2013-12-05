@@ -26,7 +26,7 @@
 
     <scm>
         <connection>scm:git:git://github.com/datanucleus/datanucleus-geospatial.git</connection>
-        <url>scm:git:git://github.com/datanucleus/datanucleus-geospatial.git</url>
+        <url>https://github.com/datanucleus/datanucleus-geospatial</url>
         <developerConnection>scm:git:git://github.com/datanucleus/datanucleus-geospatial.git</developerConnection>
     </scm>
 
