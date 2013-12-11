@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: DataNucleus Spatial
 Bundle-SymbolicName: org.datanucleus.store.types.spatial;singleton:=true
-Bundle-Version: 3.2.4
+Bundle-Version: 3.2.5
 Bundle-Localization: plugin
 Bundle-Vendor: DataNucleus
 Require-Bundle: org.datanucleus;bundle-version="3.2.0",
@@ -22,6 +22,3 @@ Import-Package: com.esri.arcgis.geometry;resolution:=optional,
  org.postgis;resolution:=optional,
  org.postgis.binary;resolution:=optional,
  org.postgis.jts;resolution:=optional
-Export-Package: com.esri.arcgis.geometry,
- com.esri.arcgis.system,
- com.linar.jintegra

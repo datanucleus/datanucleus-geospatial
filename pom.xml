@@ -7,9 +7,9 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.datanucleus</groupId>
-    <version>3.2.4-SNAPSHOT</version>
+    <version>3.2.5-SNAPSHOT</version>
     <artifactId>datanucleus-geospatial</artifactId>
-    <name>DataNucleus Spatial</name>
+    <name>DataNucleus Geospatial</name>
     <description>DataNucleus Geospatial</description>
     <url>http://www.datanucleus.org</url>
 
