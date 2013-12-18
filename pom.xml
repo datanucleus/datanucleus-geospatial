@@ -129,7 +129,7 @@
                 <artifactId>maven-bundle-plugin</artifactId>
                 <configuration>
                     <instructions>
-                        <Bundle-SymbolicName>org.datanucleus.geospatial;singleton:=true</Bundle-SymbolicName>
+                        <Bundle-SymbolicName>org.datanucleus.store.types.geospatial;singleton:=true</Bundle-SymbolicName>
                         <Import-Package>
                             javax.jdo*;version="${jdo.version}",
                             org.datanucleus.api.jdo*;version="${dn.api.jdo.version}",
