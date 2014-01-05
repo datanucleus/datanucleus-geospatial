@@ -98,14 +98,26 @@ public class GeometryRDBMSMapping extends MySQLSpatialRDBMSMapping
                 Geometry geom = (Geometry) value;
 
                 int srid = geom.getSrid();
-                if (srid != Geometry.UNKNOWN_SRID)
+                if (0 < srid || (0 == srid && 2 > org.postgis.Version.MAJOR))
                 {
-                    geom.srid = Geometry.UNKNOWN_SRID; // hack: BinaryWriter
-                                                       // must not encode srid
+                    // hack: BinaryWriter
+                    // must not encode srid
+                    if (1 < org.postgis.Version.MAJOR)
+                    {
+                        geom.srid = 0; // UNKNOWN_SRID is 0
+                        // for postgis 2 and onwards.
+                    }
+                    else
+                    {
+                        // Older versions of postgis-jdbc
+                        // interpreted UNKNOWN_SRID as -1
+                        geom.srid = -1;
+                    }
+
                     // into binary
                 }
                 byte[] wkb = writer.writeBinary(geom, ValueSetter.NDR.NUMBER);
-                if (srid != Geometry.UNKNOWN_SRID)
+                if (srid > 0)
                 {
                     geom.srid = srid; // revert hack
                 }
