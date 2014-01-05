@@ -39,12 +39,13 @@ import org.postgis.binary.ValueSetter;
 public class GeometryRDBMSMapping extends MySQLSpatialRDBMSMapping
 {
     protected final BinaryWriter writer = new BinaryWriter();
+
     protected final BinaryParser parser = new BinaryParser();
 
     private static final SQLTypeInfo typeInfo;
     static
     {
-        typeInfo = (SQLTypeInfo)MySQLSpatialTypeInfo.TYPEINFO_PROTOTYPE.clone();
+        typeInfo = (SQLTypeInfo) MySQLSpatialTypeInfo.TYPEINFO_PROTOTYPE.clone();
         typeInfo.setTypeName("GEOMETRY");
         typeInfo.setLocalTypeName("GEOMETRY");
     }
@@ -65,15 +66,15 @@ public class GeometryRDBMSMapping extends MySQLSpatialRDBMSMapping
 
         try
         {
-            byte[] mysqlBinary = ((ResultSet)rs).getBytes(exprIndex);
-            if (((ResultSet)rs).wasNull() || mysqlBinary == null)
+            byte[] mysqlBinary = ((ResultSet) rs).getBytes(exprIndex);
+            if (((ResultSet) rs).wasNull() || mysqlBinary == null)
             {
                 value = null;
             }
             else
             {
                 value = parser.parse(mysqlBinaryToWkb(mysqlBinary));
-                ((Geometry)value).setSrid(mysqlBinaryToSrid(mysqlBinary));
+                ((Geometry) value).setSrid(mysqlBinaryToSrid(mysqlBinary));
             }
         }
         catch (SQLException e)
@@ -94,19 +95,21 @@ public class GeometryRDBMSMapping extends MySQLSpatialRDBMSMapping
             }
             else
             {
-                Geometry geom = (Geometry)value;
-                
+                Geometry geom = (Geometry) value;
+
                 int srid = geom.getSrid();
-                if (srid != -1)
+                if (srid != Geometry.UNKNOWN_SRID)
                 {
-                    geom.srid = -1; // hack: BinaryWriter must not encode srid into binary
+                    geom.srid = Geometry.UNKNOWN_SRID; // hack: BinaryWriter
+                                                       // must not encode srid
+                    // into binary
                 }
                 byte[] wkb = writer.writeBinary(geom, ValueSetter.NDR.NUMBER);
-                if (srid != -1)
+                if (srid != Geometry.UNKNOWN_SRID)
                 {
                     geom.srid = srid; // revert hack
                 }
-                ((PreparedStatement)ps).setBytes(exprIndex, wkbToMysqlBinary(wkb, srid));
+                ((PreparedStatement) ps).setBytes(exprIndex, wkbToMysqlBinary(wkb, srid));
             }
         }
         catch (SQLException e)
