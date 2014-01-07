@@ -20,6 +20,6 @@ __Javadocs__ : [3.2](http://www.datanucleus.org/javadocs/store.types.geospatial/
 
 __Download(Releases)__ : [Maven Central](http://central.maven.org/maven2/org/datanucleus/datanucleus-geospatial)
 
-__Download(Nightly)__ : [Nightly Builds](http://central.maven.org/maven2/org/datanucleus/datanucleus-geospatial)
+__Download(Nightly)__ : [Nightly Builds](http://www.datanucleus.org/downloads/maven2-nightly/org/datanucleus/datanucleus-geospatial)
 
 __Dependencies__ : See file [pom.xml](pom.xml)
