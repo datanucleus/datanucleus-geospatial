@@ -24,6 +24,9 @@ import java.sql.ResultSet;
  */
 public class OracleSpatialTypeInfo extends SQLTypeInfo
 {
+    // For more information TYPES_SDO_GEOMETRY_PATTERN visit
+    // http://docs.oracle.com/cd/B19306_01/appdev.102/b14255/sdo_objrelschema.htm#i1004087
+    // or search for SDO_GTYPE
     public static final String TYPES_SDO_GEOMETRY_PATTERN = "[2-4][0,3,4][0-9][0-9]";
 
     public OracleSpatialTypeInfo(ResultSet rs)
