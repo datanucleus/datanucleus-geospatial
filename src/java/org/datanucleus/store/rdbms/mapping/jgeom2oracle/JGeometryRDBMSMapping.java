@@ -21,6 +21,7 @@ package org.datanucleus.store.rdbms.mapping.jgeom2oracle;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import oracle.jdbc.OracleConnection;
 
 import oracle.spatial.geometry.JGeometry;
 import oracle.sql.STRUCT;
@@ -52,7 +53,7 @@ public class JGeometryRDBMSMapping extends AbstractDatastoreMapping
 
     public SQLTypeInfo getTypeInfo()
     {
-        return ((RDBMSStoreManager)storeMgr).getSQLTypeInfoForJDBCType(OracleTypeInfo.TYPES_SDO_GEOMETRY);
+        return ((RDBMSStoreManager) storeMgr).getSQLTypeInfoForJDBCType(OracleTypeInfo.TYPES_SDO_GEOMETRY);
     }
 
     public Object getObject(ResultSet rs, int exprIndex)
@@ -62,13 +63,13 @@ public class JGeometryRDBMSMapping extends AbstractDatastoreMapping
         try
         {
             Object st = ((ResultSet) rs).getObject(exprIndex);
-            if (((ResultSet)rs).wasNull() || st == null)
+            if (((ResultSet) rs).wasNull() || st == null)
             {
                 value = null;
             }
             else
             {
-                value = JGeometry.load((STRUCT)st);
+                value = JGeometry.load((STRUCT) st);
             }
         }
         catch (SQLException e)
@@ -89,13 +90,13 @@ public class JGeometryRDBMSMapping extends AbstractDatastoreMapping
             }
             else
             {
-                Object obj = JGeometry.store((JGeometry)value, ((PreparedStatement)ps).getConnection());
+                Object obj = JGeometry.store((JGeometry) value, ((PreparedStatement) ps).getConnection().unwrap(OracleConnection.class));
                 ((PreparedStatement) ps).setObject(exprIndex, obj);
             }
         }
         catch (SQLException e)
         {
-            throw new NucleusDataStoreException(failureMessage("setObject", value, e),e );
+            throw new NucleusDataStoreException(failureMessage("setObject", value, e), e);
         }
     }
 }

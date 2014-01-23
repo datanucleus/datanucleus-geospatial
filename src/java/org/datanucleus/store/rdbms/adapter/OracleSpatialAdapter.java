@@ -18,13 +18,14 @@
 package org.datanucleus.store.rdbms.adapter;
 
 import java.sql.DatabaseMetaData;
+import static org.datanucleus.store.rdbms.schema.OracleSpatialTypeInfo.TYPES_SDO_GEOMETRY_PATTERN;
 
-import org.datanucleus.store.rdbms.schema.OracleTypeInfo;
 import org.datanucleus.store.rdbms.table.Column;
 import org.datanucleus.store.rdbms.table.Table;
 
 /**
- * Provides methods for adapting SQL language elements for Oracle spatial elements.
+ * Provides methods for adapting SQL language elements for Oracle spatial
+ * elements.
  */
 public class OracleSpatialAdapter extends OracleAdapter implements SpatialRDBMSAdapter
 {
@@ -35,7 +36,7 @@ public class OracleSpatialAdapter extends OracleAdapter implements SpatialRDBMSA
 
     public boolean isGeometryColumn(Column c)
     {
-        return (c.getTypeInfo().getDataType() == OracleTypeInfo.TYPES_SDO_GEOMETRY);
+        return String.valueOf(c.getTypeInfo().getDataType()).matches(TYPES_SDO_GEOMETRY_PATTERN);
     }
 
     public String getRetrieveCrsNameStatement(Table table, int srid)
@@ -47,16 +48,11 @@ public class OracleSpatialAdapter extends OracleAdapter implements SpatialRDBMSA
     {
         return "SELECT WKTEXT FROM MDSYS.CS_SRS WHERE SRID = #srid".replace("#srid", "" + srid);
     }
-    
+
     public String getCalculateBoundsStatement(Table table, Column column)
     {
-        return "SELECT " + 
-               "SDO_GEOM.SDO_MIN_MBR_ORDINATE(SDO_AGGR_MBR(#column), 1), " +
-               "SDO_GEOM.SDO_MIN_MBR_ORDINATE(SDO_AGGR_MBR(#column), 2), " +
-               "SDO_GEOM.SDO_MAX_MBR_ORDINATE(SDO_AGGR_MBR(#column), 1), " +
-               "SDO_GEOM.SDO_MAX_MBR_ORDINATE(SDO_AGGR_MBR(#column), 2) " +
-               "FROM #table"
-               .replace("#column", column.getIdentifier().getIdentifierName())
-               .replace("#table", table.getIdentifier().getIdentifierName());
+        return "SELECT " + "SDO_GEOM.SDO_MIN_MBR_ORDINATE(SDO_AGGR_MBR(#column), 1), " + "SDO_GEOM.SDO_MIN_MBR_ORDINATE(SDO_AGGR_MBR(#column), 2), " + "SDO_GEOM.SDO_MAX_MBR_ORDINATE(SDO_AGGR_MBR(#column), 1), " + "SDO_GEOM.SDO_MAX_MBR_ORDINATE(SDO_AGGR_MBR(#column), 2) " + "FROM #table"
+                .replace("#column", column.getIdentifier().getIdentifierName())
+                .replace("#table", table.getIdentifier().getIdentifierName());
     }
 }
