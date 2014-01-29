@@ -14,37 +14,65 @@ limitations under the License.
 
 Contributors:
    ...
-**********************************************************************/
+ **********************************************************************/
 package org.datanucleus.store.rdbms.sql.method;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import org.datanucleus.exceptions.NucleusUserException;
+import org.datanucleus.store.rdbms.mapping.java.JavaTypeMapping;
+import org.datanucleus.store.rdbms.sql.expression.GeometryExpression;
 import org.datanucleus.store.rdbms.sql.expression.SQLExpression;
+import org.datanucleus.store.rdbms.sql.expression.StringLiteral;
 
 /**
  * Implementation of "Spatial.bboxTest" method for Oracle.
  */
 public class SpatialBboxTestMethod3 extends AbstractSQLMethod
 {
-	/* (non-Javadoc)
-     * @see org.datanucleus.store.rdbms.sql.method.SQLMethod#getExpression(org.datanucleus.store.rdbms.sql.expression.SQLExpression, java.util.List)
+    /*
+     * (non-Javadoc)
+     * 
+     * @see org.datanucleus.store.rdbms.sql.method.SQLMethod#getExpression(org.
+     * datanucleus.store.rdbms.sql.expression.SQLExpression, java.util.List)
      */
     public SQLExpression getExpression(SQLExpression ignore, List args)
     {
         if (args == null || args.size() != 2)
         {
-            throw new NucleusUserException("Cannot invoke MySQL.bboxTest without 2 arguments");
+            throw new NucleusUserException("Cannot invoke Oracle.SDO_OVERLAPBDYINTERSECT for bBoxTest without 2 arguments");
         }
 
-        SQLExpression argExpr1 = (SQLExpression)args.get(0); // Geometry 1
-        SQLExpression argExpr2 = (SQLExpression)args.get(1); // Geometry 2
+        SQLExpression argExpr1 = (SQLExpression) args.get(0); // Geometry 1
+        SQLExpression argExpr2 = (SQLExpression) args.get(1); // Geometry 2
+        // SQLExpression argExpr3 = (SQLExpression) args.get(2); // Determines
+        // the
+        // behavior of the
+        // operator. Data
+        // type is
+        // VARCHAR2.
+        // querytype =
+        // WINDOW or
+        // querytype =
+        // JOIN
+
+        ArrayList geomFunc1Args = new ArrayList();
+        geomFunc1Args.add(argExpr1);
+        GeometryExpression geomExpr1 = new GeometryExpression(stmt, null, "geometry.from_sdo_geom", geomFunc1Args, null);
+
+        ArrayList geomFunc2Args = new ArrayList();
+        geomFunc2Args.add(argExpr2);
+        GeometryExpression geomExpr2 = new GeometryExpression(stmt, null, "geometry.from_sdo_geom", geomFunc2Args, null);
+
+        StringLiteral mask = new StringLiteral(stmt, null, "mask=OVERLAPBDYINTERSECT querytype=WINDOW", null);
 
         ArrayList funcArgs = new ArrayList();
-        funcArgs.add(argExpr1);
-        funcArgs.add(argExpr2);
+        funcArgs.add(geomExpr1);
+        funcArgs.add(geomExpr2);
 
-        return SpatialMethodHelper.getBooleanExpression(stmt, "SDO_FILTER", funcArgs, exprFactory);
+        funcArgs.add(mask);
+
+        return SpatialMethodHelper.getBooleanExpression(stmt, "SDO_RELATE", funcArgs, exprFactory);
     }
 }

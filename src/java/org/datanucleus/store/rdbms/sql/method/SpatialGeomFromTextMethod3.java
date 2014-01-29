@@ -34,7 +34,7 @@ public class SpatialGeomFromTextMethod3 extends AbstractSQLMethod
         if (args == null || args.size() < 1 || args.size() > 2)
         {
             throw new NucleusUserException(
-                    "Cannot invoke Spatial.geomFromWKB without 1 or 2 arguments. Spatial.geomFromWKB(String textualrep, int srid) " + "or Spatial.geomFromWKB(String textualrep) where textualrep contains srid information as well");
+                    "Cannot invoke Spatial.geomFromText without 1 or 2 arguments. Spatial.geomFromText(String textualrep, int srid) " + "or Spatial.geomFromText(String textualrep) where textualrep contains srid information as well");
         }
 
         SQLExpression wktExpr = (SQLExpression) args.get(0);
