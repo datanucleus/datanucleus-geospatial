@@ -13,8 +13,8 @@ See the License for the specific language governing permissions and
 limitations under the License.
 
 Contributors:
-   ...
-**********************************************************************/
+   barisergun75@gmail.com
+ **********************************************************************/
 package org.datanucleus.store.rdbms.sql.method;
 
 import java.util.ArrayList;
@@ -30,35 +30,28 @@ import org.datanucleus.store.rdbms.sql.expression.SQLExpression;
  */
 public class SpatialPointOnSurfaceMethod2 extends AbstractSQLMethod
 {
-    /* (non-Javadoc)
-     * @see org.datanucleus.store.rdbms.sql.method.SQLMethod#getExpression(org.datanucleus.store.rdbms.sql.expression.SQLExpression, java.util.List)
+    /*
+     * (non-Javadoc)
+     * 
+     * @see org.datanucleus.store.rdbms.sql.method.SQLMethod#getExpression(org.
+     * datanucleus.store.rdbms.sql.expression.SQLExpression, java.util.List)
+     * 
+     * http://docs.oracle.com/cd/B19306_01/appdev.102/b14255/sdo_objgeom.htm#i860858
      */
     public SQLExpression getExpression(SQLExpression expr, List args)
     {
-        if (args == null || args.size() != 1)
+        if (args == null || args.size() != 2)
         {
-            throw new NucleusUserException("Cannot invoke Spatial.pointOnSurface without 1 arguments");
+            throw new NucleusUserException("Cannot invoke Spatial.pointOnSurface without 2 arguments");
         }
 
-        SQLExpression argExpr1 = (SQLExpression)args.get(0);
-
-        ArrayList geomFuncArgs = new ArrayList();
-        geomFuncArgs.add(argExpr1);
-        GeometryExpression geomExpr = new GeometryExpression(stmt, null, "geometry.from_sdo_geom", geomFuncArgs, null);
-
-        ArrayList treatFuncArgs = new ArrayList();
-        treatFuncArgs.add(geomExpr);
-        ArrayList treatFuncTypeArgs = new ArrayList();
-        treatFuncTypeArgs.add("surface");
-        GeometryExpression treatExpr = new GeometryExpression(stmt, null, "treat", treatFuncArgs, treatFuncTypeArgs);
-
-        ArrayList startFuncArgs = new ArrayList();
-        startFuncArgs.add(treatExpr);
-        GeometryExpression startExpr = new GeometryExpression(stmt, null, "pointOnSurface", startFuncArgs, null);
+        SQLExpression argExpr1 = (SQLExpression) args.get(0);
+        SQLExpression argExpr2 = (SQLExpression) args.get(1);
 
         ArrayList funcArgs = new ArrayList();
-        funcArgs.add(startExpr);
+        funcArgs.add(argExpr1);
+        funcArgs.add(argExpr2);
         JavaTypeMapping geomMapping = SpatialMethodHelper.getGeometryMapping(clr, argExpr1);
-        return new GeometryExpression(stmt, geomMapping, "geometry.get_sdo_geom", funcArgs, null);
+        return new GeometryExpression(stmt, geomMapping, "SDO_GEOM.SDO_POINTONSURFACE", funcArgs, null);
     }
 }
