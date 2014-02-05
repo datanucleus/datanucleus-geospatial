@@ -26,6 +26,7 @@ import javax.jdo.PersistenceManager;
 import javax.jdo.Query;
 import javax.jdo.Transaction;
 
+import org.datanucleus.metadata.AbstractClassMetaData;
 import org.datanucleus.metadata.AbstractMemberMetaData;
 import org.datanucleus.metadata.MetaDataManager;
 import org.datanucleus.metadata.MetaDataUtils;
@@ -276,7 +277,8 @@ public class SpatialHelper
     {
         checkValid(pc, memberName);
 
-        AbstractMemberMetaData fmd = getMetaDataManager().getMetaDataForMember(pc, null, memberName);        
+        AbstractClassMetaData cmd = storeMgr.getMetaDataManager().getMetaDataForClass(pc, storeMgr.getNucleusContext().getClassLoaderResolver(null));
+        AbstractMemberMetaData fmd = (cmd != null ? cmd.getMetaDataForMember(memberName) : null);  
         String value = MetaDataUtils.getValueForExtensionRecursively(fmd, extensionKey);
         if (value == null || value.trim().equals(""))
         {
