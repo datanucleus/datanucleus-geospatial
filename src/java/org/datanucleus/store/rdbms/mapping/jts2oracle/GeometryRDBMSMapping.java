@@ -24,7 +24,7 @@ import java.sql.SQLException;
 import oracle.jdbc.OracleConnection;
 import oracle.sql.STRUCT;
 
-import org.datanucleus.store.rdbms.schema.OracleTypeInfo;
+import org.datanucleus.store.rdbms.schema.OracleSpatialTypeInfo;
 import org.datanucleus.store.rdbms.schema.SQLTypeInfo;
 import org.datanucleus.store.rdbms.table.Column;
 import org.datanucleus.exceptions.NucleusDataStoreException;
@@ -55,7 +55,7 @@ public class GeometryRDBMSMapping extends AbstractDatastoreMapping
 
     public SQLTypeInfo getTypeInfo() 
     {
-        return ((RDBMSStoreManager)storeMgr).getSQLTypeInfoForJDBCType(OracleTypeInfo.TYPES_SDO_GEOMETRY);
+        return ((RDBMSStoreManager)storeMgr).getSQLTypeInfoForJDBCType(OracleSpatialTypeInfo.TYPES_SDO_GEOMETRY);
     }
 
     public Object getObject(ResultSet rs, int exprIndex)

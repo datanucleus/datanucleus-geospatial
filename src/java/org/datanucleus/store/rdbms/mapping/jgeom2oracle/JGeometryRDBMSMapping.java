@@ -21,12 +21,12 @@ package org.datanucleus.store.rdbms.mapping.jgeom2oracle;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import oracle.jdbc.OracleConnection;
 
+import oracle.jdbc.OracleConnection;
 import oracle.spatial.geometry.JGeometry;
 import oracle.sql.STRUCT;
 
-import org.datanucleus.store.rdbms.schema.OracleTypeInfo;
+import org.datanucleus.store.rdbms.schema.OracleSpatialTypeInfo;
 import org.datanucleus.store.rdbms.schema.SQLTypeInfo;
 import org.datanucleus.store.rdbms.table.Column;
 import org.datanucleus.exceptions.NucleusDataStoreException;
@@ -53,7 +53,7 @@ public class JGeometryRDBMSMapping extends AbstractDatastoreMapping
 
     public SQLTypeInfo getTypeInfo()
     {
-        return ((RDBMSStoreManager) storeMgr).getSQLTypeInfoForJDBCType(OracleTypeInfo.TYPES_SDO_GEOMETRY);
+        return ((RDBMSStoreManager) storeMgr).getSQLTypeInfoForJDBCType(OracleSpatialTypeInfo.TYPES_SDO_GEOMETRY);
     }
 
     public Object getObject(ResultSet rs, int exprIndex)

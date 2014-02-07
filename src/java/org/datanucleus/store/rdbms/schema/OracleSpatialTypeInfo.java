@@ -29,6 +29,11 @@ public class OracleSpatialTypeInfo extends SQLTypeInfo
     // or search for SDO_GTYPE
     public static final String TYPES_SDO_GEOMETRY_PATTERN = "[2-4][0,3,4][0-9][0-9]";
 
+    /** 
+     * Oracles Spatial specific SqlTypeInfo
+     */
+    public static final int TYPES_SDO_GEOMETRY = -123;
+
     public OracleSpatialTypeInfo(ResultSet rs)
     {
         super(rs);

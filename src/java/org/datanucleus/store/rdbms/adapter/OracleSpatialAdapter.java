@@ -18,10 +18,16 @@
 package org.datanucleus.store.rdbms.adapter;
 
 import java.sql.DatabaseMetaData;
+import java.sql.Types;
+
 import static org.datanucleus.store.rdbms.schema.OracleSpatialTypeInfo.TYPES_SDO_GEOMETRY_PATTERN;
 
+import org.datanucleus.store.connection.ManagedConnection;
+import org.datanucleus.store.rdbms.schema.OracleSpatialTypeInfo;
+import org.datanucleus.store.rdbms.schema.SQLTypeInfo;
 import org.datanucleus.store.rdbms.table.Column;
 import org.datanucleus.store.rdbms.table.Table;
+import org.datanucleus.store.schema.StoreSchemaHandler;
 
 /**
  * Provides methods for adapting SQL language elements for Oracle spatial
@@ -32,6 +38,21 @@ public class OracleSpatialAdapter extends OracleAdapter implements SpatialRDBMSA
     public OracleSpatialAdapter(DatabaseMetaData metadata)
     {
         super(metadata);
+    }
+
+    /**
+     * Initialise the types for this datastore.
+     * @param handler SchemaHandler that we initialise the types for
+     * @param mconn Managed connection to use
+     */
+    public void initialiseTypes(StoreSchemaHandler handler, ManagedConnection mconn)
+    {
+        super.initialiseTypes(handler, mconn);
+
+        SQLTypeInfo sqlType = new org.datanucleus.store.rdbms.schema.OracleTypeInfo(
+            "SDO_GEOMETRY", (short)Types.STRUCT, 0, null, null, null, 1, false, (short)0,
+            false, false, false, "SDO_GEOMETRY", (short)0, (short)0, 10);
+        addSQLTypeForJDBCType(handler, mconn, (short)OracleSpatialTypeInfo.TYPES_SDO_GEOMETRY, sqlType, true);
     }
 
     public boolean isGeometryColumn(Column c)
