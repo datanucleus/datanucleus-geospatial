@@ -37,7 +37,7 @@
             </snapshots>
         </repository>
     </repositories>
-
+    
     <dependencies>
         <dependency>
             <groupId>org.datanucleus</groupId>
@@ -121,26 +121,9 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
-
+    
     <build>
         <plugins>
-            <plugin>
-                <artifactId>maven-jar-plugin</artifactId>
-                <configuration>
-                    <excludes>
-                        <exclude>com/esri/**</exclude>
-                        <exclude>com/linar/**</exclude>
-                    </excludes>
-                </configuration>
-            </plugin>
-
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-javadoc-plugin</artifactId>
-                <configuration>
-                    <excludePackageNames>com.esri.*:com.linar.jintegra</excludePackageNames>
-                </configuration>
-            </plugin>
             <plugin>
                 <groupId>org.apache.felix</groupId>
                 <artifactId>maven-bundle-plugin</artifactId>
@@ -154,7 +137,7 @@
                             org.datanucleus*;version="${dn.core.version}",
                             *;resolution:=optional
                         </Import-Package>
-                        <Export-Package>org.datanucleus*,!com.esri*,!com.linar*</Export-Package>
+                        <Export-Package>org.datanucleus*</Export-Package>
                     </instructions>
                 </configuration>
             </plugin>
