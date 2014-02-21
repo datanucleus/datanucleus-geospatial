@@ -35,6 +35,10 @@ public class SpatialUnionMethod3 extends AbstractSQLMethod
      */
     public SQLExpression getExpression(SQLExpression expr, List args)
     {
+        if (args == null)
+        {
+            throw new NucleusUserException("Cannot invoke Spatial.union without arguments");
+        }
         if (expr == null && (args == null || args.size() != 2))
         {
             throw new NucleusUserException("Cannot invoke Spatial.union without 2 arguments");

@@ -35,6 +35,10 @@ public class SpatialSymDifferenceMethod2 extends AbstractSQLMethod
      */
     public SQLExpression getExpression(SQLExpression expr, List args)
     {
+        if (args == null)
+        {
+            throw new NucleusUserException("Cannot invoke Spatial.symDifference without arguments");
+        }
         if (expr == null && (args == null || args.size() != 2))
         {
             throw new NucleusUserException("Cannot invoke Spatial.symDifference without 2 arguments");

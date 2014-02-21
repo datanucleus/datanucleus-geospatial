@@ -93,7 +93,7 @@ public class SpatialMethodHelper
         JavaTypeMapping boolMapping = exprFactory.getMappingForType(boolean.class, true);
         SQLExpression left = new StringExpression(stmt, boolMapping, funcName, funcArgs);
         JavaTypeMapping charMapping = exprFactory.getMappingForType(Character.class, false);
-        SQLExpression right = new CharacterLiteral(stmt, charMapping, new Character('1'), null);
+        SQLExpression right = new CharacterLiteral(stmt, charMapping, Character.valueOf('1'), null);
         return new BooleanExpression(left, Expression.OP_EQ, right);
     }
 }

@@ -33,6 +33,10 @@ public class SpatialRelateMethod extends AbstractSQLMethod
      */
     public SQLExpression getExpression(SQLExpression expr, List args)
     {
+        if (args == null)
+        {
+            throw new NucleusUserException("Cannot invoke Spatial.relate without arguments");
+        }
         if (expr == null && (args == null || args.size() != 3))
         {
             throw new NucleusUserException("Cannot invoke Spatial.relate without 3 arguments");

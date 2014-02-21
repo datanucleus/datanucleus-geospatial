@@ -36,6 +36,10 @@ public class SpatialDistanceMethod2 extends AbstractSQLMethod
      */
     public SQLExpression getExpression(SQLExpression expr, List args)
     {
+        if (args == null)
+        {
+            throw new NucleusUserException("Cannot invoke Spatial.distance without arguments");
+        }
         if (expr == null && (args == null || args.size() != 2))
         {
             throw new NucleusUserException("Cannot invoke Spatial.distance without 2 arguments");
