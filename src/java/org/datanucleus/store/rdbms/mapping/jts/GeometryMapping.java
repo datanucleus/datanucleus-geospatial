@@ -82,8 +82,10 @@ public class GeometryMapping extends SingleFieldMultiMapping implements MappingC
         return false;
     }
 
-    /* (non-Javadoc)
-     * @see org.datanucleus.store.rdbms.mapping.JavaTypeMapping#initialize(org.datanucleus.store.rdbms.RDBMSStoreManager, java.lang.String)
+    /*
+     * (non-Javadoc)
+     * @see org.datanucleus.store.rdbms.mapping.JavaTypeMapping#initialize(org.datanucleus.store.rdbms.
+     * RDBMSStoreManager, java.lang.String)
      */
     public void initialize(RDBMSStoreManager storeMgr, String type)
     {
@@ -113,8 +115,10 @@ public class GeometryMapping extends SingleFieldMultiMapping implements MappingC
         return Geometry.class;
     }
 
-    /* (non-Javadoc)
-     * @see org.datanucleus.store.rdbms.mapping.JavaTypeMapping#getObject(org.datanucleus.ExecutionContext, java.lang.Object, int[], org.datanucleus.state.ObjectProvider, int)
+    /*
+     * (non-Javadoc)
+     * @see org.datanucleus.store.rdbms.mapping.JavaTypeMapping#getObject(org.datanucleus.ExecutionContext,
+     * java.lang.Object, int[], org.datanucleus.state.ObjectProvider, int)
      */
     public Object getObject(ExecutionContext ec, ResultSet rs, int[] exprIndex, ObjectProvider ownerSM, int ownerFieldNumber)
     {
@@ -139,8 +143,10 @@ public class GeometryMapping extends SingleFieldMultiMapping implements MappingC
         return geom;
     }
 
-    /* (non-Javadoc)
-     * @see org.datanucleus.store.rdbms.mapping.JavaTypeMapping#setObject(org.datanucleus.ExecutionContext, java.lang.Object, int[], java.lang.Object, org.datanucleus.state.ObjectProvider, int)
+    /*
+     * (non-Javadoc)
+     * @see org.datanucleus.store.rdbms.mapping.JavaTypeMapping#setObject(org.datanucleus.ExecutionContext,
+     * java.lang.Object, int[], java.lang.Object, org.datanucleus.state.ObjectProvider, int)
      */
     public void setObject(ExecutionContext ec, PreparedStatement ps, int[] exprIndex, Object value, ObjectProvider ownerSM,
             int ownerFieldNumber)
@@ -165,11 +171,11 @@ public class GeometryMapping extends SingleFieldMultiMapping implements MappingC
             if (exprIndex.length == 2)
             {
                 DatastoreMapping mapping = getDatastoreMapping(1);
-                if (mapping instanceof AbstractDatastoreMapping && !((AbstractDatastoreMapping)mapping).insertValuesOnInsert()) 
+                if (mapping instanceof AbstractDatastoreMapping && !((AbstractDatastoreMapping) mapping).insertValuesOnInsert())
                 {
-                    
-                } 
-                else 
+
+                }
+                else
                 {
                     getDatastoreMapping(1).setObject(ps, exprIndex[1], geom.getUserData());
                 }
@@ -182,16 +188,17 @@ public class GeometryMapping extends SingleFieldMultiMapping implements MappingC
      */
     public void insertPostProcessing(ObjectProvider op)
     {
-        if (!mapUserdataObject || !(getDatastoreMapping(1) instanceof OracleBlobRDBMSMapping)) return;
-        
+        if (!mapUserdataObject || !(getDatastoreMapping(1) instanceof OracleBlobRDBMSMapping))
+            return;
+
         Object geom = op.provideField(mmd.getAbsoluteFieldNumber());
-        if (geom == null || !(geom instanceof Geometry) || ((Geometry)geom).getUserData() == null)
+        if (geom == null || !(geom instanceof Geometry) || ((Geometry) geom).getUserData() == null)
         {
             return;
         }
 
-        Object value = ((Geometry)geom).getUserData();
-        
+        Object value = ((Geometry) geom).getUserData();
+
         byte[] bytes = new byte[0];
         try
         {

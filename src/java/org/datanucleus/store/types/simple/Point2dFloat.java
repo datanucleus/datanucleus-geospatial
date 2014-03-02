@@ -14,7 +14,7 @@ limitations under the License.
 
 Contributors:
    ...
-**********************************************************************/
+ **********************************************************************/
 package org.datanucleus.store.types.simple;
 
 import java.awt.geom.Point2D;
@@ -30,6 +30,7 @@ import org.datanucleus.store.types.SCO;
 public class Point2dFloat extends java.awt.geom.Point2D.Float implements SCO
 {
     protected transient ObjectProvider ownerOP;
+
     protected transient String fieldName;
 
     /**
@@ -45,30 +46,34 @@ public class Point2dFloat extends java.awt.geom.Point2D.Float implements SCO
         this.fieldName = mmd.getName();
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
      * @see org.datanucleus.store.types.sco.SCO#initialise(java.lang.Object, boolean, boolean)
      */
     public void initialise(Object value, boolean forInsert, boolean forUpdate) throws ClassCastException
     {
-        super.setLocation((Point2D.Float)value);
+        super.setLocation((Point2D.Float) value);
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
      * @see org.datanucleus.store.types.sco.SCO#initialise()
      */
     public void initialise()
     {
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
      * @see org.datanucleus.store.types.sco.SCO#getValue()
      */
     public Object getValue()
     {
-        return new java.awt.geom.Point2D.Float((float)getX(), (float)getY());
+        return new java.awt.geom.Point2D.Float((float) getX(), (float) getY());
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
      * @see org.datanucleus.store.types.sco.SCO#unsetOwner()
      */
     public void unsetOwner()
@@ -76,7 +81,8 @@ public class Point2dFloat extends java.awt.geom.Point2D.Float implements SCO
         ownerOP = null;
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
      * @see org.datanucleus.store.types.sco.SCO#getOwner()
      */
     public Object getOwner()
@@ -84,7 +90,8 @@ public class Point2dFloat extends java.awt.geom.Point2D.Float implements SCO
         return (ownerOP != null ? ownerOP.getObject() : null);
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
      * @see org.datanucleus.store.types.sco.SCO#getFieldName()
      */
     public String getFieldName()
@@ -103,15 +110,17 @@ public class Point2dFloat extends java.awt.geom.Point2D.Float implements SCO
         }
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
      * @see org.datanucleus.store.types.sco.SCO#detachCopy(org.datanucleus.state.FetchPlanState)
      */
     public Object detachCopy(FetchPlanState state)
     {
-        return new java.awt.geom.Point2D.Float((float)getX(), (float)getY());
+        return new java.awt.geom.Point2D.Float((float) getX(), (float) getY());
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
      * @see org.datanucleus.store.types.sco.SCO#attachCopy(java.lang.Object)
      */
     public void attachCopy(Object value)
@@ -121,7 +130,7 @@ public class Point2dFloat extends java.awt.geom.Point2D.Float implements SCO
         initialise(value, false, true);
 
         // Check if the field has changed, and set the owner field as dirty if necessary
-        Point2dFloat rect = (Point2dFloat)value;
+        Point2dFloat rect = (Point2dFloat) value;
         double newX = rect.getX();
         double newY = rect.getY();
         if (oldX != newX || oldY != newY)
@@ -132,21 +141,21 @@ public class Point2dFloat extends java.awt.geom.Point2D.Float implements SCO
 
     /**
      * Creates and returns a copy of this object.
-     *
-     * <p>Mutable second-class Objects are required to provide a public
-     * clone method in order to allow for copying PersistenceCapable
-     * objects. In contrast to Object.clone(), this method must not throw a
+     * <p>
+     * Mutable second-class Objects are required to provide a public clone method in order to allow for
+     * copying PersistenceCapable objects. In contrast to Object.clone(), this method must not throw a
      * CloneNotSupportedException.
      * @return A clone of the object
      */
     public Object clone()
     {
         Object obj = super.clone();
-        ((Point2dFloat)obj).unsetOwner();
+        ((Point2dFloat) obj).unsetOwner();
         return obj;
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
      * @see java.awt.geom.Point2D.Float#setLocation(float, float)
      */
     @Override
@@ -156,7 +165,8 @@ public class Point2dFloat extends java.awt.geom.Point2D.Float implements SCO
         makeDirty();
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
      * @see java.awt.geom.Point2D#setLocation(java.awt.geom.Point2D)
      */
     @Override

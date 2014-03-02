@@ -15,7 +15,7 @@ limitations under the License.
 
 Contributors:
     ...
-**********************************************************************/
+ **********************************************************************/
 package org.datanucleus.store.types.simple;
 
 import java.awt.geom.Point2D;
@@ -32,6 +32,7 @@ import org.datanucleus.store.types.SCO;
 public class Point extends java.awt.Point implements SCO
 {
     protected transient ObjectProvider ownerOP;
+
     protected transient String fieldName;
 
     boolean initialising = false;
@@ -65,7 +66,7 @@ public class Point extends java.awt.Point implements SCO
     public void initialise(Object o, boolean forInsert, boolean forUpdate)
     {
         initialising = true;
-        super.setLocation((java.awt.Point)o);
+        super.setLocation((java.awt.Point) o);
         initialising = false;
     }
 
@@ -88,7 +89,7 @@ public class Point extends java.awt.Point implements SCO
 
     /**
      * Accessor for the owner.
-     * @return The owner 
+     * @return The owner
      */
     public Object getOwner()
     {
@@ -98,7 +99,7 @@ public class Point extends java.awt.Point implements SCO
     /**
      * Accessor for the field name
      * @return The field name
-     */ 
+     */
     public String getFieldName()
     {
         return this.fieldName;
@@ -136,8 +137,8 @@ public class Point extends java.awt.Point implements SCO
         initialise(value, false, true);
 
         // Check if the field has changed, and set the owner field as dirty if necessary
-        double newX = ((java.awt.Point)value).getX();
-        double newY = ((java.awt.Point)value).getY();
+        double newX = ((java.awt.Point) value).getX();
+        double newY = ((java.awt.Point) value).getY();
         if (oldX != newX || oldY != newY)
         {
             makeDirty();
@@ -146,10 +147,9 @@ public class Point extends java.awt.Point implements SCO
 
     /**
      * Creates and returns a copy of this object.
-     *
-     * <p>Mutable second-class Objects are required to provide a public
-     * clone method in order to allow for copying PersistenceCapable
-     * objects. In contrast to Object.clone(), this method must not throw a
+     * <p>
+     * Mutable second-class Objects are required to provide a public clone method in order to allow for
+     * copying PersistenceCapable objects. In contrast to Object.clone(), this method must not throw a
      * CloneNotSupportedException.
      * @return A clone of the object
      */
@@ -157,7 +157,7 @@ public class Point extends java.awt.Point implements SCO
     {
         Object obj = super.clone();
 
-        ((Point)obj).unsetOwner();
+        ((Point) obj).unsetOwner();
 
         return obj;
     }
@@ -183,7 +183,7 @@ public class Point extends java.awt.Point implements SCO
         super.setLocation(x, y);
         makeDirty();
     }
-    
+
     /**
      * Mutator for the location.
      * @param point The location
@@ -204,8 +204,8 @@ public class Point extends java.awt.Point implements SCO
         makeDirty();
     }
 
-
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
      * @see java.awt.Point#move(int, int)
      */
     public void move(int x, int y)
@@ -214,7 +214,8 @@ public class Point extends java.awt.Point implements SCO
         makeDirty();
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
      * @see java.awt.Point#translate(int, int)
      */
     public void translate(int dx, int dy)
@@ -223,18 +224,18 @@ public class Point extends java.awt.Point implements SCO
         makeDirty();
     }
 
-	/**
-	 * The writeReplace method is called when ObjectOutputStream is preparing to write the object to the stream. The
-	 * ObjectOutputStream checks whether the class defines the writeReplace method. If the method is defined, the
-	 * writeReplace method is called to allow the object to designate its replacement in the stream. The object returned
-	 * should be either of the same type as the object passed in or an object that when read and resolved will result in
-	 * an object of a type that is compatible with all references to the object.
-	 * 
-	 * @return the replaced object
-	 * @throws ObjectStreamException
-	 */
-	protected Object writeReplace() throws ObjectStreamException
-	{
-		return new java.awt.Point(this.getLocation());
-	}
+    /**
+     * The writeReplace method is called when ObjectOutputStream is preparing to write the object to the
+     * stream. The ObjectOutputStream checks whether the class defines the writeReplace method. If the method
+     * is defined, the writeReplace method is called to allow the object to designate its replacement in the
+     * stream. The object returned should be either of the same type as the object passed in or an object that
+     * when read and resolved will result in an object of a type that is compatible with all references to the
+     * object.
+     * @return the replaced object
+     * @throws ObjectStreamException
+     */
+    protected Object writeReplace() throws ObjectStreamException
+    {
+        return new java.awt.Point(this.getLocation());
+    }
 }

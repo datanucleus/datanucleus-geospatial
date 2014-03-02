@@ -14,7 +14,7 @@ limitations under the License.
 
 Contributors:
    ...
-**********************************************************************/
+ **********************************************************************/
 package org.datanucleus.store.rdbms.sql.method;
 
 import java.util.ArrayList;
@@ -30,8 +30,11 @@ import org.datanucleus.store.rdbms.sql.expression.SQLExpression;
  */
 public class SpatialXMethod extends AbstractSQLMethod
 {
-    /* (non-Javadoc)
-     * @see org.datanucleus.store.rdbms.sql.method.SQLMethod#getExpression(org.datanucleus.store.rdbms.sql.expression.SQLExpression, java.util.List)
+    /*
+     * (non-Javadoc)
+     * @see
+     * org.datanucleus.store.rdbms.sql.method.SQLMethod#getExpression(org.datanucleus.store.rdbms.sql.expression
+     * .SQLExpression, java.util.List)
      */
     public SQLExpression getExpression(SQLExpression expr, List args)
     {
@@ -47,7 +50,7 @@ public class SpatialXMethod extends AbstractSQLMethod
         if (expr == null)
         {
             // "Spatial." method
-            expr = (SQLExpression)args.get(0); // Geometry
+            expr = (SQLExpression) args.get(0); // Geometry
         }
 
         ArrayList funcArgs = new ArrayList();

@@ -14,7 +14,7 @@ limitations under the License.
 
 Contributors:
    ...
-**********************************************************************/
+ **********************************************************************/
 package org.datanucleus.store.types.simple;
 
 import java.awt.geom.Dimension2D;
@@ -32,6 +32,7 @@ import org.datanucleus.store.types.SCO;
 public class Rectangle2dFloat extends java.awt.geom.Rectangle2D.Float implements SCO
 {
     protected transient ObjectProvider ownerOP;
+
     protected transient String fieldName;
 
     /**
@@ -47,30 +48,34 @@ public class Rectangle2dFloat extends java.awt.geom.Rectangle2D.Float implements
         this.fieldName = mmd.getName();
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
      * @see org.datanucleus.store.types.sco.SCO#initialise(java.lang.Object, boolean, boolean)
      */
     public void initialise(Object value, boolean forInsert, boolean forUpdate) throws ClassCastException
     {
-        super.setRect((Rectangle2D)value);
+        super.setRect((Rectangle2D) value);
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
      * @see org.datanucleus.store.types.sco.SCO#initialise()
      */
     public void initialise()
     {
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
      * @see org.datanucleus.store.types.sco.SCO#getValue()
      */
     public Object getValue()
     {
-        return new java.awt.geom.Rectangle2D.Float((float)getX(), (float)getY(), (float)getWidth(), (float)getHeight());
+        return new java.awt.geom.Rectangle2D.Float((float) getX(), (float) getY(), (float) getWidth(), (float) getHeight());
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
      * @see org.datanucleus.store.types.sco.SCO#unsetOwner()
      */
     public void unsetOwner()
@@ -78,7 +83,8 @@ public class Rectangle2dFloat extends java.awt.geom.Rectangle2D.Float implements
         ownerOP = null;
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
      * @see org.datanucleus.store.types.sco.SCO#getOwner()
      */
     public Object getOwner()
@@ -86,7 +92,8 @@ public class Rectangle2dFloat extends java.awt.geom.Rectangle2D.Float implements
         return (ownerOP != null ? ownerOP.getObject() : null);
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
      * @see org.datanucleus.store.types.sco.SCO#getFieldName()
      */
     public String getFieldName()
@@ -105,15 +112,17 @@ public class Rectangle2dFloat extends java.awt.geom.Rectangle2D.Float implements
         }
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
      * @see org.datanucleus.store.types.sco.SCO#detachCopy(org.datanucleus.state.FetchPlanState)
      */
     public Object detachCopy(FetchPlanState state)
     {
-        return new java.awt.geom.Rectangle2D.Float((float)getX(), (float)getY(), (float)getWidth(), (float)getHeight());
+        return new java.awt.geom.Rectangle2D.Float((float) getX(), (float) getY(), (float) getWidth(), (float) getHeight());
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
      * @see org.datanucleus.store.types.sco.SCO#attachCopy(java.lang.Object)
      */
     public void attachCopy(Object value)
@@ -125,7 +134,7 @@ public class Rectangle2dFloat extends java.awt.geom.Rectangle2D.Float implements
         initialise(value, false, true);
 
         // Check if the field has changed, and set the owner field as dirty if necessary
-        Rectangle2dFloat rect = (Rectangle2dFloat)value;
+        Rectangle2dFloat rect = (Rectangle2dFloat) value;
         double newX = rect.getX();
         double newY = rect.getY();
         double newW = rect.getWidth();
@@ -138,21 +147,21 @@ public class Rectangle2dFloat extends java.awt.geom.Rectangle2D.Float implements
 
     /**
      * Creates and returns a copy of this object.
-     *
-     * <p>Mutable second-class Objects are required to provide a public
-     * clone method in order to allow for copying PersistenceCapable
-     * objects. In contrast to Object.clone(), this method must not throw a
+     * <p>
+     * Mutable second-class Objects are required to provide a public clone method in order to allow for
+     * copying PersistenceCapable objects. In contrast to Object.clone(), this method must not throw a
      * CloneNotSupportedException.
      * @return A clone of the object
      */
     public Object clone()
     {
         Object obj = super.clone();
-        ((Rectangle2dFloat)obj).unsetOwner();
+        ((Rectangle2dFloat) obj).unsetOwner();
         return obj;
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
      * @see java.awt.geom.Rectangle2D.Float#setRect(float, float, float, float)
      */
     @Override
@@ -162,7 +171,8 @@ public class Rectangle2dFloat extends java.awt.geom.Rectangle2D.Float implements
         makeDirty();
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
      * @see java.awt.geom.Rectangle2D.Float#setRect(double, double, double, double)
      */
     @Override
@@ -172,7 +182,8 @@ public class Rectangle2dFloat extends java.awt.geom.Rectangle2D.Float implements
         makeDirty();
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
      * @see java.awt.geom.Rectangle2D.Float#setRect(java.awt.geom.Rectangle2D)
      */
     @Override
@@ -182,7 +193,8 @@ public class Rectangle2dFloat extends java.awt.geom.Rectangle2D.Float implements
         makeDirty();
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
      * @see java.awt.geom.Rectangle2D#setFrame(double, double, double, double)
      */
     @Override
@@ -192,7 +204,8 @@ public class Rectangle2dFloat extends java.awt.geom.Rectangle2D.Float implements
         makeDirty();
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
      * @see java.awt.geom.Rectangle2D#add(double, double)
      */
     @Override
@@ -202,7 +215,8 @@ public class Rectangle2dFloat extends java.awt.geom.Rectangle2D.Float implements
         makeDirty();
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
      * @see java.awt.geom.Rectangle2D#add(java.awt.geom.Point2D)
      */
     @Override
@@ -212,7 +226,8 @@ public class Rectangle2dFloat extends java.awt.geom.Rectangle2D.Float implements
         makeDirty();
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
      * @see java.awt.geom.Rectangle2D#add(java.awt.geom.Rectangle2D)
      */
     @Override
@@ -222,7 +237,8 @@ public class Rectangle2dFloat extends java.awt.geom.Rectangle2D.Float implements
         makeDirty();
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
      * @see java.awt.geom.RectangularShape#setFrame(java.awt.geom.Point2D, java.awt.geom.Dimension2D)
      */
     @Override
@@ -232,7 +248,8 @@ public class Rectangle2dFloat extends java.awt.geom.Rectangle2D.Float implements
         makeDirty();
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
      * @see java.awt.geom.RectangularShape#setFrame(java.awt.geom.Rectangle2D)
      */
     @Override
@@ -242,7 +259,8 @@ public class Rectangle2dFloat extends java.awt.geom.Rectangle2D.Float implements
         makeDirty();
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
      * @see java.awt.geom.RectangularShape#setFrameFromDiagonal(double, double, double, double)
      */
     @Override
@@ -252,7 +270,8 @@ public class Rectangle2dFloat extends java.awt.geom.Rectangle2D.Float implements
         makeDirty();
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
      * @see java.awt.geom.RectangularShape#setFrameFromDiagonal(java.awt.geom.Point2D, java.awt.geom.Point2D)
      */
     @Override
@@ -262,7 +281,8 @@ public class Rectangle2dFloat extends java.awt.geom.Rectangle2D.Float implements
         makeDirty();
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
      * @see java.awt.geom.RectangularShape#setFrameFromCenter(double, double, double, double)
      */
     @Override
@@ -272,7 +292,8 @@ public class Rectangle2dFloat extends java.awt.geom.Rectangle2D.Float implements
         makeDirty();
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
      * @see java.awt.geom.RectangularShape#setFrameFromCenter(java.awt.geom.Point2D, java.awt.geom.Point2D)
      */
     @Override

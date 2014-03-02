@@ -37,7 +37,7 @@ public class PGbox2dRDBMSMapping extends AbstractDatastoreMapping
     private static final SQLTypeInfo typeInfo;
     static
     {
-        typeInfo = (SQLTypeInfo)PostGISTypeInfo.TYPEINFO_PROTOTYPE.clone();
+        typeInfo = (SQLTypeInfo) PostGISTypeInfo.TYPEINFO_PROTOTYPE.clone();
         typeInfo.setTypeName("box2d");
     }
 
@@ -66,7 +66,8 @@ public class PGbox2dRDBMSMapping extends AbstractDatastoreMapping
         }
         catch (SQLException e)
         {
-            throw new NucleusDataStoreException(LOCALISER.msg("RDBMS.Mapping.UnableToGetParam", "Object", "" + exprIndex, column, e.getMessage()), e);
+            throw new NucleusDataStoreException(LOCALISER.msg("RDBMS.Mapping.UnableToGetParam", "Object", "" + exprIndex, column,
+                e.getMessage()), e);
         }
     }
 
@@ -76,16 +77,17 @@ public class PGbox2dRDBMSMapping extends AbstractDatastoreMapping
         {
             if (value == null)
             {
-                ((PreparedStatement)ps).setNull(exprIndex, getTypeInfo().getDataType(), getTypeInfo().getTypeName());
+                ((PreparedStatement) ps).setNull(exprIndex, getTypeInfo().getDataType(), getTypeInfo().getTypeName());
             }
             else
             {
-                ((PreparedStatement)ps).setObject(exprIndex, value);
+                ((PreparedStatement) ps).setObject(exprIndex, value);
             }
         }
         catch (SQLException e)
         {
-            throw new NucleusDataStoreException(LOCALISER.msg("RDBMS.Mapping.UnableToSetParam", "Object", "" + value, column, e.getMessage()), e);
+            throw new NucleusDataStoreException(LOCALISER.msg("RDBMS.Mapping.UnableToSetParam", "Object", "" + value, column,
+                e.getMessage()), e);
         }
     }
 

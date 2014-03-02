@@ -14,7 +14,7 @@ limitations under the License.
 
 Contributors:
     ...
-**********************************************************************/
+ **********************************************************************/
 package org.datanucleus.store.rdbms.mapping;
 
 import java.awt.Polygon;
@@ -35,8 +35,10 @@ import org.datanucleus.store.rdbms.table.Table;
  */
 public class PolygonMapping extends SingleFieldMultiMapping
 {
-    /* (non-Javadoc)
-     * @see org.datanucleus.store.rdbms.mapping.JavaTypeMapping#initialize(AbstractMemberMetaData, DatastoreContainerObject, ClassLoaderResolver)
+    /*
+     * (non-Javadoc)
+     * @see org.datanucleus.store.rdbms.mapping.JavaTypeMapping#initialize(AbstractMemberMetaData,
+     * DatastoreContainerObject, ClassLoaderResolver)
      */
     public void initialize(AbstractMemberMetaData mmd, Table table, ClassLoaderResolver clr)
     {
@@ -44,8 +46,10 @@ public class PolygonMapping extends SingleFieldMultiMapping
         addColumns();
     }
 
-    /* (non-Javadoc)
-     * @see org.datanucleus.store.rdbms.mapping.JavaTypeMapping#initialize(RDBMSStoreManager, java.lang.String)
+    /*
+     * (non-Javadoc)
+     * @see org.datanucleus.store.rdbms.mapping.JavaTypeMapping#initialize(RDBMSStoreManager,
+     * java.lang.String)
      */
     public void initialize(RDBMSStoreManager storeMgr, String type)
     {
@@ -55,12 +59,13 @@ public class PolygonMapping extends SingleFieldMultiMapping
 
     protected void addColumns()
     {
-		addColumns(ClassNameConstants.INT_ARRAY); // X-Points
+        addColumns(ClassNameConstants.INT_ARRAY); // X-Points
         addColumns(ClassNameConstants.INT_ARRAY); // Y-Points
         addColumns(ClassNameConstants.INT); // Npoints
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
      * @see org.datanucleus.store.mapping.JavaTypeMapping#getJavaType()
      */
     public Class getJavaType()
@@ -69,15 +74,15 @@ public class PolygonMapping extends SingleFieldMultiMapping
     }
 
     /**
-     * Method to return the value to be stored in the specified datastore index given the overall
-     * value for this java type.
+     * Method to return the value to be stored in the specified datastore index given the overall value for
+     * this java type.
      * @param index The datastore index
      * @param value The overall value for this java type
      * @return The value for this datastore index
      */
     public Object getValueForDatastoreMapping(NucleusContext nucleusCtx, int index, Object value)
     {
-        Polygon poly = (Polygon)value;
+        Polygon poly = (Polygon) value;
         if (index == 0)
         {
             return poly.xpoints;
@@ -93,12 +98,14 @@ public class PolygonMapping extends SingleFieldMultiMapping
         throw new IndexOutOfBoundsException();
     }
 
-    /* (non-Javadoc)
-     * @see org.datanucleus.store.mapping.JavaTypeMapping#setObject(org.datanucleus.ExecutionContext, java.lang.Object, int[], java.lang.Object)
+    /*
+     * (non-Javadoc)
+     * @see org.datanucleus.store.mapping.JavaTypeMapping#setObject(org.datanucleus.ExecutionContext,
+     * java.lang.Object, int[], java.lang.Object)
      */
     public void setObject(ExecutionContext ec, PreparedStatement ps, int[] exprIndex, Object value)
     {
-    	Polygon poly = (Polygon)value;
+        Polygon poly = (Polygon) value;
         if (poly == null)
         {
             getDatastoreMapping(0).setObject(ps, exprIndex[0], null);
@@ -107,14 +114,16 @@ public class PolygonMapping extends SingleFieldMultiMapping
         }
         else
         {
-            getDatastoreMapping(0).setObject(ps,exprIndex[0],poly.xpoints);
-            getDatastoreMapping(1).setObject(ps,exprIndex[1],poly.ypoints);
-            getDatastoreMapping(2).setInt(ps,exprIndex[2],poly.npoints);
+            getDatastoreMapping(0).setObject(ps, exprIndex[0], poly.xpoints);
+            getDatastoreMapping(1).setObject(ps, exprIndex[1], poly.ypoints);
+            getDatastoreMapping(2).setInt(ps, exprIndex[2], poly.npoints);
         }
     }
-    
-    /* (non-Javadoc)
-     * @see org.datanucleus.store.mapping.JavaTypeMapping#getObject(org.datanucleus.ExecutionContext, java.lang.Object, int[])
+
+    /*
+     * (non-Javadoc)
+     * @see org.datanucleus.store.mapping.JavaTypeMapping#getObject(org.datanucleus.ExecutionContext,
+     * java.lang.Object, int[])
      */
     public Object getObject(ExecutionContext ec, ResultSet resultSet, int[] exprIndex)
     {
@@ -124,9 +133,9 @@ public class PolygonMapping extends SingleFieldMultiMapping
             return null;
         }
 
-        int[] xpoints = (int[])getDatastoreMapping(0).getObject(resultSet,exprIndex[0]); 
-        int[] ypoints = (int[])getDatastoreMapping(1).getObject(resultSet,exprIndex[1]); 
-        int npoints = getDatastoreMapping(2).getInt(resultSet,exprIndex[2]); 
+        int[] xpoints = (int[]) getDatastoreMapping(0).getObject(resultSet, exprIndex[0]);
+        int[] ypoints = (int[]) getDatastoreMapping(1).getObject(resultSet, exprIndex[1]);
+        int npoints = getDatastoreMapping(2).getInt(resultSet, exprIndex[2]);
         return new Polygon(xpoints, ypoints, npoints);
     }
 }

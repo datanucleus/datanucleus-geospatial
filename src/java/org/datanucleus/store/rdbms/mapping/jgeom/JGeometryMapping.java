@@ -15,7 +15,7 @@ limitations under the License.
 Contributors:
 2006 Erik Bengtson - Original implementation
     ...
-**********************************************************************/
+ **********************************************************************/
 package org.datanucleus.store.rdbms.mapping.jgeom;
 
 import oracle.spatial.geometry.JGeometry;

@@ -14,7 +14,7 @@ limitations under the License.
 
 Contributors:
    ...
-**********************************************************************/
+ **********************************************************************/
 package org.datanucleus.store.types.simple;
 
 import java.awt.geom.CubicCurve2D;
@@ -31,6 +31,7 @@ import org.datanucleus.store.types.SCO;
 public class CubicCurve2dDouble extends java.awt.geom.CubicCurve2D.Double implements SCO
 {
     protected transient ObjectProvider ownerOP;
+
     protected transient String fieldName;
 
     /**
@@ -46,31 +47,34 @@ public class CubicCurve2dDouble extends java.awt.geom.CubicCurve2D.Double implem
         this.fieldName = mmd.getName();
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
      * @see org.datanucleus.store.types.sco.SCO#initialise(java.lang.Object, boolean, boolean)
      */
     public void initialise(Object value, boolean forInsert, boolean forUpdate) throws ClassCastException
     {
-        super.setCurve((CubicCurve2D.Double)value);
+        super.setCurve((CubicCurve2D.Double) value);
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
      * @see org.datanucleus.store.types.sco.SCO#initialise()
      */
     public void initialise()
     {
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
      * @see org.datanucleus.store.types.sco.SCO#getValue()
      */
     public Object getValue()
     {
-        return new java.awt.geom.CubicCurve2D.Double(getX1(), getY1(), getCtrlX1(), getCtrlY1(),
-            getX2(), getY2(), getCtrlX2(), getCtrlY2());
+        return new java.awt.geom.CubicCurve2D.Double(getX1(), getY1(), getCtrlX1(), getCtrlY1(), getX2(), getY2(), getCtrlX2(), getCtrlY2());
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
      * @see org.datanucleus.store.types.sco.SCO#unsetOwner()
      */
     public void unsetOwner()
@@ -78,7 +82,8 @@ public class CubicCurve2dDouble extends java.awt.geom.CubicCurve2D.Double implem
         ownerOP = null;
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
      * @see org.datanucleus.store.types.sco.SCO#getOwner()
      */
     public Object getOwner()
@@ -86,7 +91,8 @@ public class CubicCurve2dDouble extends java.awt.geom.CubicCurve2D.Double implem
         return (ownerOP != null ? ownerOP.getObject() : null);
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
      * @see org.datanucleus.store.types.sco.SCO#getFieldName()
      */
     public String getFieldName()
@@ -105,16 +111,17 @@ public class CubicCurve2dDouble extends java.awt.geom.CubicCurve2D.Double implem
         }
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
      * @see org.datanucleus.store.types.sco.SCO#detachCopy(org.datanucleus.state.FetchPlanState)
      */
     public Object detachCopy(FetchPlanState state)
     {
-        return new java.awt.geom.CubicCurve2D.Double(getX1(), getY1(), getCtrlX1(), getCtrlY1(),
-            getX2(), getY2(), getCtrlX2(), getCtrlY2());
+        return new java.awt.geom.CubicCurve2D.Double(getX1(), getY1(), getCtrlX1(), getCtrlY1(), getX2(), getY2(), getCtrlX2(), getCtrlY2());
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
      * @see org.datanucleus.store.types.sco.SCO#attachCopy(java.lang.Object)
      */
     public void attachCopy(Object value)
@@ -130,7 +137,7 @@ public class CubicCurve2dDouble extends java.awt.geom.CubicCurve2D.Double implem
         initialise(value, false, true);
 
         // Check if the field has changed, and set the owner field as dirty if necessary
-        CubicCurve2dDouble rect = (CubicCurve2dDouble)value;
+        CubicCurve2dDouble rect = (CubicCurve2dDouble) value;
         double newX1 = rect.getX1();
         double newY1 = rect.getY1();
         double newCX1 = rect.getCtrlX1();
@@ -139,8 +146,7 @@ public class CubicCurve2dDouble extends java.awt.geom.CubicCurve2D.Double implem
         double newY2 = rect.getY2();
         double newCX2 = rect.getCtrlX2();
         double newCY2 = rect.getCtrlY2();
-        if (oldX1 != newX1 || oldY1 != newY1 || oldCX1 != newCX1 || oldCY1 != newCY1 || 
-            oldX2 != newX2 || oldY2 != newY2 || oldCX2 != newCX2 || oldCY2 != newCY2)
+        if (oldX1 != newX1 || oldY1 != newY1 || oldCX1 != newCX1 || oldCY1 != newCY1 || oldX2 != newX2 || oldY2 != newY2 || oldCX2 != newCX2 || oldCY2 != newCY2)
         {
             makeDirty();
         }
@@ -148,22 +154,23 @@ public class CubicCurve2dDouble extends java.awt.geom.CubicCurve2D.Double implem
 
     /**
      * Creates and returns a copy of this object.
-     *
-     * <p>Mutable second-class Objects are required to provide a public
-     * clone method in order to allow for copying PersistenceCapable
-     * objects. In contrast to Object.clone(), this method must not throw a
+     * <p>
+     * Mutable second-class Objects are required to provide a public clone method in order to allow for
+     * copying PersistenceCapable objects. In contrast to Object.clone(), this method must not throw a
      * CloneNotSupportedException.
      * @return A clone of the object
      */
     public Object clone()
     {
         Object obj = super.clone();
-        ((CubicCurve2dDouble)obj).unsetOwner();
+        ((CubicCurve2dDouble) obj).unsetOwner();
         return obj;
     }
 
-    /* (non-Javadoc)
-     * @see java.awt.geom.CubicCurve2D.Double#setCurve(double, double, double, double, double, double, double, double)
+    /*
+     * (non-Javadoc)
+     * @see java.awt.geom.CubicCurve2D.Double#setCurve(double, double, double, double, double, double, double,
+     * double)
      */
     @Override
     public void setCurve(double x1, double y1, double ctrlx1, double ctrly1, double ctrlx2, double ctrly2, double x2, double y2)
@@ -172,7 +179,8 @@ public class CubicCurve2dDouble extends java.awt.geom.CubicCurve2D.Double implem
         makeDirty();
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
      * @see java.awt.geom.CubicCurve2D#setCurve(double[], int)
      */
     @Override
@@ -182,8 +190,10 @@ public class CubicCurve2dDouble extends java.awt.geom.CubicCurve2D.Double implem
         makeDirty();
     }
 
-    /* (non-Javadoc)
-     * @see java.awt.geom.CubicCurve2D#setCurve(java.awt.geom.Point2D, java.awt.geom.Point2D, java.awt.geom.Point2D, java.awt.geom.Point2D)
+    /*
+     * (non-Javadoc)
+     * @see java.awt.geom.CubicCurve2D#setCurve(java.awt.geom.Point2D, java.awt.geom.Point2D,
+     * java.awt.geom.Point2D, java.awt.geom.Point2D)
      */
     @Override
     public void setCurve(Point2D p1, Point2D cp1, Point2D cp2, Point2D p2)
@@ -192,7 +202,8 @@ public class CubicCurve2dDouble extends java.awt.geom.CubicCurve2D.Double implem
         makeDirty();
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
      * @see java.awt.geom.CubicCurve2D#setCurve(java.awt.geom.Point2D[], int)
      */
     @Override
@@ -202,7 +213,8 @@ public class CubicCurve2dDouble extends java.awt.geom.CubicCurve2D.Double implem
         makeDirty();
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
      * @see java.awt.geom.CubicCurve2D#setCurve(java.awt.geom.CubicCurve2D)
      */
     @Override
@@ -212,7 +224,8 @@ public class CubicCurve2dDouble extends java.awt.geom.CubicCurve2D.Double implem
         makeDirty();
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
      * @see java.awt.geom.CubicCurve2D#subdivide(java.awt.geom.CubicCurve2D, java.awt.geom.CubicCurve2D)
      */
     @Override

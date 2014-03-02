@@ -31,7 +31,7 @@ public class PointRDBMSMapping extends GeometryRDBMSMapping
     private static final SQLTypeInfo typeInfo;
     static
     {
-        typeInfo = (SQLTypeInfo)MySQLSpatialTypeInfo.TYPEINFO_PROTOTYPE.clone();
+        typeInfo = (SQLTypeInfo) MySQLSpatialTypeInfo.TYPEINFO_PROTOTYPE.clone();
         typeInfo.setTypeName("POINT");
         typeInfo.setLocalTypeName("POINT");
     }

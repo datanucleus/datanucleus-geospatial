@@ -14,7 +14,7 @@ limitations under the License.
 
 Contributors:
     ...
-**********************************************************************/
+ **********************************************************************/
 package org.datanucleus.store.types.converters;
 
 import java.awt.geom.Point2D;
@@ -23,8 +23,11 @@ import java.util.StringTokenizer;
 import org.datanucleus.exceptions.NucleusDataStoreException;
 
 /**
- * Class to handle the conversion between java.awt.Point and a String form.
- * The String form is <pre>(x,y)</pre>
+ * Class to handle the conversion between java.awt.Point and a String form. The String form is
+ * 
+ * <pre>
+ * (x,y)
+ * </pre>
  */
 public class Point2dFloatStringConverter implements TypeConverter<Point2D.Float, String>
 {
@@ -36,7 +39,7 @@ public class Point2dFloatStringConverter implements TypeConverter<Point2D.Float,
         }
 
         Point2D.Float p = new Point2D.Float();
-        StringTokenizer tokeniser = new StringTokenizer(str.substring(1, str.length()-1), ",");
+        StringTokenizer tokeniser = new StringTokenizer(str.substring(1, str.length() - 1), ",");
 
         float x = 0;
         if (tokeniser.hasMoreTokens())

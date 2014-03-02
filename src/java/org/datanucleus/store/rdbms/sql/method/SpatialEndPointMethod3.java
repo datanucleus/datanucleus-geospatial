@@ -14,7 +14,7 @@ limitations under the License.
 
 Contributors:
    2013 barisergun75@gmail.com - NUCSPATIAL-28 Adding postgis support
-**********************************************************************/
+ **********************************************************************/
 package org.datanucleus.store.rdbms.sql.method;
 
 import java.util.ArrayList;

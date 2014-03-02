@@ -14,7 +14,7 @@ limitations under the License.
 
 Contributors:
    ...
-**********************************************************************/
+ **********************************************************************/
 package org.datanucleus.store.rdbms.sql.expression;
 
 import java.util.List;
@@ -34,7 +34,25 @@ import org.datanucleus.store.rdbms.sql.SQLTable;
 public class GeometryExpression extends SQLExpression
 {
     /**
-     * Perform an operation <pre>op</pre> between <pre>expr1</pre> and <pre>expr2</pre>.
+     * Perform an operation
+     * 
+     * <pre>
+     * op
+     * </pre>
+     * 
+     * between
+     * 
+     * <pre>
+     * expr1
+     * </pre>
+     * 
+     * and
+     * 
+     * <pre>
+     * expr2
+     * </pre>
+     * 
+     * .
      * @param stmt The statement
      * @param table Table
      * @param mapping The mapping in the table for this expression
@@ -45,7 +63,25 @@ public class GeometryExpression extends SQLExpression
     }
 
     /**
-     * Perform an operation <pre>op</pre> between <pre>expr1</pre> and <pre>expr2</pre>.
+     * Perform an operation
+     * 
+     * <pre>
+     * op
+     * </pre>
+     * 
+     * between
+     * 
+     * <pre>
+     * expr1
+     * </pre>
+     * 
+     * and
+     * 
+     * <pre>
+     * expr2
+     * </pre>
+     * 
+     * .
      * @param op Operation
      * @param expr1 The expression
      */
@@ -55,7 +91,25 @@ public class GeometryExpression extends SQLExpression
     }
 
     /**
-     * Perform an operation <pre>op</pre> between <pre>expr1</pre> and <pre>expr2</pre>.
+     * Perform an operation
+     * 
+     * <pre>
+     * op
+     * </pre>
+     * 
+     * between
+     * 
+     * <pre>
+     * expr1
+     * </pre>
+     * 
+     * and
+     * 
+     * <pre>
+     * expr2
+     * </pre>
+     * 
+     * .
      * @param expr1 First expression
      * @param op The operation
      * @param expr2 Second operation
@@ -86,7 +140,7 @@ public class GeometryExpression extends SQLExpression
         }
         else if (mapping instanceof GeometryMapping)
         {
-            return ((GeometryMapping)mapping).getMappingWithoutUserData();
+            return ((GeometryMapping) mapping).getMappingWithoutUserData();
         }
         return mapping;
     }
@@ -137,7 +191,6 @@ public class GeometryExpression extends SQLExpression
         {
             throw new NucleusException("Call to invoke on " + this + " but the expression has a null mapping!");
         }
-        return stmt.getRDBMSManager().getSQLExpressionFactory().invokeMethod(stmt, mapping.getType(), 
-            methodName, this, args);
+        return stmt.getRDBMSManager().getSQLExpressionFactory().invokeMethod(stmt, mapping.getType(), methodName, this, args);
     }
 }

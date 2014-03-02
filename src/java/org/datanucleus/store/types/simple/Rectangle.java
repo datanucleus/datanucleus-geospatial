@@ -14,7 +14,7 @@ limitations under the License.
 
 Contributors:
    ...
-**********************************************************************/
+ **********************************************************************/
 package org.datanucleus.store.types.simple;
 
 import java.awt.Dimension;
@@ -31,6 +31,7 @@ import org.datanucleus.store.types.SCO;
 public class Rectangle extends java.awt.Rectangle implements SCO
 {
     protected transient ObjectProvider ownerOP;
+
     protected transient String fieldName;
 
     /**
@@ -46,22 +47,25 @@ public class Rectangle extends java.awt.Rectangle implements SCO
         this.fieldName = mmd.getName();
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
      * @see org.datanucleus.store.types.sco.SCO#initialise(java.lang.Object, boolean, boolean)
      */
     public void initialise(Object value, boolean forInsert, boolean forUpdate) throws ClassCastException
     {
-        super.setRect((java.awt.Rectangle)value);
+        super.setRect((java.awt.Rectangle) value);
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
      * @see org.datanucleus.store.types.sco.SCO#initialise()
      */
     public void initialise()
     {
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
      * @see org.datanucleus.store.types.sco.SCO#getValue()
      */
     public Object getValue()
@@ -69,7 +73,8 @@ public class Rectangle extends java.awt.Rectangle implements SCO
         return new java.awt.Rectangle(this);
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
      * @see org.datanucleus.store.types.sco.SCO#unsetOwner()
      */
     public void unsetOwner()
@@ -77,7 +82,8 @@ public class Rectangle extends java.awt.Rectangle implements SCO
         ownerOP = null;
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
      * @see org.datanucleus.store.types.sco.SCO#getOwner()
      */
     public Object getOwner()
@@ -85,7 +91,8 @@ public class Rectangle extends java.awt.Rectangle implements SCO
         return (ownerOP != null ? ownerOP.getObject() : null);
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
      * @see org.datanucleus.store.types.sco.SCO#getFieldName()
      */
     public String getFieldName()
@@ -104,7 +111,8 @@ public class Rectangle extends java.awt.Rectangle implements SCO
         }
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
      * @see org.datanucleus.store.types.sco.SCO#detachCopy(org.datanucleus.state.FetchPlanState)
      */
     public Object detachCopy(FetchPlanState state)
@@ -112,7 +120,8 @@ public class Rectangle extends java.awt.Rectangle implements SCO
         return new java.awt.Rectangle(this);
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
      * @see org.datanucleus.store.types.sco.SCO#attachCopy(java.lang.Object)
      */
     public void attachCopy(Object value)
@@ -124,7 +133,7 @@ public class Rectangle extends java.awt.Rectangle implements SCO
         initialise(value, false, true);
 
         // Check if the field has changed, and set the owner field as dirty if necessary
-        Rectangle rect = (Rectangle)value;
+        Rectangle rect = (Rectangle) value;
         double newX = rect.getX();
         double newY = rect.getY();
         double newWidth = rect.getWidth();
@@ -137,21 +146,21 @@ public class Rectangle extends java.awt.Rectangle implements SCO
 
     /**
      * Creates and returns a copy of this object.
-     *
-     * <p>Mutable second-class Objects are required to provide a public
-     * clone method in order to allow for copying PersistenceCapable
-     * objects. In contrast to Object.clone(), this method must not throw a
+     * <p>
+     * Mutable second-class Objects are required to provide a public clone method in order to allow for
+     * copying PersistenceCapable objects. In contrast to Object.clone(), this method must not throw a
      * CloneNotSupportedException.
      * @return A clone of the object
      */
     public Object clone()
     {
         Object obj = super.clone();
-        ((Rectangle)obj).unsetOwner();
+        ((Rectangle) obj).unsetOwner();
         return obj;
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
      * @see java.awt.Rectangle#setRect(double, double, double, double)
      */
     @Override
@@ -161,7 +170,8 @@ public class Rectangle extends java.awt.Rectangle implements SCO
         makeDirty();
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
      * @see java.awt.Rectangle#setLocation(java.awt.Point)
      */
     @Override
@@ -171,7 +181,8 @@ public class Rectangle extends java.awt.Rectangle implements SCO
         makeDirty();
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
      * @see java.awt.Rectangle#setLocation(int, int)
      */
     @Override
@@ -181,7 +192,8 @@ public class Rectangle extends java.awt.Rectangle implements SCO
         makeDirty();
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
      * @see java.awt.Rectangle#setSize(java.awt.Dimension)
      */
     @Override
@@ -191,7 +203,8 @@ public class Rectangle extends java.awt.Rectangle implements SCO
         makeDirty();
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
      * @see java.awt.Rectangle#setSize(int, int)
      */
     @Override

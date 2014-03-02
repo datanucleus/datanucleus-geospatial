@@ -14,7 +14,7 @@ limitations under the License.
 
 Contributors:
     ...
-**********************************************************************/
+ **********************************************************************/
 package org.datanucleus.store.rdbms.mapping;
 
 import java.awt.geom.CubicCurve2D;
@@ -31,13 +31,15 @@ import org.datanucleus.store.rdbms.mapping.java.SingleFieldMultiMapping;
 import org.datanucleus.store.rdbms.table.Table;
 
 /**
- * Mapping for java.awt.geom.CubicCurve2D.Double, maps the x1, y1, ctrlx1, ctrly1, 
- * ctrlx2, ctrly2, x2 and y2 values to double-precision datastore fields.
+ * Mapping for java.awt.geom.CubicCurve2D.Double, maps the x1, y1, ctrlx1, ctrly1, ctrlx2, ctrly2, x2 and y2
+ * values to double-precision datastore fields.
  */
 public class CubicCurve2dDoubleMapping extends SingleFieldMultiMapping
 {
-    /* (non-Javadoc)
-     * @see org.datanucleus.store.rdbms.mapping.JavaTypeMapping#initialize(AbstractMemberMetaData, DatastoreContainerObject, ClassLoaderResolver)
+    /*
+     * (non-Javadoc)
+     * @see org.datanucleus.store.rdbms.mapping.JavaTypeMapping#initialize(AbstractMemberMetaData,
+     * DatastoreContainerObject, ClassLoaderResolver)
      */
     public void initialize(AbstractMemberMetaData fmd, Table table, ClassLoaderResolver clr)
     {
@@ -45,8 +47,10 @@ public class CubicCurve2dDoubleMapping extends SingleFieldMultiMapping
         addColumns();
     }
 
-    /* (non-Javadoc) 
-     * @see org.datanucleus.store.rdbms.mapping.JavaTypeMapping#initialize(RDBMSStoreManager, java.lang.String)
+    /*
+     * (non-Javadoc)
+     * @see org.datanucleus.store.rdbms.mapping.JavaTypeMapping#initialize(RDBMSStoreManager,
+     * java.lang.String)
      */
     public void initialize(RDBMSStoreManager storeMgr, String type)
     {
@@ -66,7 +70,8 @@ public class CubicCurve2dDoubleMapping extends SingleFieldMultiMapping
         addColumns(ClassNameConstants.DOUBLE); // Y2
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
      * @see org.datanucleus.store.mapping.JavaTypeMapping#getJavaType()
      */
     public Class getJavaType()
@@ -75,15 +80,15 @@ public class CubicCurve2dDoubleMapping extends SingleFieldMultiMapping
     }
 
     /**
-     * Method to return the value to be stored in the specified datastore index given the overall
-     * value for this java type.
+     * Method to return the value to be stored in the specified datastore index given the overall value for
+     * this java type.
      * @param index The datastore index
      * @param value The overall value for this java type
      * @return The value for this datastore index
      */
     public Object getValueForDatastoreMapping(NucleusContext nucleusCtx, int index, Object value)
     {
-        CubicCurve2D.Double cc = (CubicCurve2D.Double)value;
+        CubicCurve2D.Double cc = (CubicCurve2D.Double) value;
         if (index == 0)
         {
             return cc.getX1();
@@ -119,34 +124,38 @@ public class CubicCurve2dDoubleMapping extends SingleFieldMultiMapping
         throw new IndexOutOfBoundsException();
     }
 
-    /* (non-Javadoc)
-     * @see org.datanucleus.store.mapping.JavaTypeMapping#setObject(org.datanucleus.ExecutionContext, java.lang.Object, int[], java.lang.Object)
+    /*
+     * (non-Javadoc)
+     * @see org.datanucleus.store.mapping.JavaTypeMapping#setObject(org.datanucleus.ExecutionContext,
+     * java.lang.Object, int[], java.lang.Object)
      */
     public void setObject(ExecutionContext ec, PreparedStatement ps, int[] exprIndex, Object value)
-    {    	
-    	CubicCurve2D.Double cubicCurve = (CubicCurve2D.Double)value;
+    {
+        CubicCurve2D.Double cubicCurve = (CubicCurve2D.Double) value;
         if (cubicCurve == null)
         {
-    		for (int i = 0; i < exprIndex.length; i++) 
-    		{
-    			getDatastoreMapping(i).setObject(ps, exprIndex[i], null);					
-			}
+            for (int i = 0; i < exprIndex.length; i++)
+            {
+                getDatastoreMapping(i).setObject(ps, exprIndex[i], null);
+            }
         }
         else
         {
-            getDatastoreMapping(0).setDouble(ps,exprIndex[0],cubicCurve.getX1());
-            getDatastoreMapping(1).setDouble(ps,exprIndex[1],cubicCurve.getY1());
-            getDatastoreMapping(2).setDouble(ps,exprIndex[2],cubicCurve.getCtrlX1());
-            getDatastoreMapping(3).setDouble(ps,exprIndex[3],cubicCurve.getCtrlY1());
-            getDatastoreMapping(4).setDouble(ps,exprIndex[4],cubicCurve.getCtrlX2());
-            getDatastoreMapping(5).setDouble(ps,exprIndex[5],cubicCurve.getCtrlY2());
-            getDatastoreMapping(6).setDouble(ps,exprIndex[6],cubicCurve.getX2());
-            getDatastoreMapping(7).setDouble(ps,exprIndex[7],cubicCurve.getY2());
+            getDatastoreMapping(0).setDouble(ps, exprIndex[0], cubicCurve.getX1());
+            getDatastoreMapping(1).setDouble(ps, exprIndex[1], cubicCurve.getY1());
+            getDatastoreMapping(2).setDouble(ps, exprIndex[2], cubicCurve.getCtrlX1());
+            getDatastoreMapping(3).setDouble(ps, exprIndex[3], cubicCurve.getCtrlY1());
+            getDatastoreMapping(4).setDouble(ps, exprIndex[4], cubicCurve.getCtrlX2());
+            getDatastoreMapping(5).setDouble(ps, exprIndex[5], cubicCurve.getCtrlY2());
+            getDatastoreMapping(6).setDouble(ps, exprIndex[6], cubicCurve.getX2());
+            getDatastoreMapping(7).setDouble(ps, exprIndex[7], cubicCurve.getY2());
         }
     }
-    
-    /* (non-Javadoc)
-     * @see org.datanucleus.store.mapping.JavaTypeMapping#getObject(org.datanucleus.ExecutionContext, java.lang.Object, int[])
+
+    /*
+     * (non-Javadoc)
+     * @see org.datanucleus.store.mapping.JavaTypeMapping#getObject(org.datanucleus.ExecutionContext,
+     * java.lang.Object, int[])
      */
     public Object getObject(ExecutionContext ec, ResultSet resultSet, int[] exprIndex)
     {
@@ -155,15 +164,15 @@ public class CubicCurve2dDoubleMapping extends SingleFieldMultiMapping
         {
             return null;
         }
-        
-        double x1 = getDatastoreMapping(0).getDouble(resultSet,exprIndex[0]); 
-        double y1 = getDatastoreMapping(1).getDouble(resultSet,exprIndex[1]); 
-        double ctrlx1 = getDatastoreMapping(2).getDouble(resultSet,exprIndex[2]); 
-        double ctrly1 = getDatastoreMapping(3).getDouble(resultSet,exprIndex[3]); 
-        double ctrlx2 = getDatastoreMapping(4).getDouble(resultSet,exprIndex[4]);
-        double ctrly2 = getDatastoreMapping(5).getDouble(resultSet,exprIndex[5]); 
-        double x2 = getDatastoreMapping(6).getDouble(resultSet,exprIndex[6]);
-        double y2 = getDatastoreMapping(7).getDouble(resultSet,exprIndex[7]);
+
+        double x1 = getDatastoreMapping(0).getDouble(resultSet, exprIndex[0]);
+        double y1 = getDatastoreMapping(1).getDouble(resultSet, exprIndex[1]);
+        double ctrlx1 = getDatastoreMapping(2).getDouble(resultSet, exprIndex[2]);
+        double ctrly1 = getDatastoreMapping(3).getDouble(resultSet, exprIndex[3]);
+        double ctrlx2 = getDatastoreMapping(4).getDouble(resultSet, exprIndex[4]);
+        double ctrly2 = getDatastoreMapping(5).getDouble(resultSet, exprIndex[5]);
+        double x2 = getDatastoreMapping(6).getDouble(resultSet, exprIndex[6]);
+        double y2 = getDatastoreMapping(7).getDouble(resultSet, exprIndex[7]);
         return new CubicCurve2D.Double(x1, y1, ctrlx1, ctrly1, ctrlx2, ctrly2, x2, y2);
     }
 }

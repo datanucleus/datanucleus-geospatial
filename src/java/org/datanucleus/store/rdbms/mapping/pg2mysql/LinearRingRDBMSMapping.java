@@ -39,8 +39,9 @@ public class LinearRingRDBMSMapping extends LineStringRDBMSMapping
 
     public Object getObject(ResultSet rs, int exprIndex)
     {
-        LineString lineString = (LineString)super.getObject(rs, exprIndex);
-        if (lineString == null) return null;
+        LineString lineString = (LineString) super.getObject(rs, exprIndex);
+        if (lineString == null)
+            return null;
         LinearRing linearRing = new LinearRing(lineString.getPoints());
         linearRing.setSrid(lineString.getSrid());
         return linearRing;
@@ -51,7 +52,7 @@ public class LinearRingRDBMSMapping extends LineStringRDBMSMapping
         LineString lineString = null;
         if (value != null)
         {
-            LinearRing linearRing = (LinearRing)value;
+            LinearRing linearRing = (LinearRing) value;
             lineString = new LineString(linearRing.getPoints());
             lineString.setSrid(linearRing.getSrid());
         }

@@ -14,7 +14,7 @@ limitations under the License.
 
 Contributors:
     ...
-**********************************************************************/
+ **********************************************************************/
 package org.datanucleus.store.rdbms.mapping;
 
 import java.awt.geom.RoundRectangle2D;
@@ -31,13 +31,15 @@ import org.datanucleus.store.rdbms.mapping.java.SingleFieldMultiMapping;
 import org.datanucleus.store.rdbms.table.Table;
 
 /**
- * Mapping for java.awt.geom.RoundRectangle2D.Double, maps the x, y, width, height, 
- * arc-width and arc-height values to double-precision datastore fields.
+ * Mapping for java.awt.geom.RoundRectangle2D.Double, maps the x, y, width, height, arc-width and arc-height
+ * values to double-precision datastore fields.
  */
 public class RoundRectangle2dDoubleMapping extends SingleFieldMultiMapping
 {
-    /* (non-Javadoc)
-     * @see org.datanucleus.store.rdbms.mapping.JavaTypeMapping#initialize(AbstractMemberMetaData, DatastoreContainerObject, ClassLoaderResolver)
+    /*
+     * (non-Javadoc)
+     * @see org.datanucleus.store.rdbms.mapping.JavaTypeMapping#initialize(AbstractMemberMetaData,
+     * DatastoreContainerObject, ClassLoaderResolver)
      */
     public void initialize(AbstractMemberMetaData fmd, Table table, ClassLoaderResolver clr)
     {
@@ -45,8 +47,10 @@ public class RoundRectangle2dDoubleMapping extends SingleFieldMultiMapping
         addColumns();
     }
 
-    /* (non-Javadoc)
-     * @see org.datanucleus.store.rdbms.mapping.JavaTypeMapping#initialize(RDBMSStoreManager, java.lang.String)
+    /*
+     * (non-Javadoc)
+     * @see org.datanucleus.store.rdbms.mapping.JavaTypeMapping#initialize(RDBMSStoreManager,
+     * java.lang.String)
      */
     public void initialize(RDBMSStoreManager storeMgr, String type)
     {
@@ -64,7 +68,8 @@ public class RoundRectangle2dDoubleMapping extends SingleFieldMultiMapping
         addColumns(ClassNameConstants.DOUBLE); // Arc-Height
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
      * @see org.datanucleus.store.mapping.JavaTypeMapping#getJavaType()
      */
     public Class getJavaType()
@@ -73,15 +78,15 @@ public class RoundRectangle2dDoubleMapping extends SingleFieldMultiMapping
     }
 
     /**
-     * Method to return the value to be stored in the specified datastore index given the overall
-     * value for this java type.
+     * Method to return the value to be stored in the specified datastore index given the overall value for
+     * this java type.
      * @param index The datastore index
      * @param value The overall value for this java type
      * @return The value for this datastore index
      */
     public Object getValueForDatastoreMapping(NucleusContext nucleusCtx, int index, Object value)
     {
-        RoundRectangle2D.Double rr = (RoundRectangle2D.Double)value;
+        RoundRectangle2D.Double rr = (RoundRectangle2D.Double) value;
         if (index == 0)
         {
             return rr.getX();
@@ -109,32 +114,36 @@ public class RoundRectangle2dDoubleMapping extends SingleFieldMultiMapping
         throw new IndexOutOfBoundsException();
     }
 
-    /* (non-Javadoc)
-     * @see org.datanucleus.store.mapping.JavaTypeMapping#setObject(org.datanucleus.ExecutionContext, java.lang.Object, int[], java.lang.Object)
+    /*
+     * (non-Javadoc)
+     * @see org.datanucleus.store.mapping.JavaTypeMapping#setObject(org.datanucleus.ExecutionContext,
+     * java.lang.Object, int[], java.lang.Object)
      */
     public void setObject(ExecutionContext ec, PreparedStatement ps, int[] exprIndex, Object value)
     {
-    	RoundRectangle2D roundRectangle = (RoundRectangle2D)value;
+        RoundRectangle2D roundRectangle = (RoundRectangle2D) value;
         if (roundRectangle == null)
         {
-    		for (int i = 0; i < exprIndex.length; i++) 
-    		{
-    			getDatastoreMapping(i).setObject(ps, exprIndex[i], null);					
-			}
+            for (int i = 0; i < exprIndex.length; i++)
+            {
+                getDatastoreMapping(i).setObject(ps, exprIndex[i], null);
+            }
         }
         else
         {
-            getDatastoreMapping(0).setDouble(ps,exprIndex[0],roundRectangle.getX());
-            getDatastoreMapping(1).setDouble(ps,exprIndex[1],roundRectangle.getY());
-            getDatastoreMapping(2).setDouble(ps,exprIndex[2],roundRectangle.getWidth());
-            getDatastoreMapping(3).setDouble(ps,exprIndex[3],roundRectangle.getHeight());
-            getDatastoreMapping(4).setDouble(ps,exprIndex[4],roundRectangle.getArcWidth());
-            getDatastoreMapping(5).setDouble(ps,exprIndex[5],roundRectangle.getArcHeight());
+            getDatastoreMapping(0).setDouble(ps, exprIndex[0], roundRectangle.getX());
+            getDatastoreMapping(1).setDouble(ps, exprIndex[1], roundRectangle.getY());
+            getDatastoreMapping(2).setDouble(ps, exprIndex[2], roundRectangle.getWidth());
+            getDatastoreMapping(3).setDouble(ps, exprIndex[3], roundRectangle.getHeight());
+            getDatastoreMapping(4).setDouble(ps, exprIndex[4], roundRectangle.getArcWidth());
+            getDatastoreMapping(5).setDouble(ps, exprIndex[5], roundRectangle.getArcHeight());
         }
     }
-    
-    /* (non-Javadoc)
-     * @see org.datanucleus.store.mapping.JavaTypeMapping#getObject(org.datanucleus.ExecutionContext, java.lang.Object, int[])
+
+    /*
+     * (non-Javadoc)
+     * @see org.datanucleus.store.mapping.JavaTypeMapping#getObject(org.datanucleus.ExecutionContext,
+     * java.lang.Object, int[])
      */
     public Object getObject(ExecutionContext ec, ResultSet resultSet, int[] exprIndex)
     {
@@ -144,12 +153,12 @@ public class RoundRectangle2dDoubleMapping extends SingleFieldMultiMapping
             return null;
         }
 
-        double x = getDatastoreMapping(0).getDouble(resultSet,exprIndex[0]);
-        double y = getDatastoreMapping(1).getDouble(resultSet,exprIndex[1]);
-        double width  = getDatastoreMapping(2).getDouble(resultSet,exprIndex[2]);
-        double height = getDatastoreMapping(3).getDouble(resultSet,exprIndex[3]);
-        double arcwidth  = getDatastoreMapping(4).getDouble(resultSet,exprIndex[4]);
-        double archeight = getDatastoreMapping(5).getDouble(resultSet,exprIndex[5]);
+        double x = getDatastoreMapping(0).getDouble(resultSet, exprIndex[0]);
+        double y = getDatastoreMapping(1).getDouble(resultSet, exprIndex[1]);
+        double width = getDatastoreMapping(2).getDouble(resultSet, exprIndex[2]);
+        double height = getDatastoreMapping(3).getDouble(resultSet, exprIndex[3]);
+        double arcwidth = getDatastoreMapping(4).getDouble(resultSet, exprIndex[4]);
+        double archeight = getDatastoreMapping(5).getDouble(resultSet, exprIndex[5]);
         return new RoundRectangle2D.Double(x, y, width, height, arcwidth, archeight);
     }
 }

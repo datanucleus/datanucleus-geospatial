@@ -28,7 +28,7 @@ import org.datanucleus.store.rdbms.sql.expression.SQLExpression;
 /**
  * Implementation of "Spatial.distance(expr, expr2)" or "{expr}.distance(expr2)" method.
  */
-public class SpatialDistanceMethod3 extends AbstractSQLMethod 
+public class SpatialDistanceMethod3 extends AbstractSQLMethod
 {
     public SQLExpression getExpression(SQLExpression expr, List args)
     {

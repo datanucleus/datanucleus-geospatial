@@ -14,7 +14,7 @@ limitations under the License.
 
 Contributors:
     ...
-**********************************************************************/
+ **********************************************************************/
 package org.datanucleus.store.types.converters;
 
 import java.awt.Polygon;
@@ -23,8 +23,11 @@ import java.util.StringTokenizer;
 import org.datanucleus.exceptions.NucleusDataStoreException;
 
 /**
- * Class to handle the conversion between java.awt.Polygon and a String form.
- * The String form is <pre>[(x1,y1),(x2,y2)[,(xn, yn)...])</pre>
+ * Class to handle the conversion between java.awt.Polygon and a String form. The String form is
+ * 
+ * <pre>
+ * [(x1,y1),(x2,y2)[,(xn, yn)...])
+ * </pre>
  */
 public class PolygonStringConverter implements TypeConverter<Polygon, String>
 {
@@ -41,14 +44,14 @@ public class PolygonStringConverter implements TypeConverter<Polygon, String>
             return p;
         }
 
-        String tmpStr = str.substring(1, str.length()-1); // Omit "[]"
-        StringTokenizer tokeniser = new StringTokenizer(tmpStr.substring(1, tmpStr.length()-1), "(");
+        String tmpStr = str.substring(1, str.length() - 1); // Omit "[]"
+        StringTokenizer tokeniser = new StringTokenizer(tmpStr.substring(1, tmpStr.length() - 1), "(");
         if (tokeniser.hasMoreTokens())
         {
             String token = tokeniser.nextToken().trim();
             token = token.substring(0, token.indexOf(")"));
             String xStr = token.substring(0, token.indexOf(","));
-            String yStr = token.substring(token.indexOf(",")+1);
+            String yStr = token.substring(token.indexOf(",") + 1);
             int x = 0;
             int y = 0;
             try
@@ -86,10 +89,10 @@ public class PolygonStringConverter implements TypeConverter<Polygon, String>
 
         // Create string form like "[(x1,y1),(x2,y2),...]"
         StringBuffer str = new StringBuffer("[");
-        for (int i=0;i<poly.npoints;i++)
+        for (int i = 0; i < poly.npoints; i++)
         {
             str.append("(").append(poly.xpoints[i]).append(",").append(poly.ypoints[i]).append(")");
-            if (i < poly.npoints-1)
+            if (i < poly.npoints - 1)
             {
                 str.append(",");
             }

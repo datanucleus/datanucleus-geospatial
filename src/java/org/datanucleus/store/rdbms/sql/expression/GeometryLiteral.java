@@ -14,7 +14,7 @@ limitations under the License.
 
 Contributors:
    ...
-**********************************************************************/
+ **********************************************************************/
 package org.datanucleus.store.rdbms.sql.expression;
 
 import org.datanucleus.store.rdbms.mapping.java.JavaTypeMapping;
@@ -53,7 +53,8 @@ public class GeometryLiteral extends GeometryExpression implements SQLLiteral
         setStatement();
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
      * @see org.datanucleus.store.rdbms.sql.expression.SQLLiteral#getValue()
      */
     public Object getValue()
@@ -61,7 +62,8 @@ public class GeometryLiteral extends GeometryExpression implements SQLLiteral
         return value;
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
      * @see org.datanucleus.store.rdbms.sql.expression.SQLLiteral#setNotParameter()
      */
     public void setNotParameter()

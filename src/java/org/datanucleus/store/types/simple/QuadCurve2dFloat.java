@@ -14,7 +14,7 @@ limitations under the License.
 
 Contributors:
    ...
-**********************************************************************/
+ **********************************************************************/
 package org.datanucleus.store.types.simple;
 
 import java.awt.geom.Point2D;
@@ -31,6 +31,7 @@ import org.datanucleus.store.types.SCO;
 public class QuadCurve2dFloat extends java.awt.geom.QuadCurve2D.Float implements SCO
 {
     protected transient ObjectProvider ownerOP;
+
     protected transient String fieldName;
 
     /**
@@ -46,31 +47,35 @@ public class QuadCurve2dFloat extends java.awt.geom.QuadCurve2D.Float implements
         this.fieldName = mmd.getName();
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
      * @see org.datanucleus.store.types.sco.SCO#initialise(java.lang.Object, boolean, boolean)
      */
     public void initialise(Object value, boolean forInsert, boolean forUpdate) throws ClassCastException
     {
-        super.setCurve((QuadCurve2D.Float)value);
+        super.setCurve((QuadCurve2D.Float) value);
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
      * @see org.datanucleus.store.types.sco.SCO#initialise()
      */
     public void initialise()
     {
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
      * @see org.datanucleus.store.types.sco.SCO#getValue()
      */
     public Object getValue()
     {
-        return new java.awt.geom.QuadCurve2D.Float((float)getX1(), (float)getY1(), (float)getCtrlX(), (float)getCtrlY(), 
-            (float)getX2(), (float)getY2());
+        return new java.awt.geom.QuadCurve2D.Float((float) getX1(), (float) getY1(), (float) getCtrlX(), (float) getCtrlY(),
+                (float) getX2(), (float) getY2());
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
      * @see org.datanucleus.store.types.sco.SCO#unsetOwner()
      */
     public void unsetOwner()
@@ -78,7 +83,8 @@ public class QuadCurve2dFloat extends java.awt.geom.QuadCurve2D.Float implements
         ownerOP = null;
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
      * @see org.datanucleus.store.types.sco.SCO#getOwner()
      */
     public Object getOwner()
@@ -86,7 +92,8 @@ public class QuadCurve2dFloat extends java.awt.geom.QuadCurve2D.Float implements
         return (ownerOP != null ? ownerOP.getObject() : null);
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
      * @see org.datanucleus.store.types.sco.SCO#getFieldName()
      */
     public String getFieldName()
@@ -105,16 +112,18 @@ public class QuadCurve2dFloat extends java.awt.geom.QuadCurve2D.Float implements
         }
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
      * @see org.datanucleus.store.types.sco.SCO#detachCopy(org.datanucleus.state.FetchPlanState)
      */
     public Object detachCopy(FetchPlanState state)
     {
-        return new java.awt.geom.QuadCurve2D.Double((float)getX1(), (float)getY1(), (float)getCtrlX(), (float)getCtrlY(), 
-            (float)getX2(), (float)getY2());
+        return new java.awt.geom.QuadCurve2D.Double((float) getX1(), (float) getY1(), (float) getCtrlX(), (float) getCtrlY(),
+                (float) getX2(), (float) getY2());
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
      * @see org.datanucleus.store.types.sco.SCO#attachCopy(java.lang.Object)
      */
     public void attachCopy(Object value)
@@ -128,15 +137,14 @@ public class QuadCurve2dFloat extends java.awt.geom.QuadCurve2D.Float implements
         initialise(value, false, true);
 
         // Check if the field has changed, and set the owner field as dirty if necessary
-        QuadCurve2dFloat rect = (QuadCurve2dFloat)value;
+        QuadCurve2dFloat rect = (QuadCurve2dFloat) value;
         double newX1 = rect.getX1();
         double newY1 = rect.getY1();
         double newCX = rect.getCtrlX();
         double newCY = rect.getCtrlY();
         double newX2 = rect.getX2();
         double newY2 = rect.getY2();
-        if (oldX1 != newX1 || oldY1 != newY1 || oldCX != newCX || oldCY != newCY || 
-            oldX2 != newX2 || oldY2 != newY2)
+        if (oldX1 != newX1 || oldY1 != newY1 || oldCX != newCX || oldCY != newCY || oldX2 != newX2 || oldY2 != newY2)
         {
             makeDirty();
         }
@@ -144,21 +152,21 @@ public class QuadCurve2dFloat extends java.awt.geom.QuadCurve2D.Float implements
 
     /**
      * Creates and returns a copy of this object.
-     *
-     * <p>Mutable second-class Objects are required to provide a public
-     * clone method in order to allow for copying PersistenceCapable
-     * objects. In contrast to Object.clone(), this method must not throw a
+     * <p>
+     * Mutable second-class Objects are required to provide a public clone method in order to allow for
+     * copying PersistenceCapable objects. In contrast to Object.clone(), this method must not throw a
      * CloneNotSupportedException.
      * @return A clone of the object
      */
     public Object clone()
     {
         Object obj = super.clone();
-        ((QuadCurve2dFloat)obj).unsetOwner();
+        ((QuadCurve2dFloat) obj).unsetOwner();
         return obj;
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
      * @see java.awt.geom.QuadCurve2D.Float#setCurve(double, double, double, double, double, double)
      */
     @Override
@@ -168,7 +176,8 @@ public class QuadCurve2dFloat extends java.awt.geom.QuadCurve2D.Float implements
         makeDirty();
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
      * @see java.awt.geom.QuadCurve2D.Float#setCurve(float, float, float, float, float, float)
      */
     @Override
@@ -178,7 +187,8 @@ public class QuadCurve2dFloat extends java.awt.geom.QuadCurve2D.Float implements
         makeDirty();
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
      * @see java.awt.geom.QuadCurve2D#setCurve(double[], int)
      */
     @Override
@@ -188,8 +198,10 @@ public class QuadCurve2dFloat extends java.awt.geom.QuadCurve2D.Float implements
         makeDirty();
     }
 
-    /* (non-Javadoc)
-     * @see java.awt.geom.QuadCurve2D#setCurve(java.awt.geom.Point2D, java.awt.geom.Point2D, java.awt.geom.Point2D)
+    /*
+     * (non-Javadoc)
+     * @see java.awt.geom.QuadCurve2D#setCurve(java.awt.geom.Point2D, java.awt.geom.Point2D,
+     * java.awt.geom.Point2D)
      */
     @Override
     public void setCurve(Point2D p1, Point2D cp, Point2D p2)
@@ -198,7 +210,8 @@ public class QuadCurve2dFloat extends java.awt.geom.QuadCurve2D.Float implements
         makeDirty();
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
      * @see java.awt.geom.QuadCurve2D#setCurve(java.awt.geom.Point2D[], int)
      */
     @Override
@@ -208,7 +221,8 @@ public class QuadCurve2dFloat extends java.awt.geom.QuadCurve2D.Float implements
         makeDirty();
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
      * @see java.awt.geom.QuadCurve2D#setCurve(java.awt.geom.QuadCurve2D)
      */
     @Override
@@ -218,7 +232,8 @@ public class QuadCurve2dFloat extends java.awt.geom.QuadCurve2D.Float implements
         makeDirty();
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
      * @see java.awt.geom.QuadCurve2D#subdivide(java.awt.geom.QuadCurve2D, java.awt.geom.QuadCurve2D)
      */
     @Override

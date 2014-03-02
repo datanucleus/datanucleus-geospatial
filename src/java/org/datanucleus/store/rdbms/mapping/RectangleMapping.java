@@ -14,7 +14,7 @@ limitations under the License.
 
 Contributors:
     ...
-**********************************************************************/
+ **********************************************************************/
 package org.datanucleus.store.rdbms.mapping;
 
 import java.awt.Rectangle;
@@ -31,13 +31,14 @@ import org.datanucleus.store.rdbms.mapping.java.SingleFieldMultiMapping;
 import org.datanucleus.store.rdbms.table.Table;
 
 /**
- * Mapping for java.awt.Rectangle, maps the x, y, width and height values to int-precision 
- * datastore fields
+ * Mapping for java.awt.Rectangle, maps the x, y, width and height values to int-precision datastore fields
  */
 public class RectangleMapping extends SingleFieldMultiMapping
 {
-    /* (non-Javadoc)
-     * @see org.datanucleus.store.rdbms.mapping.JavaTypeMapping#initialize(AbstractMemberMetaData, DatastoreContainerObject, ClassLoaderResolver)
+    /*
+     * (non-Javadoc)
+     * @see org.datanucleus.store.rdbms.mapping.JavaTypeMapping#initialize(AbstractMemberMetaData,
+     * DatastoreContainerObject, ClassLoaderResolver)
      */
     public void initialize(AbstractMemberMetaData fmd, Table table, ClassLoaderResolver clr)
     {
@@ -45,8 +46,10 @@ public class RectangleMapping extends SingleFieldMultiMapping
         addColumns();
     }
 
-    /* (non-Javadoc)
-     * @see org.datanucleus.store.rdbms.mapping.JavaTypeMapping#initialize(RDBMSStoreManager, java.lang.String)
+    /*
+     * (non-Javadoc)
+     * @see org.datanucleus.store.rdbms.mapping.JavaTypeMapping#initialize(RDBMSStoreManager,
+     * java.lang.String)
      */
     public void initialize(RDBMSStoreManager storeMgr, String type)
     {
@@ -62,7 +65,8 @@ public class RectangleMapping extends SingleFieldMultiMapping
         addColumns(ClassNameConstants.INT); // Height
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
      * @see org.datanucleus.store.mapping.JavaTypeMapping#getJavaType()
      */
     public Class getJavaType()
@@ -71,15 +75,15 @@ public class RectangleMapping extends SingleFieldMultiMapping
     }
 
     /**
-     * Method to return the value to be stored in the specified datastore index given the overall
-     * value for this java type.
+     * Method to return the value to be stored in the specified datastore index given the overall value for
+     * this java type.
      * @param index The datastore index
      * @param value The overall value for this java type
      * @return The value for this datastore index
      */
     public Object getValueForDatastoreMapping(NucleusContext nucleusCtx, int index, Object value)
     {
-        Rectangle.Double rect = (Rectangle.Double)value;
+        Rectangle.Double rect = (Rectangle.Double) value;
         if (index == 0)
         {
             return rect.getX();
@@ -99,30 +103,34 @@ public class RectangleMapping extends SingleFieldMultiMapping
         throw new IndexOutOfBoundsException();
     }
 
-    /* (non-Javadoc)
-     * @see org.datanucleus.store.mapping.JavaTypeMapping#setObject(org.datanucleus.ExecutionContext, java.lang.Object, int[], java.lang.Object)
+    /*
+     * (non-Javadoc)
+     * @see org.datanucleus.store.mapping.JavaTypeMapping#setObject(org.datanucleus.ExecutionContext,
+     * java.lang.Object, int[], java.lang.Object)
      */
     public void setObject(ExecutionContext ec, PreparedStatement ps, int[] exprIndex, Object value)
     {
-    	Rectangle rectangle = (Rectangle)value;
+        Rectangle rectangle = (Rectangle) value;
         if (rectangle == null)
         {
-    		for (int i = 0; i < exprIndex.length; i++) 
-    		{
-    			getDatastoreMapping(i).setObject(ps, exprIndex[i], null);					
-			}
+            for (int i = 0; i < exprIndex.length; i++)
+            {
+                getDatastoreMapping(i).setObject(ps, exprIndex[i], null);
+            }
         }
         else
         {
-            getDatastoreMapping(0).setInt(ps,exprIndex[0],rectangle.x);
-            getDatastoreMapping(1).setInt(ps,exprIndex[1],rectangle.y);
-            getDatastoreMapping(2).setInt(ps,exprIndex[2],rectangle.width);
-            getDatastoreMapping(3).setInt(ps,exprIndex[3],rectangle.height);
+            getDatastoreMapping(0).setInt(ps, exprIndex[0], rectangle.x);
+            getDatastoreMapping(1).setInt(ps, exprIndex[1], rectangle.y);
+            getDatastoreMapping(2).setInt(ps, exprIndex[2], rectangle.width);
+            getDatastoreMapping(3).setInt(ps, exprIndex[3], rectangle.height);
         }
     }
-    
-    /* (non-Javadoc)
-     * @see org.datanucleus.store.mapping.JavaTypeMapping#getObject(org.datanucleus.ExecutionContext, java.lang.Object, int[])
+
+    /*
+     * (non-Javadoc)
+     * @see org.datanucleus.store.mapping.JavaTypeMapping#getObject(org.datanucleus.ExecutionContext,
+     * java.lang.Object, int[])
      */
     public Object getObject(ExecutionContext ec, ResultSet resultSet, int[] exprIndex)
     {
@@ -132,10 +140,10 @@ public class RectangleMapping extends SingleFieldMultiMapping
             return null;
         }
 
-        int x = getDatastoreMapping(0).getInt(resultSet,exprIndex[0]); 
-        int y = getDatastoreMapping(1).getInt(resultSet,exprIndex[1]); 
-        int width  = getDatastoreMapping(2).getInt(resultSet,exprIndex[2]); 
-        int height = getDatastoreMapping(3).getInt(resultSet,exprIndex[3]);
+        int x = getDatastoreMapping(0).getInt(resultSet, exprIndex[0]);
+        int y = getDatastoreMapping(1).getInt(resultSet, exprIndex[1]);
+        int width = getDatastoreMapping(2).getInt(resultSet, exprIndex[2]);
+        int height = getDatastoreMapping(3).getInt(resultSet, exprIndex[3]);
         return new Rectangle(x, y, width, height);
     }
 }

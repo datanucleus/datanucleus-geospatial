@@ -31,7 +31,7 @@ public class MultiLineStringRDBMSMapping extends GeometryRDBMSMapping
     private static final SQLTypeInfo typeInfo;
     static
     {
-        typeInfo = (SQLTypeInfo)MySQLSpatialTypeInfo.TYPEINFO_PROTOTYPE.clone();
+        typeInfo = (SQLTypeInfo) MySQLSpatialTypeInfo.TYPEINFO_PROTOTYPE.clone();
         typeInfo.setTypeName("MULTILINESTRING");
         typeInfo.setLocalTypeName("MULTILINESTRING");
     }

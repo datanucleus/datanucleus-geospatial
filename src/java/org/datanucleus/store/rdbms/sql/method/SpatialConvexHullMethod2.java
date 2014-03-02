@@ -14,7 +14,7 @@ limitations under the License.
 
 Contributors:
    ...
-**********************************************************************/
+ **********************************************************************/
 package org.datanucleus.store.rdbms.sql.method;
 
 import java.util.ArrayList;
@@ -30,8 +30,11 @@ import org.datanucleus.store.rdbms.sql.expression.SQLExpression;
  */
 public class SpatialConvexHullMethod2 extends AbstractSQLMethod
 {
-    /* (non-Javadoc)
-     * @see org.datanucleus.store.rdbms.sql.method.SQLMethod#getExpression(org.datanucleus.store.rdbms.sql.expression.SQLExpression, java.util.List)
+    /*
+     * (non-Javadoc)
+     * @see
+     * org.datanucleus.store.rdbms.sql.method.SQLMethod#getExpression(org.datanucleus.store.rdbms.sql.expression
+     * .SQLExpression, java.util.List)
      */
     public SQLExpression getExpression(SQLExpression expr, List args)
     {
@@ -47,7 +50,7 @@ public class SpatialConvexHullMethod2 extends AbstractSQLMethod
         SQLExpression argExpr = expr;
         if (expr == null)
         {
-            argExpr = (SQLExpression)args.get(0);
+            argExpr = (SQLExpression) args.get(0);
         }
 
         ArrayList geomFuncArgs = new ArrayList();

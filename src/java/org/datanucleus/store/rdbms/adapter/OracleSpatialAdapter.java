@@ -30,8 +30,7 @@ import org.datanucleus.store.rdbms.table.Table;
 import org.datanucleus.store.schema.StoreSchemaHandler;
 
 /**
- * Provides methods for adapting SQL language elements for Oracle spatial
- * elements.
+ * Provides methods for adapting SQL language elements for Oracle spatial elements.
  */
 public class OracleSpatialAdapter extends OracleAdapter implements SpatialRDBMSAdapter
 {
@@ -49,10 +48,9 @@ public class OracleSpatialAdapter extends OracleAdapter implements SpatialRDBMSA
     {
         super.initialiseTypes(handler, mconn);
 
-        SQLTypeInfo sqlType = new org.datanucleus.store.rdbms.schema.OracleTypeInfo(
-            "SDO_GEOMETRY", (short)Types.STRUCT, 0, null, null, null, 1, false, (short)0,
-            false, false, false, "SDO_GEOMETRY", (short)0, (short)0, 10);
-        addSQLTypeForJDBCType(handler, mconn, (short)OracleSpatialTypeInfo.TYPES_SDO_GEOMETRY, sqlType, true);
+        SQLTypeInfo sqlType = new org.datanucleus.store.rdbms.schema.OracleTypeInfo("SDO_GEOMETRY", (short) Types.STRUCT, 0, null, null,
+                null, 1, false, (short) 0, false, false, false, "SDO_GEOMETRY", (short) 0, (short) 0, 10);
+        addSQLTypeForJDBCType(handler, mconn, (short) OracleSpatialTypeInfo.TYPES_SDO_GEOMETRY, sqlType, true);
     }
 
     public boolean isGeometryColumn(Column c)

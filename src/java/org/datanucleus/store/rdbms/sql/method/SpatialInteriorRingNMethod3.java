@@ -14,7 +14,7 @@ limitations under the License.
 
 Contributors:
    2013 barisergun75@gmail.com - Adding postgis support
-**********************************************************************/
+ **********************************************************************/
 package org.datanucleus.store.rdbms.sql.method;
 
 import java.util.ArrayList;
@@ -26,7 +26,8 @@ import org.datanucleus.store.rdbms.sql.expression.GeometryExpression;
 import org.datanucleus.store.rdbms.sql.expression.SQLExpression;
 
 /**
- * Implementation of "Spatial.interiorRingN(expr, expr2)" or "{expr}.getInteriorRingN(expr2)" method for Postgresql.
+ * Implementation of "Spatial.interiorRingN(expr, expr2)" or "{expr}.getInteriorRingN(expr2)" method for
+ * Postgresql.
  */
 public class SpatialInteriorRingNMethod3 extends AbstractSQLMethod
 {

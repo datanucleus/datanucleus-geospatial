@@ -14,7 +14,7 @@ limitations under the License.
 
 Contributors:
     ...
-**********************************************************************/
+ **********************************************************************/
 package org.datanucleus.store.types.converters;
 
 import java.awt.geom.RoundRectangle2D;
@@ -23,8 +23,12 @@ import java.util.StringTokenizer;
 import org.datanucleus.exceptions.NucleusDataStoreException;
 
 /**
- * Class to handle the conversion between java.awt.geom.RoundRectangle2D.Double and a String form.
- * The String form is <pre>(x,y,width,height,arcwidth,archeight)</pre>
+ * Class to handle the conversion between java.awt.geom.RoundRectangle2D.Double and a String form. The String
+ * form is
+ * 
+ * <pre>
+ * (x,y,width,height,arcwidth,archeight)
+ * </pre>
  */
 public class RoundRectangle2dDoubleStringConverter implements TypeConverter<RoundRectangle2D.Double, String>
 {
@@ -36,7 +40,7 @@ public class RoundRectangle2dDoubleStringConverter implements TypeConverter<Roun
         }
 
         RoundRectangle2D.Double r = new RoundRectangle2D.Double();
-        StringTokenizer tokeniser = new StringTokenizer(str.substring(1, str.length()-1), ",");
+        StringTokenizer tokeniser = new StringTokenizer(str.substring(1, str.length() - 1), ",");
 
         double x = 0;
         if (tokeniser.hasMoreTokens())
@@ -152,7 +156,6 @@ public class RoundRectangle2dDoubleStringConverter implements TypeConverter<Roun
 
     public String toDatastoreType(RoundRectangle2D.Double rect)
     {
-        return rect != null ? "(" + rect.getX() + "," + rect.getY() + "," + 
-                rect.getWidth() + "," + rect.getHeight() + "," + rect.arcwidth + "," + rect.archeight + ")" : null;
+        return rect != null ? "(" + rect.getX() + "," + rect.getY() + "," + rect.getWidth() + "," + rect.getHeight() + "," + rect.arcwidth + "," + rect.archeight + ")" : null;
     }
 }

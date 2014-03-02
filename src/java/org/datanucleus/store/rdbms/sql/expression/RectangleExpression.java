@@ -14,7 +14,7 @@ limitations under the License.
 
 Contributors:
     ...
-**********************************************************************/
+ **********************************************************************/
 package org.datanucleus.store.rdbms.sql.expression;
 
 import java.awt.Rectangle;
@@ -36,7 +36,6 @@ public class RectangleExpression extends ObjectExpression
 
     public SQLExpression invoke(String methodName, List args)
     {
-        return stmt.getRDBMSManager().getSQLExpressionFactory().invokeMethod(stmt, Rectangle.class.getName(), 
-            methodName, this, args);
+        return stmt.getRDBMSManager().getSQLExpressionFactory().invokeMethod(stmt, Rectangle.class.getName(), methodName, this, args);
     }
 }

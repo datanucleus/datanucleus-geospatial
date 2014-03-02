@@ -14,7 +14,7 @@ limitations under the License.
 
 Contributors:
    ...
-**********************************************************************/
+ **********************************************************************/
 package org.datanucleus.store.rdbms.sql.method;
 
 import java.util.List;
@@ -35,8 +35,8 @@ import org.datanucleus.store.rdbms.sql.expression.StringExpression;
 public class SpatialMethodHelper
 {
     /**
-     * Method to return the java type mapping to use for the geometry of the input expression.
-     * Uses the java type represented by the expression to define which Geometry class to use.
+     * Method to return the java type mapping to use for the geometry of the input expression. Uses the java
+     * type represented by the expression to define which Geometry class to use.
      * @param clr ClassLoader resolver
      * @param expr The expression
      * @return The mapping to use.
@@ -73,22 +73,20 @@ public class SpatialMethodHelper
             return null;
         }
 
-        return expr.getSQLStatement().getRDBMSManager().getMappingManager().getMappingWithDatastoreMapping(
-            geometryClass, false, false, clr);
+        return expr.getSQLStatement().getRDBMSManager().getMappingManager()
+                .getMappingWithDatastoreMapping(geometryClass, false, false, clr);
     }
 
     /**
-     * Convenience accessor for a boolean expression for a geometry expression.
-     * Geometry expressions seem to return a string "1" or "0" if true or false respectively so use
-     * an equality expression of that form.
+     * Convenience accessor for a boolean expression for a geometry expression. Geometry expressions seem to
+     * return a string "1" or "0" if true or false respectively so use an equality expression of that form.
      * @param stmt The statement that this is part of
      * @param funcName Function name
      * @param funcArgs Args to the function
      * @param exprFactory The expression factory
      * @return The boolean expression
      */
-    public static BooleanExpression getBooleanExpression(SQLStatement stmt, String funcName, List funcArgs,
-            SQLExpressionFactory exprFactory)
+    public static BooleanExpression getBooleanExpression(SQLStatement stmt, String funcName, List funcArgs, SQLExpressionFactory exprFactory)
     {
         JavaTypeMapping boolMapping = exprFactory.getMappingForType(boolean.class, true);
         SQLExpression left = new StringExpression(stmt, boolMapping, funcName, funcArgs);

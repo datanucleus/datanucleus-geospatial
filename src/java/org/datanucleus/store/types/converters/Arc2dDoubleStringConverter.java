@@ -14,7 +14,7 @@ limitations under the License.
 
 Contributors:
     ...
-**********************************************************************/
+ **********************************************************************/
 package org.datanucleus.store.types.converters;
 
 import java.awt.geom.Arc2D;
@@ -23,8 +23,11 @@ import java.util.StringTokenizer;
 import org.datanucleus.exceptions.NucleusDataStoreException;
 
 /**
- * Class to handle the conversion between java.awt.geom.Arc2D.Float and a String form.
- * The String form is <pre>x,y,width,height,start,extent</pre>
+ * Class to handle the conversion between java.awt.geom.Arc2D.Float and a String form. The String form is
+ * 
+ * <pre>
+ * x,y,width,height,start,extent
+ * </pre>
  */
 public class Arc2dDoubleStringConverter implements TypeConverter<Arc2D.Double, String>
 {
@@ -65,7 +68,7 @@ public class Arc2dDoubleStringConverter implements TypeConverter<Arc2D.Double, S
         double width = 0;
         try
         {
-           width = Double.valueOf(token);
+            width = Double.valueOf(token);
         }
         catch (NumberFormatException nfe)
         {

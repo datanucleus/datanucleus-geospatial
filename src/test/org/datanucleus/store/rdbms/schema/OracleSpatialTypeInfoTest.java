@@ -20,7 +20,6 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 /**
- * 
  * @author barisergun
  */
 public class OracleSpatialTypeInfoTest

@@ -14,7 +14,7 @@ limitations under the License.
 
 Contributors:
    2013 barisergun75@gmail.com - NUCSPATIAL-28 Adding postgis support
-**********************************************************************/
+ **********************************************************************/
 package org.datanucleus.store.rdbms.sql.method;
 
 import java.util.ArrayList;
@@ -37,7 +37,7 @@ public class SpatialAsBinaryMethod3 extends AbstractSQLMethod
             throw new NucleusUserException("Cannot invoke Spatial.asBinary without 1 argument");
         }
 
-        SQLExpression argExpr1 = (SQLExpression)args.get(0); // Geometry
+        SQLExpression argExpr1 = (SQLExpression) args.get(0); // Geometry
 
         ArrayList<SQLExpression> funcArgs = new ArrayList<SQLExpression>();
         funcArgs.add(argExpr1);

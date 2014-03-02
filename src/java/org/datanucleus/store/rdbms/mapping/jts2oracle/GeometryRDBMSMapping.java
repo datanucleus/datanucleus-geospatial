@@ -53,9 +53,9 @@ public class GeometryRDBMSMapping extends AbstractDatastoreMapping
         initTypeInfo();
     }
 
-    public SQLTypeInfo getTypeInfo() 
+    public SQLTypeInfo getTypeInfo()
     {
-        return ((RDBMSStoreManager)storeMgr).getSQLTypeInfoForJDBCType(OracleSpatialTypeInfo.TYPES_SDO_GEOMETRY);
+        return ((RDBMSStoreManager) storeMgr).getSQLTypeInfoForJDBCType(OracleSpatialTypeInfo.TYPES_SDO_GEOMETRY);
     }
 
     public Object getObject(ResultSet rs, int exprIndex)
@@ -71,7 +71,7 @@ public class GeometryRDBMSMapping extends AbstractDatastoreMapping
             }
             else
             {
-                value = new OraReader().read((STRUCT)st);
+                value = new OraReader().read((STRUCT) st);
             }
         }
         catch (SQLException e)
@@ -92,8 +92,8 @@ public class GeometryRDBMSMapping extends AbstractDatastoreMapping
             }
             else
             {
-                OracleConnection conn = (OracleConnection)ps.getConnection();
-                Object obj = new OraWriter(conn).write((Geometry)value);
+                OracleConnection conn = (OracleConnection) ps.getConnection();
+                Object obj = new OraWriter(conn).write((Geometry) value);
                 ps.setObject(exprIndex, obj);
             }
         }

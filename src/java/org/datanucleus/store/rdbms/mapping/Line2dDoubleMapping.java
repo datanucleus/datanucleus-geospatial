@@ -14,7 +14,7 @@ limitations under the License.
 
 Contributors:
     ...
-**********************************************************************/
+ **********************************************************************/
 package org.datanucleus.store.rdbms.mapping;
 
 import java.awt.geom.Line2D;
@@ -31,13 +31,15 @@ import org.datanucleus.store.rdbms.mapping.java.SingleFieldMultiMapping;
 import org.datanucleus.store.rdbms.table.Table;
 
 /**
- * Mapping for java.awt.geom.Line2D.Double, maps the x1, y1, x2 and y2 values to double-precision 
- * datastore fields.
+ * Mapping for java.awt.geom.Line2D.Double, maps the x1, y1, x2 and y2 values to double-precision datastore
+ * fields.
  */
 public class Line2dDoubleMapping extends SingleFieldMultiMapping
 {
-    /* (non-Javadoc)
-     * @see org.datanucleus.store.rdbms.mapping.JavaTypeMapping#initialize(AbstractMemberMetaData, DatastoreContainerObject, ClassLoaderResolver)
+    /*
+     * (non-Javadoc)
+     * @see org.datanucleus.store.rdbms.mapping.JavaTypeMapping#initialize(AbstractMemberMetaData,
+     * DatastoreContainerObject, ClassLoaderResolver)
      */
     public void initialize(AbstractMemberMetaData fmd, Table table, ClassLoaderResolver clr)
     {
@@ -45,8 +47,10 @@ public class Line2dDoubleMapping extends SingleFieldMultiMapping
         addColumns();
     }
 
-    /* (non-Javadoc)
-     * @see org.datanucleus.store.rdbms.mapping.JavaTypeMapping#initialize(RDBMSStoreManager, java.lang.String)
+    /*
+     * (non-Javadoc)
+     * @see org.datanucleus.store.rdbms.mapping.JavaTypeMapping#initialize(RDBMSStoreManager,
+     * java.lang.String)
      */
     public void initialize(RDBMSStoreManager storeMgr, String type)
     {
@@ -62,7 +66,8 @@ public class Line2dDoubleMapping extends SingleFieldMultiMapping
         addColumns(ClassNameConstants.DOUBLE); // Y2
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
      * @see org.datanucleus.store.mapping.JavaTypeMapping#getJavaType()
      */
     public Class getJavaType()
@@ -71,15 +76,15 @@ public class Line2dDoubleMapping extends SingleFieldMultiMapping
     }
 
     /**
-     * Method to return the value to be stored in the specified datastore index given the overall
-     * value for this java type.
+     * Method to return the value to be stored in the specified datastore index given the overall value for
+     * this java type.
      * @param index The datastore index
      * @param value The overall value for this java type
      * @return The value for this datastore index
      */
     public Object getValueForDatastoreMapping(NucleusContext nucleusCtx, int index, Object value)
     {
-        Line2D.Double line = (Line2D.Double)value;
+        Line2D.Double line = (Line2D.Double) value;
         if (index == 0)
         {
             return line.getX1();
@@ -99,30 +104,34 @@ public class Line2dDoubleMapping extends SingleFieldMultiMapping
         throw new IndexOutOfBoundsException();
     }
 
-    /* (non-Javadoc)
-     * @see org.datanucleus.store.mapping.JavaTypeMapping#setObject(org.datanucleus.ExecutionContext, java.lang.Object, int[], java.lang.Object)
+    /*
+     * (non-Javadoc)
+     * @see org.datanucleus.store.mapping.JavaTypeMapping#setObject(org.datanucleus.ExecutionContext,
+     * java.lang.Object, int[], java.lang.Object)
      */
     public void setObject(ExecutionContext ec, PreparedStatement ps, int[] exprIndex, Object value)
     {
-    	Line2D line = (Line2D)value;
+        Line2D line = (Line2D) value;
         if (line == null)
         {
-    		for (int i = 0; i < exprIndex.length; i++) 
-    		{
-    			getDatastoreMapping(i).setObject(ps, exprIndex[i], null);					
-			}
+            for (int i = 0; i < exprIndex.length; i++)
+            {
+                getDatastoreMapping(i).setObject(ps, exprIndex[i], null);
+            }
         }
         else
         {
-            getDatastoreMapping(0).setDouble(ps,exprIndex[0],line.getX1());
-            getDatastoreMapping(1).setDouble(ps,exprIndex[1],line.getY1());
-            getDatastoreMapping(2).setDouble(ps,exprIndex[2],line.getX2());
-            getDatastoreMapping(3).setDouble(ps,exprIndex[3],line.getY2());
+            getDatastoreMapping(0).setDouble(ps, exprIndex[0], line.getX1());
+            getDatastoreMapping(1).setDouble(ps, exprIndex[1], line.getY1());
+            getDatastoreMapping(2).setDouble(ps, exprIndex[2], line.getX2());
+            getDatastoreMapping(3).setDouble(ps, exprIndex[3], line.getY2());
         }
     }
-    
-    /* (non-Javadoc)
-     * @see org.datanucleus.store.mapping.JavaTypeMapping#getObject(org.datanucleus.ExecutionContext, java.lang.Object, int[])
+
+    /*
+     * (non-Javadoc)
+     * @see org.datanucleus.store.mapping.JavaTypeMapping#getObject(org.datanucleus.ExecutionContext,
+     * java.lang.Object, int[])
      */
     public Object getObject(ExecutionContext ec, ResultSet resultSet, int[] exprIndex)
     {
@@ -132,10 +141,10 @@ public class Line2dDoubleMapping extends SingleFieldMultiMapping
             return null;
         }
 
-        double x1 = getDatastoreMapping(0).getDouble(resultSet,exprIndex[0]); 
-        double y1 = getDatastoreMapping(1).getDouble(resultSet,exprIndex[1]); 
-        double x2 = getDatastoreMapping(2).getDouble(resultSet,exprIndex[2]); 
-        double y2 = getDatastoreMapping(3).getDouble(resultSet,exprIndex[3]);
+        double x1 = getDatastoreMapping(0).getDouble(resultSet, exprIndex[0]);
+        double y1 = getDatastoreMapping(1).getDouble(resultSet, exprIndex[1]);
+        double x2 = getDatastoreMapping(2).getDouble(resultSet, exprIndex[2]);
+        double y2 = getDatastoreMapping(3).getDouble(resultSet, exprIndex[3]);
         return new Line2D.Double(x1, y1, x2, y2);
     }
 }

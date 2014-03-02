@@ -14,7 +14,7 @@ limitations under the License.
 
 Contributors:
    2013 barisergun75@gmail.com - Adding postgis support
-**********************************************************************/
+ **********************************************************************/
 package org.datanucleus.store.rdbms.sql.method;
 
 import java.util.ArrayList;
@@ -32,7 +32,7 @@ public class SpatialConvexHullMethod3 extends AbstractSQLMethod
 {
     public SQLExpression getExpression(SQLExpression expr, List args)
     {
-    	if (expr == null && (args == null || args.size() != 1))
+        if (expr == null && (args == null || args.size() != 1))
         {
             throw new NucleusUserException("Cannot invoke Spatial.convexHull without 1 argument");
         }
@@ -44,7 +44,7 @@ public class SpatialConvexHullMethod3 extends AbstractSQLMethod
         SQLExpression argExpr = expr;
         if (expr == null)
         {
-            argExpr = (SQLExpression)args.get(0);
+            argExpr = (SQLExpression) args.get(0);
         }
 
         ArrayList<SQLExpression> funcArgs = new ArrayList<SQLExpression>();

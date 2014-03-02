@@ -31,7 +31,7 @@ public class PolygonRDBMSMapping extends GeometryRDBMSMapping
     private static final SQLTypeInfo typeInfo;
     static
     {
-        typeInfo = (SQLTypeInfo)PostGISTypeInfo.TYPEINFO_PROTOTYPE.clone();
+        typeInfo = (SQLTypeInfo) PostGISTypeInfo.TYPEINFO_PROTOTYPE.clone();
         typeInfo.setLocalTypeName("POLYGON");
     }
 

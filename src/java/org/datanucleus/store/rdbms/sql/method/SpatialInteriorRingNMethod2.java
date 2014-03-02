@@ -14,7 +14,7 @@ limitations under the License.
 
 Contributors:
    ...
-**********************************************************************/
+ **********************************************************************/
 package org.datanucleus.store.rdbms.sql.method;
 
 import java.util.ArrayList;
@@ -26,12 +26,16 @@ import org.datanucleus.store.rdbms.sql.expression.GeometryExpression;
 import org.datanucleus.store.rdbms.sql.expression.SQLExpression;
 
 /**
- * Implementation of "Spatial.interiorRingN(expr, expr2)" or "{expr}.getInteriorRingN(expr2)" method for Oracle.
+ * Implementation of "Spatial.interiorRingN(expr, expr2)" or "{expr}.getInteriorRingN(expr2)" method for
+ * Oracle.
  */
 public class SpatialInteriorRingNMethod2 extends AbstractSQLMethod
 {
-    /* (non-Javadoc)
-     * @see org.datanucleus.store.rdbms.sql.method.SQLMethod#getExpression(org.datanucleus.store.rdbms.sql.expression.SQLExpression, java.util.List)
+    /*
+     * (non-Javadoc)
+     * @see
+     * org.datanucleus.store.rdbms.sql.method.SQLMethod#getExpression(org.datanucleus.store.rdbms.sql.expression
+     * .SQLExpression, java.util.List)
      */
     public SQLExpression getExpression(SQLExpression expr, List args)
     {
@@ -53,13 +57,13 @@ public class SpatialInteriorRingNMethod2 extends AbstractSQLMethod
         if (expr == null)
         {
             // "Spatial." method
-            geomExpr = (SQLExpression)args.get(0);
-            distExpr = (SQLExpression)args.get(1);
+            geomExpr = (SQLExpression) args.get(0);
+            distExpr = (SQLExpression) args.get(1);
         }
         else
         {
             geomExpr = expr;
-            distExpr = (SQLExpression)args.get(0);
+            distExpr = (SQLExpression) args.get(0);
         }
 
         ArrayList geomFuncArgs = new ArrayList();

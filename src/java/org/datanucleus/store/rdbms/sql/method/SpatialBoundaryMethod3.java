@@ -14,7 +14,7 @@ limitations under the License.
 
 Contributors:
    2013 barisergun75@gmail.com - NUCSPATIAL-28 Adding postgis support
-**********************************************************************/
+ **********************************************************************/
 package org.datanucleus.store.rdbms.sql.method;
 
 import java.util.ArrayList;
@@ -44,7 +44,7 @@ public class SpatialBoundaryMethod3 extends AbstractSQLMethod
         SQLExpression argExpr = expr;
         if (expr == null)
         {
-            argExpr = (SQLExpression)args.get(0);
+            argExpr = (SQLExpression) args.get(0);
         }
 
         ArrayList<SQLExpression> funcArgs = new ArrayList<SQLExpression>();

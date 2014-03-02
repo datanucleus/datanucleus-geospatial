@@ -14,7 +14,7 @@ limitations under the License.
 
 Contributors:
     ...
-**********************************************************************/
+ **********************************************************************/
 package org.datanucleus.store.rdbms.schema;
 
 import java.sql.DatabaseMetaData;
@@ -26,9 +26,9 @@ import java.sql.Types;
  */
 public class PostGISTypeInfo extends SQLTypeInfo
 {
-    public static final PostGISTypeInfo TYPEINFO_PROTOTYPE = new PostGISTypeInfo("geometry",
-        (short) Types.OTHER, 0, "", "", "", (short) DatabaseMetaData.typeNullable, false,
-        (short) DatabaseMetaData.typeSearchable, false, false, false, "", (short) 0, (short) 0, 10);
+    public static final PostGISTypeInfo TYPEINFO_PROTOTYPE = new PostGISTypeInfo("geometry", (short) Types.OTHER, 0, "", "", "",
+            (short) DatabaseMetaData.typeNullable, false, (short) DatabaseMetaData.typeSearchable, false, false, false, "", (short) 0,
+            (short) 0, 10);
 
     /**
      * @param rs
@@ -38,20 +38,18 @@ public class PostGISTypeInfo extends SQLTypeInfo
         super(rs);
     }
 
-    public PostGISTypeInfo(String typeName, short dataType, int precision, String literalPrefix,
-            String literalSuffix, String createParams, int nullable, boolean caseSensitive, short searchable,
-            boolean unsignedAttribute, boolean fixedPrecScale, boolean autoIncrement, String localTypeName,
-            short minimumScale, short maximumScale, int numPrecRadix)
+    public PostGISTypeInfo(String typeName, short dataType, int precision, String literalPrefix, String literalSuffix, String createParams,
+            int nullable, boolean caseSensitive, short searchable, boolean unsignedAttribute, boolean fixedPrecScale,
+            boolean autoIncrement, String localTypeName, short minimumScale, short maximumScale, int numPrecRadix)
     {
-        super(typeName, dataType, precision, literalPrefix, literalSuffix, createParams, nullable, caseSensitive,
-            searchable, unsignedAttribute, fixedPrecScale, autoIncrement, localTypeName, minimumScale, maximumScale,
-            numPrecRadix);
+        super(typeName, dataType, precision, literalPrefix, literalSuffix, createParams, nullable, caseSensitive, searchable,
+                unsignedAttribute, fixedPrecScale, autoIncrement, localTypeName, minimumScale, maximumScale, numPrecRadix);
     }
 
     public Object clone()
     {
-        return new PostGISTypeInfo(getTypeName(), getDataType(), getPrecision(), getLiteralPrefix(), getLiteralSuffix(), 
-            getCreateParams(), getNullable(), isCaseSensitive(), getSearchable(), isUnsignedAttribute(), isFixedPrecScale(), 
-            isAutoIncrement(), getLocalTypeName(), getMinimumScale(), getMaximumScale(), getNumPrecRadix());
+        return new PostGISTypeInfo(getTypeName(), getDataType(), getPrecision(), getLiteralPrefix(), getLiteralSuffix(), getCreateParams(),
+                getNullable(), isCaseSensitive(), getSearchable(), isUnsignedAttribute(), isFixedPrecScale(), isAutoIncrement(),
+                getLocalTypeName(), getMinimumScale(), getMaximumScale(), getNumPrecRadix());
     }
 }

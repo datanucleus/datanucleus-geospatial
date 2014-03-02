@@ -39,19 +39,20 @@ public class LinearRingRDBMSMapping extends GeometryRDBMSMapping
 
     public Object getObject(ResultSet rs, int exprIndex)
     {
-        LineString lineString = (LineString)super.getObject(rs, exprIndex);
-        if (lineString == null) return null;
+        LineString lineString = (LineString) super.getObject(rs, exprIndex);
+        if (lineString == null)
+            return null;
         LinearRing linearRing = new LinearRing(lineString.getCoordinateSequence(), lineString.getFactory());
         linearRing.setSRID(lineString.getSRID());
         return linearRing;
     }
-    
+
     public void setObject(PreparedStatement ps, int exprIndex, Object value)
     {
         LineString lineString = null;
         if (value != null)
         {
-            LinearRing linearRing = (LinearRing)value;
+            LinearRing linearRing = (LinearRing) value;
             lineString = new LineString(linearRing.getCoordinateSequence(), linearRing.getFactory());
             lineString.setSRID(linearRing.getSRID());
         }

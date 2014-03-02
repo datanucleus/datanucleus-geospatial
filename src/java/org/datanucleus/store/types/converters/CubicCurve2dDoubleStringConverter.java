@@ -14,7 +14,7 @@ limitations under the License.
 
 Contributors:
     ...
-**********************************************************************/
+ **********************************************************************/
 package org.datanucleus.store.types.converters;
 
 import java.awt.geom.CubicCurve2D;
@@ -23,8 +23,12 @@ import java.util.StringTokenizer;
 import org.datanucleus.exceptions.NucleusDataStoreException;
 
 /**
- * Class to handle the conversion between java.awt.geom.CubicCurve2D.Double and a String form.
- * The String form is <pre>(x1,y1),(x2,y2),(xc1,yc1),(xc2,yc2)</pre>
+ * Class to handle the conversion between java.awt.geom.CubicCurve2D.Double and a String form. The String form
+ * is
+ * 
+ * <pre>
+ * (x1,y1),(x2,y2),(xc1,yc1),(xc2,yc2)
+ * </pre>
  */
 public class CubicCurve2dDoubleStringConverter implements TypeConverter<CubicCurve2D.Double, String>
 {
@@ -42,7 +46,7 @@ public class CubicCurve2dDoubleStringConverter implements TypeConverter<CubicCur
         String token = tokeniser.nextToken();
         token = token.substring(1); // x1,y1
         String xStr = token.substring(0, token.indexOf(","));
-        String yStr = token.substring(token.indexOf(",")+1);
+        String yStr = token.substring(token.indexOf(",") + 1);
         double x1 = 0;
         try
         {
@@ -65,7 +69,7 @@ public class CubicCurve2dDoubleStringConverter implements TypeConverter<CubicCur
         token = tokeniser.nextToken();
         token = token.substring(2); // x2,y2
         xStr = token.substring(0, token.indexOf(","));
-        yStr = token.substring(token.indexOf(",")+1);
+        yStr = token.substring(token.indexOf(",") + 1);
         double x2 = 0;
         try
         {
@@ -88,7 +92,7 @@ public class CubicCurve2dDoubleStringConverter implements TypeConverter<CubicCur
         token = tokeniser.nextToken();
         token = token.substring(2); // xc1,yc1
         xStr = token.substring(0, token.indexOf(","));
-        yStr = token.substring(token.indexOf(",")+1);
+        yStr = token.substring(token.indexOf(",") + 1);
         double xc1 = 0;
         try
         {
@@ -111,7 +115,7 @@ public class CubicCurve2dDoubleStringConverter implements TypeConverter<CubicCur
         token = tokeniser.nextToken();
         token = token.substring(2); // xc2,yc2
         xStr = token.substring(0, token.indexOf(","));
-        yStr = token.substring(token.indexOf(",")+1);
+        yStr = token.substring(token.indexOf(",") + 1);
         double xc2 = 0;
         try
         {

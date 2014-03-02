@@ -31,7 +31,7 @@ public class MultiPointRDBMSMapping extends GeometryRDBMSMapping
     private static final SQLTypeInfo typeInfo;
     static
     {
-        typeInfo = (SQLTypeInfo)MySQLSpatialTypeInfo.TYPEINFO_PROTOTYPE.clone();
+        typeInfo = (SQLTypeInfo) MySQLSpatialTypeInfo.TYPEINFO_PROTOTYPE.clone();
         typeInfo.setTypeName("MULTIPOINT");
         typeInfo.setLocalTypeName("MULTIPOINT");
     }

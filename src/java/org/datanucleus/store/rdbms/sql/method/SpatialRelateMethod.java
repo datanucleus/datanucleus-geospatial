@@ -14,7 +14,7 @@ limitations under the License.
 
 Contributors:
    ...
-**********************************************************************/
+ **********************************************************************/
 package org.datanucleus.store.rdbms.sql.method;
 
 import java.util.ArrayList;
@@ -28,8 +28,11 @@ import org.datanucleus.store.rdbms.sql.expression.SQLExpression;
  */
 public class SpatialRelateMethod extends AbstractSQLMethod
 {
-    /* (non-Javadoc)
-     * @see org.datanucleus.store.rdbms.sql.method.SQLMethod#getExpression(org.datanucleus.store.rdbms.sql.expression.SQLExpression, java.util.List)
+    /*
+     * (non-Javadoc)
+     * @see
+     * org.datanucleus.store.rdbms.sql.method.SQLMethod#getExpression(org.datanucleus.store.rdbms.sql.expression
+     * .SQLExpression, java.util.List)
      */
     public SQLExpression getExpression(SQLExpression expr, List args)
     {
@@ -52,15 +55,15 @@ public class SpatialRelateMethod extends AbstractSQLMethod
         if (expr == null)
         {
             // "Spatial." method
-            argExpr1 = (SQLExpression)args.get(0); // Geometry 1
-            argExpr2 = (SQLExpression)args.get(1); // Geometry 2
-            argExpr3 = (SQLExpression)args.get(2); // Pattern
+            argExpr1 = (SQLExpression) args.get(0); // Geometry 1
+            argExpr2 = (SQLExpression) args.get(1); // Geometry 2
+            argExpr3 = (SQLExpression) args.get(2); // Pattern
         }
         else
         {
             argExpr1 = expr; // Geometry 1
-            argExpr2 = (SQLExpression)args.get(0); // Geometry 2
-            argExpr3 = (SQLExpression)args.get(2); // Pattern
+            argExpr2 = (SQLExpression) args.get(0); // Geometry 2
+            argExpr3 = (SQLExpression) args.get(2); // Pattern
         }
 
         ArrayList funcArgs = new ArrayList();

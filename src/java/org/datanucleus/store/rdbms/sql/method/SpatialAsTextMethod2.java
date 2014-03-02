@@ -14,7 +14,7 @@ limitations under the License.
 
 Contributors:
    ...
-**********************************************************************/
+ **********************************************************************/
 package org.datanucleus.store.rdbms.sql.method;
 
 import java.util.ArrayList;
@@ -31,8 +31,11 @@ import org.datanucleus.store.rdbms.sql.expression.StringExpression;
  */
 public class SpatialAsTextMethod2 extends AbstractSQLMethod
 {
-    /* (non-Javadoc)
-     * @see org.datanucleus.store.rdbms.sql.method.SQLMethod#getExpression(org.datanucleus.store.rdbms.sql.expression.SQLExpression, java.util.List)
+    /*
+     * (non-Javadoc)
+     * @see
+     * org.datanucleus.store.rdbms.sql.method.SQLMethod#getExpression(org.datanucleus.store.rdbms.sql.expression
+     * .SQLExpression, java.util.List)
      */
     public SQLExpression getExpression(SQLExpression expr, List args)
     {
@@ -48,13 +51,12 @@ public class SpatialAsTextMethod2 extends AbstractSQLMethod
         if (expr == null)
         {
             // "Spatial." method
-            expr = (SQLExpression)args.get(0); // Geometry
+            expr = (SQLExpression) args.get(0); // Geometry
         }
 
         ArrayList geomFuncArgs = new ArrayList();
         geomFuncArgs.add(expr);
-        GeometryExpression geomExpr =
-            new GeometryExpression(stmt, SpatialMethodHelper.getGeometryMapping(clr, expr), 
+        GeometryExpression geomExpr = new GeometryExpression(stmt, SpatialMethodHelper.getGeometryMapping(clr, expr),
                 "geometry.from_sdo_geom", geomFuncArgs, null);
 
         ArrayList funcArgs = new ArrayList();

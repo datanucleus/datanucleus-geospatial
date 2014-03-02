@@ -14,7 +14,7 @@ limitations under the License.
 
 Contributors:
    ...
-**********************************************************************/
+ **********************************************************************/
 package org.datanucleus.store.rdbms.sql.method;
 
 import java.util.ArrayList;
@@ -29,8 +29,11 @@ import org.datanucleus.store.rdbms.sql.expression.SQLExpression;
  */
 public class OracleSdoPointTypeMethod extends AbstractSQLMethod
 {
-	/* (non-Javadoc)
-     * @see org.datanucleus.store.rdbms.sql.method.SQLMethod#getExpression(org.datanucleus.store.rdbms.sql.expression.SQLExpression, java.util.List)
+    /*
+     * (non-Javadoc)
+     * @see
+     * org.datanucleus.store.rdbms.sql.method.SQLMethod#getExpression(org.datanucleus.store.rdbms.sql.expression
+     * .SQLExpression, java.util.List)
      */
     public SQLExpression getExpression(SQLExpression ignore, List args)
     {
@@ -39,9 +42,9 @@ public class OracleSdoPointTypeMethod extends AbstractSQLMethod
             throw new NucleusUserException("Cannot invoke Oracle.sdo_point_type without 3 arguments");
         }
 
-        SQLExpression xExpr = (SQLExpression)args.get(0); // X
-        SQLExpression yExpr = (SQLExpression)args.get(1); // Y
-        SQLExpression zExpr = (SQLExpression)args.get(2); // Z
+        SQLExpression xExpr = (SQLExpression) args.get(0); // X
+        SQLExpression yExpr = (SQLExpression) args.get(1); // Y
+        SQLExpression zExpr = (SQLExpression) args.get(2); // Z
 
         ArrayList funcArgs = new ArrayList();
         funcArgs.add(xExpr);

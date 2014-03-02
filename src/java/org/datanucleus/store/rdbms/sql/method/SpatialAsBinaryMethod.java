@@ -14,7 +14,7 @@ limitations under the License.
 
 Contributors:
    ...
-**********************************************************************/
+ **********************************************************************/
 package org.datanucleus.store.rdbms.sql.method;
 
 import java.util.ArrayList;
@@ -30,8 +30,11 @@ import org.datanucleus.store.rdbms.sql.expression.SQLExpression;
  */
 public class SpatialAsBinaryMethod extends AbstractSQLMethod
 {
-    /* (non-Javadoc)
-     * @see org.datanucleus.store.rdbms.sql.method.SQLMethod#getExpression(org.datanucleus.store.rdbms.sql.expression.SQLExpression, java.util.List)
+    /*
+     * (non-Javadoc)
+     * @see
+     * org.datanucleus.store.rdbms.sql.method.SQLMethod#getExpression(org.datanucleus.store.rdbms.sql.expression
+     * .SQLExpression, java.util.List)
      */
     public SQLExpression getExpression(SQLExpression expr, List args)
     {
@@ -40,7 +43,7 @@ public class SpatialAsBinaryMethod extends AbstractSQLMethod
             throw new NucleusUserException("Cannot invoke Spatial.asBinary without 1 argument");
         }
 
-        SQLExpression argExpr1 = (SQLExpression)args.get(0); // Geometry
+        SQLExpression argExpr1 = (SQLExpression) args.get(0); // Geometry
 
         ArrayList funcArgs = new ArrayList();
         funcArgs.add(argExpr1);

@@ -14,7 +14,7 @@ limitations under the License.
 
 Contributors:
    ...
-**********************************************************************/
+ **********************************************************************/
 package org.datanucleus.store.rdbms.sql.method;
 
 import java.util.ArrayList;
@@ -31,8 +31,11 @@ import org.datanucleus.store.rdbms.sql.expression.SQLExpression;
  */
 public class SpatialDistanceMethod2 extends AbstractSQLMethod
 {
-    /* (non-Javadoc)
-     * @see org.datanucleus.store.rdbms.sql.method.SQLMethod#getExpression(org.datanucleus.store.rdbms.sql.expression.SQLExpression, java.util.List)
+    /*
+     * (non-Javadoc)
+     * @see
+     * org.datanucleus.store.rdbms.sql.method.SQLMethod#getExpression(org.datanucleus.store.rdbms.sql.expression
+     * .SQLExpression, java.util.List)
      */
     public SQLExpression getExpression(SQLExpression expr, List args)
     {
@@ -54,24 +57,22 @@ public class SpatialDistanceMethod2 extends AbstractSQLMethod
         if (expr == null)
         {
             // "Spatial." method
-            argExpr1 = (SQLExpression)args.get(0);
-            argExpr2 = (SQLExpression)args.get(1);
+            argExpr1 = (SQLExpression) args.get(0);
+            argExpr2 = (SQLExpression) args.get(1);
         }
         else
         {
             argExpr1 = expr;
-            argExpr2 = (SQLExpression)args.get(0);
+            argExpr2 = (SQLExpression) args.get(0);
         }
 
         ArrayList geomFunc1Args = new ArrayList();
         geomFunc1Args.add(argExpr1);
-        GeometryExpression geom1Expr =
-            new GeometryExpression(stmt, null, "geometry.from_sdo_geom", geomFunc1Args, null);
+        GeometryExpression geom1Expr = new GeometryExpression(stmt, null, "geometry.from_sdo_geom", geomFunc1Args, null);
 
         ArrayList geomFunc2Args = new ArrayList();
         geomFunc2Args.add(argExpr2);
-        GeometryExpression geom2Expr =
-            new GeometryExpression(stmt, null, "geometry.from_sdo_geom", geomFunc2Args, null);
+        GeometryExpression geom2Expr = new GeometryExpression(stmt, null, "geometry.from_sdo_geom", geomFunc2Args, null);
 
         ArrayList funcArgs = new ArrayList();
         funcArgs.add(geom1Expr);

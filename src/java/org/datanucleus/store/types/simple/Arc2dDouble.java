@@ -14,7 +14,7 @@ limitations under the License.
 
 Contributors:
    ...
-**********************************************************************/
+ **********************************************************************/
 package org.datanucleus.store.types.simple;
 
 import java.awt.geom.Arc2D;
@@ -33,6 +33,7 @@ import org.datanucleus.store.types.SCO;
 public class Arc2dDouble extends java.awt.geom.Arc2D.Double implements SCO
 {
     protected transient ObjectProvider ownerOP;
+
     protected transient String fieldName;
 
     /**
@@ -48,22 +49,25 @@ public class Arc2dDouble extends java.awt.geom.Arc2D.Double implements SCO
         this.fieldName = mmd.getName();
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
      * @see org.datanucleus.store.types.sco.SCO#initialise(java.lang.Object, boolean, boolean)
      */
     public void initialise(Object value, boolean forInsert, boolean forUpdate) throws ClassCastException
     {
-        super.setArc((Arc2D.Double)value);
+        super.setArc((Arc2D.Double) value);
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
      * @see org.datanucleus.store.types.sco.SCO#initialise()
      */
     public void initialise()
     {
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
      * @see org.datanucleus.store.types.sco.SCO#getValue()
      */
     public Object getValue()
@@ -71,7 +75,8 @@ public class Arc2dDouble extends java.awt.geom.Arc2D.Double implements SCO
         return new java.awt.geom.Arc2D.Double(getX(), getY(), getWidth(), getHeight(), getAngleStart(), getAngleExtent(), getArcType());
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
      * @see org.datanucleus.store.types.sco.SCO#unsetOwner()
      */
     public void unsetOwner()
@@ -79,7 +84,8 @@ public class Arc2dDouble extends java.awt.geom.Arc2D.Double implements SCO
         ownerOP = null;
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
      * @see org.datanucleus.store.types.sco.SCO#getOwner()
      */
     public Object getOwner()
@@ -87,7 +93,8 @@ public class Arc2dDouble extends java.awt.geom.Arc2D.Double implements SCO
         return (ownerOP != null ? ownerOP.getObject() : null);
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
      * @see org.datanucleus.store.types.sco.SCO#getFieldName()
      */
     public String getFieldName()
@@ -106,7 +113,8 @@ public class Arc2dDouble extends java.awt.geom.Arc2D.Double implements SCO
         }
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
      * @see org.datanucleus.store.types.sco.SCO#detachCopy(org.datanucleus.state.FetchPlanState)
      */
     public Object detachCopy(FetchPlanState state)
@@ -114,7 +122,8 @@ public class Arc2dDouble extends java.awt.geom.Arc2D.Double implements SCO
         return new java.awt.geom.Arc2D.Double(getX(), getY(), getWidth(), getHeight(), getAngleStart(), getAngleExtent(), getArcType());
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
      * @see org.datanucleus.store.types.sco.SCO#attachCopy(java.lang.Object)
      */
     public void attachCopy(Object value)
@@ -129,7 +138,7 @@ public class Arc2dDouble extends java.awt.geom.Arc2D.Double implements SCO
         initialise(value, false, true);
 
         // Check if the field has changed, and set the owner field as dirty if necessary
-        Arc2dDouble rect = (Arc2dDouble)value;
+        Arc2dDouble rect = (Arc2dDouble) value;
         double newX = rect.getX();
         double newY = rect.getY();
         double newW = rect.getWidth();
@@ -145,21 +154,21 @@ public class Arc2dDouble extends java.awt.geom.Arc2D.Double implements SCO
 
     /**
      * Creates and returns a copy of this object.
-     *
-     * <p>Mutable second-class Objects are required to provide a public
-     * clone method in order to allow for copying PersistenceCapable
-     * objects. In contrast to Object.clone(), this method must not throw a
+     * <p>
+     * Mutable second-class Objects are required to provide a public clone method in order to allow for
+     * copying PersistenceCapable objects. In contrast to Object.clone(), this method must not throw a
      * CloneNotSupportedException.
      * @return A clone of the object
      */
     public Object clone()
     {
         Object obj = super.clone();
-        ((Arc2dDouble)obj).unsetOwner();
+        ((Arc2dDouble) obj).unsetOwner();
         return obj;
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
      * @see java.awt.geom.Arc2D.Double#setArc(double, double, double, double, double, double, int)
      */
     @Override
@@ -169,7 +178,8 @@ public class Arc2dDouble extends java.awt.geom.Arc2D.Double implements SCO
         makeDirty();
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
      * @see java.awt.geom.Arc2D.Double#setAngleStart(double)
      */
     @Override
@@ -179,7 +189,8 @@ public class Arc2dDouble extends java.awt.geom.Arc2D.Double implements SCO
         makeDirty();
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
      * @see java.awt.geom.Arc2D.Double#setAngleExtent(double)
      */
     @Override
@@ -189,7 +200,8 @@ public class Arc2dDouble extends java.awt.geom.Arc2D.Double implements SCO
         makeDirty();
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
      * @see java.awt.geom.Arc2D#setArc(java.awt.geom.Point2D, java.awt.geom.Dimension2D, double, double, int)
      */
     @Override
@@ -199,7 +211,8 @@ public class Arc2dDouble extends java.awt.geom.Arc2D.Double implements SCO
         makeDirty();
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
      * @see java.awt.geom.Arc2D#setArc(java.awt.geom.Rectangle2D, double, double, int)
      */
     @Override
@@ -209,7 +222,8 @@ public class Arc2dDouble extends java.awt.geom.Arc2D.Double implements SCO
         makeDirty();
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
      * @see java.awt.geom.Arc2D#setArc(java.awt.geom.Arc2D)
      */
     @Override
@@ -219,7 +233,8 @@ public class Arc2dDouble extends java.awt.geom.Arc2D.Double implements SCO
         makeDirty();
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
      * @see java.awt.geom.Arc2D#setArcByCenter(double, double, double, double, double, int)
      */
     @Override
@@ -229,8 +244,10 @@ public class Arc2dDouble extends java.awt.geom.Arc2D.Double implements SCO
         makeDirty();
     }
 
-    /* (non-Javadoc)
-     * @see java.awt.geom.Arc2D#setArcByTangent(java.awt.geom.Point2D, java.awt.geom.Point2D, java.awt.geom.Point2D, double)
+    /*
+     * (non-Javadoc)
+     * @see java.awt.geom.Arc2D#setArcByTangent(java.awt.geom.Point2D, java.awt.geom.Point2D,
+     * java.awt.geom.Point2D, double)
      */
     @Override
     public void setArcByTangent(Point2D p1, Point2D p2, Point2D p3, double radius)
@@ -239,7 +256,8 @@ public class Arc2dDouble extends java.awt.geom.Arc2D.Double implements SCO
         makeDirty();
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
      * @see java.awt.geom.Arc2D#setAngleStart(java.awt.geom.Point2D)
      */
     @Override
@@ -249,7 +267,8 @@ public class Arc2dDouble extends java.awt.geom.Arc2D.Double implements SCO
         makeDirty();
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
      * @see java.awt.geom.Arc2D#setAngles(double, double, double, double)
      */
     @Override
@@ -259,7 +278,8 @@ public class Arc2dDouble extends java.awt.geom.Arc2D.Double implements SCO
         makeDirty();
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
      * @see java.awt.geom.Arc2D#setAngles(java.awt.geom.Point2D, java.awt.geom.Point2D)
      */
     @Override
@@ -269,7 +289,8 @@ public class Arc2dDouble extends java.awt.geom.Arc2D.Double implements SCO
         makeDirty();
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
      * @see java.awt.geom.Arc2D#setArcType(int)
      */
     @Override
@@ -279,7 +300,8 @@ public class Arc2dDouble extends java.awt.geom.Arc2D.Double implements SCO
         makeDirty();
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
      * @see java.awt.geom.Arc2D#setFrame(double, double, double, double)
      */
     @Override
@@ -289,7 +311,8 @@ public class Arc2dDouble extends java.awt.geom.Arc2D.Double implements SCO
         makeDirty();
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
      * @see java.awt.geom.RectangularShape#setFrame(java.awt.geom.Point2D, java.awt.geom.Dimension2D)
      */
     @Override
@@ -299,7 +322,8 @@ public class Arc2dDouble extends java.awt.geom.Arc2D.Double implements SCO
         makeDirty();
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
      * @see java.awt.geom.RectangularShape#setFrame(java.awt.geom.Rectangle2D)
      */
     @Override
@@ -309,7 +333,8 @@ public class Arc2dDouble extends java.awt.geom.Arc2D.Double implements SCO
         makeDirty();
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
      * @see java.awt.geom.RectangularShape#setFrameFromDiagonal(double, double, double, double)
      */
     @Override
@@ -319,7 +344,8 @@ public class Arc2dDouble extends java.awt.geom.Arc2D.Double implements SCO
         makeDirty();
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
      * @see java.awt.geom.RectangularShape#setFrameFromDiagonal(java.awt.geom.Point2D, java.awt.geom.Point2D)
      */
     @Override
@@ -329,7 +355,8 @@ public class Arc2dDouble extends java.awt.geom.Arc2D.Double implements SCO
         makeDirty();
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
      * @see java.awt.geom.RectangularShape#setFrameFromCenter(double, double, double, double)
      */
     @Override
@@ -339,7 +366,8 @@ public class Arc2dDouble extends java.awt.geom.Arc2D.Double implements SCO
         makeDirty();
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
      * @see java.awt.geom.RectangularShape#setFrameFromCenter(java.awt.geom.Point2D, java.awt.geom.Point2D)
      */
     @Override

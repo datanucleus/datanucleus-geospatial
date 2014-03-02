@@ -32,9 +32,9 @@ import org.datanucleus.store.rdbms.sql.expression.StringLiteral;
 public class SpatialBboxTestMethod3 extends AbstractSQLMethod
 {
     private final static String RELATE_MASK_FOR_BBOXTEST = "MASK=OVERLAPBDYINTERSECT QUERYTYPE=WINDOW";
+
     /*
      * (non-Javadoc)
-     * 
      * @see org.datanucleus.store.rdbms.sql.method.SQLMethod#getExpression(org.
      * datanucleus.store.rdbms.sql.expression.SQLExpression, java.util.List)
      */
@@ -48,7 +48,7 @@ public class SpatialBboxTestMethod3 extends AbstractSQLMethod
         SQLExpression argGeometry1 = (SQLExpression) args.get(0); // Geometry 1
         SQLExpression argGeometry2 = (SQLExpression) args.get(1); // Geometry 2
         SQLExpression argTolerance = (SQLExpression) args.get(2); // Tolerance
-        
+
         StringLiteral mask = new StringLiteral(stmt, null, RELATE_MASK_FOR_BBOXTEST, null);
 
         ArrayList funcArgs = new ArrayList();
@@ -56,10 +56,10 @@ public class SpatialBboxTestMethod3 extends AbstractSQLMethod
         funcArgs.add(mask);
         funcArgs.add(argGeometry2);
         funcArgs.add(argTolerance);
-        
+
         JavaTypeMapping m = getMappingForClass(String.class);
-        StringExpression relateExp =  new StringExpression(stmt, m, "SDO_GEOM.RELATE", funcArgs);
-        
+        StringExpression relateExp = new StringExpression(stmt, m, "SDO_GEOM.RELATE", funcArgs);
+
         return relateExp.eq(mask);
     }
 }

@@ -14,7 +14,7 @@ limitations under the License.
 
 Contributors:
     ...
-**********************************************************************/
+ **********************************************************************/
 package org.datanucleus.store.types.converters;
 
 import java.awt.geom.Ellipse2D;
@@ -23,8 +23,11 @@ import java.util.StringTokenizer;
 import org.datanucleus.exceptions.NucleusDataStoreException;
 
 /**
- * Class to handle the conversion between java.awt.geom.Ellipse2D.Float and a String form.
- * The String form is <pre>(x,y,width,height)</pre>
+ * Class to handle the conversion between java.awt.geom.Ellipse2D.Float and a String form. The String form is
+ * 
+ * <pre>
+ * (x,y,width,height)
+ * </pre>
  */
 public class Ellipse2dFloatStringConverter implements TypeConverter<Ellipse2D.Float, String>
 {
@@ -36,7 +39,7 @@ public class Ellipse2dFloatStringConverter implements TypeConverter<Ellipse2D.Fl
         }
 
         Ellipse2D.Float r = new Ellipse2D.Float();
-        StringTokenizer tokeniser = new StringTokenizer(str.substring(1, str.length()-1), ",");
+        StringTokenizer tokeniser = new StringTokenizer(str.substring(1, str.length() - 1), ",");
 
         float x = 0;
         if (tokeniser.hasMoreTokens())

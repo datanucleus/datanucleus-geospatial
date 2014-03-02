@@ -14,7 +14,7 @@ limitations under the License.
 
 Contributors:
     ...
-**********************************************************************/
+ **********************************************************************/
 package org.datanucleus.store.rdbms.mapping;
 
 import java.awt.geom.QuadCurve2D;
@@ -31,13 +31,15 @@ import org.datanucleus.store.rdbms.mapping.java.SingleFieldMultiMapping;
 import org.datanucleus.store.rdbms.table.Table;
 
 /**
- * Mapping for java.awt.geom.QuadCurve2D.Float, maps the x1, y1, ctrlx, ctrly, x2 and y2 values to float-precision
- * datastore fields.
+ * Mapping for java.awt.geom.QuadCurve2D.Float, maps the x1, y1, ctrlx, ctrly, x2 and y2 values to
+ * float-precision datastore fields.
  */
 public class QuadCurve2dFloatMapping extends SingleFieldMultiMapping
 {
-    /* (non-Javadoc)
-     * @see org.datanucleus.store.rdbms.mapping.JavaTypeMapping#initialize(AbstractMemberMetaData, DatastoreContainerObject, ClassLoaderResolver)
+    /*
+     * (non-Javadoc)
+     * @see org.datanucleus.store.rdbms.mapping.JavaTypeMapping#initialize(AbstractMemberMetaData,
+     * DatastoreContainerObject, ClassLoaderResolver)
      */
     public void initialize(AbstractMemberMetaData fmd, Table table, ClassLoaderResolver clr)
     {
@@ -45,8 +47,10 @@ public class QuadCurve2dFloatMapping extends SingleFieldMultiMapping
         addColumns();
     }
 
-    /* (non-Javadoc)
-     * @see org.datanucleus.store.rdbms.mapping.JavaTypeMapping#initialize(RDBMSStoreManager, java.lang.String)
+    /*
+     * (non-Javadoc)
+     * @see org.datanucleus.store.rdbms.mapping.JavaTypeMapping#initialize(RDBMSStoreManager,
+     * java.lang.String)
      */
     public void initialize(RDBMSStoreManager storeMgr, String type)
     {
@@ -64,7 +68,8 @@ public class QuadCurve2dFloatMapping extends SingleFieldMultiMapping
         addColumns(ClassNameConstants.FLOAT); // Y2
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
      * @see org.datanucleus.store.mapping.JavaTypeMapping#getJavaType()
      */
     public Class getJavaType()
@@ -73,15 +78,15 @@ public class QuadCurve2dFloatMapping extends SingleFieldMultiMapping
     }
 
     /**
-     * Method to return the value to be stored in the specified datastore index given the overall
-     * value for this java type.
+     * Method to return the value to be stored in the specified datastore index given the overall value for
+     * this java type.
      * @param index The datastore index
      * @param value The overall value for this java type
      * @return The value for this datastore index
      */
     public Object getValueForDatastoreMapping(NucleusContext nucleusCtx, int index, Object value)
     {
-        QuadCurve2D.Float qc = (QuadCurve2D.Float)value;
+        QuadCurve2D.Float qc = (QuadCurve2D.Float) value;
         if (index == 0)
         {
             return qc.getX1();
@@ -109,32 +114,36 @@ public class QuadCurve2dFloatMapping extends SingleFieldMultiMapping
         throw new IndexOutOfBoundsException();
     }
 
-    /* (non-Javadoc)
-     * @see org.datanucleus.store.mapping.JavaTypeMapping#setObject(org.datanucleus.ExecutionContext, java.lang.Object, int[], java.lang.Object)
+    /*
+     * (non-Javadoc)
+     * @see org.datanucleus.store.mapping.JavaTypeMapping#setObject(org.datanucleus.ExecutionContext,
+     * java.lang.Object, int[], java.lang.Object)
      */
     public void setObject(ExecutionContext ec, PreparedStatement ps, int[] exprIndex, Object value)
     {
-    	QuadCurve2D.Float line = (QuadCurve2D.Float)value;
+        QuadCurve2D.Float line = (QuadCurve2D.Float) value;
         if (line == null)
         {
-    		for (int i = 0; i < exprIndex.length; i++) 
-    		{
-    			getDatastoreMapping(i).setObject(ps, exprIndex[i], null);					
-			}
+            for (int i = 0; i < exprIndex.length; i++)
+            {
+                getDatastoreMapping(i).setObject(ps, exprIndex[i], null);
+            }
         }
         else
         {
-            getDatastoreMapping(0).setFloat(ps,exprIndex[0],line.x1);
-            getDatastoreMapping(1).setFloat(ps,exprIndex[1],line.y1);
-            getDatastoreMapping(2).setFloat(ps,exprIndex[2],line.ctrlx);
-            getDatastoreMapping(3).setFloat(ps,exprIndex[3],line.ctrly);
-            getDatastoreMapping(4).setFloat(ps,exprIndex[4],line.x2);
-            getDatastoreMapping(5).setFloat(ps,exprIndex[5],line.y2);
+            getDatastoreMapping(0).setFloat(ps, exprIndex[0], line.x1);
+            getDatastoreMapping(1).setFloat(ps, exprIndex[1], line.y1);
+            getDatastoreMapping(2).setFloat(ps, exprIndex[2], line.ctrlx);
+            getDatastoreMapping(3).setFloat(ps, exprIndex[3], line.ctrly);
+            getDatastoreMapping(4).setFloat(ps, exprIndex[4], line.x2);
+            getDatastoreMapping(5).setFloat(ps, exprIndex[5], line.y2);
         }
     }
-    
-    /* (non-Javadoc)
-     * @see org.datanucleus.store.mapping.JavaTypeMapping#getObject(org.datanucleus.ExecutionContext, java.lang.Object, int[])
+
+    /*
+     * (non-Javadoc)
+     * @see org.datanucleus.store.mapping.JavaTypeMapping#getObject(org.datanucleus.ExecutionContext,
+     * java.lang.Object, int[])
      */
     public Object getObject(ExecutionContext ec, ResultSet resultSet, int[] exprIndex)
     {
@@ -144,12 +153,12 @@ public class QuadCurve2dFloatMapping extends SingleFieldMultiMapping
             return null;
         }
 
-        float x1 = getDatastoreMapping(0).getFloat(resultSet,exprIndex[0]); 
-        float y1 = getDatastoreMapping(1).getFloat(resultSet,exprIndex[1]); 
-        float ctrlx = getDatastoreMapping(2).getFloat(resultSet,exprIndex[2]); 
-        float ctrly = getDatastoreMapping(3).getFloat(resultSet,exprIndex[3]);
-        float x2 = getDatastoreMapping(4).getFloat(resultSet,exprIndex[5]); 
-        float y2 = getDatastoreMapping(5).getFloat(resultSet,exprIndex[6]);
+        float x1 = getDatastoreMapping(0).getFloat(resultSet, exprIndex[0]);
+        float y1 = getDatastoreMapping(1).getFloat(resultSet, exprIndex[1]);
+        float ctrlx = getDatastoreMapping(2).getFloat(resultSet, exprIndex[2]);
+        float ctrly = getDatastoreMapping(3).getFloat(resultSet, exprIndex[3]);
+        float x2 = getDatastoreMapping(4).getFloat(resultSet, exprIndex[5]);
+        float y2 = getDatastoreMapping(5).getFloat(resultSet, exprIndex[6]);
         return new QuadCurve2D.Float(x1, y1, ctrlx, ctrly, x2, y2);
     }
 }

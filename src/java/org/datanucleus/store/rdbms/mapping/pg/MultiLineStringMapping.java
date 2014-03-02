@@ -14,7 +14,7 @@ limitations under the License.
 
 Contributors:
     ...
-**********************************************************************/
+ **********************************************************************/
 package org.datanucleus.store.rdbms.mapping.pg;
 
 import org.postgis.MultiLineString;
@@ -22,10 +22,10 @@ import org.postgis.MultiLineString;
 /**
  * Mapping for org.postgis.MultiLineString to its datastore representation.
  */
-public class MultiLineStringMapping extends GeometryMapping 
+public class MultiLineStringMapping extends GeometryMapping
 {
-	public Class getJavaType() 
+    public Class getJavaType()
     {
-		return MultiLineString.class;
-	}
+        return MultiLineString.class;
+    }
 }

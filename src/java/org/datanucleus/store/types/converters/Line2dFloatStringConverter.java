@@ -14,7 +14,7 @@ limitations under the License.
 
 Contributors:
     ...
-**********************************************************************/
+ **********************************************************************/
 package org.datanucleus.store.types.converters;
 
 import java.awt.geom.Line2D;
@@ -23,8 +23,11 @@ import java.util.StringTokenizer;
 import org.datanucleus.exceptions.NucleusDataStoreException;
 
 /**
- * Class to handle the conversion between java.awt.geom.Line2D.Float and a String form.
- * The String form is <pre>(x1,y1),(x2,y2)</pre>
+ * Class to handle the conversion between java.awt.geom.Line2D.Float and a String form. The String form is
+ * 
+ * <pre>
+ * (x1,y1),(x2,y2)
+ * </pre>
  */
 public class Line2dFloatStringConverter implements TypeConverter<Line2D.Float, String>
 {
@@ -42,7 +45,7 @@ public class Line2dFloatStringConverter implements TypeConverter<Line2D.Float, S
         String token = tokeniser.nextToken();
         token = token.substring(1); // x1,y1
         String xStr = token.substring(0, token.indexOf(","));
-        String yStr = token.substring(token.indexOf(",")+1);
+        String yStr = token.substring(token.indexOf(",") + 1);
         float x1 = 0;
         try
         {
@@ -65,7 +68,7 @@ public class Line2dFloatStringConverter implements TypeConverter<Line2D.Float, S
         token = tokeniser.nextToken();
         token = token.substring(1); // x2,y2
         xStr = token.substring(0, token.indexOf(","));
-        yStr = token.substring(token.indexOf(",")+1);
+        yStr = token.substring(token.indexOf(",") + 1);
         float x2 = 0;
         try
         {

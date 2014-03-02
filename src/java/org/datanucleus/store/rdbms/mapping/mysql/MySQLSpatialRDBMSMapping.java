@@ -25,8 +25,8 @@ import org.datanucleus.store.rdbms.RDBMSStoreManager;
 import org.datanucleus.store.rdbms.table.Column;
 
 /**
- * Abstract base class for all MySQL spatial mappings. Contains helper methods
- * that convert WKB (Well Known Binary) data to MySQL spatial objects and vice versa.
+ * Abstract base class for all MySQL spatial mappings. Contains helper methods that convert WKB (Well Known
+ * Binary) data to MySQL spatial objects and vice versa.
  */
 public abstract class MySQLSpatialRDBMSMapping extends AbstractDatastoreMapping
 {
@@ -50,7 +50,6 @@ public abstract class MySQLSpatialRDBMSMapping extends AbstractDatastoreMapping
 
     /**
      * Converts a spatial object from MySQL binary format to WKB.
-     * 
      * @param mysqlBinary A spatial object in MySQL binary format.
      * @return The spatial object as WKB.
      * @throws SQLException If the object contains invalid data.
@@ -65,7 +64,6 @@ public abstract class MySQLSpatialRDBMSMapping extends AbstractDatastoreMapping
 
     /**
      * Extracts the SRID of a spatial object in MySQL binary format.
-     * 
      * @param mysqlBinary A spatial object in MySQL binary format.
      * @return The SRID
      * @throws SQLException If the object contains invalid data.
@@ -85,7 +83,6 @@ public abstract class MySQLSpatialRDBMSMapping extends AbstractDatastoreMapping
 
     /**
      * Converts a spatial object from WKB to MySQL binary format.
-     * 
      * @param wkb A spatial object in WKB format.
      * @param srid The SRID of the spatial object.
      * @return The spatial object in MySQL binary format.
@@ -97,17 +94,17 @@ public abstract class MySQLSpatialRDBMSMapping extends AbstractDatastoreMapping
         byte[] mysqlBinary = new byte[wkb.length + SRID_LENGTH];
         if (isBigEndian(wkb[0]))
         {
-            mysqlBinary[0] = (byte)(srid >> 24);
-            mysqlBinary[1] = (byte)(srid >> 16);
-            mysqlBinary[2] = (byte)(srid >> 8);
-            mysqlBinary[3] = (byte)srid;
+            mysqlBinary[0] = (byte) (srid >> 24);
+            mysqlBinary[1] = (byte) (srid >> 16);
+            mysqlBinary[2] = (byte) (srid >> 8);
+            mysqlBinary[3] = (byte) srid;
         }
         else
         {
-            mysqlBinary[3] = (byte)(srid >> 24);
-            mysqlBinary[2] = (byte)(srid >> 16);
-            mysqlBinary[1] = (byte)(srid >> 8);
-            mysqlBinary[0] = (byte)srid;
+            mysqlBinary[3] = (byte) (srid >> 24);
+            mysqlBinary[2] = (byte) (srid >> 16);
+            mysqlBinary[1] = (byte) (srid >> 8);
+            mysqlBinary[0] = (byte) srid;
         }
         System.arraycopy(wkb, 0, mysqlBinary, SRID_LENGTH, wkb.length);
         return mysqlBinary;
@@ -115,9 +112,12 @@ public abstract class MySQLSpatialRDBMSMapping extends AbstractDatastoreMapping
 
     private boolean isBigEndian(byte flag) throws SQLException
     {
-        if (flag == XDR) return true;
-        else if (flag == NDR) return false;
-        else throw new SQLException("Unknown Endian type:" + flag);
+        if (flag == XDR)
+            return true;
+        else if (flag == NDR)
+            return false;
+        else
+            throw new SQLException("Unknown Endian type:" + flag);
     }
 
 }

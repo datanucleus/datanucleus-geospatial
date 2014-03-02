@@ -14,7 +14,7 @@ limitations under the License.
 
 Contributors:
    2013 barisergun75@gmail.com - NUCSPATIAL-28 Adding postgis support
-**********************************************************************/
+ **********************************************************************/
 package org.datanucleus.store.rdbms.sql.method;
 
 import java.util.ArrayList;
@@ -36,7 +36,7 @@ public class SpatialDifferenceMethod3 extends AbstractSQLMethod
         {
             throw new NucleusUserException("Cannot invoke Spatial.difference without arguments");
         }
-    	if (expr == null && (args == null || args.size() != 2))
+        if (expr == null && (args == null || args.size() != 2))
         {
             throw new NucleusUserException("Cannot invoke Spatial.difference without 2 arguments");
         }
@@ -50,13 +50,13 @@ public class SpatialDifferenceMethod3 extends AbstractSQLMethod
         if (expr == null)
         {
             // "Spatial." method
-            argExpr1 = (SQLExpression)args.get(0); // Geometry 1
-            argExpr2 = (SQLExpression)args.get(1); // Geometry 2
+            argExpr1 = (SQLExpression) args.get(0); // Geometry 1
+            argExpr2 = (SQLExpression) args.get(1); // Geometry 2
         }
         else
         {
             argExpr1 = expr; // Geometry 1
-            argExpr2 = (SQLExpression)args.get(0); // Geometry 2
+            argExpr2 = (SQLExpression) args.get(0); // Geometry 2
         }
 
         ArrayList<SQLExpression> funcArgs = new ArrayList<SQLExpression>();
@@ -64,6 +64,6 @@ public class SpatialDifferenceMethod3 extends AbstractSQLMethod
         funcArgs.add(argExpr2);
 
         JavaTypeMapping geomMapping = SpatialMethodHelper.getGeometryMapping(clr, argExpr1);
-        return new GeometryExpression(stmt, geomMapping, "st_difference", funcArgs, null);    
-      }
+        return new GeometryExpression(stmt, geomMapping, "st_difference", funcArgs, null);
+    }
 }

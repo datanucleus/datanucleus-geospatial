@@ -14,7 +14,7 @@ limitations under the License.
 
 Contributors:
     ...
-**********************************************************************/
+ **********************************************************************/
 package org.datanucleus.store.types.converters;
 
 import java.awt.Rectangle;
@@ -23,8 +23,11 @@ import java.util.StringTokenizer;
 import org.datanucleus.exceptions.NucleusDataStoreException;
 
 /**
- * Class to handle the conversion between java.awt.Rectangle and a String form.
- * The String form is <pre>(x,y,width,height)</pre>
+ * Class to handle the conversion between java.awt.Rectangle and a String form. The String form is
+ * 
+ * <pre>
+ * (x,y,width,height)
+ * </pre>
  */
 public class RectangleStringConverter implements TypeConverter<Rectangle, String>
 {
@@ -36,7 +39,7 @@ public class RectangleStringConverter implements TypeConverter<Rectangle, String
         }
 
         Rectangle r = new Rectangle();
-        StringTokenizer tokeniser = new StringTokenizer(str.substring(1, str.length()-1), ",");
+        StringTokenizer tokeniser = new StringTokenizer(str.substring(1, str.length() - 1), ",");
 
         int x = 0;
         if (tokeniser.hasMoreTokens())

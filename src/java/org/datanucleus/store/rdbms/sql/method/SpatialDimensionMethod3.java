@@ -14,7 +14,7 @@ limitations under the License.
 
 Contributors:
    2013 barisergun75@gmail.com - Adding postgis support
-**********************************************************************/
+ **********************************************************************/
 package org.datanucleus.store.rdbms.sql.method;
 
 import java.util.ArrayList;
@@ -41,13 +41,16 @@ public class SpatialDimensionMethod3 extends AbstractSQLMethod
             throw new NucleusUserException("Cannot invoke geom.dimension() with an argument");
         }
 
-        SQLExpression argExpr1 = null;		
-        if (expr == null) {
-			// "Spatial." method
-			argExpr1 = (SQLExpression) args.get(0);		
-		} else {
-			argExpr1 = expr;			
-		}
+        SQLExpression argExpr1 = null;
+        if (expr == null)
+        {
+            // "Spatial." method
+            argExpr1 = (SQLExpression) args.get(0);
+        }
+        else
+        {
+            argExpr1 = expr;
+        }
 
         ArrayList<SQLExpression> funcArgs = new ArrayList<SQLExpression>();
         funcArgs.add(argExpr1);

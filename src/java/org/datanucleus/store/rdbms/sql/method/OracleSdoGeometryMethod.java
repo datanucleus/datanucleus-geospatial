@@ -14,7 +14,7 @@ limitations under the License.
 
 Contributors:
    ...
-**********************************************************************/
+ **********************************************************************/
 package org.datanucleus.store.rdbms.sql.method;
 
 import java.util.ArrayList;
@@ -29,8 +29,11 @@ import org.datanucleus.store.rdbms.sql.expression.SQLExpression;
  */
 public class OracleSdoGeometryMethod extends AbstractSQLMethod
 {
-	/* (non-Javadoc)
-     * @see org.datanucleus.store.rdbms.sql.method.SQLMethod#getExpression(org.datanucleus.store.rdbms.sql.expression.SQLExpression, java.util.List)
+    /*
+     * (non-Javadoc)
+     * @see
+     * org.datanucleus.store.rdbms.sql.method.SQLMethod#getExpression(org.datanucleus.store.rdbms.sql.expression
+     * .SQLExpression, java.util.List)
      */
     public SQLExpression getExpression(SQLExpression ignore, List args)
     {
@@ -39,11 +42,11 @@ public class OracleSdoGeometryMethod extends AbstractSQLMethod
             throw new NucleusUserException("Cannot invoke Oracle.sdo_geometry without 5 arguments");
         }
 
-        SQLExpression gtypeExpr = (SQLExpression)args.get(0); // Geometry Type
-        SQLExpression sridExpr = (SQLExpression)args.get(1); // SRID
-        SQLExpression pointExpr = (SQLExpression)args.get(2); // Point
-        SQLExpression elemInfoExpr = (SQLExpression)args.get(3); // Element info
-        SQLExpression ordinateExpr = (SQLExpression)args.get(4); // Ordinates
+        SQLExpression gtypeExpr = (SQLExpression) args.get(0); // Geometry Type
+        SQLExpression sridExpr = (SQLExpression) args.get(1); // SRID
+        SQLExpression pointExpr = (SQLExpression) args.get(2); // Point
+        SQLExpression elemInfoExpr = (SQLExpression) args.get(3); // Element info
+        SQLExpression ordinateExpr = (SQLExpression) args.get(4); // Ordinates
 
         ArrayList funcArgs = new ArrayList();
         funcArgs.add(gtypeExpr);

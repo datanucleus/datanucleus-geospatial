@@ -14,7 +14,7 @@ limitations under the License.
 
 Contributors:
     ...
-**********************************************************************/
+ **********************************************************************/
 package org.datanucleus.store.rdbms.sql.expression;
 
 import java.awt.Point;
@@ -45,7 +45,8 @@ public class PointLiteral extends PointExpression implements SQLLiteral
         }
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
      * @see org.datanucleus.store.rdbms.sql.expression.SQLLiteral#getValue()
      */
     public Object getValue()
@@ -53,7 +54,8 @@ public class PointLiteral extends PointExpression implements SQLLiteral
         return value;
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
      * @see org.datanucleus.store.rdbms.sql.expression.SQLLiteral#setNotParameter()
      */
     public void setNotParameter()

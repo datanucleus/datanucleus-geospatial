@@ -14,7 +14,7 @@ limitations under the License.
 
 Contributors:
    ...
-**********************************************************************/
+ **********************************************************************/
 package org.datanucleus.store.rdbms.sql.method;
 
 import java.util.ArrayList;
@@ -28,8 +28,11 @@ import org.datanucleus.store.rdbms.sql.expression.SQLExpression;
  */
 public class MySqlMbrEqualMethod extends AbstractSQLMethod
 {
-	/* (non-Javadoc)
-     * @see org.datanucleus.store.rdbms.sql.method.SQLMethod#getExpression(org.datanucleus.store.rdbms.sql.expression.SQLExpression, java.util.List)
+    /*
+     * (non-Javadoc)
+     * @see
+     * org.datanucleus.store.rdbms.sql.method.SQLMethod#getExpression(org.datanucleus.store.rdbms.sql.expression
+     * .SQLExpression, java.util.List)
      */
     public SQLExpression getExpression(SQLExpression ignore, List args)
     {
@@ -38,8 +41,8 @@ public class MySqlMbrEqualMethod extends AbstractSQLMethod
             throw new NucleusUserException("Cannot invoke MySQL.mbrEqual without 2 arguments");
         }
 
-        SQLExpression argExpr1 = (SQLExpression)args.get(0); // Geometry 1
-        SQLExpression argExpr2 = (SQLExpression)args.get(1); // Geometry 2
+        SQLExpression argExpr1 = (SQLExpression) args.get(0); // Geometry 1
+        SQLExpression argExpr2 = (SQLExpression) args.get(1); // Geometry 2
 
         ArrayList funcArgs = new ArrayList();
         funcArgs.add(argExpr1);

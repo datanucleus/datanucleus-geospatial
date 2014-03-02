@@ -14,7 +14,7 @@ limitations under the License.
 
 Contributors:
     ...
-**********************************************************************/
+ **********************************************************************/
 package org.datanucleus.store.types.converters;
 
 import java.awt.geom.Rectangle2D;
@@ -23,8 +23,12 @@ import java.util.StringTokenizer;
 import org.datanucleus.exceptions.NucleusDataStoreException;
 
 /**
- * Class to handle the conversion between java.awt.geom.Rectangle2D.Double and a String form.
- * The String form is <pre>(x,y,width,height)</pre>
+ * Class to handle the conversion between java.awt.geom.Rectangle2D.Double and a String form. The String form
+ * is
+ * 
+ * <pre>
+ * (x,y,width,height)
+ * </pre>
  */
 public class Rectangle2dDoubleStringConverter implements TypeConverter<Rectangle2D.Double, String>
 {
@@ -36,7 +40,7 @@ public class Rectangle2dDoubleStringConverter implements TypeConverter<Rectangle
         }
 
         Rectangle2D.Double r = new Rectangle2D.Double();
-        StringTokenizer tokeniser = new StringTokenizer(str.substring(1, str.length()-1), ",");
+        StringTokenizer tokeniser = new StringTokenizer(str.substring(1, str.length() - 1), ",");
 
         double x = 0;
         if (tokeniser.hasMoreTokens())

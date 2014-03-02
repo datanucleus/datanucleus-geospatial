@@ -14,7 +14,7 @@ limitations under the License.
 
 Contributors:
     ...
-**********************************************************************/
+ **********************************************************************/
 package org.datanucleus.store.types.converters;
 
 import java.awt.geom.RoundRectangle2D;
@@ -23,8 +23,12 @@ import java.util.StringTokenizer;
 import org.datanucleus.exceptions.NucleusDataStoreException;
 
 /**
- * Class to handle the conversion between java.awt.geom.RoundRectangle2D.Float and a String form.
- * The String form is <pre>(x,y,width,height)</pre>
+ * Class to handle the conversion between java.awt.geom.RoundRectangle2D.Float and a String form. The String
+ * form is
+ * 
+ * <pre>
+ * (x,y,width,height)
+ * </pre>
  */
 public class RoundRectangle2dFloatStringConverter implements TypeConverter<RoundRectangle2D.Float, String>
 {
@@ -36,7 +40,7 @@ public class RoundRectangle2dFloatStringConverter implements TypeConverter<Round
         }
 
         RoundRectangle2D.Float r = new RoundRectangle2D.Float();
-        StringTokenizer tokeniser = new StringTokenizer(str.substring(1, str.length()-1), ",");
+        StringTokenizer tokeniser = new StringTokenizer(str.substring(1, str.length() - 1), ",");
 
         float x = 0;
         if (tokeniser.hasMoreTokens())
@@ -152,7 +156,6 @@ public class RoundRectangle2dFloatStringConverter implements TypeConverter<Round
 
     public String toDatastoreType(RoundRectangle2D.Float rect)
     {
-        return rect != null ? "(" + rect.getX() + "," + rect.getY() + "," + 
-                rect.getWidth() + "," + rect.getHeight() + "," + rect.arcwidth + "," + rect.archeight + ")" : null;
+        return rect != null ? "(" + rect.getX() + "," + rect.getY() + "," + rect.getWidth() + "," + rect.getHeight() + "," + rect.arcwidth + "," + rect.archeight + ")" : null;
     }
 }

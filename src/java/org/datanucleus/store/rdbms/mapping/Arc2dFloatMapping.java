@@ -14,7 +14,7 @@ limitations under the License.
 
 Contributors:
     ...
-**********************************************************************/
+ **********************************************************************/
 package org.datanucleus.store.rdbms.mapping;
 
 import java.awt.geom.Arc2D;
@@ -31,13 +31,15 @@ import org.datanucleus.store.rdbms.mapping.java.SingleFieldMultiMapping;
 import org.datanucleus.store.rdbms.table.Table;
 
 /**
- * Mapping for java.awt.geom.Arc2D.Float, maps the x, y, width, height, start and extent values to float-precision
- * datastore fields.
+ * Mapping for java.awt.geom.Arc2D.Float, maps the x, y, width, height, start and extent values to
+ * float-precision datastore fields.
  */
 public class Arc2dFloatMapping extends SingleFieldMultiMapping
 {
-    /* (non-Javadoc)
-     * @see org.datanucleus.store.rdbms.mapping.JavaTypeMapping#initialize(AbstractMemberMetaData, DatastoreContainerObject, ClassLoaderResolver)
+    /*
+     * (non-Javadoc)
+     * @see org.datanucleus.store.rdbms.mapping.JavaTypeMapping#initialize(AbstractMemberMetaData,
+     * DatastoreContainerObject, ClassLoaderResolver)
      */
     public void initialize(AbstractMemberMetaData fmd, Table table, ClassLoaderResolver clr)
     {
@@ -45,8 +47,10 @@ public class Arc2dFloatMapping extends SingleFieldMultiMapping
         addColumns();
     }
 
-    /* (non-Javadoc)
-     * @see org.datanucleus.store.rdbms.mapping.JavaTypeMapping#initialize(RDBMSStoreManager, java.lang.String)
+    /*
+     * (non-Javadoc)
+     * @see org.datanucleus.store.rdbms.mapping.JavaTypeMapping#initialize(RDBMSStoreManager,
+     * java.lang.String)
      */
     public void initialize(RDBMSStoreManager storeMgr, String type)
     {
@@ -56,7 +60,7 @@ public class Arc2dFloatMapping extends SingleFieldMultiMapping
 
     protected void addColumns()
     {
-        addColumns(ClassNameConstants.INT);   // Type
+        addColumns(ClassNameConstants.INT); // Type
         addColumns(ClassNameConstants.FLOAT); // X
         addColumns(ClassNameConstants.FLOAT); // Y
         addColumns(ClassNameConstants.FLOAT); // Width
@@ -65,7 +69,8 @@ public class Arc2dFloatMapping extends SingleFieldMultiMapping
         addColumns(ClassNameConstants.FLOAT); // Extent
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
      * @see org.datanucleus.store.mapping.JavaTypeMapping#getJavaType()
      */
     public Class getJavaType()
@@ -74,15 +79,15 @@ public class Arc2dFloatMapping extends SingleFieldMultiMapping
     }
 
     /**
-     * Method to return the value to be stored in the specified datastore index given the overall
-     * value for this java type.
+     * Method to return the value to be stored in the specified datastore index given the overall value for
+     * this java type.
      * @param index The datastore index
      * @param value The overall value for this java type
      * @return The value for this datastore index
      */
     public Object getValueForDatastoreMapping(NucleusContext nucleusCtx, int index, Object value)
     {
-        Arc2D.Float arc = (Arc2D.Float)value;
+        Arc2D.Float arc = (Arc2D.Float) value;
         if (index == 0)
         {
             return arc.getArcType();
@@ -114,33 +119,37 @@ public class Arc2dFloatMapping extends SingleFieldMultiMapping
         throw new IndexOutOfBoundsException();
     }
 
-    /* (non-Javadoc)
-     * @see org.datanucleus.store.mapping.JavaTypeMapping#setObject(org.datanucleus.ExecutionContext, java.lang.Object, int[], java.lang.Object)
+    /*
+     * (non-Javadoc)
+     * @see org.datanucleus.store.mapping.JavaTypeMapping#setObject(org.datanucleus.ExecutionContext,
+     * java.lang.Object, int[], java.lang.Object)
      */
     public void setObject(ExecutionContext ec, PreparedStatement ps, int[] exprIndex, Object value)
     {
-    	Arc2D.Float arc = (Arc2D.Float)value;
+        Arc2D.Float arc = (Arc2D.Float) value;
         if (arc == null)
         {
-    		for (int i = 0; i < exprIndex.length; i++) 
-    		{
-    			getDatastoreMapping(i).setObject(ps, exprIndex[i], null);					
-			}
+            for (int i = 0; i < exprIndex.length; i++)
+            {
+                getDatastoreMapping(i).setObject(ps, exprIndex[i], null);
+            }
         }
         else
         {
-            getDatastoreMapping(0).setInt(ps,exprIndex[0],arc.getArcType());
-            getDatastoreMapping(1).setFloat(ps,exprIndex[1],arc.x);
-            getDatastoreMapping(2).setFloat(ps,exprIndex[2],arc.y);
-            getDatastoreMapping(3).setFloat(ps,exprIndex[3],arc.width);
-            getDatastoreMapping(4).setFloat(ps,exprIndex[4],arc.height);
-            getDatastoreMapping(5).setFloat(ps,exprIndex[5],arc.start);
-            getDatastoreMapping(6).setFloat(ps,exprIndex[6],arc.extent);
+            getDatastoreMapping(0).setInt(ps, exprIndex[0], arc.getArcType());
+            getDatastoreMapping(1).setFloat(ps, exprIndex[1], arc.x);
+            getDatastoreMapping(2).setFloat(ps, exprIndex[2], arc.y);
+            getDatastoreMapping(3).setFloat(ps, exprIndex[3], arc.width);
+            getDatastoreMapping(4).setFloat(ps, exprIndex[4], arc.height);
+            getDatastoreMapping(5).setFloat(ps, exprIndex[5], arc.start);
+            getDatastoreMapping(6).setFloat(ps, exprIndex[6], arc.extent);
         }
     }
-    
-    /* (non-Javadoc)
-     * @see org.datanucleus.store.mapping.JavaTypeMapping#getObject(org.datanucleus.ExecutionContext, java.lang.Object, int[])
+
+    /*
+     * (non-Javadoc)
+     * @see org.datanucleus.store.mapping.JavaTypeMapping#getObject(org.datanucleus.ExecutionContext,
+     * java.lang.Object, int[])
      */
     public Object getObject(ExecutionContext ec, ResultSet resultSet, int[] exprIndex)
     {
@@ -149,14 +158,14 @@ public class Arc2dFloatMapping extends SingleFieldMultiMapping
         {
             return null;
         }
-        
-        int type = getDatastoreMapping(0).getInt(resultSet,exprIndex[0]); 
-        float x = getDatastoreMapping(1).getFloat(resultSet,exprIndex[1]); 
-        float y = getDatastoreMapping(2).getFloat(resultSet,exprIndex[2]); 
-        float width  = getDatastoreMapping(3).getFloat(resultSet,exprIndex[3]); 
-        float height = getDatastoreMapping(4).getFloat(resultSet,exprIndex[4]);
-        float start  = getDatastoreMapping(5).getFloat(resultSet,exprIndex[5]); 
-        float extent = getDatastoreMapping(6).getFloat(resultSet,exprIndex[6]);
+
+        int type = getDatastoreMapping(0).getInt(resultSet, exprIndex[0]);
+        float x = getDatastoreMapping(1).getFloat(resultSet, exprIndex[1]);
+        float y = getDatastoreMapping(2).getFloat(resultSet, exprIndex[2]);
+        float width = getDatastoreMapping(3).getFloat(resultSet, exprIndex[3]);
+        float height = getDatastoreMapping(4).getFloat(resultSet, exprIndex[4]);
+        float start = getDatastoreMapping(5).getFloat(resultSet, exprIndex[5]);
+        float extent = getDatastoreMapping(6).getFloat(resultSet, exprIndex[6]);
         return new Arc2D.Float(x, y, width, height, start, extent, type);
     }
 }

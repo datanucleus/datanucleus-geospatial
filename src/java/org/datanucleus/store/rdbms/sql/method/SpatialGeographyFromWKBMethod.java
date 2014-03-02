@@ -33,14 +33,13 @@ public class SpatialGeographyFromWKBMethod extends AbstractSQLMethod
     {
         if (args == null || 1 != args.size())
         {
-            throw new NucleusUserException(
-                    "Cannot invoke Spatial.geogFromWKB without 1 arguments.");
+            throw new NucleusUserException("Cannot invoke Spatial.geogFromWKB without 1 arguments.");
         }
 
         SQLExpression wktExpr = (SQLExpression) args.get(0);
 
         ArrayList<SQLExpression> funcArgs = new ArrayList<SQLExpression>();
-        funcArgs.add(wktExpr);        
+        funcArgs.add(wktExpr);
 
         return new GeometryExpression(stmt, null, "st_geogfromwkb", funcArgs, null);
     }

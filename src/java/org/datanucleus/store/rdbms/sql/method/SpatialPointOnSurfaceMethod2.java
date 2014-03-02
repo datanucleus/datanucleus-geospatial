@@ -32,10 +32,8 @@ public class SpatialPointOnSurfaceMethod2 extends AbstractSQLMethod
 {
     /*
      * (non-Javadoc)
-     * 
      * @see org.datanucleus.store.rdbms.sql.method.SQLMethod#getExpression(org.
      * datanucleus.store.rdbms.sql.expression.SQLExpression, java.util.List)
-     * 
      * http://docs.oracle.com/cd/B19306_01/appdev.102/b14255/sdo_objgeom.htm#i860858
      */
     public SQLExpression getExpression(SQLExpression expr, List args)

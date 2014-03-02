@@ -14,7 +14,7 @@ limitations under the License.
 
 Contributors:
     ...
-**********************************************************************/
+ **********************************************************************/
 package org.datanucleus.store.types.converters;
 
 import java.awt.Point;
@@ -23,8 +23,11 @@ import java.util.StringTokenizer;
 import org.datanucleus.exceptions.NucleusDataStoreException;
 
 /**
- * Class to handle the conversion between java.awt.Point and a String form.
- * The String form is <pre>(x,y)</pre>
+ * Class to handle the conversion between java.awt.Point and a String form. The String form is
+ * 
+ * <pre>
+ * (x,y)
+ * </pre>
  */
 public class PointStringConverter implements TypeConverter<Point, String>
 {
@@ -36,7 +39,7 @@ public class PointStringConverter implements TypeConverter<Point, String>
         }
 
         Point p = new Point();
-        StringTokenizer tokeniser = new StringTokenizer(str.substring(1, str.length()-1), ",");
+        StringTokenizer tokeniser = new StringTokenizer(str.substring(1, str.length() - 1), ",");
 
         int x = 0;
         if (tokeniser.hasMoreTokens())

@@ -14,7 +14,7 @@ limitations under the License.
 
 Contributors:
     ...
-**********************************************************************/
+ **********************************************************************/
 package org.datanucleus.query.evaluator.memory;
 
 import java.awt.Point;
@@ -32,8 +32,11 @@ public class PointGetYMethodEvaluator implements InvocationEvaluator
     protected static final Localiser LOCALISER = Localiser.getInstance("org.datanucleus.Localisation",
         org.datanucleus.ClassConstants.NUCLEUS_CONTEXT_LOADER);
 
-    /* (non-Javadoc)
-     * @see org.datanucleus.query.evaluator.memory.InvocationEvaluator#evaluate(org.datanucleus.query.expression.InvokeExpression, org.datanucleus.query.evaluator.memory.InMemoryExpressionEvaluator)
+    /*
+     * (non-Javadoc)
+     * @see
+     * org.datanucleus.query.evaluator.memory.InvocationEvaluator#evaluate(org.datanucleus.query.expression
+     * .InvokeExpression, org.datanucleus.query.evaluator.memory.InMemoryExpressionEvaluator)
      */
     public Object evaluate(InvokeExpression expr, Object invokedValue, InMemoryExpressionEvaluator eval)
     {
@@ -45,7 +48,7 @@ public class PointGetYMethodEvaluator implements InvocationEvaluator
         }
         else if (invokedValue instanceof Point)
         {
-            return ((Point)invokedValue).getY();
+            return ((Point) invokedValue).getY();
         }
         else
         {

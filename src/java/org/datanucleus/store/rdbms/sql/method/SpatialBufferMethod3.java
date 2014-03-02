@@ -14,7 +14,7 @@ limitations under the License.
 
 Contributors:
    2013 barisergun75@gmail.com - NUCSPATIAL-28 Adding postgis support
-**********************************************************************/
+ **********************************************************************/
 package org.datanucleus.store.rdbms.sql.method;
 
 import java.util.ArrayList;
@@ -50,13 +50,13 @@ public class SpatialBufferMethod3 extends AbstractSQLMethod
         if (expr == null)
         {
             // "Spatial." method
-            geomExpr = (SQLExpression)args.get(0);
-            distExpr = (SQLExpression)args.get(1);
+            geomExpr = (SQLExpression) args.get(0);
+            distExpr = (SQLExpression) args.get(1);
         }
         else
         {
             geomExpr = expr;
-            distExpr = (SQLExpression)args.get(0);
+            distExpr = (SQLExpression) args.get(0);
         }
 
         ArrayList<SQLExpression> funcArgs = new ArrayList<SQLExpression>();

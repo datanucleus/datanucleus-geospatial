@@ -14,7 +14,7 @@ limitations under the License.
 
 Contributors:
     ...
-**********************************************************************/
+ **********************************************************************/
 package org.datanucleus.store.rdbms.sql.method;
 
 import java.awt.Rectangle;
@@ -24,8 +24,8 @@ import org.datanucleus.store.rdbms.mapping.datastore.DatastoreMapping;
 import org.datanucleus.store.rdbms.mapping.java.IntegerMapping;
 
 /**
- * Mapping for the X or Y component of a RectangleMapping. Is actually a wrapper to the real PointMapping
- * just returning the relevant column mapping.
+ * Mapping for the X or Y component of a RectangleMapping. Is actually a wrapper to the real PointMapping just
+ * returning the relevant column mapping.
  */
 public class RectangleComponentMapping extends IntegerMapping
 {
@@ -37,8 +37,8 @@ public class RectangleComponentMapping extends IntegerMapping
 
     /**
      * @param rectMapping The <tt>RectangleMapping</tt> instance we are getting our data from.
-     * @param mappingIndex The index of the mapping in the previously supplied <tt>PointMapping</tt> instance we
-     *     should return (ie. the mapping we pretend is the only that exists).
+     * @param mappingIndex The index of the mapping in the previously supplied <tt>PointMapping</tt> instance
+     * we should return (ie. the mapping we pretend is the only that exists).
      */
     public RectangleComponentMapping(RectangleMapping rectMapping, int mappingIndex)
     {

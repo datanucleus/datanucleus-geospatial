@@ -31,7 +31,6 @@ public class SpatialXMethod2 extends AbstractSQLMethod
 {
     /*
      * (non-Javadoc)
-     * 
      * @see org.datanucleus.store.rdbms.sql.method.SQLMethod#getExpression(org.
      * datanucleus.store.rdbms.sql.expression.SQLExpression, java.util.List)
      */

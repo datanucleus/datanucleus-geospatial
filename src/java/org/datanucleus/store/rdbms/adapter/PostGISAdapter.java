@@ -14,7 +14,7 @@ limitations under the License.
 
 Contributors:
     ...
-**********************************************************************/
+ **********************************************************************/
 package org.datanucleus.store.rdbms.adapter;
 
 import java.sql.DatabaseMetaData;
@@ -40,8 +40,8 @@ import org.datanucleus.util.Localiser;
  */
 public class PostGISAdapter extends PostgreSQLAdapter implements SpatialRDBMSAdapter
 {
-    protected static final Localiser LOCALISER_POSTGIS = Localiser.getInstance(
-        "org.datanucleus.store.rdbms.adapter.Localisation_PostGIS", SpatialHelper.class.getClassLoader());
+    protected static final Localiser LOCALISER_POSTGIS = Localiser.getInstance("org.datanucleus.store.rdbms.adapter.Localisation_PostGIS",
+        SpatialHelper.class.getClassLoader());
 
     /** Key name for the hasMeasure extension. **/
     public static final String HAS_MEASURE_EXTENSION_KEY = "postgis-hasMeasure";
@@ -63,7 +63,7 @@ public class PostGISAdapter extends PostgreSQLAdapter implements SpatialRDBMSAda
 
         // Add on any missing JDBC types
         SQLTypeInfo sqlType = PostGISTypeInfo.TYPEINFO_PROTOTYPE;
-        addSQLTypeForJDBCType(handler, mconn, (short)Types.OTHER, sqlType, true);
+        addSQLTypeForJDBCType(handler, mconn, (short) Types.OTHER, sqlType, true);
     }
 
     public String getAddPrimaryKeyStatement(PrimaryKey pk, IdentifierFactory factory)
@@ -116,39 +116,30 @@ public class PostGISAdapter extends PostgreSQLAdapter implements SpatialRDBMSAda
 
     public String getRetrieveCrsWktStatement(Table table, int srid)
     {
-        return "SELECT srtext FROM #schema . spatial_ref_sys WHERE srid = #srid"
-                .replace("#schema", table.getSchemaName())
-                .replace("#srid", "" + srid);
+        return "SELECT srtext FROM #schema . spatial_ref_sys WHERE srid = #srid".replace("#schema", table.getSchemaName()).replace("#srid",
+            "" + srid);
     }
-    
+
     public String getRetrieveCrsNameStatement(Table table, int srid)
     {
-        return "SELECT auth_name || ':' || auth_srid FROM #schema . spatial_ref_sys WHERE srid = #srid"
-                .replace("#schema", table.getSchemaName())
-                .replace("#srid", "" + srid);
+        return "SELECT auth_name || ':' || auth_srid FROM #schema . spatial_ref_sys WHERE srid = #srid".replace("#schema",
+            table.getSchemaName()).replace("#srid", "" + srid);
     }
 
     public String getCalculateBoundsStatement(Table table, Column column)
     {
-        return "SELECT " +
-                "min(xmin(box2d(#column))), " +
-                "min(ymin(box2d(#column))), " +
-                "max(xmax(box2d(#column))), " +
-                "max(ymax(box2d(#column)))" +
-                "FROM #schema . #table"
-                .replace("#schema", table.getSchemaName())
-                .replace("#table", "" + table.getIdentifier().getIdentifierName())
+        return "SELECT " + "min(xmin(box2d(#column))), " + "min(ymin(box2d(#column))), " + "max(xmax(box2d(#column))), " + "max(ymax(box2d(#column)))" + "FROM #schema . #table"
+                .replace("#schema", table.getSchemaName()).replace("#table", "" + table.getIdentifier().getIdentifierName())
                 .replace("#column", "" + column.getIdentifier().getIdentifierName());
     }
-    
+
     private String getAddGeometryColumnStatement(Table table, Column column)
     {
         int srid = -1;
         byte dimension = 2;
         boolean hasMeasure = false;
 
-        String extensionValue = MetaDataUtils.getValueForExtensionRecursively(column.getColumnMetaData(), 
-            SRID_EXTENSION_KEY);
+        String extensionValue = MetaDataUtils.getValueForExtensionRecursively(column.getColumnMetaData(), SRID_EXTENSION_KEY);
         if (extensionValue != null)
         {
             try
@@ -157,13 +148,12 @@ public class PostGISAdapter extends PostgreSQLAdapter implements SpatialRDBMSAda
             }
             catch (NumberFormatException nfe)
             {
-                NucleusLogger.DATASTORE.warn(LOCALISER_POSTGIS.msg(
-                    "RDBMS.Adapter.InvalidExtensionValue", SRID_EXTENSION_KEY, extensionValue), nfe);
+                NucleusLogger.DATASTORE.warn(
+                    LOCALISER_POSTGIS.msg("RDBMS.Adapter.InvalidExtensionValue", SRID_EXTENSION_KEY, extensionValue), nfe);
             }
         }
 
-        extensionValue = MetaDataUtils.getValueForExtensionRecursively(column.getColumnMetaData(), 
-            DIMENSION_EXTENSION_KEY);
+        extensionValue = MetaDataUtils.getValueForExtensionRecursively(column.getColumnMetaData(), DIMENSION_EXTENSION_KEY);
         if (extensionValue != null)
         {
             try
@@ -172,13 +162,12 @@ public class PostGISAdapter extends PostgreSQLAdapter implements SpatialRDBMSAda
             }
             catch (NumberFormatException nfe)
             {
-                NucleusLogger.DATASTORE.warn(LOCALISER_POSTGIS.msg(
-                    "RDBMS.Adapter.InvalidExtensionValue", DIMENSION_EXTENSION_KEY, extensionValue), nfe);
+                NucleusLogger.DATASTORE.warn(
+                    LOCALISER_POSTGIS.msg("RDBMS.Adapter.InvalidExtensionValue", DIMENSION_EXTENSION_KEY, extensionValue), nfe);
             }
         }
 
-        extensionValue = MetaDataUtils.getValueForExtensionRecursively(column.getColumnMetaData(), 
-            HAS_MEASURE_EXTENSION_KEY);
+        extensionValue = MetaDataUtils.getValueForExtensionRecursively(column.getColumnMetaData(), HAS_MEASURE_EXTENSION_KEY);
         if (extensionValue != null)
         {
             try
@@ -188,23 +177,21 @@ public class PostGISAdapter extends PostgreSQLAdapter implements SpatialRDBMSAda
             catch (NumberFormatException nfe)
             {
                 NucleusLogger.DATASTORE.warn(
-                    LOCALISER_POSTGIS.msg("RDBMS.Adapter.InvalidExtensionValue", 
-                        HAS_MEASURE_EXTENSION_KEY, extensionValue), nfe);
+                    LOCALISER_POSTGIS.msg("RDBMS.Adapter.InvalidExtensionValue", HAS_MEASURE_EXTENSION_KEY, extensionValue), nfe);
             }
         }
-        
+
         if (hasMeasure)
         {
             dimension++;
         }
 
         return "SELECT AddGeometryColumn( '#schema', '#table', '#column', #srid, '#type', #dimension )"
-               .replace("#schema", table.getSchemaName() == null ? "" : table.getSchemaName())
-               .replace("#table", table.getIdentifier().getIdentifierName())
-               .replace("#column", column.getIdentifier().getIdentifierName())
-               .replace("#srid", "" + srid)
-               .replace("#type", column.getTypeInfo().getLocalTypeName().concat(hasMeasure ? "M" : ""))
-               .replace("#dimension", "" + dimension);
+                .replace("#schema", table.getSchemaName() == null ? "" : table.getSchemaName())
+                .replace("#table", table.getIdentifier().getIdentifierName())
+                .replace("#column", column.getIdentifier().getIdentifierName()).replace("#srid", "" + srid)
+                .replace("#type", column.getTypeInfo().getLocalTypeName().concat(hasMeasure ? "M" : ""))
+                .replace("#dimension", "" + dimension);
     }
 
     public boolean isGeometryColumn(Column column)

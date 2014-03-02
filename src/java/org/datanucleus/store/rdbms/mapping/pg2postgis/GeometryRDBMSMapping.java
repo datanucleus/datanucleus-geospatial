@@ -39,7 +39,7 @@ public class GeometryRDBMSMapping extends AbstractDatastoreMapping
     private static final SQLTypeInfo typeInfo;
     static
     {
-        typeInfo = (SQLTypeInfo)PostGISTypeInfo.TYPEINFO_PROTOTYPE.clone();
+        typeInfo = (SQLTypeInfo) PostGISTypeInfo.TYPEINFO_PROTOTYPE.clone();
         typeInfo.setLocalTypeName("GEOMETRY");
     }
 
@@ -67,13 +67,13 @@ public class GeometryRDBMSMapping extends AbstractDatastoreMapping
         try
         {
             Object result = ((ResultSet) rs).getObject(exprIndex);
-            if (((ResultSet)rs).wasNull() || result == null)
+            if (((ResultSet) rs).wasNull() || result == null)
             {
                 value = null;
             }
             else
             {
-                value = ((PGgeometry)result).getGeometry();
+                value = ((PGgeometry) result).getGeometry();
             }
         }
         catch (SQLException e)
@@ -90,12 +90,12 @@ public class GeometryRDBMSMapping extends AbstractDatastoreMapping
         {
             if (value == null)
             {
-                ((PreparedStatement)ps).setNull(exprIndex, getTypeInfo().getDataType(), getTypeInfo().getTypeName());
+                ((PreparedStatement) ps).setNull(exprIndex, getTypeInfo().getDataType(), getTypeInfo().getTypeName());
             }
             else
             {
-                Object obj = new PGgeometry((Geometry)value);
-                ((PreparedStatement)ps).setObject(exprIndex, obj);
+                Object obj = new PGgeometry((Geometry) value);
+                ((PreparedStatement) ps).setObject(exprIndex, obj);
             }
         }
         catch (SQLException e)

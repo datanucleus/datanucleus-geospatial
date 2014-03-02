@@ -14,7 +14,7 @@ limitations under the License.
 
 Contributors:
     ...
-**********************************************************************/
+ **********************************************************************/
 package org.datanucleus.query.evaluator.memory;
 
 import java.awt.Point;
@@ -39,8 +39,11 @@ public class RectangleContainsMethodEvaluator implements InvocationEvaluator
     protected static final Localiser LOCALISER = Localiser.getInstance("org.datanucleus.Localisation",
         org.datanucleus.ClassConstants.NUCLEUS_CONTEXT_LOADER);
 
-    /* (non-Javadoc)
-     * @see org.datanucleus.query.evaluator.memory.InvocationEvaluator#evaluate(org.datanucleus.query.expression.InvokeExpression, org.datanucleus.query.evaluator.memory.InMemoryExpressionEvaluator)
+    /*
+     * (non-Javadoc)
+     * @see
+     * org.datanucleus.query.evaluator.memory.InvocationEvaluator#evaluate(org.datanucleus.query.expression
+     * .InvokeExpression, org.datanucleus.query.evaluator.memory.InMemoryExpressionEvaluator)
      */
     public Object evaluate(InvokeExpression expr, Object invokedValue, InMemoryExpressionEvaluator eval)
     {
@@ -56,21 +59,21 @@ public class RectangleContainsMethodEvaluator implements InvocationEvaluator
         Object argExpr = expr.getArguments().get(0);
         if (argExpr instanceof PrimaryExpression)
         {
-            PrimaryExpression primExpr = (PrimaryExpression)argExpr;
+            PrimaryExpression primExpr = (PrimaryExpression) argExpr;
             argVal = eval.getValueForPrimaryExpression(primExpr);
         }
         else if (argExpr instanceof ParameterExpression)
         {
-            ParameterExpression paramExpr = (ParameterExpression)argExpr;
+            ParameterExpression paramExpr = (ParameterExpression) argExpr;
             argVal = QueryUtils.getValueForParameterExpression(eval.getParameterValues(), paramExpr);
         }
         else if (argExpr instanceof Literal)
         {
-            argVal = ((Literal)argExpr).getLiteral();
+            argVal = ((Literal) argExpr).getLiteral();
         }
         else if (argExpr instanceof InvokeExpression)
         {
-            argVal = eval.getValueForInvokeExpression((InvokeExpression)argExpr);
+            argVal = eval.getValueForInvokeExpression((InvokeExpression) argExpr);
         }
         else
         {
@@ -86,11 +89,11 @@ public class RectangleContainsMethodEvaluator implements InvocationEvaluator
         {
             if (argVal instanceof Point)
             {
-                return ((Rectangle)invokedValue).contains((Point)argVal);
+                return ((Rectangle) invokedValue).contains((Point) argVal);
             }
             else if (argVal instanceof Rectangle)
             {
-                return ((Rectangle)invokedValue).contains((Rectangle)argVal);
+                return ((Rectangle) invokedValue).contains((Rectangle) argVal);
             }
             else
             {

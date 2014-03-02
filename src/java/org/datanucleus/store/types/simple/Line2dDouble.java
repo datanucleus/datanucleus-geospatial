@@ -14,7 +14,7 @@ limitations under the License.
 
 Contributors:
    ...
-**********************************************************************/
+ **********************************************************************/
 package org.datanucleus.store.types.simple;
 
 import java.awt.geom.Line2D;
@@ -31,6 +31,7 @@ import org.datanucleus.store.types.SCO;
 public class Line2dDouble extends java.awt.geom.Line2D.Double implements SCO
 {
     protected transient ObjectProvider ownerOP;
+
     protected transient String fieldName;
 
     /**
@@ -46,22 +47,25 @@ public class Line2dDouble extends java.awt.geom.Line2D.Double implements SCO
         this.fieldName = mmd.getName();
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
      * @see org.datanucleus.store.types.sco.SCO#initialise(java.lang.Object, boolean, boolean)
      */
     public void initialise(Object value, boolean forInsert, boolean forUpdate) throws ClassCastException
     {
-        super.setLine((Line2D.Double)value);
+        super.setLine((Line2D.Double) value);
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
      * @see org.datanucleus.store.types.sco.SCO#initialise()
      */
     public void initialise()
     {
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
      * @see org.datanucleus.store.types.sco.SCO#getValue()
      */
     public Object getValue()
@@ -69,7 +73,8 @@ public class Line2dDouble extends java.awt.geom.Line2D.Double implements SCO
         return new java.awt.geom.Line2D.Double(getX1(), getY1(), getX2(), getY2());
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
      * @see org.datanucleus.store.types.sco.SCO#unsetOwner()
      */
     public void unsetOwner()
@@ -77,7 +82,8 @@ public class Line2dDouble extends java.awt.geom.Line2D.Double implements SCO
         ownerOP = null;
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
      * @see org.datanucleus.store.types.sco.SCO#getOwner()
      */
     public Object getOwner()
@@ -85,7 +91,8 @@ public class Line2dDouble extends java.awt.geom.Line2D.Double implements SCO
         return (ownerOP != null ? ownerOP.getObject() : null);
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
      * @see org.datanucleus.store.types.sco.SCO#getFieldName()
      */
     public String getFieldName()
@@ -104,7 +111,8 @@ public class Line2dDouble extends java.awt.geom.Line2D.Double implements SCO
         }
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
      * @see org.datanucleus.store.types.sco.SCO#detachCopy(org.datanucleus.state.FetchPlanState)
      */
     public Object detachCopy(FetchPlanState state)
@@ -112,7 +120,8 @@ public class Line2dDouble extends java.awt.geom.Line2D.Double implements SCO
         return new java.awt.geom.Line2D.Double(getX1(), getY1(), getX2(), getY2());
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
      * @see org.datanucleus.store.types.sco.SCO#attachCopy(java.lang.Object)
      */
     public void attachCopy(Object value)
@@ -124,7 +133,7 @@ public class Line2dDouble extends java.awt.geom.Line2D.Double implements SCO
         initialise(value, false, true);
 
         // Check if the field has changed, and set the owner field as dirty if necessary
-        Line2dDouble rect = (Line2dDouble)value;
+        Line2dDouble rect = (Line2dDouble) value;
         double newX1 = rect.getX1();
         double newY1 = rect.getY1();
         double newX2 = rect.getX2();
@@ -137,21 +146,21 @@ public class Line2dDouble extends java.awt.geom.Line2D.Double implements SCO
 
     /**
      * Creates and returns a copy of this object.
-     *
-     * <p>Mutable second-class Objects are required to provide a public
-     * clone method in order to allow for copying PersistenceCapable
-     * objects. In contrast to Object.clone(), this method must not throw a
+     * <p>
+     * Mutable second-class Objects are required to provide a public clone method in order to allow for
+     * copying PersistenceCapable objects. In contrast to Object.clone(), this method must not throw a
      * CloneNotSupportedException.
      * @return A clone of the object
      */
     public Object clone()
     {
         Object obj = super.clone();
-        ((Line2dDouble)obj).unsetOwner();
+        ((Line2dDouble) obj).unsetOwner();
         return obj;
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
      * @see java.awt.geom.Line2D.Double#setLine(double, double, double, double)
      */
     public void setLine(double x1, double y1, double x2, double y2)
@@ -160,7 +169,8 @@ public class Line2dDouble extends java.awt.geom.Line2D.Double implements SCO
         makeDirty();
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
      * @see java.awt.geom.Line2D#setLine(java.awt.geom.Point2D, java.awt.geom.Point2D)
      */
     public void setLine(Point2D p1, Point2D p2)
@@ -169,7 +179,8 @@ public class Line2dDouble extends java.awt.geom.Line2D.Double implements SCO
         makeDirty();
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
      * @see java.awt.geom.Line2D#setLine(java.awt.geom.Line2D)
      */
     public void setLine(Line2D l)

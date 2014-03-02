@@ -14,7 +14,7 @@ limitations under the License.
 
 Contributors:
     ...
-**********************************************************************/
+ **********************************************************************/
 package org.datanucleus.store.rdbms.mapping;
 
 import java.awt.geom.Ellipse2D;
@@ -31,13 +31,15 @@ import org.datanucleus.store.rdbms.mapping.java.SingleFieldMultiMapping;
 import org.datanucleus.store.rdbms.table.Table;
 
 /**
- * Mapping for java.awt.geom.Ellipse2D.Float, maps the x, y, width and height values to float-precision 
+ * Mapping for java.awt.geom.Ellipse2D.Float, maps the x, y, width and height values to float-precision
  * datastore fields.
  */
 public class Ellipse2dFloatMapping extends SingleFieldMultiMapping
 {
-    /* (non-Javadoc)
-     * @see org.datanucleus.store.rdbms.mapping.JavaTypeMapping#initialize(AbstractMemberMetaData, DatastoreContainerObject, ClassLoaderResolver)
+    /*
+     * (non-Javadoc)
+     * @see org.datanucleus.store.rdbms.mapping.JavaTypeMapping#initialize(AbstractMemberMetaData,
+     * DatastoreContainerObject, ClassLoaderResolver)
      */
     public void initialize(AbstractMemberMetaData fmd, Table table, ClassLoaderResolver clr)
     {
@@ -45,8 +47,10 @@ public class Ellipse2dFloatMapping extends SingleFieldMultiMapping
         addColumns();
     }
 
-    /* (non-Javadoc)
-     * @see org.datanucleus.store.rdbms.mapping.JavaTypeMapping#initialize(RDBMSStoreManager, java.lang.String)
+    /*
+     * (non-Javadoc)
+     * @see org.datanucleus.store.rdbms.mapping.JavaTypeMapping#initialize(RDBMSStoreManager,
+     * java.lang.String)
      */
     public void initialize(RDBMSStoreManager storeMgr, String type)
     {
@@ -62,7 +66,8 @@ public class Ellipse2dFloatMapping extends SingleFieldMultiMapping
         addColumns(ClassNameConstants.FLOAT); // Height
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
      * @see org.datanucleus.store.mapping.JavaTypeMapping#getJavaType()
      */
     public Class getJavaType()
@@ -71,15 +76,15 @@ public class Ellipse2dFloatMapping extends SingleFieldMultiMapping
     }
 
     /**
-     * Method to return the value to be stored in the specified datastore index given the overall
-     * value for this java type.
+     * Method to return the value to be stored in the specified datastore index given the overall value for
+     * this java type.
      * @param index The datastore index
      * @param value The overall value for this java type
      * @return The value for this datastore index
      */
     public Object getValueForDatastoreMapping(NucleusContext nucleusCtx, int index, Object value)
     {
-        Ellipse2D.Float el = (Ellipse2D.Float)value;
+        Ellipse2D.Float el = (Ellipse2D.Float) value;
         if (index == 0)
         {
             return el.getX();
@@ -99,30 +104,34 @@ public class Ellipse2dFloatMapping extends SingleFieldMultiMapping
         throw new IndexOutOfBoundsException();
     }
 
-    /* (non-Javadoc)
-     * @see org.datanucleus.store.mapping.JavaTypeMapping#setObject(org.datanucleus.ExecutionContext, java.lang.Object, int[], java.lang.Object)
+    /*
+     * (non-Javadoc)
+     * @see org.datanucleus.store.mapping.JavaTypeMapping#setObject(org.datanucleus.ExecutionContext,
+     * java.lang.Object, int[], java.lang.Object)
      */
     public void setObject(ExecutionContext ec, PreparedStatement ps, int[] exprIndex, Object value)
     {
-    	Ellipse2D.Float ellipse = (Ellipse2D.Float)value;
+        Ellipse2D.Float ellipse = (Ellipse2D.Float) value;
         if (ellipse == null)
         {
-    		for (int i = 0; i < exprIndex.length; i++) 
-    		{
-    			getDatastoreMapping(i).setObject(ps, exprIndex[i], null);					
-			}
+            for (int i = 0; i < exprIndex.length; i++)
+            {
+                getDatastoreMapping(i).setObject(ps, exprIndex[i], null);
+            }
         }
         else
         {
-            getDatastoreMapping(0).setFloat(ps,exprIndex[0],ellipse.x);
-            getDatastoreMapping(1).setFloat(ps,exprIndex[1],ellipse.y);
-            getDatastoreMapping(2).setFloat(ps,exprIndex[2],ellipse.width);
-            getDatastoreMapping(3).setFloat(ps,exprIndex[3],ellipse.height);
+            getDatastoreMapping(0).setFloat(ps, exprIndex[0], ellipse.x);
+            getDatastoreMapping(1).setFloat(ps, exprIndex[1], ellipse.y);
+            getDatastoreMapping(2).setFloat(ps, exprIndex[2], ellipse.width);
+            getDatastoreMapping(3).setFloat(ps, exprIndex[3], ellipse.height);
         }
     }
-    
-    /* (non-Javadoc)
-     * @see org.datanucleus.store.mapping.JavaTypeMapping#getObject(org.datanucleus.ExecutionContext, java.lang.Object, int[])
+
+    /*
+     * (non-Javadoc)
+     * @see org.datanucleus.store.mapping.JavaTypeMapping#getObject(org.datanucleus.ExecutionContext,
+     * java.lang.Object, int[])
      */
     public Object getObject(ExecutionContext ec, ResultSet resultSet, int[] exprIndex)
     {
@@ -132,10 +141,10 @@ public class Ellipse2dFloatMapping extends SingleFieldMultiMapping
             return null;
         }
 
-        float x = getDatastoreMapping(0).getFloat(resultSet,exprIndex[0]); 
-        float y = getDatastoreMapping(1).getFloat(resultSet,exprIndex[1]); 
-        float width  = getDatastoreMapping(2).getFloat(resultSet,exprIndex[2]); 
-        float height = getDatastoreMapping(3).getFloat(resultSet,exprIndex[3]);
+        float x = getDatastoreMapping(0).getFloat(resultSet, exprIndex[0]);
+        float y = getDatastoreMapping(1).getFloat(resultSet, exprIndex[1]);
+        float width = getDatastoreMapping(2).getFloat(resultSet, exprIndex[2]);
+        float height = getDatastoreMapping(3).getFloat(resultSet, exprIndex[3]);
         return new Ellipse2D.Float(x, y, width, height);
     }
 }

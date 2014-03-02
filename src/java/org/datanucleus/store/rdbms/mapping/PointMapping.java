@@ -15,7 +15,7 @@ limitations under the License.
 
 Contributors:
     ...
-**********************************************************************/
+ **********************************************************************/
 package org.datanucleus.store.rdbms.mapping;
 
 import java.awt.Point;
@@ -36,8 +36,10 @@ import org.datanucleus.store.rdbms.RDBMSStoreManager;
  */
 public class PointMapping extends SingleFieldMultiMapping
 {
-    /* (non-Javadoc)
-     * @see org.datanucleus.store.rdbms.mapping.JavaTypeMapping#initialize(AbstractMemberMetaData, DatastoreContainerObject, ClassLoaderResolver)
+    /*
+     * (non-Javadoc)
+     * @see org.datanucleus.store.rdbms.mapping.JavaTypeMapping#initialize(AbstractMemberMetaData,
+     * DatastoreContainerObject, ClassLoaderResolver)
      */
     public void initialize(AbstractMemberMetaData mmd, Table table, ClassLoaderResolver clr)
     {
@@ -45,8 +47,10 @@ public class PointMapping extends SingleFieldMultiMapping
         addColumns();
     }
 
-    /* (non-Javadoc)
-     * @see org.datanucleus.store.rdbms.mapping.JavaTypeMapping#initialize(RDBMSStoreManager, java.lang.String)
+    /*
+     * (non-Javadoc)
+     * @see org.datanucleus.store.rdbms.mapping.JavaTypeMapping#initialize(RDBMSStoreManager,
+     * java.lang.String)
      */
     public void initialize(RDBMSStoreManager storeMgr, String type)
     {
@@ -70,15 +74,15 @@ public class PointMapping extends SingleFieldMultiMapping
     }
 
     /**
-     * Method to return the value to be stored in the specified datastore index given the overall
-     * value for this java type.
+     * Method to return the value to be stored in the specified datastore index given the overall value for
+     * this java type.
      * @param index The datastore index
      * @param value The overall value for this java type
      * @return The value for this datastore index
      */
     public Object getValueForDatastoreMapping(NucleusContext nucleusCtx, int index, Object value)
     {
-        Point pt = (Point)value;
+        Point pt = (Point) value;
         if (index == 0)
         {
             return pt.getX();
@@ -105,8 +109,8 @@ public class PointMapping extends SingleFieldMultiMapping
         }
         else
         {
-            getDatastoreMapping(0).setInt(ps, exprIndex[0], (int)pt.getX());
-            getDatastoreMapping(1).setInt(ps, exprIndex[1], (int)pt.getY());
+            getDatastoreMapping(0).setInt(ps, exprIndex[0], (int) pt.getX());
+            getDatastoreMapping(1).setInt(ps, exprIndex[1], (int) pt.getY());
         }
     }
 

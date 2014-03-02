@@ -63,8 +63,8 @@ public class GeometryRDBMSMapping extends MySQLSpatialRDBMSMapping
 
         try
         {
-            byte[] mysqlBinary = ((ResultSet)rs).getBytes(exprIndex);
-            if (((ResultSet)rs).wasNull() || mysqlBinary == null)
+            byte[] mysqlBinary = ((ResultSet) rs).getBytes(exprIndex);
+            if (((ResultSet) rs).wasNull() || mysqlBinary == null)
             {
                 value = null;
             }
@@ -72,7 +72,7 @@ public class GeometryRDBMSMapping extends MySQLSpatialRDBMSMapping
             {
                 WKBReader wkbReader = new WKBReader();
                 value = wkbReader.read(mysqlBinaryToWkb(mysqlBinary));
-                ((Geometry)value).setSRID(mysqlBinaryToSrid(mysqlBinary));
+                ((Geometry) value).setSRID(mysqlBinaryToSrid(mysqlBinary));
             }
         }
         catch (Exception e)
@@ -89,14 +89,14 @@ public class GeometryRDBMSMapping extends MySQLSpatialRDBMSMapping
         {
             if (value == null)
             {
-                ((PreparedStatement)ps).setNull(exprIndex, getTypeInfo().getDataType(), getTypeInfo().getTypeName());
+                ((PreparedStatement) ps).setNull(exprIndex, getTypeInfo().getDataType(), getTypeInfo().getTypeName());
             }
             else
             {
                 WKBWriter wkbWriter = new WKBWriter(2, ByteOrderValues.LITTLE_ENDIAN);
-                byte[] wkb = wkbWriter.write((Geometry)value);
-                int srid = ((Geometry)value).getSRID();
-                ((PreparedStatement)ps).setBytes(exprIndex, wkbToMysqlBinary(wkb, srid));
+                byte[] wkb = wkbWriter.write((Geometry) value);
+                int srid = ((Geometry) value).getSRID();
+                ((PreparedStatement) ps).setBytes(exprIndex, wkbToMysqlBinary(wkb, srid));
             }
         }
         catch (SQLException e)

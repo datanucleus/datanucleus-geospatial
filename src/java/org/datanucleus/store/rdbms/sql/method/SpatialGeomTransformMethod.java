@@ -33,8 +33,7 @@ public class SpatialGeomTransformMethod extends AbstractSQLMethod
     {
         if (args == null || 2 != args.size())
         {
-            throw new NucleusUserException(
-                    "Cannot invoke Spatial.transform without 2 arguments.");
+            throw new NucleusUserException("Cannot invoke Spatial.transform without 2 arguments.");
         }
 
         SQLExpression wktExpr = (SQLExpression) args.get(0);

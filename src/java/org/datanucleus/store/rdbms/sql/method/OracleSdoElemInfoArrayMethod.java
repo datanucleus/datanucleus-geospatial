@@ -14,7 +14,7 @@ limitations under the License.
 
 Contributors:
    ...
-**********************************************************************/
+ **********************************************************************/
 package org.datanucleus.store.rdbms.sql.method;
 
 import java.util.ArrayList;
@@ -31,8 +31,11 @@ import org.datanucleus.store.rdbms.sql.expression.StringLiteral;
  */
 public class OracleSdoElemInfoArrayMethod extends AbstractSQLMethod
 {
-	/* (non-Javadoc)
-     * @see org.datanucleus.store.rdbms.sql.method.SQLMethod#getExpression(org.datanucleus.store.rdbms.sql.expression.SQLExpression, java.util.List)
+    /*
+     * (non-Javadoc)
+     * @see
+     * org.datanucleus.store.rdbms.sql.method.SQLMethod#getExpression(org.datanucleus.store.rdbms.sql.expression
+     * .SQLExpression, java.util.List)
      */
     public SQLExpression getExpression(SQLExpression ignore, List args)
     {
@@ -41,7 +44,7 @@ public class OracleSdoElemInfoArrayMethod extends AbstractSQLMethod
             throw new NucleusUserException("Cannot invoke Oracle.sdo_elem_info_array without 1 argument");
         }
 
-        SQLExpression numbersExpr = (SQLExpression)args.get(0); // Numbers
+        SQLExpression numbersExpr = (SQLExpression) args.get(0); // Numbers
 
         ArrayList funcArgs = new ArrayList();
         if (numbersExpr instanceof StringLiteral)
@@ -60,8 +63,7 @@ public class OracleSdoElemInfoArrayMethod extends AbstractSQLMethod
             }
             catch (NumberFormatException e)
             {
-                throw new NucleusUserException(
-                    "Impossible to convert input to Oracle.sdo_elem_info_array into list of integers");
+                throw new NucleusUserException("Impossible to convert input to Oracle.sdo_elem_info_array into list of integers");
             }
         }
 

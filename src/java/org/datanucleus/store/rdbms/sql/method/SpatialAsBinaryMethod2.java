@@ -14,7 +14,7 @@ limitations under the License.
 
 Contributors:
    ...
-**********************************************************************/
+ **********************************************************************/
 package org.datanucleus.store.rdbms.sql.method;
 
 import java.util.ArrayList;
@@ -31,8 +31,11 @@ import org.datanucleus.store.rdbms.sql.expression.SQLExpression;
  */
 public class SpatialAsBinaryMethod2 extends AbstractSQLMethod
 {
-    /* (non-Javadoc)
-     * @see org.datanucleus.store.rdbms.sql.method.SQLMethod#getExpression(org.datanucleus.store.rdbms.sql.expression.SQLExpression, java.util.List)
+    /*
+     * (non-Javadoc)
+     * @see
+     * org.datanucleus.store.rdbms.sql.method.SQLMethod#getExpression(org.datanucleus.store.rdbms.sql.expression
+     * .SQLExpression, java.util.List)
      */
     public SQLExpression getExpression(SQLExpression expr, List args)
     {
@@ -41,12 +44,12 @@ public class SpatialAsBinaryMethod2 extends AbstractSQLMethod
             throw new NucleusUserException("Cannot invoke Spatial.asBinary without 1 argument");
         }
 
-        SQLExpression argExpr1 = (SQLExpression)args.get(0); // Geometry
+        SQLExpression argExpr1 = (SQLExpression) args.get(0); // Geometry
 
         ArrayList geomFuncArgs = new ArrayList();
         geomFuncArgs.add(argExpr1);
-        GeometryExpression geomExpr = new GeometryExpression(stmt, 
-            SpatialMethodHelper.getGeometryMapping(clr, argExpr1), "geometry.from_sdo_geom", geomFuncArgs, null);
+        GeometryExpression geomExpr = new GeometryExpression(stmt, SpatialMethodHelper.getGeometryMapping(clr, argExpr1),
+                "geometry.from_sdo_geom", geomFuncArgs, null);
 
         ArrayList funcArgs = new ArrayList();
         funcArgs.add(geomExpr);

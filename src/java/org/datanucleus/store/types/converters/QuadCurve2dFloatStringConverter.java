@@ -14,7 +14,7 @@ limitations under the License.
 
 Contributors:
     ...
-**********************************************************************/
+ **********************************************************************/
 package org.datanucleus.store.types.converters;
 
 import java.awt.geom.QuadCurve2D;
@@ -23,8 +23,12 @@ import java.util.StringTokenizer;
 import org.datanucleus.exceptions.NucleusDataStoreException;
 
 /**
- * Class to handle the conversion between java.awt.geom.QuadCurve2D.Float and a String form.
- * The String form is <pre>(x1,y1),(x2,y2),(xc,yc)</pre>
+ * Class to handle the conversion between java.awt.geom.QuadCurve2D.Float and a String form. The String form
+ * is
+ * 
+ * <pre>
+ * (x1,y1),(x2,y2),(xc,yc)
+ * </pre>
  */
 public class QuadCurve2dFloatStringConverter implements TypeConverter<QuadCurve2D.Float, String>
 {
@@ -42,7 +46,7 @@ public class QuadCurve2dFloatStringConverter implements TypeConverter<QuadCurve2
         String token = tokeniser.nextToken();
         token = token.substring(1); // x1,y1
         String xStr = token.substring(0, token.indexOf(","));
-        String yStr = token.substring(token.indexOf(",")+1);
+        String yStr = token.substring(token.indexOf(",") + 1);
         float x1 = 0;
         try
         {
@@ -65,7 +69,7 @@ public class QuadCurve2dFloatStringConverter implements TypeConverter<QuadCurve2
         token = tokeniser.nextToken();
         token = token.substring(2); // x2,y2
         xStr = token.substring(0, token.indexOf(","));
-        yStr = token.substring(token.indexOf(",")+1);
+        yStr = token.substring(token.indexOf(",") + 1);
         float x2 = 0;
         try
         {
@@ -88,7 +92,7 @@ public class QuadCurve2dFloatStringConverter implements TypeConverter<QuadCurve2
         token = tokeniser.nextToken();
         token = token.substring(2); // xc,yc
         xStr = token.substring(0, token.indexOf(","));
-        yStr = token.substring(token.indexOf(",")+1);
+        yStr = token.substring(token.indexOf(",") + 1);
         float xc = 0;
         try
         {
