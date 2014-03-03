@@ -14,7 +14,7 @@ limitations under the License.
 
 Contributors:
     ...
-**********************************************************************/
+ **********************************************************************/
 package org.datanucleus.jdo.spatial;
 
 import javax.jdo.PersistenceManager;
@@ -24,15 +24,14 @@ import org.datanucleus.api.jdo.JDOPersistenceManagerFactory;
 import com.vividsolutions.jts.geom.Geometry;
 
 /**
- * Helper class to read Spatial MetaData from the datastore, specialized for the geometry classes of 
- * the Java Topology Suite (JTS). The methods assumes that users know what they're doing and will 
- * automatically downcast query results to <code>com.vividsolutions.jts.geom.Geometry</code>.
+ * Helper class to read Spatial MetaData from the datastore, specialized for the geometry classes of the Java
+ * Topology Suite (JTS). The methods assumes that users know what they're doing and will automatically
+ * downcast query results to <code>com.vividsolutions.jts.geom.Geometry</code>.
  */
 public class JtsSpatialHelper extends SpatialHelper
 {
     /**
      * Creates a new <code>JtsSpatialHelper</code> instance for the given PMF.
-     * 
      * @param pmf The PMF, can't be <code>null</code> or closed.
      */
     public JtsSpatialHelper(JDOPersistenceManagerFactory pmf)
@@ -41,27 +40,25 @@ public class JtsSpatialHelper extends SpatialHelper
     }
 
     /**
-     * Returns the srid of the first datastore entry for the given geometry field. 
-     * Will return <code>null</code>, if there are no entries or if the geometry 
-     * field of the first entry is <code>null</code>.
-     *
+     * Returns the srid of the first datastore entry for the given geometry field. Will return
+     * <code>null</code>, if there are no entries or if the geometry field of the first entry is
+     * <code>null</code>.
      * @param pc The PersistenceCapapable class
      * @param fieldName Name of the geometry field
-     * @param pm <code>PersistenceManager</code> instance that should be used 
-     *        to access the datastore
+     * @param pm <code>PersistenceManager</code> instance that should be used to access the datastore
      * @return The srid or <code>null</code>
      */
     public Integer getSridFromDatastoreEntry(final Class pc, final String fieldName, final PersistenceManager pm)
     {
         checkValid(pc, fieldName);
-    
+
         Integer srid = null;
-        Geometry geom = (Geometry)readFirstValueForField(pc, fieldName, pm);
+        Geometry geom = (Geometry) readFirstValueForField(pc, fieldName, pm);
         if (geom != null)
         {
             srid = Integer.valueOf(geom.getSRID());
         }
-        
+
         return srid;
     }
 }
