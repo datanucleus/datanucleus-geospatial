@@ -40,11 +40,11 @@ public class SpatialRelateMethod extends AbstractSQLMethod
         {
             throw new NucleusUserException("Cannot invoke Spatial.relate without arguments");
         }
-        if (expr == null && (args == null || args.size() != 3))
+        if (expr == null && args.size() != 3)
         {
             throw new NucleusUserException("Cannot invoke Spatial.relate without 3 arguments");
         }
-        else if (expr != null && args != null && args.size() != 2)
+        else if (expr != null && args.size() != 2)
         {
             throw new NucleusUserException("Cannot invoke geom.relate() without 2 argument");
         }

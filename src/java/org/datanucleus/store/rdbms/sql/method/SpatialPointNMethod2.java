@@ -42,11 +42,11 @@ public class SpatialPointNMethod2 extends AbstractSQLMethod
         {
             throw new NucleusUserException("Cannot invoke Spatial.pointN without arguments");
         }
-        if (expr == null && (args == null || args.size() != 2))
+        if (expr == null && args.size() != 2)
         {
             throw new NucleusUserException("Cannot invoke Spatial.pointN without 2 arguments");
         }
-        else if (expr != null && args != null && args.size() != 1)
+        else if (expr != null && args.size() != 1)
         {
             throw new NucleusUserException("Cannot invoke geom.getPointN() without 1 argument");
         }

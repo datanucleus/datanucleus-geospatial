@@ -36,11 +36,11 @@ public class SpatialDistanceMethod3 extends AbstractSQLMethod
         {
             throw new NucleusUserException("Cannot invoke Spatial.distance without arguments");
         }
-        if (expr == null && (args == null || args.size() < 2 || args.size() > 3))
+        if (expr == null && (args.size() < 2 || args.size() > 3))
         {
             throw new NucleusUserException("Cannot invoke Spatial.distance with less than 2 arguments or more than 3 arguments\n");
         }
-        else if (expr != null && args != null && args.size() != 1)
+        else if (expr != null && args.size() != 1)
         {
             throw new NucleusUserException("Cannot invoke geom.distance without 1 argument");
         }
