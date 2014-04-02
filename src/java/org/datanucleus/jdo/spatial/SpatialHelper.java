@@ -44,7 +44,7 @@ import org.datanucleus.util.NucleusLogger;
  * datanucleus-spatial offers via JDOQL in "real" Java methods and also adds extended functionality, like
  * reading values from JDO-Metadata and getting CRS (Coordinate Reference System) information from the
  * database.
- * <p>
+ * </p>
  * <p>
  * The datatypes and terminology used in this class is (like most of datanucleus-spatial) heavily based on
  * OGC's Simple Feature specification. See <a

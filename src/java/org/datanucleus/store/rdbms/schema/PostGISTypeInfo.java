@@ -31,7 +31,7 @@ public class PostGISTypeInfo extends SQLTypeInfo
             (short) 0, 10);
 
     /**
-     * @param rs
+     * @param rs ResultSet (from DatabaseMetaData.getTypeInfo() for example).
      */
     public PostGISTypeInfo(ResultSet rs)
     {

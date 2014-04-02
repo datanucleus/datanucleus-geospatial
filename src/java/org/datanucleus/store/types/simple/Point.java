@@ -232,7 +232,7 @@ public class Point extends java.awt.Point implements SCO
      * when read and resolved will result in an object of a type that is compatible with all references to the
      * object.
      * @return the replaced object
-     * @throws ObjectStreamException
+     * @throws ObjectStreamException when problem occurs on serialization
      */
     protected Object writeReplace() throws ObjectStreamException
     {
