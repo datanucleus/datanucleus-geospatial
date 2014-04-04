@@ -17,32 +17,30 @@ Contributors:
  **********************************************************************/
 package org.datanucleus.store.types.converters;
 
-import java.awt.Point;
+import java.awt.Rectangle;
 
 /**
- * Class to handle the conversion between java.awt.Point and (X,Y).
+ * Class to handle the conversion between java.awt.Rectangle and (X,Y,Width,Height).
  */
-public class PointComponentsConverter implements TypeConverter<Point, int[]>, MultiColumnConverter
+public class RectangleComponentsConverter implements TypeConverter<Rectangle, int[]>, MultiColumnConverter
 {
-    public Point toMemberType(int[] values)
+    public Rectangle toMemberType(int[] values)
     {
         if (values == null)
         {
             return null;
         }
 
-        Point p = new Point();
-        p.setLocation(values[0], values[1]);
-        return p;
+        return new Rectangle(values[0], values[1], values[2], values[3]);
     }
 
-    public int[] toDatastoreType(Point p)
+    public int[] toDatastoreType(Rectangle r)
     {
-        if (p == null)
+        if (r == null)
         {
             return null;
         }
-        return new int[]{p.x, p.y};
+        return new int[]{r.x, r.y, r.width, r.height};
     }
 
     /* (non-Javadoc)
@@ -51,6 +49,6 @@ public class PointComponentsConverter implements TypeConverter<Point, int[]>, Mu
     @Override
     public Class[] getDatastoreColumnTypes()
     {
-        return new Class[]{int.class, int.class};
+        return new Class[]{int.class, int.class, int.class, int.class};
     }
 }

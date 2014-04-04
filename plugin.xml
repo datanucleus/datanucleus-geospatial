@@ -99,11 +99,14 @@ Contributors:
     <extension point="org.datanucleus.type_converter">
         <type-converter name="dn.awtpoint-string" member-type="java.awt.Point" datastore-type="java.lang.String"
             converter-class="org.datanucleus.store.types.converters.PointStringConverter"/>
-        <type-converter name="dn.awtpoint-string" member-type="java.awt.Point" datastore-type="[D"
+        <type-converter name="dn.awtpoint-components" member-type="java.awt.Point" datastore-type="[I"
             converter-class="org.datanucleus.store.types.converters.PointComponentsConverter"/>
 
         <type-converter name="dn.awtrectangle-string" member-type="java.awt.Rectangle" datastore-type="java.lang.String"
             converter-class="org.datanucleus.store.types.converters.RectangleStringConverter"/>
+        <type-converter name="dn.awtrectangle-components" member-type="java.awt.Rectangle" datastore-type="[I"
+            converter-class="org.datanucleus.store.types.converters.RectangleComponentsConverter"/>
+
         <type-converter name="dn.awtpolygon-string" member-type="java.awt.Polygon" datastore-type="java.lang.String"
             converter-class="org.datanucleus.store.types.converters.PolygonStringConverter"/>
         <type-converter name="dn.awtlinedouble-string" member-type="java.awt.geom.Line2D$Double" datastore-type="java.lang.String"
