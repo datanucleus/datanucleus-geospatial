@@ -113,30 +113,42 @@ Contributors:
             converter-class="org.datanucleus.store.types.converters.Line2dDoubleStringConverter"/>
         <type-converter name="dn.awtlinefloat-string" member-type="java.awt.geom.Line2D$Float" datastore-type="java.lang.String"
             converter-class="org.datanucleus.store.types.converters.Line2dFloatStringConverter"/>
+
         <type-converter name="dn-awtpointdouble-string" member-type="java.awt.geom.Point2D$Double" datastore-type="java.lang.String"
             converter-class="org.datanucleus.store.types.converters.Point2dDoubleStringConverter"/>
+        <type-converter name="dn.awtpointdouble-components" member-type="java.awt.geom.Point2D$Double" datastore-type="[D"
+            converter-class="org.datanucleus.store.types.converters.Point2dDoubleComponentsConverter"/>
+
         <type-converter name="dn-awtpointfloat-string" member-type="java.awt.geom.Point2D$Float" datastore-type="java.lang.String"
             converter-class="org.datanucleus.store.types.converters.Point2dFloatStringConverter"/>
+        <type-converter name="dn.awtpointfloat-components" member-type="java.awt.geom.Point2D$Float" datastore-type="[F"
+            converter-class="org.datanucleus.store.types.converters.Point2dFloatComponentsConverter"/>
+
         <type-converter name="dn-awtrectangledouble-string" member-type="java.awt.geom.Rectangle2D$Double" datastore-type="java.lang.String"
             converter-class="org.datanucleus.store.types.converters.Rectangle2dDoubleStringConverter"/>
         <type-converter name="dn-awtrectanglefloat-string" member-type="java.awt.geom.Rectangle2D$Float" datastore-type="java.lang.String"
             converter-class="org.datanucleus.store.types.converters.Rectangle2dFloatStringConverter"/>
+
         <type-converter name="dn-awtarcdouble-string" member-type="java.awt.geom.Arc2D$Double" datastore-type="java.lang.String"
             converter-class="org.datanucleus.store.types.converters.Arc2dDoubleStringConverter"/>
         <type-converter name="dn-awtarcfloat-string" member-type="java.awt.geom.Arc2D$Float" datastore-type="java.lang.String"
             converter-class="org.datanucleus.store.types.converters.Arc2dFloatStringConverter"/>
+
         <type-converter name="dn-awtcubiccurvedouble-string" member-type="java.awt.geom.CubicCurve2D$Double" datastore-type="java.lang.String"
             converter-class="org.datanucleus.store.types.converters.CubicCurve2dDoubleStringConverter"/>
         <type-converter name="dn-awtcubiccurvefloat-string" member-type="java.awt.geom.CubicCurve2D$Float" datastore-type="java.lang.String"
             converter-class="org.datanucleus.store.types.converters.CubicCurve2dFloatStringConverter"/>
+
         <type-converter name="dn-awtellipsedouble-string" member-type="java.awt.geom.Ellipse2D$Double" datastore-type="java.lang.String"
             converter-class="org.datanucleus.store.types.converters.Ellipse2dDoubleStringConverter"/>
         <type-converter name="dn-awtellipsefloat-string" member-type="java.awt.geom.Ellipse2D$Float" datastore-type="java.lang.String"
             converter-class="org.datanucleus.store.types.converters.Ellipse2dFloatStringConverter"/>
+
         <type-converter name="dn-awtquadcurvedouble-string" member-type="java.awt.geom.QuadCurve2D$Double" datastore-type="java.lang.String"
             converter-class="org.datanucleus.store.types.converters.QuadCurve2dDoubleStringConverter"/>
         <type-converter name="dn-awtquadcurvefloat-string" member-type="java.awt.geom.QuadCurve2D$Float" datastore-type="java.lang.String"
             converter-class="org.datanucleus.store.types.converters.QuadCurve2dFloatStringConverter"/>
+
         <type-converter name="dn-awtroundrectdouble-string" member-type="java.awt.geom.RoundRectangle2D$Double" datastore-type="java.lang.String"
             converter-class="org.datanucleus.store.types.converters.RoundRectangle2dDoubleStringConverter"/>
         <type-converter name="dn-awtroundrectfloat-string" member-type="java.awt.geom.RoundRectangle2D$Float" datastore-type="java.lang.String"
