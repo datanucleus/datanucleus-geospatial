@@ -18,54 +18,54 @@ Contributors:
 2009 Andy Jefferson - all new SQL expressions/methods
     ...
 -->
-<plugin id="org.datanucleus.spatial" name="DataNucleus Spatial" provider-name="DataNucleus">
+<plugin id="org.datanucleus.store.types.geospatial" name="DataNucleus Geospatial" provider-name="DataNucleus">
 	<!-- RDBMS : DATASTORE ADAPTERS -->
 	<extension point="org.datanucleus.store.rdbms.datastoreadapter">
-		<datastore-adapter vendor-id="postgresql" class-name="org.datanucleus.store.rdbms.adapter.PostGISAdapter" priority="5"/>
-		<datastore-adapter vendor-id="mysql" class-name="org.datanucleus.store.rdbms.adapter.MySQLSpatialAdapter" priority="5"/>
-		<datastore-adapter vendor-id="oracle" class-name="org.datanucleus.store.rdbms.adapter.OracleSpatialAdapter" priority="5"/>
+		<datastore-adapter vendor-id="postgresql" class-name="org.datanucleus.store.types.geospatial.rdbms.adapter.PostGISAdapter" priority="5"/>
+		<datastore-adapter vendor-id="mysql" class-name="org.datanucleus.store.types.geospatial.rdbms.adapter.MySQLSpatialAdapter" priority="5"/>
+		<datastore-adapter vendor-id="oracle" class-name="org.datanucleus.store.types.geospatial.rdbms.adapter.OracleSpatialAdapter" priority="5"/>
 	</extension>
 
     <!-- JAVA TYPES -->
     <extension point="org.datanucleus.java_type">
         <java-type name="java.awt.Point" dfg="true" embedded="true" 
-            wrapper-type="org.datanucleus.store.types.simple.Point" converter-name="dn.awtpoint-string"/>
+            wrapper-type="org.datanucleus.store.types.geospatial.simple.Point" converter-name="dn.awtpoint-string"/>
         <java-type name="java.awt.Rectangle" dfg="true" embedded="true"
-            wrapper-type="org.datanucleus.store.types.simple.Rectangle" converter-name="dn.awtrectangle-string"/>
+            wrapper-type="org.datanucleus.store.types.geospatial.simple.Rectangle" converter-name="dn.awtrectangle-string"/>
         <java-type name="java.awt.Polygon" dfg="true" embedded="true"
             converter-name="dn.awtpolygon-string"/>
         <java-type name="java.awt.geom.Line2D$Double" dfg="true" embedded="true"
-            wrapper-type="org.datanucleus.store.types.simple.Line2dDouble" converter-name="dn.awtlinedouble-string"/>
+            wrapper-type="org.datanucleus.store.types.geospatial.simple.Line2dDouble" converter-name="dn.awtlinedouble-string"/>
         <java-type name="java.awt.geom.Line2D$Float" dfg="true" embedded="true"
-            wrapper-type="org.datanucleus.store.types.simple.Line2dFloat" converter-name="dn.awtlinefloat-string"/>
+            wrapper-type="org.datanucleus.store.types.geospatial.simple.Line2dFloat" converter-name="dn.awtlinefloat-string"/>
         <java-type name="java.awt.geom.Point2D$Double" dfg="true" embedded="true"
-            wrapper-type="org.datanucleus.store.types.simple.Point2dDouble" converter-name="dn.awtpointdouble-string"/>
+            wrapper-type="org.datanucleus.store.types.geospatial.simple.Point2dDouble" converter-name="dn.awtpointdouble-string"/>
         <java-type name="java.awt.geom.Point2D$Float" dfg="true" embedded="true"
-            wrapper-type="org.datanucleus.store.types.simple.Point2dFloat" converter-name="dn.awtpointfloat-string"/>
+            wrapper-type="org.datanucleus.store.types.geospatial.simple.Point2dFloat" converter-name="dn.awtpointfloat-string"/>
         <java-type name="java.awt.geom.Rectangle2D$Double" dfg="true" embedded="true"
-            wrapper-type="org.datanucleus.store.types.simple.Rectangle2dDouble" converter-name="dn.awtrectangledouble-string"/>
+            wrapper-type="org.datanucleus.store.types.geospatial.simple.Rectangle2dDouble" converter-name="dn.awtrectangledouble-string"/>
         <java-type name="java.awt.geom.Rectangle2D$Float" dfg="true" embedded="true"
-            wrapper-type="org.datanucleus.store.types.simple.Rectangle2dFloat" converter-name="dn.awtrectanglefloat-string"/>
+            wrapper-type="org.datanucleus.store.types.geospatial.simple.Rectangle2dFloat" converter-name="dn.awtrectanglefloat-string"/>
         <java-type name="java.awt.geom.Arc2D$Double" dfg="true" embedded="true"
-            wrapper-type="org.datanucleus.store.types.simple.Arc2dDouble" converter-name="dn.awtarcdouble-string"/>
+            wrapper-type="org.datanucleus.store.types.geospatial.simple.Arc2dDouble" converter-name="dn.awtarcdouble-string"/>
         <java-type name="java.awt.geom.Arc2D$Float" dfg="true" embedded="true"
-            wrapper-type="org.datanucleus.store.types.simple.Arc2dFloat" converter-name="dn.awtarcfloat-string"/>
+            wrapper-type="org.datanucleus.store.types.geospatial.simple.Arc2dFloat" converter-name="dn.awtarcfloat-string"/>
         <java-type name="java.awt.geom.CubicCurve2D$Double" dfg="true" embedded="true"
-            wrapper-type="org.datanucleus.store.types.simple.CubicCurve2dDouble" converter-name="dn.awtcubiccurvedouble-string"/>
+            wrapper-type="org.datanucleus.store.types.geospatial.simple.CubicCurve2dDouble" converter-name="dn.awtcubiccurvedouble-string"/>
         <java-type name="java.awt.geom.CubicCurve2D$Float" dfg="true" embedded="true"
-            wrapper-type="org.datanucleus.store.types.simple.CubicCurve2dFloat" converter-name="dn.awtcubiccurvefloat-string"/>
+            wrapper-type="org.datanucleus.store.types.geospatial.simple.CubicCurve2dFloat" converter-name="dn.awtcubiccurvefloat-string"/>
         <java-type name="java.awt.geom.Ellipse2D$Double" dfg="true" embedded="true"
-            wrapper-type="org.datanucleus.store.types.simple.Ellipse2dDouble" converter-name="dn.awtellipsedouble-string"/>
+            wrapper-type="org.datanucleus.store.types.geospatial.simple.Ellipse2dDouble" converter-name="dn.awtellipsedouble-string"/>
         <java-type name="java.awt.geom.Ellipse2D$Float" dfg="true" embedded="true"
-            wrapper-type="org.datanucleus.store.types.simple.Ellipse2dFloat" converter-name="dn.awtellipsefloat-string"/>
+            wrapper-type="org.datanucleus.store.types.geospatial.simple.Ellipse2dFloat" converter-name="dn.awtellipsefloat-string"/>
         <java-type name="java.awt.geom.QuadCurve2D$Double" dfg="true" embedded="true"
-            wrapper-type="org.datanucleus.store.types.simple.QuadCurve2dDouble" converter-name="dn.awtquadcurvedouble-string"/>
+            wrapper-type="org.datanucleus.store.types.geospatial.simple.QuadCurve2dDouble" converter-name="dn.awtquadcurvedouble-string"/>
         <java-type name="java.awt.geom.QuadCurve2D$Float" dfg="true" embedded="true"
-            wrapper-type="org.datanucleus.store.types.simple.QuadCurve2dFloat" converter-name="dn.awtquadcurvefloat-string"/>
+            wrapper-type="org.datanucleus.store.types.geospatial.simple.QuadCurve2dFloat" converter-name="dn.awtquadcurvefloat-string"/>
         <java-type name="java.awt.geom.RoundRectangle2D$Double" dfg="true" embedded="true"
-            wrapper-type="org.datanucleus.store.types.simple.RoundRectangle2dDouble" converter-name="dn.awtroundrectdouble-string"/>
+            wrapper-type="org.datanucleus.store.types.geospatial.simple.RoundRectangle2dDouble" converter-name="dn.awtroundrectdouble-string"/>
         <java-type name="java.awt.geom.RoundRectangle2D$Float" dfg="true" embedded="true"
-            wrapper-type="org.datanucleus.store.types.simple.RoundRectangle2dFloat" converter-name="dn.awtroundrectfloat-string"/>
+            wrapper-type="org.datanucleus.store.types.geospatial.simple.RoundRectangle2dFloat" converter-name="dn.awtroundrectfloat-string"/>
 
         <!-- Oracle's JGeometry -->
         <java-type name="oracle.spatial.geometry.JGeometry" dfg="true" embedded="true"/>
@@ -98,931 +98,931 @@ Contributors:
     <!-- TYPE CONVERTERS -->
     <extension point="org.datanucleus.type_converter">
         <type-converter name="dn.awtpoint-string" member-type="java.awt.Point" datastore-type="java.lang.String"
-            converter-class="org.datanucleus.store.types.converters.PointStringConverter"/>
+            converter-class="org.datanucleus.store.types.geospatial.converters.PointStringConverter"/>
         <type-converter name="dn.awtpoint-components" member-type="java.awt.Point" datastore-type="[I"
-            converter-class="org.datanucleus.store.types.converters.PointComponentsConverter"/>
+            converter-class="org.datanucleus.store.types.geospatial.converters.PointComponentsConverter"/>
 
         <type-converter name="dn.awtrectangle-string" member-type="java.awt.Rectangle" datastore-type="java.lang.String"
-            converter-class="org.datanucleus.store.types.converters.RectangleStringConverter"/>
+            converter-class="org.datanucleus.store.types.geospatial.converters.RectangleStringConverter"/>
         <type-converter name="dn.awtrectangle-components" member-type="java.awt.Rectangle" datastore-type="[I"
-            converter-class="org.datanucleus.store.types.converters.RectangleComponentsConverter"/>
+            converter-class="org.datanucleus.store.types.geospatial.converters.RectangleComponentsConverter"/>
 
         <type-converter name="dn.awtpolygon-string" member-type="java.awt.Polygon" datastore-type="java.lang.String"
-            converter-class="org.datanucleus.store.types.converters.PolygonStringConverter"/>
+            converter-class="org.datanucleus.store.types.geospatial.converters.PolygonStringConverter"/>
         <type-converter name="dn.awtlinedouble-string" member-type="java.awt.geom.Line2D$Double" datastore-type="java.lang.String"
-            converter-class="org.datanucleus.store.types.converters.Line2dDoubleStringConverter"/>
+            converter-class="org.datanucleus.store.types.geospatial.converters.Line2dDoubleStringConverter"/>
         <type-converter name="dn.awtlinefloat-string" member-type="java.awt.geom.Line2D$Float" datastore-type="java.lang.String"
-            converter-class="org.datanucleus.store.types.converters.Line2dFloatStringConverter"/>
+            converter-class="org.datanucleus.store.types.geospatial.converters.Line2dFloatStringConverter"/>
 
         <type-converter name="dn-awtpointdouble-string" member-type="java.awt.geom.Point2D$Double" datastore-type="java.lang.String"
-            converter-class="org.datanucleus.store.types.converters.Point2dDoubleStringConverter"/>
+            converter-class="org.datanucleus.store.types.geospatial.converters.Point2dDoubleStringConverter"/>
         <type-converter name="dn.awtpointdouble-components" member-type="java.awt.geom.Point2D$Double" datastore-type="[D"
-            converter-class="org.datanucleus.store.types.converters.Point2dDoubleComponentsConverter"/>
+            converter-class="org.datanucleus.store.types.geospatial.converters.Point2dDoubleComponentsConverter"/>
 
         <type-converter name="dn-awtpointfloat-string" member-type="java.awt.geom.Point2D$Float" datastore-type="java.lang.String"
-            converter-class="org.datanucleus.store.types.converters.Point2dFloatStringConverter"/>
+            converter-class="org.datanucleus.store.types.geospatial.converters.Point2dFloatStringConverter"/>
         <type-converter name="dn.awtpointfloat-components" member-type="java.awt.geom.Point2D$Float" datastore-type="[F"
-            converter-class="org.datanucleus.store.types.converters.Point2dFloatComponentsConverter"/>
+            converter-class="org.datanucleus.store.types.geospatial.converters.Point2dFloatComponentsConverter"/>
 
         <type-converter name="dn-awtrectangledouble-string" member-type="java.awt.geom.Rectangle2D$Double" datastore-type="java.lang.String"
-            converter-class="org.datanucleus.store.types.converters.Rectangle2dDoubleStringConverter"/>
+            converter-class="org.datanucleus.store.types.geospatial.converters.Rectangle2dDoubleStringConverter"/>
         <type-converter name="dn-awtrectanglefloat-string" member-type="java.awt.geom.Rectangle2D$Float" datastore-type="java.lang.String"
-            converter-class="org.datanucleus.store.types.converters.Rectangle2dFloatStringConverter"/>
+            converter-class="org.datanucleus.store.types.geospatial.converters.Rectangle2dFloatStringConverter"/>
 
         <type-converter name="dn-awtarcdouble-string" member-type="java.awt.geom.Arc2D$Double" datastore-type="java.lang.String"
-            converter-class="org.datanucleus.store.types.converters.Arc2dDoubleStringConverter"/>
+            converter-class="org.datanucleus.store.types.geospatial.converters.Arc2dDoubleStringConverter"/>
         <type-converter name="dn-awtarcfloat-string" member-type="java.awt.geom.Arc2D$Float" datastore-type="java.lang.String"
-            converter-class="org.datanucleus.store.types.converters.Arc2dFloatStringConverter"/>
+            converter-class="org.datanucleus.store.types.geospatial.converters.Arc2dFloatStringConverter"/>
 
         <type-converter name="dn-awtcubiccurvedouble-string" member-type="java.awt.geom.CubicCurve2D$Double" datastore-type="java.lang.String"
-            converter-class="org.datanucleus.store.types.converters.CubicCurve2dDoubleStringConverter"/>
+            converter-class="org.datanucleus.store.types.geospatial.converters.CubicCurve2dDoubleStringConverter"/>
         <type-converter name="dn-awtcubiccurvefloat-string" member-type="java.awt.geom.CubicCurve2D$Float" datastore-type="java.lang.String"
-            converter-class="org.datanucleus.store.types.converters.CubicCurve2dFloatStringConverter"/>
+            converter-class="org.datanucleus.store.types.geospatial.converters.CubicCurve2dFloatStringConverter"/>
 
         <type-converter name="dn-awtellipsedouble-string" member-type="java.awt.geom.Ellipse2D$Double" datastore-type="java.lang.String"
-            converter-class="org.datanucleus.store.types.converters.Ellipse2dDoubleStringConverter"/>
+            converter-class="org.datanucleus.store.types.geospatial.converters.Ellipse2dDoubleStringConverter"/>
         <type-converter name="dn-awtellipsefloat-string" member-type="java.awt.geom.Ellipse2D$Float" datastore-type="java.lang.String"
-            converter-class="org.datanucleus.store.types.converters.Ellipse2dFloatStringConverter"/>
+            converter-class="org.datanucleus.store.types.geospatial.converters.Ellipse2dFloatStringConverter"/>
 
         <type-converter name="dn-awtquadcurvedouble-string" member-type="java.awt.geom.QuadCurve2D$Double" datastore-type="java.lang.String"
-            converter-class="org.datanucleus.store.types.converters.QuadCurve2dDoubleStringConverter"/>
+            converter-class="org.datanucleus.store.types.geospatial.converters.QuadCurve2dDoubleStringConverter"/>
         <type-converter name="dn-awtquadcurvefloat-string" member-type="java.awt.geom.QuadCurve2D$Float" datastore-type="java.lang.String"
-            converter-class="org.datanucleus.store.types.converters.QuadCurve2dFloatStringConverter"/>
+            converter-class="org.datanucleus.store.types.geospatial.converters.QuadCurve2dFloatStringConverter"/>
 
         <type-converter name="dn-awtroundrectdouble-string" member-type="java.awt.geom.RoundRectangle2D$Double" datastore-type="java.lang.String"
-            converter-class="org.datanucleus.store.types.converters.RoundRectangle2dDoubleStringConverter"/>
+            converter-class="org.datanucleus.store.types.geospatial.converters.RoundRectangle2dDoubleStringConverter"/>
         <type-converter name="dn-awtroundrectfloat-string" member-type="java.awt.geom.RoundRectangle2D$Float" datastore-type="java.lang.String"
-            converter-class="org.datanucleus.store.types.converters.RoundRectangle2dFloatStringConverter"/>
+            converter-class="org.datanucleus.store.types.geospatial.converters.RoundRectangle2dFloatStringConverter"/>
     </extension>
 
     <!-- RDBMS : SQL EXPRESSIONS -->
     <extension point="org.datanucleus.store.rdbms.sql_expression">
-        <sql-expression mapping-class="org.datanucleus.store.rdbms.mapping.PointMapping" 
-            literal-class="org.datanucleus.store.rdbms.sql.expression.PointLiteral"
-            expression-class="org.datanucleus.store.rdbms.sql.expression.PointExpression"/>
-        <sql-expression mapping-class="org.datanucleus.store.rdbms.mapping.RectangleMapping" 
-            literal-class="org.datanucleus.store.rdbms.sql.expression.RectangleLiteral"
-            expression-class="org.datanucleus.store.rdbms.sql.expression.RectangleExpression"/>
+        <sql-expression mapping-class="org.datanucleus.store.types.geospatial.rdbms.mapping.PointMapping" 
+            literal-class="org.datanucleus.store.types.geospatial.rdbms.sql.expression.PointLiteral"
+            expression-class="org.datanucleus.store.types.geospatial.rdbms.sql.expression.PointExpression"/>
+        <sql-expression mapping-class="org.datanucleus.store.types.geospatial.rdbms.mapping.RectangleMapping" 
+            literal-class="org.datanucleus.store.types.geospatial.rdbms.sql.expression.RectangleLiteral"
+            expression-class="org.datanucleus.store.types.geospatial.rdbms.sql.expression.RectangleExpression"/>
 
-        <sql-expression mapping-class="org.datanucleus.store.rdbms.mapping.jts.GeometryMapping" 
-            literal-class="org.datanucleus.store.rdbms.sql.expression.GeometryLiteral"
-            expression-class="org.datanucleus.store.rdbms.sql.expression.GeometryExpression"/>
-        <sql-expression mapping-class="org.datanucleus.store.rdbms.mapping.jts.GeometryCollectionMapping" 
-            literal-class="org.datanucleus.store.rdbms.sql.expression.GeometryLiteral"
-            expression-class="org.datanucleus.store.rdbms.sql.expression.GeometryExpression"/>
-        <sql-expression mapping-class="org.datanucleus.store.rdbms.mapping.jts.LinearRingMapping" 
-            literal-class="org.datanucleus.store.rdbms.sql.expression.GeometryLiteral"
-            expression-class="org.datanucleus.store.rdbms.sql.expression.GeometryExpression"/>
-        <sql-expression mapping-class="org.datanucleus.store.rdbms.mapping.jts.LineStringMapping" 
-            literal-class="org.datanucleus.store.rdbms.sql.expression.GeometryLiteral"
-            expression-class="org.datanucleus.store.rdbms.sql.expression.GeometryExpression"/>
-        <sql-expression mapping-class="org.datanucleus.store.rdbms.mapping.jts.MultiLineStringMapping" 
-            literal-class="org.datanucleus.store.rdbms.sql.expression.GeometryLiteral"
-            expression-class="org.datanucleus.store.rdbms.sql.expression.GeometryExpression"/>
-        <sql-expression mapping-class="org.datanucleus.store.rdbms.mapping.jts.MultiPointMapping" 
-            literal-class="org.datanucleus.store.rdbms.sql.expression.GeometryLiteral"
-            expression-class="org.datanucleus.store.rdbms.sql.expression.GeometryExpression"/>
-        <sql-expression mapping-class="org.datanucleus.store.rdbms.mapping.jts.MultiPolygonMapping" 
-            literal-class="org.datanucleus.store.rdbms.sql.expression.GeometryLiteral"
-            expression-class="org.datanucleus.store.rdbms.sql.expression.GeometryExpression"/>
-        <sql-expression mapping-class="org.datanucleus.store.rdbms.mapping.jts.PointMapping" 
-            literal-class="org.datanucleus.store.rdbms.sql.expression.GeometryLiteral"
-            expression-class="org.datanucleus.store.rdbms.sql.expression.GeometryExpression"/>
-        <sql-expression mapping-class="org.datanucleus.store.rdbms.mapping.jts.PolygonMapping" 
-            literal-class="org.datanucleus.store.rdbms.sql.expression.GeometryLiteral"
-            expression-class="org.datanucleus.store.rdbms.sql.expression.GeometryExpression"/>
+        <sql-expression mapping-class="org.datanucleus.store.types.geospatial.rdbms.mapping.jts.GeometryMapping" 
+            literal-class="org.datanucleus.store.types.geospatial.rdbms.sql.expression.GeometryLiteral"
+            expression-class="org.datanucleus.store.types.geospatial.rdbms.sql.expression.GeometryExpression"/>
+        <sql-expression mapping-class="org.datanucleus.store.types.geospatial.rdbms.mapping.jts.GeometryCollectionMapping" 
+            literal-class="org.datanucleus.store.types.geospatial.rdbms.sql.expression.GeometryLiteral"
+            expression-class="org.datanucleus.store.types.geospatial.rdbms.sql.expression.GeometryExpression"/>
+        <sql-expression mapping-class="org.datanucleus.store.types.geospatial.rdbms.mapping.jts.LinearRingMapping" 
+            literal-class="org.datanucleus.store.types.geospatial.rdbms.sql.expression.GeometryLiteral"
+            expression-class="org.datanucleus.store.types.geospatial.rdbms.sql.expression.GeometryExpression"/>
+        <sql-expression mapping-class="org.datanucleus.store.types.geospatial.rdbms.mapping.jts.LineStringMapping" 
+            literal-class="org.datanucleus.store.types.geospatial.rdbms.sql.expression.GeometryLiteral"
+            expression-class="org.datanucleus.store.types.geospatial.rdbms.sql.expression.GeometryExpression"/>
+        <sql-expression mapping-class="org.datanucleus.store.types.geospatial.rdbms.mapping.jts.MultiLineStringMapping" 
+            literal-class="org.datanucleus.store.types.geospatial.rdbms.sql.expression.GeometryLiteral"
+            expression-class="org.datanucleus.store.types.geospatial.rdbms.sql.expression.GeometryExpression"/>
+        <sql-expression mapping-class="org.datanucleus.store.types.geospatial.rdbms.mapping.jts.MultiPointMapping" 
+            literal-class="org.datanucleus.store.types.geospatial.rdbms.sql.expression.GeometryLiteral"
+            expression-class="org.datanucleus.store.types.geospatial.rdbms.sql.expression.GeometryExpression"/>
+        <sql-expression mapping-class="org.datanucleus.store.types.geospatial.rdbms.mapping.jts.MultiPolygonMapping" 
+            literal-class="org.datanucleus.store.types.geospatial.rdbms.sql.expression.GeometryLiteral"
+            expression-class="org.datanucleus.store.types.geospatial.rdbms.sql.expression.GeometryExpression"/>
+        <sql-expression mapping-class="org.datanucleus.store.types.geospatial.rdbms.mapping.jts.PointMapping" 
+            literal-class="org.datanucleus.store.types.geospatial.rdbms.sql.expression.GeometryLiteral"
+            expression-class="org.datanucleus.store.types.geospatial.rdbms.sql.expression.GeometryExpression"/>
+        <sql-expression mapping-class="org.datanucleus.store.types.geospatial.rdbms.mapping.jts.PolygonMapping" 
+            literal-class="org.datanucleus.store.types.geospatial.rdbms.sql.expression.GeometryLiteral"
+            expression-class="org.datanucleus.store.types.geospatial.rdbms.sql.expression.GeometryExpression"/>
 
-        <sql-expression mapping-class="org.datanucleus.store.rdbms.mapping.ao.GeometryMapping" 
-            literal-class="org.datanucleus.store.rdbms.sql.expression.GeometryLiteral"
-            expression-class="org.datanucleus.store.rdbms.sql.expression.GeometryExpression"/>
-        <sql-expression mapping-class="org.datanucleus.store.rdbms.mapping.ao.EnvelopeMapping" 
-            literal-class="org.datanucleus.store.rdbms.sql.expression.GeometryLiteral"
-            expression-class="org.datanucleus.store.rdbms.sql.expression.GeometryExpression"/>
-        <sql-expression mapping-class="org.datanucleus.store.rdbms.mapping.ao.GeometryBagMapping" 
-            literal-class="org.datanucleus.store.rdbms.sql.expression.GeometryLiteral"
-            expression-class="org.datanucleus.store.rdbms.sql.expression.GeometryExpression"/>
-        <sql-expression mapping-class="org.datanucleus.store.rdbms.mapping.ao.LineMapping" 
-            literal-class="org.datanucleus.store.rdbms.sql.expression.GeometryLiteral"
-            expression-class="org.datanucleus.store.rdbms.sql.expression.GeometryExpression"/>
-        <sql-expression mapping-class="org.datanucleus.store.rdbms.mapping.ao.MultipointMapping" 
-            literal-class="org.datanucleus.store.rdbms.sql.expression.GeometryLiteral"
-            expression-class="org.datanucleus.store.rdbms.sql.expression.GeometryExpression"/>
-        <sql-expression mapping-class="org.datanucleus.store.rdbms.mapping.ao.PathMapping" 
-            literal-class="org.datanucleus.store.rdbms.sql.expression.GeometryLiteral"
-            expression-class="org.datanucleus.store.rdbms.sql.expression.GeometryExpression"/>
-        <sql-expression mapping-class="org.datanucleus.store.rdbms.mapping.ao.PointMapping" 
-            literal-class="org.datanucleus.store.rdbms.sql.expression.GeometryLiteral"
-            expression-class="org.datanucleus.store.rdbms.sql.expression.GeometryExpression"/>
-        <sql-expression mapping-class="org.datanucleus.store.rdbms.mapping.ao.PolygonMapping" 
-            literal-class="org.datanucleus.store.rdbms.sql.expression.GeometryLiteral"
-            expression-class="org.datanucleus.store.rdbms.sql.expression.GeometryExpression"/>
-        <sql-expression mapping-class="org.datanucleus.store.rdbms.mapping.ao.PolylineMapping" 
-            literal-class="org.datanucleus.store.rdbms.sql.expression.GeometryLiteral"
-            expression-class="org.datanucleus.store.rdbms.sql.expression.GeometryExpression"/>
-        <sql-expression mapping-class="org.datanucleus.store.rdbms.mapping.ao.RingMapping" 
-            literal-class="org.datanucleus.store.rdbms.sql.expression.GeometryLiteral"
-            expression-class="org.datanucleus.store.rdbms.sql.expression.GeometryExpression"/>
+        <sql-expression mapping-class="org.datanucleus.store.types.geospatial.rdbms.mapping.ao.GeometryMapping" 
+            literal-class="org.datanucleus.store.types.geospatial.rdbms.sql.expression.GeometryLiteral"
+            expression-class="org.datanucleus.store.types.geospatial.rdbms.sql.expression.GeometryExpression"/>
+        <sql-expression mapping-class="org.datanucleus.store.types.geospatial.rdbms.mapping.ao.EnvelopeMapping" 
+            literal-class="org.datanucleus.store.types.geospatial.rdbms.sql.expression.GeometryLiteral"
+            expression-class="org.datanucleus.store.types.geospatial.rdbms.sql.expression.GeometryExpression"/>
+        <sql-expression mapping-class="org.datanucleus.store.types.geospatial.rdbms.mapping.ao.GeometryBagMapping" 
+            literal-class="org.datanucleus.store.types.geospatial.rdbms.sql.expression.GeometryLiteral"
+            expression-class="org.datanucleus.store.types.geospatial.rdbms.sql.expression.GeometryExpression"/>
+        <sql-expression mapping-class="org.datanucleus.store.types.geospatial.rdbms.mapping.ao.LineMapping" 
+            literal-class="org.datanucleus.store.types.geospatial.rdbms.sql.expression.GeometryLiteral"
+            expression-class="org.datanucleus.store.types.geospatial.rdbms.sql.expression.GeometryExpression"/>
+        <sql-expression mapping-class="org.datanucleus.store.types.geospatial.rdbms.mapping.ao.MultipointMapping" 
+            literal-class="org.datanucleus.store.types.geospatial.rdbms.sql.expression.GeometryLiteral"
+            expression-class="org.datanucleus.store.types.geospatial.rdbms.sql.expression.GeometryExpression"/>
+        <sql-expression mapping-class="org.datanucleus.store.types.geospatial.rdbms.mapping.ao.PathMapping" 
+            literal-class="org.datanucleus.store.types.geospatial.rdbms.sql.expression.GeometryLiteral"
+            expression-class="org.datanucleus.store.types.geospatial.rdbms.sql.expression.GeometryExpression"/>
+        <sql-expression mapping-class="org.datanucleus.store.types.geospatial.rdbms.mapping.ao.PointMapping" 
+            literal-class="org.datanucleus.store.types.geospatial.rdbms.sql.expression.GeometryLiteral"
+            expression-class="org.datanucleus.store.types.geospatial.rdbms.sql.expression.GeometryExpression"/>
+        <sql-expression mapping-class="org.datanucleus.store.types.geospatial.rdbms.mapping.ao.PolygonMapping" 
+            literal-class="org.datanucleus.store.types.geospatial.rdbms.sql.expression.GeometryLiteral"
+            expression-class="org.datanucleus.store.types.geospatial.rdbms.sql.expression.GeometryExpression"/>
+        <sql-expression mapping-class="org.datanucleus.store.types.geospatial.rdbms.mapping.ao.PolylineMapping" 
+            literal-class="org.datanucleus.store.types.geospatial.rdbms.sql.expression.GeometryLiteral"
+            expression-class="org.datanucleus.store.types.geospatial.rdbms.sql.expression.GeometryExpression"/>
+        <sql-expression mapping-class="org.datanucleus.store.types.geospatial.rdbms.mapping.ao.RingMapping" 
+            literal-class="org.datanucleus.store.types.geospatial.rdbms.sql.expression.GeometryLiteral"
+            expression-class="org.datanucleus.store.types.geospatial.rdbms.sql.expression.GeometryExpression"/>
 
-        <sql-expression mapping-class="org.datanucleus.store.rdbms.mapping.jgeom.JGeometryMapping" 
-            literal-class="org.datanucleus.store.rdbms.sql.expression.GeometryLiteral"
-            expression-class="org.datanucleus.store.rdbms.sql.expression.GeometryExpression"/>
+        <sql-expression mapping-class="org.datanucleus.store.types.geospatial.rdbms.mapping.jgeom.JGeometryMapping" 
+            literal-class="org.datanucleus.store.types.geospatial.rdbms.sql.expression.GeometryLiteral"
+            expression-class="org.datanucleus.store.types.geospatial.rdbms.sql.expression.GeometryExpression"/>
 
-        <sql-expression mapping-class="org.datanucleus.store.rdbms.mapping.pg.GeometryMapping" 
-            literal-class="org.datanucleus.store.rdbms.sql.expression.GeometryLiteral"
-            expression-class="org.datanucleus.store.rdbms.sql.expression.GeometryExpression"/>
-        <sql-expression mapping-class="org.datanucleus.store.rdbms.mapping.pg.GeometryCollectionMapping" 
-            literal-class="org.datanucleus.store.rdbms.sql.expression.GeometryLiteral"
-            expression-class="org.datanucleus.store.rdbms.sql.expression.GeometryExpression"/>
-        <sql-expression mapping-class="org.datanucleus.store.rdbms.mapping.pg.LinearRingMapping" 
-            literal-class="org.datanucleus.store.rdbms.sql.expression.GeometryLiteral"
-            expression-class="org.datanucleus.store.rdbms.sql.expression.GeometryExpression"/>
-        <sql-expression mapping-class="org.datanucleus.store.rdbms.mapping.pg.LineStringMapping" 
-            literal-class="org.datanucleus.store.rdbms.sql.expression.GeometryLiteral"
-            expression-class="org.datanucleus.store.rdbms.sql.expression.GeometryExpression"/>
-        <sql-expression mapping-class="org.datanucleus.store.rdbms.mapping.pg.MultiLineStringMapping" 
-            literal-class="org.datanucleus.store.rdbms.sql.expression.GeometryLiteral"
-            expression-class="org.datanucleus.store.rdbms.sql.expression.GeometryExpression"/>
-        <sql-expression mapping-class="org.datanucleus.store.rdbms.mapping.pg.MultiPointMapping" 
-            literal-class="org.datanucleus.store.rdbms.sql.expression.GeometryLiteral"
-            expression-class="org.datanucleus.store.rdbms.sql.expression.GeometryExpression"/>
-        <sql-expression mapping-class="org.datanucleus.store.rdbms.mapping.pg.MultiPolygonMapping" 
-            literal-class="org.datanucleus.store.rdbms.sql.expression.GeometryLiteral"
-            expression-class="org.datanucleus.store.rdbms.sql.expression.GeometryExpression"/>
-        <sql-expression mapping-class="org.datanucleus.store.rdbms.mapping.pg.PGbox2dMapping" 
-            literal-class="org.datanucleus.store.rdbms.sql.expression.GeometryLiteral"
-            expression-class="org.datanucleus.store.rdbms.sql.expression.GeometryExpression"/>
-        <sql-expression mapping-class="org.datanucleus.store.rdbms.mapping.pg.PGbox3dMapping" 
-            literal-class="org.datanucleus.store.rdbms.sql.expression.GeometryLiteral"
-            expression-class="org.datanucleus.store.rdbms.sql.expression.GeometryExpression"/>
-        <sql-expression mapping-class="org.datanucleus.store.rdbms.mapping.pg.PointMapping" 
-            literal-class="org.datanucleus.store.rdbms.sql.expression.GeometryLiteral"
-            expression-class="org.datanucleus.store.rdbms.sql.expression.GeometryExpression"/>
-        <sql-expression mapping-class="org.datanucleus.store.rdbms.mapping.pg.PolygonMapping" 
-            literal-class="org.datanucleus.store.rdbms.sql.expression.GeometryLiteral"
-            expression-class="org.datanucleus.store.rdbms.sql.expression.GeometryExpression"/>
+        <sql-expression mapping-class="org.datanucleus.store.types.geospatial.rdbms.mapping.pg.GeometryMapping" 
+            literal-class="org.datanucleus.store.types.geospatial.rdbms.sql.expression.GeometryLiteral"
+            expression-class="org.datanucleus.store.types.geospatial.rdbms.sql.expression.GeometryExpression"/>
+        <sql-expression mapping-class="org.datanucleus.store.types.geospatial.rdbms.mapping.pg.GeometryCollectionMapping" 
+            literal-class="org.datanucleus.store.types.geospatial.rdbms.sql.expression.GeometryLiteral"
+            expression-class="org.datanucleus.store.types.geospatial.rdbms.sql.expression.GeometryExpression"/>
+        <sql-expression mapping-class="org.datanucleus.store.types.geospatial.rdbms.mapping.pg.LinearRingMapping" 
+            literal-class="org.datanucleus.store.types.geospatial.rdbms.sql.expression.GeometryLiteral"
+            expression-class="org.datanucleus.store.types.geospatial.rdbms.sql.expression.GeometryExpression"/>
+        <sql-expression mapping-class="org.datanucleus.store.types.geospatial.rdbms.mapping.pg.LineStringMapping" 
+            literal-class="org.datanucleus.store.types.geospatial.rdbms.sql.expression.GeometryLiteral"
+            expression-class="org.datanucleus.store.types.geospatial.rdbms.sql.expression.GeometryExpression"/>
+        <sql-expression mapping-class="org.datanucleus.store.types.geospatial.rdbms.mapping.pg.MultiLineStringMapping" 
+            literal-class="org.datanucleus.store.types.geospatial.rdbms.sql.expression.GeometryLiteral"
+            expression-class="org.datanucleus.store.types.geospatial.rdbms.sql.expression.GeometryExpression"/>
+        <sql-expression mapping-class="org.datanucleus.store.types.geospatial.rdbms.mapping.pg.MultiPointMapping" 
+            literal-class="org.datanucleus.store.types.geospatial.rdbms.sql.expression.GeometryLiteral"
+            expression-class="org.datanucleus.store.types.geospatial.rdbms.sql.expression.GeometryExpression"/>
+        <sql-expression mapping-class="org.datanucleus.store.types.geospatial.rdbms.mapping.pg.MultiPolygonMapping" 
+            literal-class="org.datanucleus.store.types.geospatial.rdbms.sql.expression.GeometryLiteral"
+            expression-class="org.datanucleus.store.types.geospatial.rdbms.sql.expression.GeometryExpression"/>
+        <sql-expression mapping-class="org.datanucleus.store.types.geospatial.rdbms.mapping.pg.PGbox2dMapping" 
+            literal-class="org.datanucleus.store.types.geospatial.rdbms.sql.expression.GeometryLiteral"
+            expression-class="org.datanucleus.store.types.geospatial.rdbms.sql.expression.GeometryExpression"/>
+        <sql-expression mapping-class="org.datanucleus.store.types.geospatial.rdbms.mapping.pg.PGbox3dMapping" 
+            literal-class="org.datanucleus.store.types.geospatial.rdbms.sql.expression.GeometryLiteral"
+            expression-class="org.datanucleus.store.types.geospatial.rdbms.sql.expression.GeometryExpression"/>
+        <sql-expression mapping-class="org.datanucleus.store.types.geospatial.rdbms.mapping.pg.PointMapping" 
+            literal-class="org.datanucleus.store.types.geospatial.rdbms.sql.expression.GeometryLiteral"
+            expression-class="org.datanucleus.store.types.geospatial.rdbms.sql.expression.GeometryExpression"/>
+        <sql-expression mapping-class="org.datanucleus.store.types.geospatial.rdbms.mapping.pg.PolygonMapping" 
+            literal-class="org.datanucleus.store.types.geospatial.rdbms.sql.expression.GeometryLiteral"
+            expression-class="org.datanucleus.store.types.geospatial.rdbms.sql.expression.GeometryExpression"/>
     </extension>
 
     <!-- RDBMS : SQL METHODS -->
     <extension point="org.datanucleus.store.rdbms.sql_method">
         <sql-method class="java.awt.Point" method="getX"
-            evaluator="org.datanucleus.store.rdbms.sql.method.PointGetXMethod"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.PointGetXMethod"/>
         <sql-method class="java.awt.Point" method="getY"
-            evaluator="org.datanucleus.store.rdbms.sql.method.PointGetYMethod"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.PointGetYMethod"/>
         <sql-method class="java.awt.Rectangle" method="getX"
-            evaluator="org.datanucleus.store.rdbms.sql.method.RectangleGetXMethod"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.RectangleGetXMethod"/>
         <sql-method class="java.awt.Rectangle" method="getY"
-            evaluator="org.datanucleus.store.rdbms.sql.method.RectangleGetYMethod"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.RectangleGetYMethod"/>
         <sql-method class="java.awt.Rectangle" method="getWidth"
-            evaluator="org.datanucleus.store.rdbms.sql.method.RectangleGetWidthMethod"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.RectangleGetWidthMethod"/>
         <sql-method class="java.awt.Rectangle" method="getHeight"
-            evaluator="org.datanucleus.store.rdbms.sql.method.RectangleGetHeightMethod"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.RectangleGetHeightMethod"/>
 
         <sql-method method="MySQL.mbrEqual"
-            evaluator="org.datanucleus.store.rdbms.sql.method.MySqlMbrEqualMethod" datastore="mysql"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.MySqlMbrEqualMethod" datastore="mysql"/>
         <sql-method method="MySQL.mbrDisjoint"
-            evaluator="org.datanucleus.store.rdbms.sql.method.MySqlMbrDisjointMethod" datastore="mysql"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.MySqlMbrDisjointMethod" datastore="mysql"/>
         <sql-method method="MySQL.mbrIntersects"
-            evaluator="org.datanucleus.store.rdbms.sql.method.MySqlMbrIntersectsMethod" datastore="mysql"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.MySqlMbrIntersectsMethod" datastore="mysql"/>
         <sql-method method="MySQL.mbrTouches"
-            evaluator="org.datanucleus.store.rdbms.sql.method.MySqlMbrTouchesMethod" datastore="mysql"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.MySqlMbrTouchesMethod" datastore="mysql"/>
         <sql-method method="MySQL.mbrWithin"
-            evaluator="org.datanucleus.store.rdbms.sql.method.MySqlMbrWithinMethod" datastore="mysql"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.MySqlMbrWithinMethod" datastore="mysql"/>
         <sql-method method="MySQL.mbrContains"
-            evaluator="org.datanucleus.store.rdbms.sql.method.MySqlMbrContainsMethod" datastore="mysql"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.MySqlMbrContainsMethod" datastore="mysql"/>
         <sql-method method="MySQL.mbrOverlaps"
-            evaluator="org.datanucleus.store.rdbms.sql.method.MySqlMbrOverlapsMethod" datastore="mysql"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.MySqlMbrOverlapsMethod" datastore="mysql"/>
 
         <sql-method method="Oracle.sdo_elem_info_array"
-            evaluator="org.datanucleus.store.rdbms.sql.method.OracleSdoElemInfoArrayMethod" datastore="oracle"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.OracleSdoElemInfoArrayMethod" datastore="oracle"/>
         <sql-method method="Oracle.sdo_geometry"
-            evaluator="org.datanucleus.store.rdbms.sql.method.OracleSdoGeometryMethod" datastore="oracle"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.OracleSdoGeometryMethod" datastore="oracle"/>
         <sql-method method="Oracle.sdo_ordinate_array"
-            evaluator="org.datanucleus.store.rdbms.sql.method.OracleSdoOrdinateArrayMethod" datastore="oracle"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.OracleSdoOrdinateArrayMethod" datastore="oracle"/>
         <sql-method method="Oracle.sdo_point_type"
-            evaluator="org.datanucleus.store.rdbms.sql.method.OracleSdoPointTypeMethod" datastore="oracle"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.OracleSdoPointTypeMethod" datastore="oracle"/>
 
         <sql-method method="PostGIS.bboxBelow"
-            evaluator="org.datanucleus.store.rdbms.sql.method.PostGISBboxBelowMethod" datastore="postgresql"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.PostGISBboxBelowMethod" datastore="postgresql"/>
         <sql-method method="PostGIS.bboxAbove"
-            evaluator="org.datanucleus.store.rdbms.sql.method.PostGISBboxAboveMethod" datastore="postgresql"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.PostGISBboxAboveMethod" datastore="postgresql"/>
         <sql-method method="PostGIS.bboxLeft"
-            evaluator="org.datanucleus.store.rdbms.sql.method.PostGISBboxLeftMethod" datastore="postgresql"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.PostGISBboxLeftMethod" datastore="postgresql"/>
         <sql-method method="PostGIS.bboxRight"
-            evaluator="org.datanucleus.store.rdbms.sql.method.PostGISBboxRightMethod" datastore="postgresql"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.PostGISBboxRightMethod" datastore="postgresql"/>
         <sql-method method="PostGIS.bboxOverlapsBelow"
-            evaluator="org.datanucleus.store.rdbms.sql.method.PostGISBboxOverlapsBelowMethod" datastore="postgresql"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.PostGISBboxOverlapsBelowMethod" datastore="postgresql"/>
         <sql-method method="PostGIS.bboxOverlapsAbove"
-            evaluator="org.datanucleus.store.rdbms.sql.method.PostGISBboxOverlapsAboveMethod" datastore="postgresql"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.PostGISBboxOverlapsAboveMethod" datastore="postgresql"/>
         <sql-method method="PostGIS.bboxOverlapsLeft"
-            evaluator="org.datanucleus.store.rdbms.sql.method.PostGISBboxOverlapsLeftMethod" datastore="postgresql"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.PostGISBboxOverlapsLeftMethod" datastore="postgresql"/>
         <sql-method method="PostGIS.bboxOverlapsRight"
-            evaluator="org.datanucleus.store.rdbms.sql.method.PostGISBboxOverlapsRightMethod" datastore="postgresql"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.PostGISBboxOverlapsRightMethod" datastore="postgresql"/>
         <sql-method method="PostGIS.bboxContains"
-            evaluator="org.datanucleus.store.rdbms.sql.method.PostGISBboxContainsMethod" datastore="postgresql"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.PostGISBboxContainsMethod" datastore="postgresql"/>
         <sql-method method="PostGIS.bboxWithin"
-            evaluator="org.datanucleus.store.rdbms.sql.method.PostGISBboxWithinMethod" datastore="postgresql"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.PostGISBboxWithinMethod" datastore="postgresql"/>
         <sql-method method="PostGIS.sameAs"
-            evaluator="org.datanucleus.store.rdbms.sql.method.PostGISSameAsMethod" datastore="postgresql"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.PostGISSameAsMethod" datastore="postgresql"/>
 
         <!-- This is how methods should be defined eventually -->
         <sql-method class="com.vividsolutions.jts.geom.Point" method="getX"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialXMethod"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialXMethod"/>
         <sql-method class="com.vividsolutions.jts.geom.Point" method="getX"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialXMethod2" datastore="oracle"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialXMethod2" datastore="oracle"/>
         <sql-method class="com.vividsolutions.jts.geom.Point" method="getX"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialXMethod3" datastore="postgresql"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialXMethod3" datastore="postgresql"/>
         <sql-method class="com.vividsolutions.jts.geom.Point" method="getY"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialYMethod"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialYMethod"/>
         <sql-method class="com.vividsolutions.jts.geom.Point" method="getY"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialYMethod2" datastore="oracle"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialYMethod2" datastore="oracle"/>
         <sql-method class="com.vividsolutions.jts.geom.Point" method="getY"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialYMethod3" datastore="postgresql"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialYMethod3" datastore="postgresql"/>
 
         <sql-method class="com.vividsolutions.jts.geom.Geometry" method="getNumPoints"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialNumPointsMethod"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialNumPointsMethod"/>
         <sql-method class="com.vividsolutions.jts.geom.Geometry" method="getNumPoints"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialNumPointsMethod2" datastore="oracle"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialNumPointsMethod2" datastore="oracle"/>
         <sql-method class="com.vividsolutions.jts.geom.Geometry" method="getNumPoints"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialNumPointsMethod3" datastore="postgresql"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialNumPointsMethod3" datastore="postgresql"/>
         <sql-method class="com.vividsolutions.jts.geom.Geometry" method="getArea"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialAreaMethod"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialAreaMethod"/>
         <sql-method class="com.vividsolutions.jts.geom.Geometry" method="getArea"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialAreaMethod2" datastore="oracle"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialAreaMethod2" datastore="oracle"/>
         <sql-method class="com.vividsolutions.jts.geom.Geometry" method="getArea"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialAreaMethod3" datastore="postgresql"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialAreaMethod3" datastore="postgresql"/>
         <sql-method class="com.vividsolutions.jts.geom.Geometry" method="contains"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialContainsMethod"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialContainsMethod"/>
         <sql-method class="com.vividsolutions.jts.geom.Geometry" method="contains"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialContainsMethod2" datastore="oracle"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialContainsMethod2" datastore="oracle"/>
         <sql-method class="com.vividsolutions.jts.geom.Geometry" method="contains"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialContainsMethod3" datastore="postgresql"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialContainsMethod3" datastore="postgresql"/>
         <sql-method class="com.vividsolutions.jts.geom.Geometry" method="getEnvelope"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialEnvelopeMethod"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialEnvelopeMethod"/>
         <sql-method class="com.vividsolutions.jts.geom.Geometry" method="getEnvelope"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialEnvelopeMethod2" datastore="oracle"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialEnvelopeMethod2" datastore="oracle"/>
         <sql-method class="com.vividsolutions.jts.geom.Geometry" method="getEnvelope"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialEnvelopeMethod3" datastore="postgresql"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialEnvelopeMethod3" datastore="postgresql"/>
         <sql-method class="com.vividsolutions.jts.geom.Geometry" method="getDimension"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialDimensionMethod"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialDimensionMethod"/>
         <sql-method class="com.vividsolutions.jts.geom.Geometry" method="getDimension"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialDimensionMethod2" datastore="oracle"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialDimensionMethod2" datastore="oracle"/>
         <sql-method class="com.vividsolutions.jts.geom.Geometry" method="getDimension"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialDimensionMethod3" datastore="postgresql"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialDimensionMethod3" datastore="postgresql"/>
         <sql-method class="com.vividsolutions.jts.geom.Geometry" method="getLength"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialLengthMethod"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialLengthMethod"/>
         <sql-method class="com.vividsolutions.jts.geom.Geometry" method="getLength"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialLengthMethod2" datastore="mysql"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialLengthMethod2" datastore="mysql"/>
         <sql-method class="com.vividsolutions.jts.geom.Geometry" method="getLength"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialLengthMethod3" datastore="oracle"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialLengthMethod3" datastore="oracle"/>
         <sql-method class="com.vividsolutions.jts.geom.Geometry" method="getLength"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialLengthMethod4" datastore="postgresql"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialLengthMethod4" datastore="postgresql"/>
         <sql-method class="com.vividsolutions.jts.geom.Geometry" method="getBoundary"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialBoundaryMethod"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialBoundaryMethod"/>
         <sql-method class="com.vividsolutions.jts.geom.Geometry" method="getBoundary"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialBoundaryMethod2" datastore="oracle"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialBoundaryMethod2" datastore="oracle"/>
         <sql-method class="com.vividsolutions.jts.geom.Geometry" method="getBoundary"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialBoundaryMethod3" datastore="postgresql"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialBoundaryMethod3" datastore="postgresql"/>
         <sql-method class="com.vividsolutions.jts.geom.Geometry" method="getSRID"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialSridMethod"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialSridMethod"/>
         <sql-method class="com.vividsolutions.jts.geom.Geometry" method="getSRID"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialSridMethod2" datastore="oracle"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialSridMethod2" datastore="oracle"/>
         <sql-method class="com.vividsolutions.jts.geom.Geometry" method="getSRID"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialSridMethod3" datastore="postgresql"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialSridMethod3" datastore="postgresql"/>
         <sql-method class="com.vividsolutions.jts.geom.Geometry" method="isSimple"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialIsSimpleMethod"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialIsSimpleMethod"/>
         <sql-method class="com.vividsolutions.jts.geom.Geometry" method="isSimple"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialIsSimpleMethod2" datastore="oracle"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialIsSimpleMethod2" datastore="oracle"/>
         <sql-method class="com.vividsolutions.jts.geom.Geometry" method="isSimple"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialIsSimpleMethod3" datastore="postgresql"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialIsSimpleMethod3" datastore="postgresql"/>
         <sql-method class="com.vividsolutions.jts.geom.Geometry" method="isEmpty"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialIsEmptyMethod"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialIsEmptyMethod"/>
         <sql-method class="com.vividsolutions.jts.geom.Geometry" method="isEmpty"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialIsEmptyMethod2" datastore="oracle"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialIsEmptyMethod2" datastore="oracle"/>
         <sql-method class="com.vividsolutions.jts.geom.Geometry" method="isEmpty"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialIsEmptyMethod3" datastore="postgresql"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialIsEmptyMethod3" datastore="postgresql"/>
         <sql-method class="com.vividsolutions.jts.geom.Geometry" method="overlaps"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialOverlapsMethod"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialOverlapsMethod"/>
         <sql-method class="com.vividsolutions.jts.geom.Geometry" method="overlaps"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialOverlapsMethod2" datastore="oracle"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialOverlapsMethod2" datastore="oracle"/>
         <sql-method class="com.vividsolutions.jts.geom.Geometry" method="overlaps"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialOverlapsMethod3" datastore="postgresql"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialOverlapsMethod3" datastore="postgresql"/>
         <sql-method class="com.vividsolutions.jts.geom.Geometry" method="touches"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialTouchesMethod"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialTouchesMethod"/>
         <sql-method class="com.vividsolutions.jts.geom.Geometry" method="touches"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialTouchesMethod2" datastore="oracle"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialTouchesMethod2" datastore="oracle"/>
         <sql-method class="com.vividsolutions.jts.geom.Geometry" method="touches"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialTouchesMethod3" datastore="postgresql"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialTouchesMethod3" datastore="postgresql"/>
         <sql-method class="com.vividsolutions.jts.geom.Geometry" method="crosses"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialCrossesMethod"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialCrossesMethod"/>
         <sql-method class="com.vividsolutions.jts.geom.Geometry" method="crosses"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialCrossesMethod2" datastore="oracle"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialCrossesMethod2" datastore="oracle"/>
         <sql-method class="com.vividsolutions.jts.geom.Geometry" method="crosses"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialCrossesMethod3" datastore="postgresql"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialCrossesMethod3" datastore="postgresql"/>
         <sql-method class="com.vividsolutions.jts.geom.Geometry" method="within"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialWithinMethod"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialWithinMethod"/>
         <sql-method class="com.vividsolutions.jts.geom.Geometry" method="within"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialWithinMethod2" datastore="oracle"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialWithinMethod2" datastore="oracle"/>
         <sql-method class="com.vividsolutions.jts.geom.Geometry" method="within"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialWithinMethod3" datastore="postgresql"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialWithinMethod3" datastore="postgresql"/>
         <sql-method class="com.vividsolutions.jts.geom.Geometry" method="intersects"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialIntersectsMethod"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialIntersectsMethod"/>
         <sql-method class="com.vividsolutions.jts.geom.Geometry" method="intersects"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialIntersectsMethod2" datastore="oracle"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialIntersectsMethod2" datastore="oracle"/>
         <sql-method class="com.vividsolutions.jts.geom.Geometry" method="intersects"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialIntersectsMethod3" datastore="postgresql"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialIntersectsMethod3" datastore="postgresql"/>
         <sql-method class="com.vividsolutions.jts.geom.Geometry" method="intersection"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialIntersectionMethod"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialIntersectionMethod"/>
         <sql-method class="com.vividsolutions.jts.geom.Geometry" method="intersection"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialIntersectionMethod2" datastore="oracle"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialIntersectionMethod2" datastore="oracle"/>
         <sql-method class="com.vividsolutions.jts.geom.Geometry" method="intersection"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialIntersectionMethod3" datastore="postgresql"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialIntersectionMethod3" datastore="postgresql"/>
         <sql-method class="com.vividsolutions.jts.geom.Geometry" method="equals"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialEqualsMethod"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialEqualsMethod"/>
         <sql-method class="com.vividsolutions.jts.geom.Geometry" method="equals"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialEqualsMethod2" datastore="oracle"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialEqualsMethod2" datastore="oracle"/>
         <sql-method class="com.vividsolutions.jts.geom.Geometry" method="equals"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialEqualsMethod3" datastore="postgresql"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialEqualsMethod3" datastore="postgresql"/>
         <sql-method class="com.vividsolutions.jts.geom.Geometry" method="disjoint"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialDisjointMethod"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialDisjointMethod"/>
         <sql-method class="com.vividsolutions.jts.geom.Geometry" method="disjoint"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialDisjointMethod2" datastore="oracle"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialDisjointMethod2" datastore="oracle"/>
         <sql-method class="com.vividsolutions.jts.geom.Geometry" method="disjoint"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialDisjointMethod3" datastore="postgresql"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialDisjointMethod3" datastore="postgresql"/>
         <sql-method class="com.vividsolutions.jts.geom.Geometry" method="relate"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialRelateMethod"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialRelateMethod"/>
         <sql-method class="com.vividsolutions.jts.geom.Geometry" method="relate"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialRelateMethod2" datastore="oracle"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialRelateMethod2" datastore="oracle"/>
         <sql-method class="com.vividsolutions.jts.geom.Geometry" method="relate"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialRelateMethod3" datastore="postgresql"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialRelateMethod3" datastore="postgresql"/>
         <sql-method class="com.vividsolutions.jts.geom.Geometry" method="difference"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialDifferenceMethod"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialDifferenceMethod"/>
         <sql-method class="com.vividsolutions.jts.geom.Geometry" method="difference"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialDifferenceMethod2" datastore="oracle"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialDifferenceMethod2" datastore="oracle"/>
         <sql-method class="com.vividsolutions.jts.geom.Geometry" method="difference"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialDifferenceMethod3" datastore="postgresql"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialDifferenceMethod3" datastore="postgresql"/>
         <sql-method class="com.vividsolutions.jts.geom.Geometry" method="symDifference"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialSymDifferenceMethod"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialSymDifferenceMethod"/>
         <sql-method class="com.vividsolutions.jts.geom.Geometry" method="symDifference"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialSymDifferenceMethod2" datastore="oracle"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialSymDifferenceMethod2" datastore="oracle"/>
         <sql-method class="com.vividsolutions.jts.geom.Geometry" method="symDifference"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialSymDifferenceMethod3" datastore="postgresql"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialSymDifferenceMethod3" datastore="postgresql"/>
         <sql-method class="com.vividsolutions.jts.geom.Geometry" method="getCentroid"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialCentroidMethod"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialCentroidMethod"/>
         <sql-method class="com.vividsolutions.jts.geom.Geometry" method="getCentroid"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialCentroidMethod2" datastore="oracle"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialCentroidMethod2" datastore="oracle"/>
         <sql-method class="com.vividsolutions.jts.geom.Geometry" method="getCentroid"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialCentroidMethod3" datastore="postgresql"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialCentroidMethod3" datastore="postgresql"/>
         <sql-method class="com.vividsolutions.jts.geom.Geometry" method="toText"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialAsTextMethod"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialAsTextMethod"/>
         <sql-method class="com.vividsolutions.jts.geom.Geometry" method="toText"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialAsTextMethod2" datastore="oracle"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialAsTextMethod2" datastore="oracle"/>
         <sql-method class="com.vividsolutions.jts.geom.Geometry" method="toText"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialAsTextMethod3" datastore="postgresql"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialAsTextMethod3" datastore="postgresql"/>
         <sql-method class="com.vividsolutions.jts.geom.Geometry" method="union"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialUnionMethod"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialUnionMethod"/>
         <sql-method class="com.vividsolutions.jts.geom.Geometry" method="union"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialUnionMethod2" datastore="oracle"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialUnionMethod2" datastore="oracle"/>
         <sql-method class="com.vividsolutions.jts.geom.Geometry" method="union"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialUnionMethod3" datastore="postgresql"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialUnionMethod3" datastore="postgresql"/>
         <sql-method class="com.vividsolutions.jts.geom.Geometry" method="getGeometryType"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialGeometryTypeMethod"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialGeometryTypeMethod"/>
         <sql-method class="com.vividsolutions.jts.geom.Geometry" method="getGeometryType"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialGeometryTypeMethod2" datastore="oracle"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialGeometryTypeMethod2" datastore="oracle"/>
        	<sql-method class="com.vividsolutions.jts.geom.Geometry" method="getGeometryType"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialGeometryTypeMethod3" datastore="postgresql"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialGeometryTypeMethod3" datastore="postgresql"/>
         <sql-method class="com.vividsolutions.jts.geom.Geometry" method="distance"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialDistanceMethod"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialDistanceMethod"/>
         <sql-method class="com.vividsolutions.jts.geom.Geometry" method="distance"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialDistanceMethod2" datastore="oracle"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialDistanceMethod2" datastore="oracle"/>
         <sql-method class="com.vividsolutions.jts.geom.Geometry" method="distance"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialDistanceMethod3" datastore="postgresql"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialDistanceMethod3" datastore="postgresql"/>
         <sql-method class="com.vividsolutions.jts.geom.Geometry" method="buffer"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialBufferMethod"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialBufferMethod"/>
         <sql-method class="com.vividsolutions.jts.geom.Geometry" method="buffer"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialBufferMethod2" datastore="oracle"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialBufferMethod2" datastore="oracle"/>
         <sql-method class="com.vividsolutions.jts.geom.Geometry" method="buffer"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialBufferMethod3" datastore="postgresql"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialBufferMethod3" datastore="postgresql"/>
         <sql-method class="com.vividsolutions.jts.geom.Geometry" method="convexHull"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialConvexHullMethod"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialConvexHullMethod"/>
         <sql-method class="com.vividsolutions.jts.geom.Geometry" method="convexHull"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialConvexHullMethod2" datastore="oracle"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialConvexHullMethod2" datastore="oracle"/>
 	    <sql-method class="com.vividsolutions.jts.geom.Geometry" method="convexHull"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialConvexHullMethod3" datastore="postgresql"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialConvexHullMethod3" datastore="postgresql"/>
         <sql-method class="com.vividsolutions.jts.geom.LineString" method="isRing"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialIsRingMethod"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialIsRingMethod"/>
         <sql-method class="com.vividsolutions.jts.geom.LineString" method="isRing"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialIsRingMethod2" datastore="oracle"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialIsRingMethod2" datastore="oracle"/>
         <sql-method class="com.vividsolutions.jts.geom.LineString" method="isRing"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialIsRingMethod3" datastore="postgresql"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialIsRingMethod3" datastore="postgresql"/>
         <sql-method class="com.vividsolutions.jts.geom.LineString" method="isClosed"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialIsClosedMethod"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialIsClosedMethod"/>
         <sql-method class="com.vividsolutions.jts.geom.LineString" method="isClosed"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialIsClosedMethod2" datastore="oracle"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialIsClosedMethod2" datastore="oracle"/>
         <sql-method class="com.vividsolutions.jts.geom.LineString" method="isClosed"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialIsClosedMethod3" datastore="postgresql"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialIsClosedMethod3" datastore="postgresql"/>
         <sql-method class="com.vividsolutions.jts.geom.LineString" method="getStartPoint"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialStartPointMethod"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialStartPointMethod"/>
         <sql-method class="com.vividsolutions.jts.geom.LineString" method="getStartPoint"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialStartPointMethod2" datastore="oracle"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialStartPointMethod2" datastore="oracle"/>
         <sql-method class="com.vividsolutions.jts.geom.LineString" method="getStartPoint"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialStartPointMethod3" datastore="postgresql"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialStartPointMethod3" datastore="postgresql"/>
         <sql-method class="com.vividsolutions.jts.geom.LineString" method="getEndPoint"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialEndPointMethod"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialEndPointMethod"/>
         <sql-method class="com.vividsolutions.jts.geom.LineString" method="getEndPoint"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialEndPointMethod2" datastore="oracle"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialEndPointMethod2" datastore="oracle"/>
         <sql-method class="com.vividsolutions.jts.geom.LineString" method="getEndPoint"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialEndPointMethod3" datastore="postgresql"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialEndPointMethod3" datastore="postgresql"/>
         <sql-method class="com.vividsolutions.jts.geom.LineString" method="getPointN"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialPointNMethod"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialPointNMethod"/>
         <sql-method class="com.vividsolutions.jts.geom.LineString" method="getPointN"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialPointNMethod2" datastore="oracle"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialPointNMethod2" datastore="oracle"/>
         <sql-method class="com.vividsolutions.jts.geom.LineString" method="getPointN"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialPointNMethod3" datastore="postgresql"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialPointNMethod3" datastore="postgresql"/>
 
         <sql-method class="com.vividsolutions.jts.geom.Polygon" method="getExteriorRing"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialExteriorRingMethod"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialExteriorRingMethod"/>
         <sql-method class="com.vividsolutions.jts.geom.Polygon" method="getExteriorRing"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialExteriorRingMethod2" datastore="oracle"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialExteriorRingMethod2" datastore="oracle"/>
         <sql-method class="com.vividsolutions.jts.geom.Polygon" method="getExteriorRing"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialExteriorRingMethod3" datastore="postgresql"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialExteriorRingMethod3" datastore="postgresql"/>
         <sql-method class="com.vividsolutions.jts.geom.Polygon" method="getInteriorRingN"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialInteriorRingNMethod"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialInteriorRingNMethod"/>
         <sql-method class="com.vividsolutions.jts.geom.Polygon" method="getInteriorRingN"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialInteriorRingNMethod2" datastore="oracle"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialInteriorRingNMethod2" datastore="oracle"/>
         <sql-method class="com.vividsolutions.jts.geom.Polygon" method="getInteriorRingN"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialInteriorRingNMethod3" datastore="postgresql"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialInteriorRingNMethod3" datastore="postgresql"/>
         <sql-method class="com.vividsolutions.jts.geom.Polygon" method="getNumInteriorRing"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialNumInteriorRingMethod"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialNumInteriorRingMethod"/>
         <sql-method class="com.vividsolutions.jts.geom.Polygon" method="getNumInteriorRing"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialNumInteriorRingMethod2" datastore="mysql"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialNumInteriorRingMethod2" datastore="mysql"/>
         <sql-method class="com.vividsolutions.jts.geom.Polygon" method="getNumInteriorRing"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialNumInteriorRingMethod4" datastore="postgresql"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialNumInteriorRingMethod4" datastore="postgresql"/>
         <sql-method class="com.vividsolutions.jts.geom.Polygon" method="getNumInteriorRing"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialNumInteriorRingMethod3" datastore="oracle"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialNumInteriorRingMethod3" datastore="oracle"/>
 
         <sql-method class="com.vividsolutions.jts.geom.GeometryCollection" method="getNumGeometries"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialNumGeometriesMethod"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialNumGeometriesMethod"/>
         <sql-method class="com.vividsolutions.jts.geom.GeometryCollection" method="getNumGeometries"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialNumGeometriesMethod2" datastore="oracle"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialNumGeometriesMethod2" datastore="oracle"/>
         <sql-method class="com.vividsolutions.jts.geom.GeometryCollection" method="getNumGeometries"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialNumGeometriesMethod3" datastore="postgresql"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialNumGeometriesMethod3" datastore="postgresql"/>
         <sql-method class="com.vividsolutions.jts.geom.GeometryCollection" method="getGeometryN"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialGeometryNMethod"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialGeometryNMethod"/>
         <sql-method class="com.vividsolutions.jts.geom.GeometryCollection" method="getGeometryN"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialGeometryNMethod2" datastore="oracle"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialGeometryNMethod2" datastore="oracle"/>
         <sql-method class="com.vividsolutions.jts.geom.GeometryCollection" method="getGeometryN"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialGeometryNMethod3" datastore="postgresql"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialGeometryNMethod3" datastore="postgresql"/>
 
         <sql-method class="org.postgis.Point" method="getX"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialXMethod"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialXMethod"/>
         <sql-method class="org.postgis.Point" method="getX"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialXMethod2" datastore="oracle"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialXMethod2" datastore="oracle"/>
         <sql-method class="org.postgis.Point" method="getX"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialXMethod3" datastore="postgresql"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialXMethod3" datastore="postgresql"/>
         <sql-method class="org.postgis.Point" method="getY"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialYMethod"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialYMethod"/>
         <sql-method class="org.postgis.Point" method="getY"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialYMethod2" datastore="oracle"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialYMethod2" datastore="oracle"/>
         <sql-method class="org.postgis.Point" method="getY"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialYMethod3" datastore="postgresql"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialYMethod3" datastore="postgresql"/>
 
         <sql-method class="org.postgis.Geometry" method="numPoints"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialNumPointsMethod"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialNumPointsMethod"/>
         <sql-method class="org.postgis.Geometry" method="numPoints"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialNumPointsMethod2" datastore="oracle"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialNumPointsMethod2" datastore="oracle"/>
         <sql-method class="org.postgis.Geometry" method="numPoints"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialNumPointsMethod3" datastore="postgresql"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialNumPointsMethod3" datastore="postgresql"/>
         <sql-method class="org.postgis.Geometry" method="getDimension"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialDimensionMethod"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialDimensionMethod"/>
         <sql-method class="org.postgis.Geometry" method="getDimension"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialDimensionMethod2" datastore="oracle"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialDimensionMethod2" datastore="oracle"/>
         <sql-method class="org.postgis.Geometry" method="getDimension"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialDimensionMethod3" datastore="postgresql"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialDimensionMethod3" datastore="postgresql"/>
         <sql-method class="org.postgis.Geometry" method="getSrid"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialSridMethod"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialSridMethod"/>
         <sql-method class="org.postgis.Geometry" method="getSrid"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialSridMethod2" datastore="oracle"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialSridMethod2" datastore="oracle"/>
         <sql-method class="org.postgis.Geometry" method="getSrid"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialSridMethod3" datastore="postgresql"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialSridMethod3" datastore="postgresql"/>
         <sql-method class="org.postgis.Geometry" method="equals"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialEqualsMethod"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialEqualsMethod"/>
         <sql-method class="org.postgis.Geometry" method="equals"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialEqualsMethod2" datastore="oracle"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialEqualsMethod2" datastore="oracle"/>
 		<sql-method class="org.postgis.Geometry" method="equals"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialEqualsMethod3" datastore="postgresql"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialEqualsMethod3" datastore="postgresql"/>
             
         <sql-method method="Spatial.bboxTest"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialBboxTestMethod"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialBboxTestMethod"/>
         <sql-method method="Spatial.bboxTest"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialBboxTestMethod2" datastore="mysql"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialBboxTestMethod2" datastore="mysql"/>
         <sql-method method="Spatial.bboxTest"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialBboxTestMethod3" datastore="oracle"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialBboxTestMethod3" datastore="oracle"/>
         <sql-method method="Spatial.dimension"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialDimensionMethod"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialDimensionMethod"/>
         <sql-method method="Spatial.dimension"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialDimensionMethod2" datastore="oracle"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialDimensionMethod2" datastore="oracle"/>
         <sql-method method="Spatial.dimension"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialDimensionMethod3" datastore="postgresql"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialDimensionMethod3" datastore="postgresql"/>
         <sql-method method="Spatial.srid"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialSridMethod"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialSridMethod"/>
         <sql-method method="Spatial.srid"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialSridMethod2" datastore="oracle"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialSridMethod2" datastore="oracle"/>
         <sql-method method="Spatial.srid"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialSridMethod3" datastore="postgresql"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialSridMethod3" datastore="postgresql"/>
         <sql-method method="Spatial.x"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialXMethod"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialXMethod"/>
         <sql-method method="Spatial.x"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialXMethod2" datastore="oracle"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialXMethod2" datastore="oracle"/>
         <sql-method method="Spatial.x"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialXMethod3" datastore="postgresql"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialXMethod3" datastore="postgresql"/>
         <sql-method method="Spatial.y"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialYMethod"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialYMethod"/>
         <sql-method method="Spatial.y"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialYMethod2" datastore="oracle"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialYMethod2" datastore="oracle"/>
         <sql-method method="Spatial.y"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialYMethod3" datastore="postgresql"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialYMethod3" datastore="postgresql"/>
         <sql-method method="Spatial.area"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialAreaMethod"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialAreaMethod"/>
         <sql-method method="Spatial.area"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialAreaMethod2" datastore="oracle"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialAreaMethod2" datastore="oracle"/>
         <sql-method method="Spatial.area"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialAreaMethod3" datastore="postgresql"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialAreaMethod3" datastore="postgresql"/>
         <sql-method method="Spatial.length"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialLengthMethod"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialLengthMethod"/>
         <sql-method method="Spatial.length"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialLengthMethod2" datastore="mysql"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialLengthMethod2" datastore="mysql"/>
         <sql-method method="Spatial.length"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialLengthMethod3" datastore="oracle"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialLengthMethod3" datastore="oracle"/>
         <sql-method method="Spatial.length"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialLengthMethod4" datastore="postgresql"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialLengthMethod4" datastore="postgresql"/>
         <sql-method method="Spatial.distance"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialDistanceMethod"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialDistanceMethod"/>
         <sql-method method="Spatial.distance"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialDistanceMethod2" datastore="oracle"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialDistanceMethod2" datastore="oracle"/>
          <sql-method method="Spatial.distance"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialDistanceMethod3" datastore="postgresql"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialDistanceMethod3" datastore="postgresql"/>
         <sql-method method="Spatial.numPoints"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialNumPointsMethod"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialNumPointsMethod"/>
         <sql-method method="Spatial.numPoints"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialNumPointsMethod2" datastore="oracle"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialNumPointsMethod2" datastore="oracle"/>
         <sql-method method="Spatial.numPoints"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialNumPointsMethod3" datastore="postgresql"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialNumPointsMethod3" datastore="postgresql"/>
         <sql-method method="Spatial.numInteriorRing"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialNumInteriorRingMethod"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialNumInteriorRingMethod"/>
         <sql-method method="Spatial.numInteriorRing"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialNumInteriorRingMethod2" datastore="mysql"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialNumInteriorRingMethod2" datastore="mysql"/>
         <sql-method method="Spatial.numInteriorRing"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialNumInteriorRingMethod3" datastore="oracle"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialNumInteriorRingMethod3" datastore="oracle"/>
         <sql-method method="Spatial.numInteriorRing"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialNumInteriorRingMethod4" datastore="postgresql"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialNumInteriorRingMethod4" datastore="postgresql"/>
         <sql-method method="Spatial.numGeometries"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialNumGeometriesMethod"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialNumGeometriesMethod"/>
         <sql-method method="Spatial.numGeometries"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialNumGeometriesMethod2" datastore="oracle"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialNumGeometriesMethod2" datastore="oracle"/>
         <sql-method method="Spatial.numGeometries"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialNumGeometriesMethod3" datastore="postgresql"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialNumGeometriesMethod3" datastore="postgresql"/>
         <sql-method method="Spatial.asBinary"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialAsBinaryMethod"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialAsBinaryMethod"/>
         <sql-method method="Spatial.asBinary"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialAsBinaryMethod2" datastore="oracle"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialAsBinaryMethod2" datastore="oracle"/>
         <sql-method method="Spatial.asBinary"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialAsBinaryMethod3" datastore="postgresql"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialAsBinaryMethod3" datastore="postgresql"/>
         <sql-method method="Spatial.asText"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialAsTextMethod"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialAsTextMethod"/>
         <sql-method method="Spatial.asText"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialAsTextMethod2" datastore="oracle"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialAsTextMethod2" datastore="oracle"/>
        	<sql-method method="Spatial.asText"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialAsTextMethod3" datastore="postgresql"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialAsTextMethod3" datastore="postgresql"/>
         <sql-method method="Spatial.geogFromText"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialGeographyFromTextMethod" datastore="postgresql"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialGeographyFromTextMethod" datastore="postgresql"/>
         <sql-method method="Spatial.geometryType"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialGeometryTypeMethod"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialGeometryTypeMethod"/>
         <sql-method method="Spatial.geometryType"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialGeometryTypeMethod2" datastore="oracle"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialGeometryTypeMethod2" datastore="oracle"/>
         <sql-method method="Spatial.geometryType"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialGeometryTypeMethod3" datastore="postgresql"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialGeometryTypeMethod3" datastore="postgresql"/>
         <sql-method method="Spatial.geomFromText"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialGeomFromTextMethod"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialGeomFromTextMethod"/>
         <sql-method method="Spatial.geomFromText"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialGeomFromTextMethod2" datastore="oracle"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialGeomFromTextMethod2" datastore="oracle"/>
         <sql-method method="Spatial.geomFromText"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialGeomFromTextMethod3" datastore="postgresql"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialGeomFromTextMethod3" datastore="postgresql"/>
         <sql-method method="Spatial.pointFromText"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialPointFromTextMethod"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialPointFromTextMethod"/>
         <sql-method method="Spatial.pointFromText"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialPointFromTextMethod2" datastore="oracle"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialPointFromTextMethod2" datastore="oracle"/>
         <sql-method method="Spatial.pointFromText"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialGeomFromTextMethod3" datastore="postgresql"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialGeomFromTextMethod3" datastore="postgresql"/>
         <sql-method method="Spatial.lineFromText"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialLineFromTextMethod"/>        
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialLineFromTextMethod"/>        
         <sql-method method="Spatial.lineFromText"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialLineFromTextMethod2" datastore="oracle"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialLineFromTextMethod2" datastore="oracle"/>
         <sql-method method="Spatial.lineFromText"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialGeomFromTextMethod3" datastore="postgresql"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialGeomFromTextMethod3" datastore="postgresql"/>
         <sql-method method="Spatial.polyFromText"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialPolyFromTextMethod"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialPolyFromTextMethod"/>
         <sql-method method="Spatial.polyFromText"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialPolyFromTextMethod2" datastore="oracle"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialPolyFromTextMethod2" datastore="oracle"/>
         <sql-method method="Spatial.polyFromText"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialGeomFromTextMethod3" datastore="postgresql"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialGeomFromTextMethod3" datastore="postgresql"/>
         <sql-method method="Spatial.mLineFromText"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialMLineFromTextMethod"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialMLineFromTextMethod"/>
         <sql-method method="Spatial.mLineFromText"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialMLineFromTextMethod2" datastore="oracle"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialMLineFromTextMethod2" datastore="oracle"/>
         <sql-method method="Spatial.mLineFromText"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialGeomFromTextMethod3" datastore="postgresql"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialGeomFromTextMethod3" datastore="postgresql"/>
         <sql-method method="Spatial.mPointFromText"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialMPointFromTextMethod"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialMPointFromTextMethod"/>
         <sql-method method="Spatial.mPointFromText"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialMPointFromTextMethod2" datastore="oracle"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialMPointFromTextMethod2" datastore="oracle"/>
         <sql-method method="Spatial.mPointFromText"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialGeomFromTextMethod3" datastore="postgresql"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialGeomFromTextMethod3" datastore="postgresql"/>
         <sql-method method="Spatial.mPolyFromText"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialMPolyFromTextMethod"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialMPolyFromTextMethod"/>
         <sql-method method="Spatial.mPolyFromText"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialMPolyFromTextMethod2" datastore="oracle"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialMPolyFromTextMethod2" datastore="oracle"/>
         <sql-method method="Spatial.mPolyFromText"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialGeomFromTextMethod3" datastore="postgresql"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialGeomFromTextMethod3" datastore="postgresql"/>
         <sql-method method="Spatial.geomCollFromText"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialGeomCollFromTextMethod"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialGeomCollFromTextMethod"/>
         <sql-method method="Spatial.geomCollFromText"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialGeomCollFromTextMethod2" datastore="oracle"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialGeomCollFromTextMethod2" datastore="oracle"/>
         <sql-method method="Spatial.geomCollFromText"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialGeomFromTextMethod3" datastore="postgresql"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialGeomFromTextMethod3" datastore="postgresql"/>
         <sql-method method="Spatial.envelope"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialEnvelopeMethod"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialEnvelopeMethod"/>
         <sql-method method="Spatial.envelope"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialEnvelopeMethod2" datastore="oracle"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialEnvelopeMethod2" datastore="oracle"/>
         <sql-method method="Spatial.envelope"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialEnvelopeMethod3" datastore="postgresql"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialEnvelopeMethod3" datastore="postgresql"/>
         <sql-method method="Spatial.boundary"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialBoundaryMethod"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialBoundaryMethod"/>
         <sql-method method="Spatial.boundary"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialBoundaryMethod2" datastore="oracle"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialBoundaryMethod2" datastore="oracle"/>
         <sql-method method="Spatial.boundary"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialBoundaryMethod3" datastore="postgresql"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialBoundaryMethod3" datastore="postgresql"/>
         <sql-method method="Spatial.convexHull"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialConvexHullMethod"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialConvexHullMethod"/>
         <sql-method method="Spatial.convexHull"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialConvexHullMethod2" datastore="oracle"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialConvexHullMethod2" datastore="oracle"/>
         <sql-method method="Spatial.convexHull"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialConvexHullMethod3" datastore="postgresql"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialConvexHullMethod3" datastore="postgresql"/>
         <sql-method method="Spatial.startPoint"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialStartPointMethod"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialStartPointMethod"/>
         <sql-method method="Spatial.startPoint"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialStartPointMethod2" datastore="oracle"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialStartPointMethod2" datastore="oracle"/>
         <sql-method method="Spatial.startPoint"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialStartPointMethod3" datastore="postgresql"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialStartPointMethod3" datastore="postgresql"/>
         <sql-method method="Spatial.endPoint"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialEndPointMethod"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialEndPointMethod"/>
         <sql-method method="Spatial.endPoint"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialEndPointMethod2" datastore="oracle"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialEndPointMethod2" datastore="oracle"/>
         <sql-method method="Spatial.endPoint"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialEndPointMethod3" datastore="postgresql"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialEndPointMethod3" datastore="postgresql"/>
         <sql-method method="Spatial.centroid"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialCentroidMethod"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialCentroidMethod"/>
         <sql-method method="Spatial.centroid"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialCentroidMethod2" datastore="oracle"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialCentroidMethod2" datastore="oracle"/>
         <sql-method method="Spatial.centroid"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialCentroidMethod3" datastore="postgresql"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialCentroidMethod3" datastore="postgresql"/>
         <sql-method method="Spatial.pointOnSurface"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialPointOnSurfaceMethod"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialPointOnSurfaceMethod"/>
         <sql-method method="Spatial.pointOnSurface"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialPointOnSurfaceMethod2" datastore="oracle"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialPointOnSurfaceMethod2" datastore="oracle"/>
         <sql-method method="Spatial.pointOnSurface"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialPointOnSurfaceMethod3" datastore="postgresql"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialPointOnSurfaceMethod3" datastore="postgresql"/>
         <sql-method method="Spatial.exteriorRing"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialExteriorRingMethod"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialExteriorRingMethod"/>
         <sql-method method="Spatial.exteriorRing"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialExteriorRingMethod2" datastore="oracle"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialExteriorRingMethod2" datastore="oracle"/>
         <sql-method method="Spatial.exteriorRing"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialExteriorRingMethod3" datastore="postgresql"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialExteriorRingMethod3" datastore="postgresql"/>
         <sql-method method="Spatial.equals"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialEqualsMethod"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialEqualsMethod"/>
         <sql-method method="Spatial.equals"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialEqualsMethod2" datastore="oracle"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialEqualsMethod2" datastore="oracle"/>
         <sql-method method="Spatial.equals"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialEqualsMethod3" datastore="postgresql"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialEqualsMethod3" datastore="postgresql"/>
         <sql-method method="Spatial.disjoint"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialDisjointMethod"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialDisjointMethod"/>
         <sql-method method="Spatial.disjoint"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialDisjointMethod2" datastore="oracle"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialDisjointMethod2" datastore="oracle"/>
         <sql-method method="Spatial.disjoint"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialDisjointMethod3" datastore="postgresql"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialDisjointMethod3" datastore="postgresql"/>
         <sql-method method="Spatial.intersects"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialIntersectsMethod"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialIntersectsMethod"/>
         <sql-method method="Spatial.intersects"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialIntersectsMethod2" datastore="oracle"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialIntersectsMethod2" datastore="oracle"/>
         <sql-method method="Spatial.intersects"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialIntersectsMethod3" datastore="postgresql"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialIntersectsMethod3" datastore="postgresql"/>
         <sql-method method="Spatial.touches"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialTouchesMethod"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialTouchesMethod"/>
         <sql-method method="Spatial.touches"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialTouchesMethod2" datastore="oracle"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialTouchesMethod2" datastore="oracle"/>
         <sql-method method="Spatial.touches"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialTouchesMethod3" datastore="postgresql"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialTouchesMethod3" datastore="postgresql"/>
         <sql-method method="Spatial.crosses"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialCrossesMethod"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialCrossesMethod"/>
         <sql-method method="Spatial.crosses"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialCrossesMethod2" datastore="oracle"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialCrossesMethod2" datastore="oracle"/>
         <sql-method method="Spatial.crosses"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialCrossesMethod3" datastore="postgresql"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialCrossesMethod3" datastore="postgresql"/>
         <sql-method method="Spatial.within"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialWithinMethod"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialWithinMethod"/>
         <sql-method method="Spatial.within"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialWithinMethod2" datastore="oracle"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialWithinMethod2" datastore="oracle"/>
         <sql-method method="Spatial.within"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialWithinMethod3" datastore="postgresql"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialWithinMethod3" datastore="postgresql"/>
         <sql-method method="Spatial.contains"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialContainsMethod"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialContainsMethod"/>
         <sql-method method="Spatial.contains"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialContainsMethod2" datastore="oracle"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialContainsMethod2" datastore="oracle"/>
         <sql-method method="Spatial.contains"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialContainsMethod3" datastore="postgresql"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialContainsMethod3" datastore="postgresql"/>
         <sql-method method="Spatial.overlaps"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialOverlapsMethod"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialOverlapsMethod"/>
         <sql-method method="Spatial.overlaps"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialOverlapsMethod2" datastore="oracle"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialOverlapsMethod2" datastore="oracle"/>
         <sql-method method="Spatial.overlaps"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialOverlapsMethod3" datastore="postgresql"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialOverlapsMethod3" datastore="postgresql"/>
         <sql-method method="Spatial.relate"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialRelateMethod"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialRelateMethod"/>
         <sql-method method="Spatial.relate"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialRelateMethod2" datastore="oracle"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialRelateMethod2" datastore="oracle"/>
         <sql-method method="Spatial.relate"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialRelateMethod3" datastore="postgresql"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialRelateMethod3" datastore="postgresql"/>
         <sql-method method="Spatial.isClosed"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialIsClosedMethod"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialIsClosedMethod"/>
         <sql-method method="Spatial.isClosed"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialIsClosedMethod2" datastore="oracle"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialIsClosedMethod2" datastore="oracle"/>
         <sql-method method="Spatial.isClosed"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialIsClosedMethod3" datastore="postgresql"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialIsClosedMethod3" datastore="postgresql"/>
         <sql-method method="Spatial.isEmpty"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialIsEmptyMethod"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialIsEmptyMethod"/>
         <sql-method method="Spatial.isEmpty"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialIsEmptyMethod2" datastore="oracle"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialIsEmptyMethod2" datastore="oracle"/>
         <sql-method method="Spatial.isEmpty"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialIsEmptyMethod3" datastore="postgresql"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialIsEmptyMethod3" datastore="postgresql"/>
         <sql-method method="Spatial.isRing"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialIsRingMethod"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialIsRingMethod"/>
         <sql-method method="Spatial.isRing"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialIsRingMethod2" datastore="oracle"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialIsRingMethod2" datastore="oracle"/>
         <sql-method method="Spatial.isRing"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialIsRingMethod3" datastore="postgresql"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialIsRingMethod3" datastore="postgresql"/>
         <sql-method method="Spatial.isSimple"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialIsSimpleMethod"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialIsSimpleMethod"/>
         <sql-method method="Spatial.isSimple"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialIsSimpleMethod2" datastore="oracle"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialIsSimpleMethod2" datastore="oracle"/>
         <sql-method method="Spatial.isSimple"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialIsSimpleMethod3" datastore="postgresql"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialIsSimpleMethod3" datastore="postgresql"/>
         <sql-method method="Spatial.buffer"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialBufferMethod"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialBufferMethod"/>
         <sql-method method="Spatial.buffer"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialBufferMethod2" datastore="oracle"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialBufferMethod2" datastore="oracle"/>
         <sql-method method="Spatial.buffer"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialBufferMethod3" datastore="postgresql"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialBufferMethod3" datastore="postgresql"/>
         <sql-method method="Spatial.difference"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialDifferenceMethod"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialDifferenceMethod"/>
         <sql-method method="Spatial.difference"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialDifferenceMethod2" datastore="oracle"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialDifferenceMethod2" datastore="oracle"/>
         <sql-method method="Spatial.difference"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialDifferenceMethod3" datastore="postgresql"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialDifferenceMethod3" datastore="postgresql"/>
         <sql-method method="Spatial.intersection"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialIntersectionMethod"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialIntersectionMethod"/>
         <sql-method method="Spatial.intersection"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialIntersectionMethod2" datastore="oracle"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialIntersectionMethod2" datastore="oracle"/>
             <sql-method method="Spatial.intersection"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialIntersectionMethod3" datastore="postgresql"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialIntersectionMethod3" datastore="postgresql"/>
         <sql-method method="Spatial.union"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialUnionMethod"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialUnionMethod"/>
         <sql-method method="Spatial.union"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialUnionMethod2" datastore="oracle"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialUnionMethod2" datastore="oracle"/>
         <sql-method method="Spatial.union"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialUnionMethod3" datastore="postgresql"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialUnionMethod3" datastore="postgresql"/>
         <sql-method method="Spatial.symDifference"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialSymDifferenceMethod"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialSymDifferenceMethod"/>
         <sql-method method="Spatial.symDifference"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialSymDifferenceMethod2" datastore="oracle"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialSymDifferenceMethod2" datastore="oracle"/>
         <sql-method method="Spatial.symDifference"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialSymDifferenceMethod3" datastore="postgresql"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialSymDifferenceMethod3" datastore="postgresql"/>
         <sql-method method="Spatial.interiorRingN"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialInteriorRingNMethod"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialInteriorRingNMethod"/>
         <sql-method method="Spatial.interiorRingN"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialInteriorRingNMethod2" datastore="oracle"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialInteriorRingNMethod2" datastore="oracle"/>
         <sql-method method="Spatial.interiorRingN"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialInteriorRingNMethod3" datastore="postgresql"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialInteriorRingNMethod3" datastore="postgresql"/>
         <sql-method method="Spatial.pointN"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialPointNMethod"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialPointNMethod"/>
         <sql-method method="Spatial.pointN"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialPointNMethod2" datastore="oracle"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialPointNMethod2" datastore="oracle"/>
         <sql-method method="Spatial.pointN"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialPointNMethod3" datastore="postgresql"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialPointNMethod3" datastore="postgresql"/>
         <sql-method method="Spatial.geogFromWKB"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialGeographyFromWKBMethod" datastore="postgresql"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialGeographyFromWKBMethod" datastore="postgresql"/>
         <sql-method method="Spatial.geometryN"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialGeometryNMethod"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialGeometryNMethod"/>
         <sql-method method="Spatial.geometryN"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialGeometryNMethod2" datastore="oracle"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialGeometryNMethod2" datastore="oracle"/>
         <sql-method method="Spatial.geometryN"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialGeometryNMethod3" datastore="postgresql"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialGeometryNMethod3" datastore="postgresql"/>
         <sql-method method="Spatial.transform"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialGeomTransformMethod" datastore="postgresql"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialGeomTransformMethod" datastore="postgresql"/>
         <sql-method method="Spatial.geomFromWKB"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialGeomFromWKBMethod"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialGeomFromWKBMethod"/>
         <sql-method method="Spatial.geomFromWKB"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialGeomFromWKBMethod2" datastore="oracle"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialGeomFromWKBMethod2" datastore="oracle"/>
         <sql-method method="Spatial.geomFromWKB"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialGeomFromWKBMethod3" datastore="postgresql"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialGeomFromWKBMethod3" datastore="postgresql"/>
         <sql-method method="Spatial.geomCollFromWKB"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialGeomCollFromWKBMethod"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialGeomCollFromWKBMethod"/>
         <sql-method method="Spatial.geomCollFromWKB"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialGeomCollFromWKBMethod2" datastore="oracle"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialGeomCollFromWKBMethod2" datastore="oracle"/>
         <sql-method method="Spatial.geomCollFromWKB"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialGeomFromWKBMethod3" datastore="postgresql"/>                    
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialGeomFromWKBMethod3" datastore="postgresql"/>                    
         <sql-method method="Spatial.pointFromWKB"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialPointFromWKBMethod"/>        
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialPointFromWKBMethod"/>        
         <sql-method method="Spatial.pointFromWKB"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialPointFromWKBMethod2" datastore="oracle"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialPointFromWKBMethod2" datastore="oracle"/>
         <sql-method method="Spatial.pointFromWKB"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialGeomFromWKBMethod3" datastore="postgresql"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialGeomFromWKBMethod3" datastore="postgresql"/>
         <sql-method method="Spatial.mPointFromWKB"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialMPointFromWKBMethod"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialMPointFromWKBMethod"/>
         <sql-method method="Spatial.mPointFromWKB"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialMPointFromWKBMethod2" datastore="oracle"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialMPointFromWKBMethod2" datastore="oracle"/>
         <sql-method method="Spatial.mPointFromWKB"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialGeomFromWKBMethod3" datastore="postgresql"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialGeomFromWKBMethod3" datastore="postgresql"/>
         <sql-method method="Spatial.lineFromWKB"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialLineFromWKBMethod"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialLineFromWKBMethod"/>
         <sql-method method="Spatial.lineFromWKB"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialLineFromWKBMethod2" datastore="oracle"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialLineFromWKBMethod2" datastore="oracle"/>
         <sql-method method="Spatial.lineFromWKB"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialGeomFromWKBMethod3" datastore="postgresql"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialGeomFromWKBMethod3" datastore="postgresql"/>
         <sql-method method="Spatial.mLineFromWKB"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialMLineFromWKBMethod"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialMLineFromWKBMethod"/>
         <sql-method method="Spatial.mLineFromWKB"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialMLineFromWKBMethod2" datastore="oracle"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialMLineFromWKBMethod2" datastore="oracle"/>
        	<sql-method method="Spatial.mLineFromWKB"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialGeomFromWKBMethod3" datastore="postgresql"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialGeomFromWKBMethod3" datastore="postgresql"/>
         <sql-method method="Spatial.polyFromWKB"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialPolyFromWKBMethod"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialPolyFromWKBMethod"/>
         <sql-method method="Spatial.polyFromWKB"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialPolyFromWKBMethod2" datastore="oracle"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialPolyFromWKBMethod2" datastore="oracle"/>
         <sql-method method="Spatial.polyFromWKB"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialGeomFromWKBMethod3" datastore="postgresql"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialGeomFromWKBMethod3" datastore="postgresql"/>
         <sql-method method="Spatial.mPolyFromWKB"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialMPolyFromWKBMethod"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialMPolyFromWKBMethod"/>
         <sql-method method="Spatial.mPolyFromWKB"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialMPolyFromWKBMethod2" datastore="oracle"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialMPolyFromWKBMethod2" datastore="oracle"/>
         <sql-method method="Spatial.mPolyFromWKB"
-            evaluator="org.datanucleus.store.rdbms.sql.method.SpatialGeomFromWKBMethod3" datastore="postgresql"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialGeomFromWKBMethod3" datastore="postgresql"/>
         <sql-method method="Spatial.boundary"
-            evaluator="org.datanucleus.store.rdbms.sql.method.MySQLUnsupportedMethod" datastore="mysql"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.MySQLUnsupportedMethod" datastore="mysql"/>
         <sql-method method="Spatial.isEmpty"
-            evaluator="org.datanucleus.store.rdbms.sql.method.MySQLUnsupportedMethod" datastore="mysql"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.MySQLUnsupportedMethod" datastore="mysql"/>
         <sql-method method="Spatial.isSimple"
-            evaluator="org.datanucleus.store.rdbms.sql.method.MySQLUnsupportedMethod" datastore="mysql"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.MySQLUnsupportedMethod" datastore="mysql"/>
         <sql-method method="Spatial.crosses"
-            evaluator="org.datanucleus.store.rdbms.sql.method.MySQLUnsupportedMethod" datastore="mysql"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.MySQLUnsupportedMethod" datastore="mysql"/>
         <sql-method method="Spatial.relate"
-            evaluator="org.datanucleus.store.rdbms.sql.method.MySQLUnsupportedMethod" datastore="mysql"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.MySQLUnsupportedMethod" datastore="mysql"/>
         <sql-method method="Spatial.distance"
-            evaluator="org.datanucleus.store.rdbms.sql.method.MySQLUnsupportedMethod" datastore="mysql"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.MySQLUnsupportedMethod" datastore="mysql"/>
         <sql-method method="Spatial.buffer"
-            evaluator="org.datanucleus.store.rdbms.sql.method.MySQLUnsupportedMethod" datastore="mysql"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.MySQLUnsupportedMethod" datastore="mysql"/>
         <sql-method method="Spatial.convexHull"
-            evaluator="org.datanucleus.store.rdbms.sql.method.MySQLUnsupportedMethod" datastore="mysql"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.MySQLUnsupportedMethod" datastore="mysql"/>
         <sql-method method="Spatial.intersection"
-            evaluator="org.datanucleus.store.rdbms.sql.method.MySQLUnsupportedMethod" datastore="mysql"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.MySQLUnsupportedMethod" datastore="mysql"/>
         <sql-method method="Spatial.union"
-            evaluator="org.datanucleus.store.rdbms.sql.method.MySQLUnsupportedMethod" datastore="mysql"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.MySQLUnsupportedMethod" datastore="mysql"/>
         <sql-method method="Spatial.difference"
-            evaluator="org.datanucleus.store.rdbms.sql.method.MySQLUnsupportedMethod" datastore="mysql"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.MySQLUnsupportedMethod" datastore="mysql"/>
         <sql-method method="Spatial.symDifference"
-            evaluator="org.datanucleus.store.rdbms.sql.method.MySQLUnsupportedMethod" datastore="mysql"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.MySQLUnsupportedMethod" datastore="mysql"/>
         <sql-method method="Spatial.isRing"
-            evaluator="org.datanucleus.store.rdbms.sql.method.MySQLUnsupportedMethod" datastore="mysql"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.MySQLUnsupportedMethod" datastore="mysql"/>
         <sql-method method="Spatial.centroid"
-            evaluator="org.datanucleus.store.rdbms.sql.method.MySQLUnsupportedMethod" datastore="mysql"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.MySQLUnsupportedMethod" datastore="mysql"/>
         <sql-method method="Spatial.pointOnSurface"
-            evaluator="org.datanucleus.store.rdbms.sql.method.MySQLUnsupportedMethod" datastore="mysql"/>
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.MySQLUnsupportedMethod" datastore="mysql"/>
     </extension>
 
     <!-- QUERY METHODS -->
     <extension point="org.datanucleus.query_method_evaluators">
         <query-method-evaluator class="java.awt.Point" method="getX"
-            evaluator="org.datanucleus.query.evaluator.memory.PointGetXMethodEvaluator"/>
+            evaluator="org.datanucleus.store.types.geospatial.query.evaluator.memory.PointGetXMethodEvaluator"/>
         <query-method-evaluator class="java.awt.Point" method="getY"
-            evaluator="org.datanucleus.query.evaluator.memory.PointGetYMethodEvaluator"/>
+            evaluator="org.datanucleus.store.types.geospatial.query.evaluator.memory.PointGetYMethodEvaluator"/>
         <query-method-evaluator class="java.awt.Rectangle" method="getX"
-            evaluator="org.datanucleus.query.evaluator.memory.RectangleGetXMethodEvaluator"/>
+            evaluator="org.datanucleus.store.types.geospatial.query.evaluator.memory.RectangleGetXMethodEvaluator"/>
         <query-method-evaluator class="java.awt.Rectangle" method="getY"
-            evaluator="org.datanucleus.query.evaluator.memory.RectangleGetYMethodEvaluator"/>
+            evaluator="org.datanucleus.store.types.geospatial.query.evaluator.memory.RectangleGetYMethodEvaluator"/>
         <query-method-evaluator class="java.awt.Rectangle" method="getWidth"
-            evaluator="org.datanucleus.query.evaluator.memory.RectangleGetWidthMethodEvaluator"/>
+            evaluator="org.datanucleus.store.types.geospatial.query.evaluator.memory.RectangleGetWidthMethodEvaluator"/>
         <query-method-evaluator class="java.awt.Rectangle" method="getHeight"
-            evaluator="org.datanucleus.query.evaluator.memory.RectangleGetHeightMethodEvaluator"/>
+            evaluator="org.datanucleus.store.types.geospatial.query.evaluator.memory.RectangleGetHeightMethodEvaluator"/>
         <query-method-evaluator class="java.awt.Rectangle" method="contains"
-            evaluator="org.datanucleus.query.evaluator.memory.RectangleContainsMethodEvaluator"/>
+            evaluator="org.datanucleus.store.types.geospatial.query.evaluator.memory.RectangleContainsMethodEvaluator"/>
     </extension>
 
     <!-- QUERY METHOD PREFIXES -->
@@ -1035,73 +1035,73 @@ Contributors:
 
 	<!-- RDBMS : JAVA TYPES MAPPING -->
 	<extension point="org.datanucleus.store.rdbms.java_mapping">
-        <mapping java-type="java.awt.Rectangle" mapping-class="org.datanucleus.store.rdbms.mapping.RectangleMapping"/>
-        <mapping java-type="java.awt.Point" mapping-class="org.datanucleus.store.rdbms.mapping.PointMapping"/>
-        <mapping java-type="java.awt.Polygon" mapping-class="org.datanucleus.store.rdbms.mapping.PolygonMapping"/>
-        <mapping java-type="java.awt.geom.Arc2D$Double" mapping-class="org.datanucleus.store.rdbms.mapping.Arc2dDoubleMapping"/>
-        <mapping java-type="java.awt.geom.Arc2D$Float" mapping-class="org.datanucleus.store.rdbms.mapping.Arc2dFloatMapping"/>
-        <mapping java-type="java.awt.geom.CubicCurve2D$Double" mapping-class="org.datanucleus.store.rdbms.mapping.CubicCurve2dDoubleMapping"/>
-        <mapping java-type="java.awt.geom.CubicCurve2D$Float" mapping-class="org.datanucleus.store.rdbms.mapping.CubicCurve2dFloatMapping"/>
-        <mapping java-type="java.awt.geom.Ellipse2D$Double" mapping-class="org.datanucleus.store.rdbms.mapping.Ellipse2dDoubleMapping"/>
-        <mapping java-type="java.awt.geom.Ellipse2D$Float" mapping-class="org.datanucleus.store.rdbms.mapping.Ellipse2dFloatMapping"/>
-        <mapping java-type="java.awt.geom.Line2D$Double" mapping-class="org.datanucleus.store.rdbms.mapping.Line2dDoubleMapping"/>
-        <mapping java-type="java.awt.geom.Line2D$Float" mapping-class="org.datanucleus.store.rdbms.mapping.Line2dFloatMapping"/>
-        <mapping java-type="java.awt.geom.Point2D$Double" mapping-class="org.datanucleus.store.rdbms.mapping.Point2dDoubleMapping"/>
-        <mapping java-type="java.awt.geom.Point2D$Float" mapping-class="org.datanucleus.store.rdbms.mapping.Point2dFloatMapping"/>
-        <mapping java-type="java.awt.geom.QuadCurve2D$Double" mapping-class="org.datanucleus.store.rdbms.mapping.QuadCurve2dDoubleMapping"/>
-        <mapping java-type="java.awt.geom.QuadCurve2D$Float" mapping-class="org.datanucleus.store.rdbms.mapping.QuadCurve2dFloatMapping"/>
-        <mapping java-type="java.awt.geom.Rectangle2D$Double" mapping-class="org.datanucleus.store.rdbms.mapping.Rectangle2dDoubleMapping"/>
-        <mapping java-type="java.awt.geom.Rectangle2D$Float" mapping-class="org.datanucleus.store.rdbms.mapping.Rectangle2dFloatMapping"/>
-        <mapping java-type="java.awt.geom.RoundRectangle2D$Double" mapping-class="org.datanucleus.store.rdbms.mapping.RoundRectangle2dDoubleMapping"/>
-        <mapping java-type="java.awt.geom.RoundRectangle2D$Float" mapping-class="org.datanucleus.store.rdbms.mapping.RoundRectangle2dFloatMapping"/>
+        <mapping java-type="java.awt.Rectangle" mapping-class="org.datanucleus.store.types.geospatial.rdbms.mapping.RectangleMapping"/>
+        <mapping java-type="java.awt.Point" mapping-class="org.datanucleus.store.types.geospatial.rdbms.mapping.PointMapping"/>
+        <mapping java-type="java.awt.Polygon" mapping-class="org.datanucleus.store.types.geospatial.rdbms.mapping.PolygonMapping"/>
+        <mapping java-type="java.awt.geom.Arc2D$Double" mapping-class="org.datanucleus.store.types.geospatial.rdbms.mapping.Arc2dDoubleMapping"/>
+        <mapping java-type="java.awt.geom.Arc2D$Float" mapping-class="org.datanucleus.store.types.geospatial.rdbms.mapping.Arc2dFloatMapping"/>
+        <mapping java-type="java.awt.geom.CubicCurve2D$Double" mapping-class="org.datanucleus.store.types.geospatial.rdbms.mapping.CubicCurve2dDoubleMapping"/>
+        <mapping java-type="java.awt.geom.CubicCurve2D$Float" mapping-class="org.datanucleus.store.types.geospatial.rdbms.mapping.CubicCurve2dFloatMapping"/>
+        <mapping java-type="java.awt.geom.Ellipse2D$Double" mapping-class="org.datanucleus.store.types.geospatial.rdbms.mapping.Ellipse2dDoubleMapping"/>
+        <mapping java-type="java.awt.geom.Ellipse2D$Float" mapping-class="org.datanucleus.store.types.geospatial.rdbms.mapping.Ellipse2dFloatMapping"/>
+        <mapping java-type="java.awt.geom.Line2D$Double" mapping-class="org.datanucleus.store.types.geospatial.rdbms.mapping.Line2dDoubleMapping"/>
+        <mapping java-type="java.awt.geom.Line2D$Float" mapping-class="org.datanucleus.store.types.geospatial.rdbms.mapping.Line2dFloatMapping"/>
+        <mapping java-type="java.awt.geom.Point2D$Double" mapping-class="org.datanucleus.store.types.geospatial.rdbms.mapping.Point2dDoubleMapping"/>
+        <mapping java-type="java.awt.geom.Point2D$Float" mapping-class="org.datanucleus.store.types.geospatial.rdbms.mapping.Point2dFloatMapping"/>
+        <mapping java-type="java.awt.geom.QuadCurve2D$Double" mapping-class="org.datanucleus.store.types.geospatial.rdbms.mapping.QuadCurve2dDoubleMapping"/>
+        <mapping java-type="java.awt.geom.QuadCurve2D$Float" mapping-class="org.datanucleus.store.types.geospatial.rdbms.mapping.QuadCurve2dFloatMapping"/>
+        <mapping java-type="java.awt.geom.Rectangle2D$Double" mapping-class="org.datanucleus.store.types.geospatial.rdbms.mapping.Rectangle2dDoubleMapping"/>
+        <mapping java-type="java.awt.geom.Rectangle2D$Float" mapping-class="org.datanucleus.store.types.geospatial.rdbms.mapping.Rectangle2dFloatMapping"/>
+        <mapping java-type="java.awt.geom.RoundRectangle2D$Double" mapping-class="org.datanucleus.store.types.geospatial.rdbms.mapping.RoundRectangle2dDoubleMapping"/>
+        <mapping java-type="java.awt.geom.RoundRectangle2D$Float" mapping-class="org.datanucleus.store.types.geospatial.rdbms.mapping.RoundRectangle2dFloatMapping"/>
 
 		<!-- Oracle's JGeometry -->
 		<mapping java-type="oracle.spatial.geometry.JGeometry"
-             mapping-class="org.datanucleus.store.rdbms.mapping.jgeom.JGeometryMapping"/>
+             mapping-class="org.datanucleus.store.types.geospatial.rdbms.mapping.jgeom.JGeometryMapping"/>
 
 		<!-- JTS geometries -->
 		<mapping java-type="com.vividsolutions.jts.geom.Geometry"
-             mapping-class="org.datanucleus.store.rdbms.mapping.jts.GeometryMapping"/>
+             mapping-class="org.datanucleus.store.types.geospatial.rdbms.mapping.jts.GeometryMapping"/>
 		<mapping java-type="com.vividsolutions.jts.geom.GeometryCollection"
-             mapping-class="org.datanucleus.store.rdbms.mapping.jts.GeometryCollectionMapping"/>
+             mapping-class="org.datanucleus.store.types.geospatial.rdbms.mapping.jts.GeometryCollectionMapping"/>
 		<mapping java-type="com.vividsolutions.jts.geom.LinearRing" 
-            mapping-class="org.datanucleus.store.rdbms.mapping.jts.LinearRingMapping"/>
+            mapping-class="org.datanucleus.store.types.geospatial.rdbms.mapping.jts.LinearRingMapping"/>
 		<mapping java-type="com.vividsolutions.jts.geom.LineString"
-             mapping-class="org.datanucleus.store.rdbms.mapping.jts.LineStringMapping"/>
+             mapping-class="org.datanucleus.store.types.geospatial.rdbms.mapping.jts.LineStringMapping"/>
 		<mapping java-type="com.vividsolutions.jts.geom.MultiLineString"
-             mapping-class="org.datanucleus.store.rdbms.mapping.jts.MultiLineStringMapping"/>
+             mapping-class="org.datanucleus.store.types.geospatial.rdbms.mapping.jts.MultiLineStringMapping"/>
 		<mapping java-type="com.vividsolutions.jts.geom.MultiPoint"
-             mapping-class="org.datanucleus.store.rdbms.mapping.jts.MultiPointMapping"/>
+             mapping-class="org.datanucleus.store.types.geospatial.rdbms.mapping.jts.MultiPointMapping"/>
 		<mapping java-type="com.vividsolutions.jts.geom.MultiPolygon"
-             mapping-class="org.datanucleus.store.rdbms.mapping.jts.MultiPolygonMapping"/>
+             mapping-class="org.datanucleus.store.types.geospatial.rdbms.mapping.jts.MultiPolygonMapping"/>
 		<mapping java-type="com.vividsolutions.jts.geom.Point"
-             mapping-class="org.datanucleus.store.rdbms.mapping.jts.PointMapping"/>
+             mapping-class="org.datanucleus.store.types.geospatial.rdbms.mapping.jts.PointMapping"/>
 		<mapping java-type="com.vividsolutions.jts.geom.Polygon"
-             mapping-class="org.datanucleus.store.rdbms.mapping.jts.PolygonMapping"/>
+             mapping-class="org.datanucleus.store.types.geospatial.rdbms.mapping.jts.PolygonMapping"/>
 
 		<!-- PostGIS JDBC geometries -->
 		<mapping java-type="org.postgis.PGbox2d"
-             mapping-class="org.datanucleus.store.rdbms.mapping.pg.PGbox2dMapping"/>
+             mapping-class="org.datanucleus.store.types.geospatial.rdbms.mapping.pg.PGbox2dMapping"/>
 		<mapping java-type="org.postgis.PGbox3d"
-             mapping-class="org.datanucleus.store.rdbms.mapping.pg.PGbox3dMapping"/>
+             mapping-class="org.datanucleus.store.types.geospatial.rdbms.mapping.pg.PGbox3dMapping"/>
 		<mapping java-type="org.postgis.Geometry"
-             mapping-class="org.datanucleus.store.rdbms.mapping.pg.GeometryMapping"/>
+             mapping-class="org.datanucleus.store.types.geospatial.rdbms.mapping.pg.GeometryMapping"/>
 		<mapping java-type="org.postgis.GeometryCollection"
-             mapping-class="org.datanucleus.store.rdbms.mapping.pg.GeometryCollectionMapping"/>
+             mapping-class="org.datanucleus.store.types.geospatial.rdbms.mapping.pg.GeometryCollectionMapping"/>
 		<mapping java-type="org.postgis.LinearRing"
-             mapping-class="org.datanucleus.store.rdbms.mapping.pg.LinearRingMapping"/>
+             mapping-class="org.datanucleus.store.types.geospatial.rdbms.mapping.pg.LinearRingMapping"/>
 		<mapping java-type="org.postgis.LineString"
-             mapping-class="org.datanucleus.store.rdbms.mapping.pg.LineStringMapping"/>
+             mapping-class="org.datanucleus.store.types.geospatial.rdbms.mapping.pg.LineStringMapping"/>
 		<mapping java-type="org.postgis.MultiLineString"
-             mapping-class="org.datanucleus.store.rdbms.mapping.pg.MultiLineStringMapping"/>
+             mapping-class="org.datanucleus.store.types.geospatial.rdbms.mapping.pg.MultiLineStringMapping"/>
 		<mapping java-type="org.postgis.MultiPoint"
-             mapping-class="org.datanucleus.store.rdbms.mapping.pg.MultiPointMapping"/>
+             mapping-class="org.datanucleus.store.types.geospatial.rdbms.mapping.pg.MultiPointMapping"/>
 		<mapping java-type="org.postgis.MultiPolygon"
-             mapping-class="org.datanucleus.store.rdbms.mapping.pg.MultiPolygonMapping"/>
+             mapping-class="org.datanucleus.store.types.geospatial.rdbms.mapping.pg.MultiPolygonMapping"/>
 		<mapping java-type="org.postgis.Point"
-             mapping-class="org.datanucleus.store.rdbms.mapping.pg.PointMapping"/>
+             mapping-class="org.datanucleus.store.types.geospatial.rdbms.mapping.pg.PointMapping"/>
 		<mapping java-type="org.postgis.Polygon"
-             mapping-class="org.datanucleus.store.rdbms.mapping.pg.PolygonMapping"/>
+             mapping-class="org.datanucleus.store.types.geospatial.rdbms.mapping.pg.PolygonMapping"/>
 	</extension>
 
 	<!-- RDBMS : DATASTORE TYPES MAPPING -->
@@ -1111,14 +1111,14 @@ Contributors:
 		<!-- ****************** -->
 		<!-- jgeom2mysql -->
 		<mapping java-type="oracle.spatial.geometry.JGeometry"
-             rdbms-mapping-class="org.datanucleus.store.rdbms.mapping.jgeom2mysql.JGeometryRDBMSMapping"
+             rdbms-mapping-class="org.datanucleus.store.types.geospatial.rdbms.mapping.jgeom2mysql.JGeometryRDBMSMapping"
 		         jdbc-type="BINARY" sql-type="geometry" default="true">
 			<includes vendor-id="mysql"/>
 		</mapping>
 
 		<!-- jgeom2oracle -->
 		<mapping java-type="oracle.spatial.geometry.JGeometry"
-             rdbms-mapping-class="org.datanucleus.store.rdbms.mapping.jgeom2oracle.JGeometryRDBMSMapping"
+             rdbms-mapping-class="org.datanucleus.store.types.geospatial.rdbms.mapping.jgeom2oracle.JGeometryRDBMSMapping"
 		         jdbc-type="STRUCT" sql-type="SDO_GEOMETRY" default="true">
 			<includes vendor-id="oracle"/>
 		</mapping>
@@ -1128,141 +1128,141 @@ Contributors:
 		<!-- ************** -->
 		<!-- jts2mysql -->
 		<mapping java-type="com.vividsolutions.jts.geom.Geometry"
-             rdbms-mapping-class="org.datanucleus.store.rdbms.mapping.jts2mysql.GeometryRDBMSMapping" 
+             rdbms-mapping-class="org.datanucleus.store.types.geospatial.rdbms.mapping.jts2mysql.GeometryRDBMSMapping" 
 		         jdbc-type="BINARY" sql-type="geometry" default="true">
 			<includes vendor-id="mysql"/>
 		</mapping>
 		<mapping java-type="com.vividsolutions.jts.geom.GeometryCollection"
-             rdbms-mapping-class="org.datanucleus.store.rdbms.mapping.jts2mysql.GeometryCollectionRDBMSMapping" 
+             rdbms-mapping-class="org.datanucleus.store.types.geospatial.rdbms.mapping.jts2mysql.GeometryCollectionRDBMSMapping" 
 		         jdbc-type="BINARY" sql-type="geometrycollection" default="true">
 			<includes vendor-id="mysql"/>
 		</mapping>
 		<mapping java-type="com.vividsolutions.jts.geom.LinearRing"
-             rdbms-mapping-class="org.datanucleus.store.rdbms.mapping.jts2mysql.LinearRingRDBMSMapping" 
+             rdbms-mapping-class="org.datanucleus.store.types.geospatial.rdbms.mapping.jts2mysql.LinearRingRDBMSMapping" 
 		         jdbc-type="BINARY" sql-type="linestring" default="true">
 			<includes vendor-id="mysql"/>
 		</mapping>
 		<mapping java-type="com.vividsolutions.jts.geom.LineString" 
-            rdbms-mapping-class="org.datanucleus.store.rdbms.mapping.jts2mysql.LineStringRDBMSMapping" 
+            rdbms-mapping-class="org.datanucleus.store.types.geospatial.rdbms.mapping.jts2mysql.LineStringRDBMSMapping" 
 		         jdbc-type="BINARY" sql-type="linestring" default="true">
 			<includes vendor-id="mysql"/>
 		</mapping>
 		<mapping java-type="com.vividsolutions.jts.geom.MultiLineString" 
-            rdbms-mapping-class="org.datanucleus.store.rdbms.mapping.jts2mysql.MultiLineStringRDBMSMapping" 
+            rdbms-mapping-class="org.datanucleus.store.types.geospatial.rdbms.mapping.jts2mysql.MultiLineStringRDBMSMapping" 
 		         jdbc-type="BINARY" sql-type="multilinestring" default="true">
 			<includes vendor-id="mysql"/>
 		</mapping>
 		<mapping java-type="com.vividsolutions.jts.geom.MultiPolygon"
-             rdbms-mapping-class="org.datanucleus.store.rdbms.mapping.jts2mysql.MultiPolygonRDBMSMapping" 
+             rdbms-mapping-class="org.datanucleus.store.types.geospatial.rdbms.mapping.jts2mysql.MultiPolygonRDBMSMapping" 
 		         jdbc-type="BINARY" sql-type="multipolygon" default="true">
 			<includes vendor-id="mysql"/>
 		</mapping>
 		<mapping java-type="com.vividsolutions.jts.geom.MultiPoint"
-             rdbms-mapping-class="org.datanucleus.store.rdbms.mapping.jts2mysql.MultiPointRDBMSMapping" 
+             rdbms-mapping-class="org.datanucleus.store.types.geospatial.rdbms.mapping.jts2mysql.MultiPointRDBMSMapping" 
 		         jdbc-type="BINARY" sql-type="multipoint" default="true">
 			<includes vendor-id="mysql"/>
 		</mapping>
 		<mapping java-type="com.vividsolutions.jts.geom.Point"
-             rdbms-mapping-class="org.datanucleus.store.rdbms.mapping.jts2mysql.PointRDBMSMapping"    
+             rdbms-mapping-class="org.datanucleus.store.types.geospatial.rdbms.mapping.jts2mysql.PointRDBMSMapping"    
 		         jdbc-type="BINARY" sql-type="point" default="true">
 			<includes vendor-id="mysql"/>
 		</mapping>
 		<mapping java-type="com.vividsolutions.jts.geom.Polygon"
-             rdbms-mapping-class="org.datanucleus.store.rdbms.mapping.jts2mysql.PolygonRDBMSMapping"  
+             rdbms-mapping-class="org.datanucleus.store.types.geospatial.rdbms.mapping.jts2mysql.PolygonRDBMSMapping"  
 		         jdbc-type="BINARY" sql-type="polygon" default="true">
 			<includes vendor-id="mysql"/>
 		</mapping>
 
 		<!-- jts2oracle -->
 		<mapping java-type="com.vividsolutions.jts.geom.Geometry"
-             rdbms-mapping-class="org.datanucleus.store.rdbms.mapping.jts2oracle.GeometryRDBMSMapping" 
+             rdbms-mapping-class="org.datanucleus.store.types.geospatial.rdbms.mapping.jts2oracle.GeometryRDBMSMapping" 
 		         jdbc-type="STRUCT" sql-type="SDO_GEOMETRY" default="true">
 			<includes vendor-id="oracle"/>
 		</mapping>
 		<mapping java-type="com.vividsolutions.jts.geom.GeometryCollection"
-             rdbms-mapping-class="org.datanucleus.store.rdbms.mapping.jts2oracle.GeometryRDBMSMapping" 
+             rdbms-mapping-class="org.datanucleus.store.types.geospatial.rdbms.mapping.jts2oracle.GeometryRDBMSMapping" 
 		         jdbc-type="STRUCT" sql-type="SDO_GEOMETRY" default="true">
 			<includes vendor-id="oracle"/>
 		</mapping>
 		<mapping java-type="com.vividsolutions.jts.geom.LinearRing"
-             rdbms-mapping-class="org.datanucleus.store.rdbms.mapping.jts2oracle.LinearRingRDBMSMapping" 
+             rdbms-mapping-class="org.datanucleus.store.types.geospatial.rdbms.mapping.jts2oracle.LinearRingRDBMSMapping" 
 		         jdbc-type="STRUCT" sql-type="SDO_GEOMETRY" default="true">
 			<includes vendor-id="oracle"/>
 		</mapping>
 		<mapping java-type="com.vividsolutions.jts.geom.LineString"
-             rdbms-mapping-class="org.datanucleus.store.rdbms.mapping.jts2oracle.GeometryRDBMSMapping" 
+             rdbms-mapping-class="org.datanucleus.store.types.geospatial.rdbms.mapping.jts2oracle.GeometryRDBMSMapping" 
 		         jdbc-type="STRUCT" sql-type="SDO_GEOMETRY" default="true">
 			<includes vendor-id="oracle"/>
 		</mapping>
 		<mapping java-type="com.vividsolutions.jts.geom.MultiLineString"
-             rdbms-mapping-class="org.datanucleus.store.rdbms.mapping.jts2oracle.GeometryRDBMSMapping" 
+             rdbms-mapping-class="org.datanucleus.store.types.geospatial.rdbms.mapping.jts2oracle.GeometryRDBMSMapping" 
 		         jdbc-type="STRUCT" sql-type="SDO_GEOMETRY" default="true">
 			<includes vendor-id="oracle"/>
 		</mapping>
 		<mapping java-type="com.vividsolutions.jts.geom.MultiPolygon"
-             rdbms-mapping-class="org.datanucleus.store.rdbms.mapping.jts2oracle.GeometryRDBMSMapping" 
+             rdbms-mapping-class="org.datanucleus.store.types.geospatial.rdbms.mapping.jts2oracle.GeometryRDBMSMapping" 
 		         jdbc-type="STRUCT" sql-type="SDO_GEOMETRY" default="true">
 			<includes vendor-id="oracle"/>
 		</mapping>
 		<mapping java-type="com.vividsolutions.jts.geom.MultiPoint"
-             rdbms-mapping-class="org.datanucleus.store.rdbms.mapping.jts2oracle.GeometryRDBMSMapping" 
+             rdbms-mapping-class="org.datanucleus.store.types.geospatial.rdbms.mapping.jts2oracle.GeometryRDBMSMapping" 
 		         jdbc-type="STRUCT" sql-type="SDO_GEOMETRY" default="true">
 			<includes vendor-id="oracle"/>
 		</mapping>
 		<mapping java-type="com.vividsolutions.jts.geom.Point"
-             rdbms-mapping-class="org.datanucleus.store.rdbms.mapping.jts2oracle.GeometryRDBMSMapping"
+             rdbms-mapping-class="org.datanucleus.store.types.geospatial.rdbms.mapping.jts2oracle.GeometryRDBMSMapping"
 		         jdbc-type="STRUCT" sql-type="SDO_GEOMETRY" default="true">
 			<includes vendor-id="oracle"/>
 		</mapping>
 		<mapping java-type="com.vividsolutions.jts.geom.Polygon"
-             rdbms-mapping-class="org.datanucleus.store.rdbms.mapping.jts2oracle.GeometryRDBMSMapping"  
+             rdbms-mapping-class="org.datanucleus.store.types.geospatial.rdbms.mapping.jts2oracle.GeometryRDBMSMapping"  
 		         jdbc-type="STRUCT" sql-type="SDO_GEOMETRY" default="true">
 			<includes vendor-id="oracle"/>
 		</mapping>
 
 		<!-- jts2postgis -->
 		<mapping java-type="com.vividsolutions.jts.geom.Geometry" 
-            rdbms-mapping-class="org.datanucleus.store.rdbms.mapping.jts2postgis.GeometryRDBMSMapping"
+            rdbms-mapping-class="org.datanucleus.store.types.geospatial.rdbms.mapping.jts2postgis.GeometryRDBMSMapping"
 		         jdbc-type="OTHER" sql-type="geometry" default="true">
 			<includes vendor-id="postgresql"/>
 		</mapping>
 		<mapping java-type="com.vividsolutions.jts.geom.GeometryCollection"
-             rdbms-mapping-class="org.datanucleus.store.rdbms.mapping.jts2postgis.GeometryCollectionRDBMSMapping"
+             rdbms-mapping-class="org.datanucleus.store.types.geospatial.rdbms.mapping.jts2postgis.GeometryCollectionRDBMSMapping"
 		         jdbc-type="OTHER" sql-type="geometry" default="true">
 			<includes vendor-id="postgresql"/>
 		</mapping>
 		<mapping java-type="com.vividsolutions.jts.geom.LinearRing"
-             rdbms-mapping-class="org.datanucleus.store.rdbms.mapping.jts2postgis.LinearRingRDBMSMapping"
+             rdbms-mapping-class="org.datanucleus.store.types.geospatial.rdbms.mapping.jts2postgis.LinearRingRDBMSMapping"
 		         jdbc-type="OTHER" sql-type="geometry" default="true">
 			<includes vendor-id="postgresql"/>
 		</mapping>
 		<mapping java-type="com.vividsolutions.jts.geom.LineString"
-             rdbms-mapping-class="org.datanucleus.store.rdbms.mapping.jts2postgis.LineStringRDBMSMapping"
+             rdbms-mapping-class="org.datanucleus.store.types.geospatial.rdbms.mapping.jts2postgis.LineStringRDBMSMapping"
 		         jdbc-type="OTHER" sql-type="geometry" default="true">
 			<includes vendor-id="postgresql"/>
 		</mapping>
 		<mapping java-type="com.vividsolutions.jts.geom.MultiLineString"
-             rdbms-mapping-class="org.datanucleus.store.rdbms.mapping.jts2postgis.MultiLineStringRDBMSMapping"
+             rdbms-mapping-class="org.datanucleus.store.types.geospatial.rdbms.mapping.jts2postgis.MultiLineStringRDBMSMapping"
 		         jdbc-type="OTHER" sql-type="geometry" default="true">
 			<includes vendor-id="postgresql"/>
 		</mapping>
 		<mapping java-type="com.vividsolutions.jts.geom.MultiPolygon"
-             rdbms-mapping-class="org.datanucleus.store.rdbms.mapping.jts2postgis.MultiPolygonRDBMSMapping"
+             rdbms-mapping-class="org.datanucleus.store.types.geospatial.rdbms.mapping.jts2postgis.MultiPolygonRDBMSMapping"
 		         jdbc-type="OTHER" sql-type="geometry" default="true">
 			<includes vendor-id="postgresql"/>
 		</mapping>
 		<mapping java-type="com.vividsolutions.jts.geom.MultiPoint"
-             rdbms-mapping-class="org.datanucleus.store.rdbms.mapping.jts2postgis.MultiPointRDBMSMapping"
+             rdbms-mapping-class="org.datanucleus.store.types.geospatial.rdbms.mapping.jts2postgis.MultiPointRDBMSMapping"
 		         jdbc-type="OTHER" sql-type="geometry" default="true">
 			<includes vendor-id="postgresql"/>
 		</mapping>
 		<mapping java-type="com.vividsolutions.jts.geom.Point"
-             rdbms-mapping-class="org.datanucleus.store.rdbms.mapping.jts2postgis.PointRDBMSMapping"
+             rdbms-mapping-class="org.datanucleus.store.types.geospatial.rdbms.mapping.jts2postgis.PointRDBMSMapping"
 		         jdbc-type="OTHER" sql-type="geometry" default="true">
 			<includes vendor-id="postgresql"/>
 		</mapping>
 		<mapping java-type="com.vividsolutions.jts.geom.Polygon"
-             rdbms-mapping-class="org.datanucleus.store.rdbms.mapping.jts2postgis.PolygonRDBMSMapping"
+             rdbms-mapping-class="org.datanucleus.store.types.geospatial.rdbms.mapping.jts2postgis.PolygonRDBMSMapping"
 		         jdbc-type="OTHER" sql-type="geometry" default="true">
 			<includes vendor-id="postgresql"/>
 		</mapping>
@@ -1272,104 +1272,104 @@ Contributors:
 		<!-- *********************** -->
 		<!-- pg2mysql -->
 		<mapping java-type="org.postgis.Geometry"
-             rdbms-mapping-class="org.datanucleus.store.rdbms.mapping.pg2mysql.GeometryRDBMSMapping" 
+             rdbms-mapping-class="org.datanucleus.store.types.geospatial.rdbms.mapping.pg2mysql.GeometryRDBMSMapping" 
 		         jdbc-type="BINARY" sql-type="geometry" default="true">
 			<includes vendor-id="mysql"/>
 		</mapping>
 		<mapping java-type="org.postgis.GeometryCollection"
-             rdbms-mapping-class="org.datanucleus.store.rdbms.mapping.pg2mysql.GeometryCollectionRDBMSMapping" 
+             rdbms-mapping-class="org.datanucleus.store.types.geospatial.rdbms.mapping.pg2mysql.GeometryCollectionRDBMSMapping" 
 		         jdbc-type="BINARY" sql-type="geometry" default="true">
 			<includes vendor-id="mysql"/>
 		</mapping>
 		<mapping java-type="org.postgis.LinearRing"
-             rdbms-mapping-class="org.datanucleus.store.rdbms.mapping.pg2mysql.LinearRingRDBMSMapping" 
+             rdbms-mapping-class="org.datanucleus.store.types.geospatial.rdbms.mapping.pg2mysql.LinearRingRDBMSMapping" 
 		         jdbc-type="BINARY" sql-type="geometry" default="true">
 			<includes vendor-id="mysql"/>
 		</mapping>
 		<mapping java-type="org.postgis.LineString"
-             rdbms-mapping-class="org.datanucleus.store.rdbms.mapping.pg2mysql.LineStringRDBMSMapping" 
+             rdbms-mapping-class="org.datanucleus.store.types.geospatial.rdbms.mapping.pg2mysql.LineStringRDBMSMapping" 
 		         jdbc-type="BINARY" sql-type="geometry" default="true">
 			<includes vendor-id="mysql"/>
 		</mapping>
 		<mapping java-type="org.postgis.MultiLineString"
-             rdbms-mapping-class="org.datanucleus.store.rdbms.mapping.pg2mysql.MultiLineStringRDBMSMapping" 
+             rdbms-mapping-class="org.datanucleus.store.types.geospatial.rdbms.mapping.pg2mysql.MultiLineStringRDBMSMapping" 
 		         jdbc-type="BINARY" sql-type="geometry" default="true">
 			<includes vendor-id="mysql"/>
 		</mapping>
 		<mapping java-type="org.postgis.MultiPolygon"
-             rdbms-mapping-class="org.datanucleus.store.rdbms.mapping.pg2mysql.MultiPolygonRDBMSMapping" 
+             rdbms-mapping-class="org.datanucleus.store.types.geospatial.rdbms.mapping.pg2mysql.MultiPolygonRDBMSMapping" 
 		         jdbc-type="BINARY" sql-type="geometry" default="true">
 			<includes vendor-id="mysql"/>
 		</mapping>
 		<mapping java-type="org.postgis.MultiPoint"
-             rdbms-mapping-class="org.datanucleus.store.rdbms.mapping.pg2mysql.MultiPointRDBMSMapping" 
+             rdbms-mapping-class="org.datanucleus.store.types.geospatial.rdbms.mapping.pg2mysql.MultiPointRDBMSMapping" 
 		         jdbc-type="BINARY" sql-type="geometry" default="true">
 			<includes vendor-id="mysql"/>
 		</mapping>
 		<mapping java-type="org.postgis.Point"
-             rdbms-mapping-class="org.datanucleus.store.rdbms.mapping.pg2mysql.PointRDBMSMapping"    
+             rdbms-mapping-class="org.datanucleus.store.types.geospatial.rdbms.mapping.pg2mysql.PointRDBMSMapping"    
 		         jdbc-type="BINARY" sql-type="geometry" default="true">
 			<includes vendor-id="mysql"/>
 		</mapping>
 		<mapping java-type="org.postgis.Polygon"
-             rdbms-mapping-class="org.datanucleus.store.rdbms.mapping.pg2mysql.PolygonRDBMSMapping"  
+             rdbms-mapping-class="org.datanucleus.store.types.geospatial.rdbms.mapping.pg2mysql.PolygonRDBMSMapping"  
 		         jdbc-type="BINARY" sql-type="geometry" default="true">
 			<includes vendor-id="mysql"/>
 		</mapping>
 
 		<!-- pg2postgis -->
 		<mapping java-type="org.postgis.Geometry"
-             rdbms-mapping-class="org.datanucleus.store.rdbms.mapping.pg2postgis.GeometryRDBMSMapping" 
+             rdbms-mapping-class="org.datanucleus.store.types.geospatial.rdbms.mapping.pg2postgis.GeometryRDBMSMapping" 
 		         sql-type="geometry" jdbc-type="OTHER" default="true">
 			<includes vendor-id="postgresql"/>
 		</mapping>
 		<mapping java-type="org.postgis.GeometryCollection"
-             rdbms-mapping-class="org.datanucleus.store.rdbms.mapping.pg2postgis.GeometryCollectionRDBMSMapping" 
+             rdbms-mapping-class="org.datanucleus.store.types.geospatial.rdbms.mapping.pg2postgis.GeometryCollectionRDBMSMapping" 
 		         sql-type="geometry" jdbc-type="OTHER" default="true">
 			<includes vendor-id="postgresql"/>
 		</mapping>
 		<mapping java-type="org.postgis.LinearRing"
-             rdbms-mapping-class="org.datanucleus.store.rdbms.mapping.pg2postgis.LinearRingRDBMSMapping" 
+             rdbms-mapping-class="org.datanucleus.store.types.geospatial.rdbms.mapping.pg2postgis.LinearRingRDBMSMapping" 
 		         sql-type="geometry" jdbc-type="OTHER" default="true">
 			<includes vendor-id="postgresql"/>
 		</mapping>
 		<mapping java-type="org.postgis.LineString"
-             rdbms-mapping-class="org.datanucleus.store.rdbms.mapping.pg2postgis.LineStringRDBMSMapping" 
+             rdbms-mapping-class="org.datanucleus.store.types.geospatial.rdbms.mapping.pg2postgis.LineStringRDBMSMapping" 
 		         sql-type="geometry" jdbc-type="OTHER" default="true">
 			<includes vendor-id="postgresql"/>
 		</mapping>
 		<mapping java-type="org.postgis.MultiLineString"
-             rdbms-mapping-class="org.datanucleus.store.rdbms.mapping.pg2postgis.MultiLineStringRDBMSMapping" 
+             rdbms-mapping-class="org.datanucleus.store.types.geospatial.rdbms.mapping.pg2postgis.MultiLineStringRDBMSMapping" 
 		         sql-type="geometry" jdbc-type="OTHER" default="true">
 			<includes vendor-id="postgresql"/>
 		</mapping>
 		<mapping java-type="org.postgis.MultiPolygon"
-             rdbms-mapping-class="org.datanucleus.store.rdbms.mapping.pg2postgis.MultiPolygonRDBMSMapping" 
+             rdbms-mapping-class="org.datanucleus.store.types.geospatial.rdbms.mapping.pg2postgis.MultiPolygonRDBMSMapping" 
 		         sql-type="geometry" jdbc-type="OTHER" default="true">
 			<includes vendor-id="postgresql"/>
 		</mapping>
 		<mapping java-type="org.postgis.MultiPoint" 
-            rdbms-mapping-class="org.datanucleus.store.rdbms.mapping.pg2postgis.MultiPointRDBMSMapping" 
+            rdbms-mapping-class="org.datanucleus.store.types.geospatial.rdbms.mapping.pg2postgis.MultiPointRDBMSMapping" 
 		         sql-type="geometry" jdbc-type="OTHER" default="true">
 			<includes vendor-id="postgresql"/>
 		</mapping>
 		<mapping java-type="org.postgis.Point"
-             rdbms-mapping-class="org.datanucleus.store.rdbms.mapping.pg2postgis.PointRDBMSMapping"    
+             rdbms-mapping-class="org.datanucleus.store.types.geospatial.rdbms.mapping.pg2postgis.PointRDBMSMapping"    
 		         sql-type="geometry" jdbc-type="OTHER" default="true">
 			<includes vendor-id="postgresql"/>
 		</mapping>
 		<mapping java-type="org.postgis.Polygon"
-             rdbms-mapping-class="org.datanucleus.store.rdbms.mapping.pg2postgis.PolygonRDBMSMapping"  
+             rdbms-mapping-class="org.datanucleus.store.types.geospatial.rdbms.mapping.pg2postgis.PolygonRDBMSMapping"  
 		         sql-type="geometry" jdbc-type="OTHER" default="true">
 			<includes vendor-id="postgresql"/>
 		</mapping>
 		<mapping java-type="org.postgis.PGbox2d"
-             rdbms-mapping-class="org.datanucleus.store.rdbms.mapping.pg2postgis.PGbox2dRDBMSMapping" 
+             rdbms-mapping-class="org.datanucleus.store.types.geospatial.rdbms.mapping.pg2postgis.PGbox2dRDBMSMapping" 
 		         sql-type="box2d" jdbc-type="OTHER" default="true">
 			<includes vendor-id="postgresql"/>
 		</mapping>
 		<mapping java-type="org.postgis.PGbox3d"
-             rdbms-mapping-class="org.datanucleus.store.rdbms.mapping.pg2postgis.PGbox3dRDBMSMapping" 
+             rdbms-mapping-class="org.datanucleus.store.types.geospatial.rdbms.mapping.pg2postgis.PGbox3dRDBMSMapping" 
 		         sql-type="box3d" jdbc-type="OTHER" default="true">
 			<includes vendor-id="postgresql"/>
 		</mapping>
