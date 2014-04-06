@@ -22,7 +22,6 @@ import java.awt.Point;
 import org.datanucleus.store.rdbms.mapping.java.JavaTypeMapping;
 import org.datanucleus.store.rdbms.sql.SQLStatement;
 import org.datanucleus.store.rdbms.sql.expression.SQLLiteral;
-import org.datanucleus.store.rdbms.sql.expression.SQLLiteral;
 
 /**
  * Literal representing a java.awt.Point. Does nothing much other than store the value.

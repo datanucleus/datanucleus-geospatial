@@ -24,7 +24,6 @@ import org.datanucleus.store.rdbms.sql.expression.BooleanLiteral;
 import org.datanucleus.store.rdbms.sql.expression.SQLExpression;
 
 import org.datanucleus.store.rdbms.sql.expression.SQLLiteral;
-import org.datanucleus.store.rdbms.sql.expression.SQLLiteral;
 
 /**
  * Representation of a Geometry literal.

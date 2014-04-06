@@ -21,7 +21,7 @@ import java.sql.DatabaseMetaData;
 import java.sql.Types;
 import java.util.Properties;
 
-import org.datanucleus.store.types.geospatial.jdo.spatial.SpatialHelper;
+import org.datanucleus.store.types.geospatial.jdo.SpatialHelper;
 import org.datanucleus.metadata.MetaDataUtils;
 import org.datanucleus.store.connection.ManagedConnection;
 import org.datanucleus.store.rdbms.adapter.PostgreSQLAdapter;
