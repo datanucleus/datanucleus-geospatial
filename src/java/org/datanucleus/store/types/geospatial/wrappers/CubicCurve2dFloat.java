@@ -15,11 +15,10 @@ limitations under the License.
 Contributors:
    ...
  **********************************************************************/
-package org.datanucleus.store.types.geospatial.wrapper;
+package org.datanucleus.store.types.geospatial.wrappers;
 
-import java.awt.geom.Dimension2D;
+import java.awt.geom.CubicCurve2D;
 import java.awt.geom.Point2D;
-import java.awt.geom.Rectangle2D;
 
 import org.datanucleus.metadata.AbstractMemberMetaData;
 import org.datanucleus.state.FetchPlanState;
@@ -27,9 +26,9 @@ import org.datanucleus.state.ObjectProvider;
 import org.datanucleus.store.types.SCO;
 
 /**
- * A mutable second-class java.awt.geom.Rectangle2D.Double object.
+ * A mutable second-class java.awt.geom.CubicCurve2D.Float object.
  */
-public class Rectangle2dDouble extends java.awt.geom.Rectangle2D.Double implements SCO
+public class CubicCurve2dFloat extends java.awt.geom.CubicCurve2D.Float implements SCO
 {
     protected transient ObjectProvider ownerOP;
 
@@ -40,7 +39,7 @@ public class Rectangle2dDouble extends java.awt.geom.Rectangle2D.Double implemen
      * @param ownerSM the owning object
      * @param mmd Metadata for the member
      */
-    public Rectangle2dDouble(ObjectProvider ownerSM, AbstractMemberMetaData mmd)
+    public CubicCurve2dFloat(ObjectProvider ownerSM, AbstractMemberMetaData mmd)
     {
         super();
 
@@ -54,7 +53,7 @@ public class Rectangle2dDouble extends java.awt.geom.Rectangle2D.Double implemen
      */
     public void initialise(Object value, boolean forInsert, boolean forUpdate) throws ClassCastException
     {
-        super.setRect((Rectangle2D) value);
+        super.setCurve((CubicCurve2D.Float) value);
     }
 
     /*
@@ -71,7 +70,8 @@ public class Rectangle2dDouble extends java.awt.geom.Rectangle2D.Double implemen
      */
     public Object getValue()
     {
-        return new java.awt.geom.Rectangle2D.Double(getX(), getY(), getWidth(), getHeight());
+        return new java.awt.geom.CubicCurve2D.Float((float) getX1(), (float) getY1(), (float) getCtrlX1(), (float) getCtrlY1(),
+                (float) getX2(), (float) getY2(), (float) getCtrlX2(), (float) getCtrlY2());
     }
 
     /*
@@ -118,7 +118,8 @@ public class Rectangle2dDouble extends java.awt.geom.Rectangle2D.Double implemen
      */
     public Object detachCopy(FetchPlanState state)
     {
-        return new java.awt.geom.Rectangle2D.Double(getX(), getY(), getWidth(), getHeight());
+        return new java.awt.geom.CubicCurve2D.Float((float) getX1(), (float) getY1(), (float) getCtrlX1(), (float) getCtrlY1(),
+                (float) getX2(), (float) getY2(), (float) getCtrlX2(), (float) getCtrlY2());
     }
 
     /*
@@ -127,19 +128,27 @@ public class Rectangle2dDouble extends java.awt.geom.Rectangle2D.Double implemen
      */
     public void attachCopy(Object value)
     {
-        double oldX = getX();
-        double oldY = getY();
-        double oldW = getWidth();
-        double oldH = getHeight();
+        double oldX1 = getX1();
+        double oldY1 = getY1();
+        double oldCX1 = getCtrlX1();
+        double oldCY1 = getCtrlY1();
+        double oldX2 = getX2();
+        double oldY2 = getY2();
+        double oldCX2 = getCtrlX2();
+        double oldCY2 = getCtrlY2();
         initialise(value, false, true);
 
         // Check if the field has changed, and set the owner field as dirty if necessary
-        Rectangle2dDouble rect = (Rectangle2dDouble) value;
-        double newX = rect.getX();
-        double newY = rect.getY();
-        double newW = rect.getWidth();
-        double newH = rect.getHeight();
-        if (oldX != newX || oldY != newY || oldW != newW || oldH != newH)
+        CubicCurve2dFloat rect = (CubicCurve2dFloat) value;
+        double newX1 = rect.getX1();
+        double newY1 = rect.getY1();
+        double newCX1 = rect.getCtrlX1();
+        double newCY1 = rect.getCtrlY1();
+        double newX2 = rect.getX2();
+        double newY2 = rect.getY2();
+        double newCX2 = rect.getCtrlX2();
+        double newCY2 = rect.getCtrlY2();
+        if (oldX1 != newX1 || oldY1 != newY1 || oldCX1 != newCX1 || oldCY1 != newCY1 || oldX2 != newX2 || oldY2 != newY2 || oldCX2 != newCX2 || oldCY2 != newCY2)
         {
             makeDirty();
         }
@@ -156,139 +165,86 @@ public class Rectangle2dDouble extends java.awt.geom.Rectangle2D.Double implemen
     public Object clone()
     {
         Object obj = super.clone();
-        ((Rectangle2dDouble) obj).unsetOwner();
+        ((CubicCurve2dFloat) obj).unsetOwner();
         return obj;
     }
 
     /*
      * (non-Javadoc)
-     * @see java.awt.geom.Rectangle2D.Double#setRect(double, double, double, double)
+     * @see java.awt.geom.CubicCurve2D.Float#setCurve(double, double, double, double, double, double, double,
+     * double)
      */
     @Override
-    public void setRect(double x, double y, double w, double h)
+    public void setCurve(double x1, double y1, double ctrlx1, double ctrly1, double ctrlx2, double ctrly2, double x2, double y2)
     {
-        super.setRect(x, y, w, h);
+        super.setCurve(x1, y1, ctrlx1, ctrly1, ctrlx2, ctrly2, x2, y2);
         makeDirty();
     }
 
     /*
      * (non-Javadoc)
-     * @see java.awt.geom.Rectangle2D.Double#setRect(java.awt.geom.Rectangle2D)
+     * @see java.awt.geom.CubicCurve2D.Float#setCurve(float, float, float, float, float, float, float, float)
      */
     @Override
-    public void setRect(Rectangle2D r)
+    public void setCurve(float x1, float y1, float ctrlx1, float ctrly1, float ctrlx2, float ctrly2, float x2, float y2)
     {
-        super.setRect(r);
+        super.setCurve(x1, y1, ctrlx1, ctrly1, ctrlx2, ctrly2, x2, y2);
         makeDirty();
     }
 
     /*
      * (non-Javadoc)
-     * @see java.awt.geom.Rectangle2D#setFrame(double, double, double, double)
+     * @see java.awt.geom.CubicCurve2D#setCurve(double[], int)
      */
     @Override
-    public void setFrame(double x, double y, double w, double h)
+    public void setCurve(double[] coords, int offset)
     {
-        super.setFrame(x, y, w, h);
+        super.setCurve(coords, offset);
         makeDirty();
     }
 
     /*
      * (non-Javadoc)
-     * @see java.awt.geom.Rectangle2D#add(double, double)
+     * @see java.awt.geom.CubicCurve2D#setCurve(java.awt.geom.Point2D, java.awt.geom.Point2D,
+     * java.awt.geom.Point2D, java.awt.geom.Point2D)
      */
     @Override
-    public void add(double newx, double newy)
+    public void setCurve(Point2D p1, Point2D cp1, Point2D cp2, Point2D p2)
     {
-        super.add(newx, newy);
+        super.setCurve(p1, cp1, cp2, p2);
         makeDirty();
     }
 
     /*
      * (non-Javadoc)
-     * @see java.awt.geom.Rectangle2D#add(java.awt.geom.Point2D)
+     * @see java.awt.geom.CubicCurve2D#setCurve(java.awt.geom.Point2D[], int)
      */
     @Override
-    public void add(Point2D pt)
+    public void setCurve(Point2D[] pts, int offset)
     {
-        super.add(pt);
+        super.setCurve(pts, offset);
         makeDirty();
     }
 
     /*
      * (non-Javadoc)
-     * @see java.awt.geom.Rectangle2D#add(java.awt.geom.Rectangle2D)
+     * @see java.awt.geom.CubicCurve2D#setCurve(java.awt.geom.CubicCurve2D)
      */
     @Override
-    public void add(Rectangle2D r)
+    public void setCurve(CubicCurve2D c)
     {
-        super.add(r);
+        super.setCurve(c);
         makeDirty();
     }
 
     /*
      * (non-Javadoc)
-     * @see java.awt.geom.RectangularShape#setFrame(java.awt.geom.Point2D, java.awt.geom.Dimension2D)
+     * @see java.awt.geom.CubicCurve2D#subdivide(java.awt.geom.CubicCurve2D, java.awt.geom.CubicCurve2D)
      */
     @Override
-    public void setFrame(Point2D loc, Dimension2D size)
+    public void subdivide(CubicCurve2D left, CubicCurve2D right)
     {
-        super.setFrame(loc, size);
-        makeDirty();
-    }
-
-    /*
-     * (non-Javadoc)
-     * @see java.awt.geom.RectangularShape#setFrame(java.awt.geom.Rectangle2D)
-     */
-    @Override
-    public void setFrame(Rectangle2D r)
-    {
-        super.setFrame(r);
-        makeDirty();
-    }
-
-    /*
-     * (non-Javadoc)
-     * @see java.awt.geom.RectangularShape#setFrameFromDiagonal(double, double, double, double)
-     */
-    @Override
-    public void setFrameFromDiagonal(double x1, double y1, double x2, double y2)
-    {
-        super.setFrameFromDiagonal(x1, y1, x2, y2);
-        makeDirty();
-    }
-
-    /*
-     * (non-Javadoc)
-     * @see java.awt.geom.RectangularShape#setFrameFromDiagonal(java.awt.geom.Point2D, java.awt.geom.Point2D)
-     */
-    @Override
-    public void setFrameFromDiagonal(Point2D p1, Point2D p2)
-    {
-        super.setFrameFromDiagonal(p1, p2);
-        makeDirty();
-    }
-
-    /*
-     * (non-Javadoc)
-     * @see java.awt.geom.RectangularShape#setFrameFromCenter(double, double, double, double)
-     */
-    @Override
-    public void setFrameFromCenter(double centerX, double centerY, double cornerX, double cornerY)
-    {
-        super.setFrameFromCenter(centerX, centerY, cornerX, cornerY);
-        makeDirty();
-    }
-
-    /*
-     * (non-Javadoc)
-     * @see java.awt.geom.RectangularShape#setFrameFromCenter(java.awt.geom.Point2D, java.awt.geom.Point2D)
-     */
-    @Override
-    public void setFrameFromCenter(Point2D center, Point2D corner)
-    {
-        super.setFrameFromCenter(center, corner);
+        super.subdivide(left, right);
         makeDirty();
     }
 }

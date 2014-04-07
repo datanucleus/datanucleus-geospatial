@@ -15,12 +15,10 @@ limitations under the License.
 Contributors:
    ...
  **********************************************************************/
-package org.datanucleus.store.types.geospatial.wrapper;
+package org.datanucleus.store.types.geospatial.wrappers;
 
-import java.awt.geom.Dimension2D;
 import java.awt.geom.Point2D;
-import java.awt.geom.Rectangle2D;
-import java.awt.geom.RoundRectangle2D;
+import java.awt.geom.QuadCurve2D;
 
 import org.datanucleus.metadata.AbstractMemberMetaData;
 import org.datanucleus.state.FetchPlanState;
@@ -28,9 +26,9 @@ import org.datanucleus.state.ObjectProvider;
 import org.datanucleus.store.types.SCO;
 
 /**
- * A mutable second-class java.awt.geom.RoundRectangle2D.Float object.
+ * A mutable second-class java.awt.geom.QuadCurve2D.Float object.
  */
-public class RoundRectangle2dFloat extends java.awt.geom.RoundRectangle2D.Float implements SCO
+public class QuadCurve2dFloat extends java.awt.geom.QuadCurve2D.Float implements SCO
 {
     protected transient ObjectProvider ownerOP;
 
@@ -41,9 +39,10 @@ public class RoundRectangle2dFloat extends java.awt.geom.RoundRectangle2D.Float 
      * @param ownerSM the owning object
      * @param mmd Metadata for the member
      */
-    public RoundRectangle2dFloat(ObjectProvider ownerSM, AbstractMemberMetaData mmd)
+    public QuadCurve2dFloat(ObjectProvider ownerSM, AbstractMemberMetaData mmd)
     {
         super();
+
         this.ownerOP = ownerSM;
         this.fieldName = mmd.getName();
     }
@@ -54,7 +53,7 @@ public class RoundRectangle2dFloat extends java.awt.geom.RoundRectangle2D.Float 
      */
     public void initialise(Object value, boolean forInsert, boolean forUpdate) throws ClassCastException
     {
-        super.setRoundRect((RoundRectangle2D.Float) value);
+        super.setCurve((QuadCurve2D.Float) value);
     }
 
     /*
@@ -71,8 +70,8 @@ public class RoundRectangle2dFloat extends java.awt.geom.RoundRectangle2D.Float 
      */
     public Object getValue()
     {
-        return new java.awt.geom.RoundRectangle2D.Float((float) getX(), (float) getY(), (float) getWidth(), (float) getHeight(),
-                (float) getArcWidth(), (float) getArcHeight());
+        return new java.awt.geom.QuadCurve2D.Float((float) getX1(), (float) getY1(), (float) getCtrlX(), (float) getCtrlY(),
+                (float) getX2(), (float) getY2());
     }
 
     /*
@@ -119,8 +118,8 @@ public class RoundRectangle2dFloat extends java.awt.geom.RoundRectangle2D.Float 
      */
     public Object detachCopy(FetchPlanState state)
     {
-        return new java.awt.geom.RoundRectangle2D.Float((float) getX(), (float) getY(), (float) getWidth(), (float) getHeight(),
-                (float) getArcWidth(), (float) getArcHeight());
+        return new java.awt.geom.QuadCurve2D.Double((float) getX1(), (float) getY1(), (float) getCtrlX(), (float) getCtrlY(),
+                (float) getX2(), (float) getY2());
     }
 
     /*
@@ -129,23 +128,23 @@ public class RoundRectangle2dFloat extends java.awt.geom.RoundRectangle2D.Float 
      */
     public void attachCopy(Object value)
     {
-        double oldX = getX();
-        double oldY = getY();
-        double oldW = getWidth();
-        double oldH = getHeight();
-        double oldAW = getArcWidth();
-        double oldAH = getArcHeight();
+        double oldX1 = getX1();
+        double oldY1 = getY1();
+        double oldCX = getCtrlX();
+        double oldCY = getCtrlY();
+        double oldX2 = getX2();
+        double oldY2 = getY2();
         initialise(value, false, true);
 
         // Check if the field has changed, and set the owner field as dirty if necessary
-        RoundRectangle2dFloat rect = (RoundRectangle2dFloat) value;
-        double newX = rect.getX();
-        double newY = rect.getY();
-        double newW = rect.getWidth();
-        double newH = rect.getHeight();
-        double newAW = rect.getArcWidth();
-        double newAH = rect.getArcHeight();
-        if (oldX != newX || oldY != newY || oldW != newW || oldH != newH || oldAW != newAW || oldAH != newAH)
+        QuadCurve2dFloat rect = (QuadCurve2dFloat) value;
+        double newX1 = rect.getX1();
+        double newY1 = rect.getY1();
+        double newCX = rect.getCtrlX();
+        double newCY = rect.getCtrlY();
+        double newX2 = rect.getX2();
+        double newY2 = rect.getY2();
+        if (oldX1 != newX1 || oldY1 != newY1 || oldCX != newCX || oldCY != newCY || oldX2 != newX2 || oldY2 != newY2)
         {
             makeDirty();
         }
@@ -162,117 +161,85 @@ public class RoundRectangle2dFloat extends java.awt.geom.RoundRectangle2D.Float 
     public Object clone()
     {
         Object obj = super.clone();
-        ((RoundRectangle2dFloat) obj).unsetOwner();
+        ((QuadCurve2dFloat) obj).unsetOwner();
         return obj;
     }
 
     /*
      * (non-Javadoc)
-     * @see java.awt.geom.RoundRectangle2D.Float#setRoundRect(double, double, double, double, double, double)
+     * @see java.awt.geom.QuadCurve2D.Float#setCurve(double, double, double, double, double, double)
      */
     @Override
-    public void setRoundRect(double x, double y, double w, double h, double arcw, double arch)
+    public void setCurve(double x1, double y1, double ctrlx, double ctrly, double x2, double y2)
     {
-        super.setRoundRect(x, y, w, h, arcw, arch);
+        super.setCurve(x1, y1, ctrlx, ctrly, x2, y2);
         makeDirty();
     }
 
     /*
      * (non-Javadoc)
-     * @see java.awt.geom.RoundRectangle2D.Float#setRoundRect(float, float, float, float, float, float)
+     * @see java.awt.geom.QuadCurve2D.Float#setCurve(float, float, float, float, float, float)
      */
     @Override
-    public void setRoundRect(float x, float y, float w, float h, float arcw, float arch)
+    public void setCurve(float x1, float y1, float ctrlx, float ctrly, float x2, float y2)
     {
-        super.setRoundRect(x, y, w, h, arcw, arch);
+        super.setCurve(x1, y1, ctrlx, ctrly, x2, y2);
         makeDirty();
     }
 
     /*
      * (non-Javadoc)
-     * @see java.awt.geom.RoundRectangle2D.Double#setRoundRect(java.awt.geom.RoundRectangle2D)
+     * @see java.awt.geom.QuadCurve2D#setCurve(double[], int)
      */
     @Override
-    public void setRoundRect(RoundRectangle2D rr)
+    public void setCurve(double[] coords, int offset)
     {
-        super.setRoundRect(rr);
+        super.setCurve(coords, offset);
         makeDirty();
     }
 
     /*
      * (non-Javadoc)
-     * @see java.awt.geom.RoundRectangle2D#setFrame(double, double, double, double)
+     * @see java.awt.geom.QuadCurve2D#setCurve(java.awt.geom.Point2D, java.awt.geom.Point2D,
+     * java.awt.geom.Point2D)
      */
     @Override
-    public void setFrame(double x, double y, double w, double h)
+    public void setCurve(Point2D p1, Point2D cp, Point2D p2)
     {
-        super.setFrame(x, y, w, h);
+        super.setCurve(p1, cp, p2);
         makeDirty();
     }
 
     /*
      * (non-Javadoc)
-     * @see java.awt.geom.RectangularShape#setFrame(java.awt.geom.Point2D, java.awt.geom.Dimension2D)
+     * @see java.awt.geom.QuadCurve2D#setCurve(java.awt.geom.Point2D[], int)
      */
     @Override
-    public void setFrame(Point2D loc, Dimension2D size)
+    public void setCurve(Point2D[] pts, int offset)
     {
-        super.setFrame(loc, size);
+        super.setCurve(pts, offset);
         makeDirty();
     }
 
     /*
      * (non-Javadoc)
-     * @see java.awt.geom.RectangularShape#setFrame(java.awt.geom.Rectangle2D)
+     * @see java.awt.geom.QuadCurve2D#setCurve(java.awt.geom.QuadCurve2D)
      */
     @Override
-    public void setFrame(Rectangle2D r)
+    public void setCurve(QuadCurve2D c)
     {
-        super.setFrame(r);
+        super.setCurve(c);
         makeDirty();
     }
 
     /*
      * (non-Javadoc)
-     * @see java.awt.geom.RectangularShape#setFrameFromDiagonal(double, double, double, double)
+     * @see java.awt.geom.QuadCurve2D#subdivide(java.awt.geom.QuadCurve2D, java.awt.geom.QuadCurve2D)
      */
     @Override
-    public void setFrameFromDiagonal(double x1, double y1, double x2, double y2)
+    public void subdivide(QuadCurve2D left, QuadCurve2D right)
     {
-        super.setFrameFromDiagonal(x1, y1, x2, y2);
-        makeDirty();
-    }
-
-    /*
-     * (non-Javadoc)
-     * @see java.awt.geom.RectangularShape#setFrameFromDiagonal(java.awt.geom.Point2D, java.awt.geom.Point2D)
-     */
-    @Override
-    public void setFrameFromDiagonal(Point2D p1, Point2D p2)
-    {
-        super.setFrameFromDiagonal(p1, p2);
-        makeDirty();
-    }
-
-    /*
-     * (non-Javadoc)
-     * @see java.awt.geom.RectangularShape#setFrameFromCenter(double, double, double, double)
-     */
-    @Override
-    public void setFrameFromCenter(double centerX, double centerY, double cornerX, double cornerY)
-    {
-        super.setFrameFromCenter(centerX, centerY, cornerX, cornerY);
-        makeDirty();
-    }
-
-    /*
-     * (non-Javadoc)
-     * @see java.awt.geom.RectangularShape#setFrameFromCenter(java.awt.geom.Point2D, java.awt.geom.Point2D)
-     */
-    @Override
-    public void setFrameFromCenter(Point2D center, Point2D corner)
-    {
-        super.setFrameFromCenter(center, corner);
+        super.subdivide(left, right);
         makeDirty();
     }
 }

@@ -15,9 +15,10 @@ limitations under the License.
 Contributors:
    ...
  **********************************************************************/
-package org.datanucleus.store.types.geospatial.wrapper;
+package org.datanucleus.store.types.geospatial.wrappers;
 
 import java.awt.geom.Dimension2D;
+import java.awt.geom.Ellipse2D;
 import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
 
@@ -27,9 +28,9 @@ import org.datanucleus.state.ObjectProvider;
 import org.datanucleus.store.types.SCO;
 
 /**
- * A mutable second-class java.awt.geom.Rectangle2D.Float object.
+ * A mutable second-class java.awt.geom.Ellipse2D.Double object.
  */
-public class Rectangle2dFloat extends java.awt.geom.Rectangle2D.Float implements SCO
+public class Ellipse2dDouble extends java.awt.geom.Ellipse2D.Double implements SCO
 {
     protected transient ObjectProvider ownerOP;
 
@@ -40,7 +41,7 @@ public class Rectangle2dFloat extends java.awt.geom.Rectangle2D.Float implements
      * @param ownerSM the owning object
      * @param mmd Metadata for the member
      */
-    public Rectangle2dFloat(ObjectProvider ownerSM, AbstractMemberMetaData mmd)
+    public Ellipse2dDouble(ObjectProvider ownerSM, AbstractMemberMetaData mmd)
     {
         super();
 
@@ -54,7 +55,8 @@ public class Rectangle2dFloat extends java.awt.geom.Rectangle2D.Float implements
      */
     public void initialise(Object value, boolean forInsert, boolean forUpdate) throws ClassCastException
     {
-        super.setRect((Rectangle2D) value);
+        Ellipse2D.Double ellipse = (Ellipse2D.Double) value;
+        super.setFrame(ellipse.getX(), ellipse.getY(), ellipse.getWidth(), ellipse.getHeight());
     }
 
     /*
@@ -71,7 +73,7 @@ public class Rectangle2dFloat extends java.awt.geom.Rectangle2D.Float implements
      */
     public Object getValue()
     {
-        return new java.awt.geom.Rectangle2D.Float((float) getX(), (float) getY(), (float) getWidth(), (float) getHeight());
+        return new java.awt.geom.Ellipse2D.Double(getX(), getY(), getWidth(), getHeight());
     }
 
     /*
@@ -118,7 +120,7 @@ public class Rectangle2dFloat extends java.awt.geom.Rectangle2D.Float implements
      */
     public Object detachCopy(FetchPlanState state)
     {
-        return new java.awt.geom.Rectangle2D.Float((float) getX(), (float) getY(), (float) getWidth(), (float) getHeight());
+        return new java.awt.geom.Ellipse2D.Double(getX(), getY(), getWidth(), getHeight());
     }
 
     /*
@@ -134,7 +136,7 @@ public class Rectangle2dFloat extends java.awt.geom.Rectangle2D.Float implements
         initialise(value, false, true);
 
         // Check if the field has changed, and set the owner field as dirty if necessary
-        Rectangle2dFloat rect = (Rectangle2dFloat) value;
+        Ellipse2dDouble rect = (Ellipse2dDouble) value;
         double newX = rect.getX();
         double newY = rect.getY();
         double newW = rect.getWidth();
@@ -156,84 +158,18 @@ public class Rectangle2dFloat extends java.awt.geom.Rectangle2D.Float implements
     public Object clone()
     {
         Object obj = super.clone();
-        ((Rectangle2dFloat) obj).unsetOwner();
+        ((Ellipse2dDouble) obj).unsetOwner();
         return obj;
     }
 
     /*
      * (non-Javadoc)
-     * @see java.awt.geom.Rectangle2D.Float#setRect(float, float, float, float)
-     */
-    @Override
-    public void setRect(float x, float y, float w, float h)
-    {
-        super.setRect(x, y, w, h);
-        makeDirty();
-    }
-
-    /*
-     * (non-Javadoc)
-     * @see java.awt.geom.Rectangle2D.Float#setRect(double, double, double, double)
-     */
-    @Override
-    public void setRect(double x, double y, double w, double h)
-    {
-        super.setRect(x, y, w, h);
-        makeDirty();
-    }
-
-    /*
-     * (non-Javadoc)
-     * @see java.awt.geom.Rectangle2D.Float#setRect(java.awt.geom.Rectangle2D)
-     */
-    @Override
-    public void setRect(Rectangle2D r)
-    {
-        super.setRect(r);
-        makeDirty();
-    }
-
-    /*
-     * (non-Javadoc)
-     * @see java.awt.geom.Rectangle2D#setFrame(double, double, double, double)
+     * @see java.awt.geom.Ellipse2D.Double#setFrame(double, double, double, double)
      */
     @Override
     public void setFrame(double x, double y, double w, double h)
     {
         super.setFrame(x, y, w, h);
-        makeDirty();
-    }
-
-    /*
-     * (non-Javadoc)
-     * @see java.awt.geom.Rectangle2D#add(double, double)
-     */
-    @Override
-    public void add(double newx, double newy)
-    {
-        super.add(newx, newy);
-        makeDirty();
-    }
-
-    /*
-     * (non-Javadoc)
-     * @see java.awt.geom.Rectangle2D#add(java.awt.geom.Point2D)
-     */
-    @Override
-    public void add(Point2D pt)
-    {
-        super.add(pt);
-        makeDirty();
-    }
-
-    /*
-     * (non-Javadoc)
-     * @see java.awt.geom.Rectangle2D#add(java.awt.geom.Rectangle2D)
-     */
-    @Override
-    public void add(Rectangle2D r)
-    {
-        super.add(r);
         makeDirty();
     }
 

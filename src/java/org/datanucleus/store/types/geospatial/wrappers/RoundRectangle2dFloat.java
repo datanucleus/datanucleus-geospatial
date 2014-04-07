@@ -15,12 +15,12 @@ limitations under the License.
 Contributors:
    ...
  **********************************************************************/
-package org.datanucleus.store.types.geospatial.wrapper;
+package org.datanucleus.store.types.geospatial.wrappers;
 
-import java.awt.geom.Arc2D;
 import java.awt.geom.Dimension2D;
 import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
+import java.awt.geom.RoundRectangle2D;
 
 import org.datanucleus.metadata.AbstractMemberMetaData;
 import org.datanucleus.state.FetchPlanState;
@@ -28,9 +28,9 @@ import org.datanucleus.state.ObjectProvider;
 import org.datanucleus.store.types.SCO;
 
 /**
- * A mutable second-class java.awt.geom.Arc2D.Float object.
+ * A mutable second-class java.awt.geom.RoundRectangle2D.Float object.
  */
-public class Arc2dFloat extends java.awt.geom.Arc2D.Float implements SCO
+public class RoundRectangle2dFloat extends java.awt.geom.RoundRectangle2D.Float implements SCO
 {
     protected transient ObjectProvider ownerOP;
 
@@ -41,10 +41,9 @@ public class Arc2dFloat extends java.awt.geom.Arc2D.Float implements SCO
      * @param ownerSM the owning object
      * @param mmd Metadata for the member
      */
-    public Arc2dFloat(ObjectProvider ownerSM, AbstractMemberMetaData mmd)
+    public RoundRectangle2dFloat(ObjectProvider ownerSM, AbstractMemberMetaData mmd)
     {
         super();
-
         this.ownerOP = ownerSM;
         this.fieldName = mmd.getName();
     }
@@ -55,7 +54,7 @@ public class Arc2dFloat extends java.awt.geom.Arc2D.Float implements SCO
      */
     public void initialise(Object value, boolean forInsert, boolean forUpdate) throws ClassCastException
     {
-        super.setArc((Arc2D.Float) value);
+        super.setRoundRect((RoundRectangle2D.Float) value);
     }
 
     /*
@@ -72,8 +71,8 @@ public class Arc2dFloat extends java.awt.geom.Arc2D.Float implements SCO
      */
     public Object getValue()
     {
-        return new java.awt.geom.Arc2D.Float((float) getX(), (float) getY(), (float) getWidth(), (float) getHeight(),
-                (float) getAngleStart(), (float) getAngleExtent(), getArcType());
+        return new java.awt.geom.RoundRectangle2D.Float((float) getX(), (float) getY(), (float) getWidth(), (float) getHeight(),
+                (float) getArcWidth(), (float) getArcHeight());
     }
 
     /*
@@ -120,8 +119,8 @@ public class Arc2dFloat extends java.awt.geom.Arc2D.Float implements SCO
      */
     public Object detachCopy(FetchPlanState state)
     {
-        return new java.awt.geom.Arc2D.Float((float) getX(), (float) getY(), (float) getWidth(), (float) getHeight(),
-                (float) getAngleStart(), (float) getAngleExtent(), getArcType());
+        return new java.awt.geom.RoundRectangle2D.Float((float) getX(), (float) getY(), (float) getWidth(), (float) getHeight(),
+                (float) getArcWidth(), (float) getArcHeight());
     }
 
     /*
@@ -134,21 +133,19 @@ public class Arc2dFloat extends java.awt.geom.Arc2D.Float implements SCO
         double oldY = getY();
         double oldW = getWidth();
         double oldH = getHeight();
-        double oldS = getAngleStart();
-        double oldE = getAngleExtent();
-        double oldT = getArcType();
+        double oldAW = getArcWidth();
+        double oldAH = getArcHeight();
         initialise(value, false, true);
 
         // Check if the field has changed, and set the owner field as dirty if necessary
-        Arc2dFloat rect = (Arc2dFloat) value;
+        RoundRectangle2dFloat rect = (RoundRectangle2dFloat) value;
         double newX = rect.getX();
         double newY = rect.getY();
         double newW = rect.getWidth();
         double newH = rect.getHeight();
-        double newS = rect.getAngleStart();
-        double newE = rect.getAngleExtent();
-        double newT = rect.getArcType();
-        if (oldX != newX || oldY != newY || oldW != newW || oldH != newH || oldS != newS || oldE != newE || oldT != newT)
+        double newAW = rect.getArcWidth();
+        double newAH = rect.getArcHeight();
+        if (oldX != newX || oldY != newY || oldW != newW || oldH != newH || oldAW != newAW || oldAH != newAH)
         {
             makeDirty();
         }
@@ -165,146 +162,46 @@ public class Arc2dFloat extends java.awt.geom.Arc2D.Float implements SCO
     public Object clone()
     {
         Object obj = super.clone();
-        ((Arc2dFloat) obj).unsetOwner();
+        ((RoundRectangle2dFloat) obj).unsetOwner();
         return obj;
     }
 
     /*
      * (non-Javadoc)
-     * @see java.awt.geom.Arc2D.Float#setArc(double, double, double, double, double, double, int)
+     * @see java.awt.geom.RoundRectangle2D.Float#setRoundRect(double, double, double, double, double, double)
      */
     @Override
-    public void setArc(double x, double y, double w, double h, double angSt, double angExt, int closure)
+    public void setRoundRect(double x, double y, double w, double h, double arcw, double arch)
     {
-        super.setArc(x, y, w, h, angSt, angExt, closure);
+        super.setRoundRect(x, y, w, h, arcw, arch);
         makeDirty();
     }
 
     /*
      * (non-Javadoc)
-     * @see java.awt.geom.Arc2D.Float#setAngleStart(double)
+     * @see java.awt.geom.RoundRectangle2D.Float#setRoundRect(float, float, float, float, float, float)
      */
     @Override
-    public void setAngleStart(double angSt)
+    public void setRoundRect(float x, float y, float w, float h, float arcw, float arch)
     {
-        super.setAngleStart(angSt);
+        super.setRoundRect(x, y, w, h, arcw, arch);
         makeDirty();
     }
 
     /*
      * (non-Javadoc)
-     * @see java.awt.geom.Arc2D.Float#setAngleExtent(double)
+     * @see java.awt.geom.RoundRectangle2D.Double#setRoundRect(java.awt.geom.RoundRectangle2D)
      */
     @Override
-    public void setAngleExtent(double angExt)
+    public void setRoundRect(RoundRectangle2D rr)
     {
-        super.setAngleExtent(angExt);
+        super.setRoundRect(rr);
         makeDirty();
     }
 
     /*
      * (non-Javadoc)
-     * @see java.awt.geom.Arc2D#setArc(java.awt.geom.Point2D, java.awt.geom.Dimension2D, double, double, int)
-     */
-    @Override
-    public void setArc(Point2D loc, Dimension2D size, double angSt, double angExt, int closure)
-    {
-        super.setArc(loc, size, angSt, angExt, closure);
-        makeDirty();
-    }
-
-    /*
-     * (non-Javadoc)
-     * @see java.awt.geom.Arc2D#setArc(java.awt.geom.Rectangle2D, double, double, int)
-     */
-    @Override
-    public void setArc(Rectangle2D rect, double angSt, double angExt, int closure)
-    {
-        super.setArc(rect, angSt, angExt, closure);
-        makeDirty();
-    }
-
-    /*
-     * (non-Javadoc)
-     * @see java.awt.geom.Arc2D#setArc(java.awt.geom.Arc2D)
-     */
-    @Override
-    public void setArc(Arc2D a)
-    {
-        super.setArc(a);
-        makeDirty();
-    }
-
-    /*
-     * (non-Javadoc)
-     * @see java.awt.geom.Arc2D#setArcByCenter(double, double, double, double, double, int)
-     */
-    @Override
-    public void setArcByCenter(double x, double y, double radius, double angSt, double angExt, int closure)
-    {
-        super.setArcByCenter(x, y, radius, angSt, angExt, closure);
-        makeDirty();
-    }
-
-    /*
-     * (non-Javadoc)
-     * @see java.awt.geom.Arc2D#setArcByTangent(java.awt.geom.Point2D, java.awt.geom.Point2D,
-     * java.awt.geom.Point2D, double)
-     */
-    @Override
-    public void setArcByTangent(Point2D p1, Point2D p2, Point2D p3, double radius)
-    {
-        super.setArcByTangent(p1, p2, p3, radius);
-        makeDirty();
-    }
-
-    /*
-     * (non-Javadoc)
-     * @see java.awt.geom.Arc2D#setAngleStart(java.awt.geom.Point2D)
-     */
-    @Override
-    public void setAngleStart(Point2D p)
-    {
-        super.setAngleStart(p);
-        makeDirty();
-    }
-
-    /*
-     * (non-Javadoc)
-     * @see java.awt.geom.Arc2D#setAngles(double, double, double, double)
-     */
-    @Override
-    public void setAngles(double x1, double y1, double x2, double y2)
-    {
-        super.setAngles(x1, y1, x2, y2);
-        makeDirty();
-    }
-
-    /*
-     * (non-Javadoc)
-     * @see java.awt.geom.Arc2D#setAngles(java.awt.geom.Point2D, java.awt.geom.Point2D)
-     */
-    @Override
-    public void setAngles(Point2D p1, Point2D p2)
-    {
-        super.setAngles(p1, p2);
-        makeDirty();
-    }
-
-    /*
-     * (non-Javadoc)
-     * @see java.awt.geom.Arc2D#setArcType(int)
-     */
-    @Override
-    public void setArcType(int type)
-    {
-        super.setArcType(type);
-        makeDirty();
-    }
-
-    /*
-     * (non-Javadoc)
-     * @see java.awt.geom.Arc2D#setFrame(double, double, double, double)
+     * @see java.awt.geom.RoundRectangle2D#setFrame(double, double, double, double)
      */
     @Override
     public void setFrame(double x, double y, double w, double h)

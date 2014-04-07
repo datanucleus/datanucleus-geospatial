@@ -15,10 +15,10 @@ limitations under the License.
 Contributors:
    ...
  **********************************************************************/
-package org.datanucleus.store.types.geospatial.wrapper;
+package org.datanucleus.store.types.geospatial.wrappers;
 
+import java.awt.geom.CubicCurve2D;
 import java.awt.geom.Point2D;
-import java.awt.geom.QuadCurve2D;
 
 import org.datanucleus.metadata.AbstractMemberMetaData;
 import org.datanucleus.state.FetchPlanState;
@@ -26,9 +26,9 @@ import org.datanucleus.state.ObjectProvider;
 import org.datanucleus.store.types.SCO;
 
 /**
- * A mutable second-class java.awt.geom.QuadCurve2D.Float object.
+ * A mutable second-class java.awt.geom.CubicCurve2D.Double object.
  */
-public class QuadCurve2dFloat extends java.awt.geom.QuadCurve2D.Float implements SCO
+public class CubicCurve2dDouble extends java.awt.geom.CubicCurve2D.Double implements SCO
 {
     protected transient ObjectProvider ownerOP;
 
@@ -39,7 +39,7 @@ public class QuadCurve2dFloat extends java.awt.geom.QuadCurve2D.Float implements
      * @param ownerSM the owning object
      * @param mmd Metadata for the member
      */
-    public QuadCurve2dFloat(ObjectProvider ownerSM, AbstractMemberMetaData mmd)
+    public CubicCurve2dDouble(ObjectProvider ownerSM, AbstractMemberMetaData mmd)
     {
         super();
 
@@ -53,7 +53,7 @@ public class QuadCurve2dFloat extends java.awt.geom.QuadCurve2D.Float implements
      */
     public void initialise(Object value, boolean forInsert, boolean forUpdate) throws ClassCastException
     {
-        super.setCurve((QuadCurve2D.Float) value);
+        super.setCurve((CubicCurve2D.Double) value);
     }
 
     /*
@@ -70,8 +70,7 @@ public class QuadCurve2dFloat extends java.awt.geom.QuadCurve2D.Float implements
      */
     public Object getValue()
     {
-        return new java.awt.geom.QuadCurve2D.Float((float) getX1(), (float) getY1(), (float) getCtrlX(), (float) getCtrlY(),
-                (float) getX2(), (float) getY2());
+        return new java.awt.geom.CubicCurve2D.Double(getX1(), getY1(), getCtrlX1(), getCtrlY1(), getX2(), getY2(), getCtrlX2(), getCtrlY2());
     }
 
     /*
@@ -118,8 +117,7 @@ public class QuadCurve2dFloat extends java.awt.geom.QuadCurve2D.Float implements
      */
     public Object detachCopy(FetchPlanState state)
     {
-        return new java.awt.geom.QuadCurve2D.Double((float) getX1(), (float) getY1(), (float) getCtrlX(), (float) getCtrlY(),
-                (float) getX2(), (float) getY2());
+        return new java.awt.geom.CubicCurve2D.Double(getX1(), getY1(), getCtrlX1(), getCtrlY1(), getX2(), getY2(), getCtrlX2(), getCtrlY2());
     }
 
     /*
@@ -130,21 +128,25 @@ public class QuadCurve2dFloat extends java.awt.geom.QuadCurve2D.Float implements
     {
         double oldX1 = getX1();
         double oldY1 = getY1();
-        double oldCX = getCtrlX();
-        double oldCY = getCtrlY();
+        double oldCX1 = getCtrlX1();
+        double oldCY1 = getCtrlY1();
         double oldX2 = getX2();
         double oldY2 = getY2();
+        double oldCX2 = getCtrlX2();
+        double oldCY2 = getCtrlY2();
         initialise(value, false, true);
 
         // Check if the field has changed, and set the owner field as dirty if necessary
-        QuadCurve2dFloat rect = (QuadCurve2dFloat) value;
+        CubicCurve2dDouble rect = (CubicCurve2dDouble) value;
         double newX1 = rect.getX1();
         double newY1 = rect.getY1();
-        double newCX = rect.getCtrlX();
-        double newCY = rect.getCtrlY();
+        double newCX1 = rect.getCtrlX1();
+        double newCY1 = rect.getCtrlY1();
         double newX2 = rect.getX2();
         double newY2 = rect.getY2();
-        if (oldX1 != newX1 || oldY1 != newY1 || oldCX != newCX || oldCY != newCY || oldX2 != newX2 || oldY2 != newY2)
+        double newCX2 = rect.getCtrlX2();
+        double newCY2 = rect.getCtrlY2();
+        if (oldX1 != newX1 || oldY1 != newY1 || oldCX1 != newCX1 || oldCY1 != newCY1 || oldX2 != newX2 || oldY2 != newY2 || oldCX2 != newCX2 || oldCY2 != newCY2)
         {
             makeDirty();
         }
@@ -161,35 +163,25 @@ public class QuadCurve2dFloat extends java.awt.geom.QuadCurve2D.Float implements
     public Object clone()
     {
         Object obj = super.clone();
-        ((QuadCurve2dFloat) obj).unsetOwner();
+        ((CubicCurve2dDouble) obj).unsetOwner();
         return obj;
     }
 
     /*
      * (non-Javadoc)
-     * @see java.awt.geom.QuadCurve2D.Float#setCurve(double, double, double, double, double, double)
+     * @see java.awt.geom.CubicCurve2D.Double#setCurve(double, double, double, double, double, double, double,
+     * double)
      */
     @Override
-    public void setCurve(double x1, double y1, double ctrlx, double ctrly, double x2, double y2)
+    public void setCurve(double x1, double y1, double ctrlx1, double ctrly1, double ctrlx2, double ctrly2, double x2, double y2)
     {
-        super.setCurve(x1, y1, ctrlx, ctrly, x2, y2);
+        super.setCurve(x1, y1, ctrlx1, ctrly1, ctrlx2, ctrly2, x2, y2);
         makeDirty();
     }
 
     /*
      * (non-Javadoc)
-     * @see java.awt.geom.QuadCurve2D.Float#setCurve(float, float, float, float, float, float)
-     */
-    @Override
-    public void setCurve(float x1, float y1, float ctrlx, float ctrly, float x2, float y2)
-    {
-        super.setCurve(x1, y1, ctrlx, ctrly, x2, y2);
-        makeDirty();
-    }
-
-    /*
-     * (non-Javadoc)
-     * @see java.awt.geom.QuadCurve2D#setCurve(double[], int)
+     * @see java.awt.geom.CubicCurve2D#setCurve(double[], int)
      */
     @Override
     public void setCurve(double[] coords, int offset)
@@ -200,19 +192,19 @@ public class QuadCurve2dFloat extends java.awt.geom.QuadCurve2D.Float implements
 
     /*
      * (non-Javadoc)
-     * @see java.awt.geom.QuadCurve2D#setCurve(java.awt.geom.Point2D, java.awt.geom.Point2D,
-     * java.awt.geom.Point2D)
+     * @see java.awt.geom.CubicCurve2D#setCurve(java.awt.geom.Point2D, java.awt.geom.Point2D,
+     * java.awt.geom.Point2D, java.awt.geom.Point2D)
      */
     @Override
-    public void setCurve(Point2D p1, Point2D cp, Point2D p2)
+    public void setCurve(Point2D p1, Point2D cp1, Point2D cp2, Point2D p2)
     {
-        super.setCurve(p1, cp, p2);
+        super.setCurve(p1, cp1, cp2, p2);
         makeDirty();
     }
 
     /*
      * (non-Javadoc)
-     * @see java.awt.geom.QuadCurve2D#setCurve(java.awt.geom.Point2D[], int)
+     * @see java.awt.geom.CubicCurve2D#setCurve(java.awt.geom.Point2D[], int)
      */
     @Override
     public void setCurve(Point2D[] pts, int offset)
@@ -223,10 +215,10 @@ public class QuadCurve2dFloat extends java.awt.geom.QuadCurve2D.Float implements
 
     /*
      * (non-Javadoc)
-     * @see java.awt.geom.QuadCurve2D#setCurve(java.awt.geom.QuadCurve2D)
+     * @see java.awt.geom.CubicCurve2D#setCurve(java.awt.geom.CubicCurve2D)
      */
     @Override
-    public void setCurve(QuadCurve2D c)
+    public void setCurve(CubicCurve2D c)
     {
         super.setCurve(c);
         makeDirty();
@@ -234,10 +226,10 @@ public class QuadCurve2dFloat extends java.awt.geom.QuadCurve2D.Float implements
 
     /*
      * (non-Javadoc)
-     * @see java.awt.geom.QuadCurve2D#subdivide(java.awt.geom.QuadCurve2D, java.awt.geom.QuadCurve2D)
+     * @see java.awt.geom.CubicCurve2D#subdivide(java.awt.geom.CubicCurve2D, java.awt.geom.CubicCurve2D)
      */
     @Override
-    public void subdivide(QuadCurve2D left, QuadCurve2D right)
+    public void subdivide(CubicCurve2D left, CubicCurve2D right)
     {
         super.subdivide(left, right);
         makeDirty();

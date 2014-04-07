@@ -15,8 +15,9 @@ limitations under the License.
 Contributors:
    ...
  **********************************************************************/
-package org.datanucleus.store.types.geospatial.wrapper;
+package org.datanucleus.store.types.geospatial.wrappers;
 
+import java.awt.geom.Line2D;
 import java.awt.geom.Point2D;
 
 import org.datanucleus.metadata.AbstractMemberMetaData;
@@ -25,9 +26,9 @@ import org.datanucleus.state.ObjectProvider;
 import org.datanucleus.store.types.SCO;
 
 /**
- * A mutable second-class java.awt.geom.Point2D.Double object.
+ * A mutable second-class java.awt.geom.Line2D.Double object.
  */
-public class Point2dDouble extends java.awt.geom.Point2D.Double implements SCO
+public class Line2dDouble extends java.awt.geom.Line2D.Double implements SCO
 {
     protected transient ObjectProvider ownerOP;
 
@@ -35,14 +36,14 @@ public class Point2dDouble extends java.awt.geom.Point2D.Double implements SCO
 
     /**
      * Assigns owning object and field name.
-     * @param ownerOP the owning object
+     * @param ownerSM the owning object
      * @param mmd Metadata for the member
      */
-    public Point2dDouble(ObjectProvider ownerOP, AbstractMemberMetaData mmd)
+    public Line2dDouble(ObjectProvider ownerSM, AbstractMemberMetaData mmd)
     {
         super();
 
-        this.ownerOP = ownerOP;
+        this.ownerOP = ownerSM;
         this.fieldName = mmd.getName();
     }
 
@@ -52,7 +53,7 @@ public class Point2dDouble extends java.awt.geom.Point2D.Double implements SCO
      */
     public void initialise(Object value, boolean forInsert, boolean forUpdate) throws ClassCastException
     {
-        super.setLocation((Point2D.Double) value);
+        super.setLine((Line2D.Double) value);
     }
 
     /*
@@ -69,7 +70,7 @@ public class Point2dDouble extends java.awt.geom.Point2D.Double implements SCO
      */
     public Object getValue()
     {
-        return new java.awt.geom.Point2D.Double(getX(), getY());
+        return new java.awt.geom.Line2D.Double(getX1(), getY1(), getX2(), getY2());
     }
 
     /*
@@ -116,7 +117,7 @@ public class Point2dDouble extends java.awt.geom.Point2D.Double implements SCO
      */
     public Object detachCopy(FetchPlanState state)
     {
-        return new java.awt.geom.Point2D.Double(getX(), getY());
+        return new java.awt.geom.Line2D.Double(getX1(), getY1(), getX2(), getY2());
     }
 
     /*
@@ -125,15 +126,19 @@ public class Point2dDouble extends java.awt.geom.Point2D.Double implements SCO
      */
     public void attachCopy(Object value)
     {
-        double oldX = getX();
-        double oldY = getY();
+        double oldX1 = getX1();
+        double oldY1 = getY1();
+        double oldX2 = getX2();
+        double oldY2 = getY2();
         initialise(value, false, true);
 
         // Check if the field has changed, and set the owner field as dirty if necessary
-        Point2dDouble rect = (Point2dDouble) value;
-        double newX = rect.getX();
-        double newY = rect.getY();
-        if (oldX != newX || oldY != newY)
+        Line2dDouble rect = (Line2dDouble) value;
+        double newX1 = rect.getX1();
+        double newY1 = rect.getY1();
+        double newX2 = rect.getX2();
+        double newY2 = rect.getY2();
+        if (oldX1 != newX1 || oldY1 != newY1 || oldX2 != newX2 || oldY2 != newY2)
         {
             makeDirty();
         }
@@ -150,29 +155,37 @@ public class Point2dDouble extends java.awt.geom.Point2D.Double implements SCO
     public Object clone()
     {
         Object obj = super.clone();
-        ((Point2dDouble) obj).unsetOwner();
+        ((Line2dDouble) obj).unsetOwner();
         return obj;
     }
 
     /*
      * (non-Javadoc)
-     * @see java.awt.geom.Point2D.Double#setLocation(double, double)
+     * @see java.awt.geom.Line2D.Double#setLine(double, double, double, double)
      */
-    @Override
-    public void setLocation(double x, double y)
+    public void setLine(double x1, double y1, double x2, double y2)
     {
-        super.setLocation(x, y);
+        super.setLine(x1, y1, x2, y2);
         makeDirty();
     }
 
     /*
      * (non-Javadoc)
-     * @see java.awt.geom.Point2D#setLocation(java.awt.geom.Point2D)
+     * @see java.awt.geom.Line2D#setLine(java.awt.geom.Point2D, java.awt.geom.Point2D)
      */
-    @Override
-    public void setLocation(Point2D p)
+    public void setLine(Point2D p1, Point2D p2)
     {
-        super.setLocation(p);
+        super.setLine(p1, p2);
+        makeDirty();
+    }
+
+    /*
+     * (non-Javadoc)
+     * @see java.awt.geom.Line2D#setLine(java.awt.geom.Line2D)
+     */
+    public void setLine(Line2D l)
+    {
+        super.setLine(l);
         makeDirty();
     }
 }

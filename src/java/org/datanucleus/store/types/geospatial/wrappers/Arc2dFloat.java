@@ -15,10 +15,10 @@ limitations under the License.
 Contributors:
    ...
  **********************************************************************/
-package org.datanucleus.store.types.geospatial.wrapper;
+package org.datanucleus.store.types.geospatial.wrappers;
 
+import java.awt.geom.Arc2D;
 import java.awt.geom.Dimension2D;
-import java.awt.geom.Ellipse2D;
 import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
 
@@ -28,9 +28,9 @@ import org.datanucleus.state.ObjectProvider;
 import org.datanucleus.store.types.SCO;
 
 /**
- * A mutable second-class java.awt.geom.Ellipse2D.Double object.
+ * A mutable second-class java.awt.geom.Arc2D.Float object.
  */
-public class Ellipse2dDouble extends java.awt.geom.Ellipse2D.Double implements SCO
+public class Arc2dFloat extends java.awt.geom.Arc2D.Float implements SCO
 {
     protected transient ObjectProvider ownerOP;
 
@@ -41,7 +41,7 @@ public class Ellipse2dDouble extends java.awt.geom.Ellipse2D.Double implements S
      * @param ownerSM the owning object
      * @param mmd Metadata for the member
      */
-    public Ellipse2dDouble(ObjectProvider ownerSM, AbstractMemberMetaData mmd)
+    public Arc2dFloat(ObjectProvider ownerSM, AbstractMemberMetaData mmd)
     {
         super();
 
@@ -55,8 +55,7 @@ public class Ellipse2dDouble extends java.awt.geom.Ellipse2D.Double implements S
      */
     public void initialise(Object value, boolean forInsert, boolean forUpdate) throws ClassCastException
     {
-        Ellipse2D.Double ellipse = (Ellipse2D.Double) value;
-        super.setFrame(ellipse.getX(), ellipse.getY(), ellipse.getWidth(), ellipse.getHeight());
+        super.setArc((Arc2D.Float) value);
     }
 
     /*
@@ -73,7 +72,8 @@ public class Ellipse2dDouble extends java.awt.geom.Ellipse2D.Double implements S
      */
     public Object getValue()
     {
-        return new java.awt.geom.Ellipse2D.Double(getX(), getY(), getWidth(), getHeight());
+        return new java.awt.geom.Arc2D.Float((float) getX(), (float) getY(), (float) getWidth(), (float) getHeight(),
+                (float) getAngleStart(), (float) getAngleExtent(), getArcType());
     }
 
     /*
@@ -120,7 +120,8 @@ public class Ellipse2dDouble extends java.awt.geom.Ellipse2D.Double implements S
      */
     public Object detachCopy(FetchPlanState state)
     {
-        return new java.awt.geom.Ellipse2D.Double(getX(), getY(), getWidth(), getHeight());
+        return new java.awt.geom.Arc2D.Float((float) getX(), (float) getY(), (float) getWidth(), (float) getHeight(),
+                (float) getAngleStart(), (float) getAngleExtent(), getArcType());
     }
 
     /*
@@ -133,15 +134,21 @@ public class Ellipse2dDouble extends java.awt.geom.Ellipse2D.Double implements S
         double oldY = getY();
         double oldW = getWidth();
         double oldH = getHeight();
+        double oldS = getAngleStart();
+        double oldE = getAngleExtent();
+        double oldT = getArcType();
         initialise(value, false, true);
 
         // Check if the field has changed, and set the owner field as dirty if necessary
-        Ellipse2dDouble rect = (Ellipse2dDouble) value;
+        Arc2dFloat rect = (Arc2dFloat) value;
         double newX = rect.getX();
         double newY = rect.getY();
         double newW = rect.getWidth();
         double newH = rect.getHeight();
-        if (oldX != newX || oldY != newY || oldW != newW || oldH != newH)
+        double newS = rect.getAngleStart();
+        double newE = rect.getAngleExtent();
+        double newT = rect.getArcType();
+        if (oldX != newX || oldY != newY || oldW != newW || oldH != newH || oldS != newS || oldE != newE || oldT != newT)
         {
             makeDirty();
         }
@@ -158,13 +165,146 @@ public class Ellipse2dDouble extends java.awt.geom.Ellipse2D.Double implements S
     public Object clone()
     {
         Object obj = super.clone();
-        ((Ellipse2dDouble) obj).unsetOwner();
+        ((Arc2dFloat) obj).unsetOwner();
         return obj;
     }
 
     /*
      * (non-Javadoc)
-     * @see java.awt.geom.Ellipse2D.Double#setFrame(double, double, double, double)
+     * @see java.awt.geom.Arc2D.Float#setArc(double, double, double, double, double, double, int)
+     */
+    @Override
+    public void setArc(double x, double y, double w, double h, double angSt, double angExt, int closure)
+    {
+        super.setArc(x, y, w, h, angSt, angExt, closure);
+        makeDirty();
+    }
+
+    /*
+     * (non-Javadoc)
+     * @see java.awt.geom.Arc2D.Float#setAngleStart(double)
+     */
+    @Override
+    public void setAngleStart(double angSt)
+    {
+        super.setAngleStart(angSt);
+        makeDirty();
+    }
+
+    /*
+     * (non-Javadoc)
+     * @see java.awt.geom.Arc2D.Float#setAngleExtent(double)
+     */
+    @Override
+    public void setAngleExtent(double angExt)
+    {
+        super.setAngleExtent(angExt);
+        makeDirty();
+    }
+
+    /*
+     * (non-Javadoc)
+     * @see java.awt.geom.Arc2D#setArc(java.awt.geom.Point2D, java.awt.geom.Dimension2D, double, double, int)
+     */
+    @Override
+    public void setArc(Point2D loc, Dimension2D size, double angSt, double angExt, int closure)
+    {
+        super.setArc(loc, size, angSt, angExt, closure);
+        makeDirty();
+    }
+
+    /*
+     * (non-Javadoc)
+     * @see java.awt.geom.Arc2D#setArc(java.awt.geom.Rectangle2D, double, double, int)
+     */
+    @Override
+    public void setArc(Rectangle2D rect, double angSt, double angExt, int closure)
+    {
+        super.setArc(rect, angSt, angExt, closure);
+        makeDirty();
+    }
+
+    /*
+     * (non-Javadoc)
+     * @see java.awt.geom.Arc2D#setArc(java.awt.geom.Arc2D)
+     */
+    @Override
+    public void setArc(Arc2D a)
+    {
+        super.setArc(a);
+        makeDirty();
+    }
+
+    /*
+     * (non-Javadoc)
+     * @see java.awt.geom.Arc2D#setArcByCenter(double, double, double, double, double, int)
+     */
+    @Override
+    public void setArcByCenter(double x, double y, double radius, double angSt, double angExt, int closure)
+    {
+        super.setArcByCenter(x, y, radius, angSt, angExt, closure);
+        makeDirty();
+    }
+
+    /*
+     * (non-Javadoc)
+     * @see java.awt.geom.Arc2D#setArcByTangent(java.awt.geom.Point2D, java.awt.geom.Point2D,
+     * java.awt.geom.Point2D, double)
+     */
+    @Override
+    public void setArcByTangent(Point2D p1, Point2D p2, Point2D p3, double radius)
+    {
+        super.setArcByTangent(p1, p2, p3, radius);
+        makeDirty();
+    }
+
+    /*
+     * (non-Javadoc)
+     * @see java.awt.geom.Arc2D#setAngleStart(java.awt.geom.Point2D)
+     */
+    @Override
+    public void setAngleStart(Point2D p)
+    {
+        super.setAngleStart(p);
+        makeDirty();
+    }
+
+    /*
+     * (non-Javadoc)
+     * @see java.awt.geom.Arc2D#setAngles(double, double, double, double)
+     */
+    @Override
+    public void setAngles(double x1, double y1, double x2, double y2)
+    {
+        super.setAngles(x1, y1, x2, y2);
+        makeDirty();
+    }
+
+    /*
+     * (non-Javadoc)
+     * @see java.awt.geom.Arc2D#setAngles(java.awt.geom.Point2D, java.awt.geom.Point2D)
+     */
+    @Override
+    public void setAngles(Point2D p1, Point2D p2)
+    {
+        super.setAngles(p1, p2);
+        makeDirty();
+    }
+
+    /*
+     * (non-Javadoc)
+     * @see java.awt.geom.Arc2D#setArcType(int)
+     */
+    @Override
+    public void setArcType(int type)
+    {
+        super.setArcType(type);
+        makeDirty();
+    }
+
+    /*
+     * (non-Javadoc)
+     * @see java.awt.geom.Arc2D#setFrame(double, double, double, double)
      */
     @Override
     public void setFrame(double x, double y, double w, double h)

@@ -29,43 +29,43 @@ Contributors:
     <!-- JAVA TYPES -->
     <extension point="org.datanucleus.java_type">
         <java-type name="java.awt.Point" dfg="true" embedded="true" 
-            wrapper-type="org.datanucleus.store.types.geospatial.wrapper.Point" converter-name="dn.awtpoint-string"/>
+            wrapper-type="org.datanucleus.store.types.geospatial.wrappers.Point" converter-name="dn.awtpoint-string"/>
         <java-type name="java.awt.Rectangle" dfg="true" embedded="true"
-            wrapper-type="org.datanucleus.store.types.geospatial.wrapper.Rectangle" converter-name="dn.awtrectangle-string"/>
+            wrapper-type="org.datanucleus.store.types.geospatial.wrappers.Rectangle" converter-name="dn.awtrectangle-string"/>
         <java-type name="java.awt.Polygon" dfg="true" embedded="true"
             converter-name="dn.awtpolygon-string"/>
         <java-type name="java.awt.geom.Line2D$Double" dfg="true" embedded="true"
-            wrapper-type="org.datanucleus.store.types.geospatial.wrapper.Line2dDouble" converter-name="dn.awtlinedouble-string"/>
+            wrapper-type="org.datanucleus.store.types.geospatial.wrappers.Line2dDouble" converter-name="dn.awtlinedouble-string"/>
         <java-type name="java.awt.geom.Line2D$Float" dfg="true" embedded="true"
-            wrapper-type="org.datanucleus.store.types.geospatial.wrapper.Line2dFloat" converter-name="dn.awtlinefloat-string"/>
+            wrapper-type="org.datanucleus.store.types.geospatial.wrappers.Line2dFloat" converter-name="dn.awtlinefloat-string"/>
         <java-type name="java.awt.geom.Point2D$Double" dfg="true" embedded="true"
-            wrapper-type="org.datanucleus.store.types.geospatial.wrapper.Point2dDouble" converter-name="dn.awtpointdouble-string"/>
+            wrapper-type="org.datanucleus.store.types.geospatial.wrappers.Point2dDouble" converter-name="dn.awtpointdouble-string"/>
         <java-type name="java.awt.geom.Point2D$Float" dfg="true" embedded="true"
-            wrapper-type="org.datanucleus.store.types.geospatial.wrapper.Point2dFloat" converter-name="dn.awtpointfloat-string"/>
+            wrapper-type="org.datanucleus.store.types.geospatial.wrappers.Point2dFloat" converter-name="dn.awtpointfloat-string"/>
         <java-type name="java.awt.geom.Rectangle2D$Double" dfg="true" embedded="true"
-            wrapper-type="org.datanucleus.store.types.geospatial.wrapper.Rectangle2dDouble" converter-name="dn.awtrectangledouble-string"/>
+            wrapper-type="org.datanucleus.store.types.geospatial.wrappers.Rectangle2dDouble" converter-name="dn.awtrectangledouble-string"/>
         <java-type name="java.awt.geom.Rectangle2D$Float" dfg="true" embedded="true"
-            wrapper-type="org.datanucleus.store.types.geospatial.wrapper.Rectangle2dFloat" converter-name="dn.awtrectanglefloat-string"/>
+            wrapper-type="org.datanucleus.store.types.geospatial.wrappers.Rectangle2dFloat" converter-name="dn.awtrectanglefloat-string"/>
         <java-type name="java.awt.geom.Arc2D$Double" dfg="true" embedded="true"
-            wrapper-type="org.datanucleus.store.types.geospatial.wrapper.Arc2dDouble" converter-name="dn.awtarcdouble-string"/>
+            wrapper-type="org.datanucleus.store.types.geospatial.wrappers.Arc2dDouble" converter-name="dn.awtarcdouble-string"/>
         <java-type name="java.awt.geom.Arc2D$Float" dfg="true" embedded="true"
-            wrapper-type="org.datanucleus.store.types.geospatial.wrapper.Arc2dFloat" converter-name="dn.awtarcfloat-string"/>
+            wrapper-type="org.datanucleus.store.types.geospatial.wrappers.Arc2dFloat" converter-name="dn.awtarcfloat-string"/>
         <java-type name="java.awt.geom.CubicCurve2D$Double" dfg="true" embedded="true"
-            wrapper-type="org.datanucleus.store.types.geospatial.wrapper.CubicCurve2dDouble" converter-name="dn.awtcubiccurvedouble-string"/>
+            wrapper-type="org.datanucleus.store.types.geospatial.wrappers.CubicCurve2dDouble" converter-name="dn.awtcubiccurvedouble-string"/>
         <java-type name="java.awt.geom.CubicCurve2D$Float" dfg="true" embedded="true"
-            wrapper-type="org.datanucleus.store.types.geospatial.wrapper.CubicCurve2dFloat" converter-name="dn.awtcubiccurvefloat-string"/>
+            wrapper-type="org.datanucleus.store.types.geospatial.wrappers.CubicCurve2dFloat" converter-name="dn.awtcubiccurvefloat-string"/>
         <java-type name="java.awt.geom.Ellipse2D$Double" dfg="true" embedded="true"
-            wrapper-type="org.datanucleus.store.types.geospatial.wrapper.Ellipse2dDouble" converter-name="dn.awtellipsedouble-string"/>
+            wrapper-type="org.datanucleus.store.types.geospatial.wrappers.Ellipse2dDouble" converter-name="dn.awtellipsedouble-string"/>
         <java-type name="java.awt.geom.Ellipse2D$Float" dfg="true" embedded="true"
-            wrapper-type="org.datanucleus.store.types.geospatial.wrapper.Ellipse2dFloat" converter-name="dn.awtellipsefloat-string"/>
+            wrapper-type="org.datanucleus.store.types.geospatial.wrappers.Ellipse2dFloat" converter-name="dn.awtellipsefloat-string"/>
         <java-type name="java.awt.geom.QuadCurve2D$Double" dfg="true" embedded="true"
-            wrapper-type="org.datanucleus.store.types.geospatial.wrapper.QuadCurve2dDouble" converter-name="dn.awtquadcurvedouble-string"/>
+            wrapper-type="org.datanucleus.store.types.geospatial.wrappers.QuadCurve2dDouble" converter-name="dn.awtquadcurvedouble-string"/>
         <java-type name="java.awt.geom.QuadCurve2D$Float" dfg="true" embedded="true"
-            wrapper-type="org.datanucleus.store.types.geospatial.wrapper.QuadCurve2dFloat" converter-name="dn.awtquadcurvefloat-string"/>
+            wrapper-type="org.datanucleus.store.types.geospatial.wrappers.QuadCurve2dFloat" converter-name="dn.awtquadcurvefloat-string"/>
         <java-type name="java.awt.geom.RoundRectangle2D$Double" dfg="true" embedded="true"
-            wrapper-type="org.datanucleus.store.types.geospatial.wrapper.RoundRectangle2dDouble" converter-name="dn.awtroundrectdouble-string"/>
+            wrapper-type="org.datanucleus.store.types.geospatial.wrappers.RoundRectangle2dDouble" converter-name="dn.awtroundrectdouble-string"/>
         <java-type name="java.awt.geom.RoundRectangle2D$Float" dfg="true" embedded="true"
-            wrapper-type="org.datanucleus.store.types.geospatial.wrapper.RoundRectangle2dFloat" converter-name="dn.awtroundrectfloat-string"/>
+            wrapper-type="org.datanucleus.store.types.geospatial.wrappers.RoundRectangle2dFloat" converter-name="dn.awtroundrectfloat-string"/>
 
         <!-- Oracle's JGeometry -->
         <java-type name="oracle.spatial.geometry.JGeometry" dfg="true" embedded="true"/>

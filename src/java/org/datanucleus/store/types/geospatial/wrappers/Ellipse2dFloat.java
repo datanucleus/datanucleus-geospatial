@@ -15,10 +15,12 @@ limitations under the License.
 Contributors:
    ...
  **********************************************************************/
-package org.datanucleus.store.types.geospatial.wrapper;
+package org.datanucleus.store.types.geospatial.wrappers;
 
-import java.awt.geom.Line2D;
+import java.awt.geom.Dimension2D;
+import java.awt.geom.Ellipse2D;
 import java.awt.geom.Point2D;
+import java.awt.geom.Rectangle2D;
 
 import org.datanucleus.metadata.AbstractMemberMetaData;
 import org.datanucleus.state.FetchPlanState;
@@ -26,9 +28,9 @@ import org.datanucleus.state.ObjectProvider;
 import org.datanucleus.store.types.SCO;
 
 /**
- * A mutable second-class java.awt.geom.Line2D.Double object.
+ * A mutable second-class java.awt.geom.Ellipse2D.Float object.
  */
-public class Line2dDouble extends java.awt.geom.Line2D.Double implements SCO
+public class Ellipse2dFloat extends java.awt.geom.Ellipse2D.Float implements SCO
 {
     protected transient ObjectProvider ownerOP;
 
@@ -39,7 +41,7 @@ public class Line2dDouble extends java.awt.geom.Line2D.Double implements SCO
      * @param ownerSM the owning object
      * @param mmd Metadata for the member
      */
-    public Line2dDouble(ObjectProvider ownerSM, AbstractMemberMetaData mmd)
+    public Ellipse2dFloat(ObjectProvider ownerSM, AbstractMemberMetaData mmd)
     {
         super();
 
@@ -53,7 +55,8 @@ public class Line2dDouble extends java.awt.geom.Line2D.Double implements SCO
      */
     public void initialise(Object value, boolean forInsert, boolean forUpdate) throws ClassCastException
     {
-        super.setLine((Line2D.Double) value);
+        Ellipse2D.Float ellipse = (Ellipse2D.Float) value;
+        super.setFrame(ellipse.getX(), ellipse.getY(), ellipse.getWidth(), ellipse.getHeight());
     }
 
     /*
@@ -70,7 +73,7 @@ public class Line2dDouble extends java.awt.geom.Line2D.Double implements SCO
      */
     public Object getValue()
     {
-        return new java.awt.geom.Line2D.Double(getX1(), getY1(), getX2(), getY2());
+        return new java.awt.geom.Ellipse2D.Float((float) getX(), (float) getY(), (float) getWidth(), (float) getHeight());
     }
 
     /*
@@ -117,7 +120,7 @@ public class Line2dDouble extends java.awt.geom.Line2D.Double implements SCO
      */
     public Object detachCopy(FetchPlanState state)
     {
-        return new java.awt.geom.Line2D.Double(getX1(), getY1(), getX2(), getY2());
+        return new java.awt.geom.Ellipse2D.Float((float) getX(), (float) getY(), (float) getWidth(), (float) getHeight());
     }
 
     /*
@@ -126,19 +129,19 @@ public class Line2dDouble extends java.awt.geom.Line2D.Double implements SCO
      */
     public void attachCopy(Object value)
     {
-        double oldX1 = getX1();
-        double oldY1 = getY1();
-        double oldX2 = getX2();
-        double oldY2 = getY2();
+        double oldX = getX();
+        double oldY = getY();
+        double oldW = getWidth();
+        double oldH = getHeight();
         initialise(value, false, true);
 
         // Check if the field has changed, and set the owner field as dirty if necessary
-        Line2dDouble rect = (Line2dDouble) value;
-        double newX1 = rect.getX1();
-        double newY1 = rect.getY1();
-        double newX2 = rect.getX2();
-        double newY2 = rect.getY2();
-        if (oldX1 != newX1 || oldY1 != newY1 || oldX2 != newX2 || oldY2 != newY2)
+        Ellipse2dFloat rect = (Ellipse2dFloat) value;
+        double newX = rect.getX();
+        double newY = rect.getY();
+        double newW = rect.getWidth();
+        double newH = rect.getHeight();
+        if (oldX != newX || oldY != newY || oldW != newW || oldH != newH)
         {
             makeDirty();
         }
@@ -155,37 +158,95 @@ public class Line2dDouble extends java.awt.geom.Line2D.Double implements SCO
     public Object clone()
     {
         Object obj = super.clone();
-        ((Line2dDouble) obj).unsetOwner();
+        ((Ellipse2dFloat) obj).unsetOwner();
         return obj;
     }
 
     /*
      * (non-Javadoc)
-     * @see java.awt.geom.Line2D.Double#setLine(double, double, double, double)
+     * @see java.awt.geom.Ellipse2D.Double#setFrame(double, double, double, double)
      */
-    public void setLine(double x1, double y1, double x2, double y2)
+    @Override
+    public void setFrame(double x, double y, double w, double h)
     {
-        super.setLine(x1, y1, x2, y2);
+        super.setFrame(x, y, w, h);
         makeDirty();
     }
 
     /*
      * (non-Javadoc)
-     * @see java.awt.geom.Line2D#setLine(java.awt.geom.Point2D, java.awt.geom.Point2D)
+     * @see java.awt.geom.Ellipse2D.Float#setFrame(float, float, float, float)
      */
-    public void setLine(Point2D p1, Point2D p2)
+    @Override
+    public void setFrame(float x, float y, float w, float h)
     {
-        super.setLine(p1, p2);
+        super.setFrame(x, y, w, h);
         makeDirty();
     }
 
     /*
      * (non-Javadoc)
-     * @see java.awt.geom.Line2D#setLine(java.awt.geom.Line2D)
+     * @see java.awt.geom.RectangularShape#setFrame(java.awt.geom.Point2D, java.awt.geom.Dimension2D)
      */
-    public void setLine(Line2D l)
+    @Override
+    public void setFrame(Point2D loc, Dimension2D size)
     {
-        super.setLine(l);
+        super.setFrame(loc, size);
+        makeDirty();
+    }
+
+    /*
+     * (non-Javadoc)
+     * @see java.awt.geom.RectangularShape#setFrame(java.awt.geom.Rectangle2D)
+     */
+    @Override
+    public void setFrame(Rectangle2D r)
+    {
+        super.setFrame(r);
+        makeDirty();
+    }
+
+    /*
+     * (non-Javadoc)
+     * @see java.awt.geom.RectangularShape#setFrameFromDiagonal(double, double, double, double)
+     */
+    @Override
+    public void setFrameFromDiagonal(double x1, double y1, double x2, double y2)
+    {
+        super.setFrameFromDiagonal(x1, y1, x2, y2);
+        makeDirty();
+    }
+
+    /*
+     * (non-Javadoc)
+     * @see java.awt.geom.RectangularShape#setFrameFromDiagonal(java.awt.geom.Point2D, java.awt.geom.Point2D)
+     */
+    @Override
+    public void setFrameFromDiagonal(Point2D p1, Point2D p2)
+    {
+        super.setFrameFromDiagonal(p1, p2);
+        makeDirty();
+    }
+
+    /*
+     * (non-Javadoc)
+     * @see java.awt.geom.RectangularShape#setFrameFromCenter(double, double, double, double)
+     */
+    @Override
+    public void setFrameFromCenter(double centerX, double centerY, double cornerX, double cornerY)
+    {
+        super.setFrameFromCenter(centerX, centerY, cornerX, cornerY);
+        makeDirty();
+    }
+
+    /*
+     * (non-Javadoc)
+     * @see java.awt.geom.RectangularShape#setFrameFromCenter(java.awt.geom.Point2D, java.awt.geom.Point2D)
+     */
+    @Override
+    public void setFrameFromCenter(Point2D center, Point2D corner)
+    {
+        super.setFrameFromCenter(center, corner);
         makeDirty();
     }
 }

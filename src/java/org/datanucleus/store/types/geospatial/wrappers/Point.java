@@ -16,7 +16,7 @@ limitations under the License.
 Contributors:
     ...
  **********************************************************************/
-package org.datanucleus.store.types.geospatial.wrapper;
+package org.datanucleus.store.types.geospatial.wrappers;
 
 import java.awt.geom.Point2D;
 import java.io.ObjectStreamException;

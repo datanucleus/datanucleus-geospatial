@@ -15,12 +15,11 @@ limitations under the License.
 Contributors:
    ...
  **********************************************************************/
-package org.datanucleus.store.types.geospatial.wrapper;
+package org.datanucleus.store.types.geospatial.wrappers;
 
 import java.awt.geom.Dimension2D;
 import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
-import java.awt.geom.RoundRectangle2D;
 
 import org.datanucleus.metadata.AbstractMemberMetaData;
 import org.datanucleus.state.FetchPlanState;
@@ -28,9 +27,9 @@ import org.datanucleus.state.ObjectProvider;
 import org.datanucleus.store.types.SCO;
 
 /**
- * A mutable second-class java.awt.geom.RoundRectangle2D.Double object.
+ * A mutable second-class java.awt.geom.Rectangle2D.Double object.
  */
-public class RoundRectangle2dDouble extends java.awt.geom.RoundRectangle2D.Double implements SCO
+public class Rectangle2dDouble extends java.awt.geom.Rectangle2D.Double implements SCO
 {
     protected transient ObjectProvider ownerOP;
 
@@ -41,7 +40,7 @@ public class RoundRectangle2dDouble extends java.awt.geom.RoundRectangle2D.Doubl
      * @param ownerSM the owning object
      * @param mmd Metadata for the member
      */
-    public RoundRectangle2dDouble(ObjectProvider ownerSM, AbstractMemberMetaData mmd)
+    public Rectangle2dDouble(ObjectProvider ownerSM, AbstractMemberMetaData mmd)
     {
         super();
 
@@ -55,7 +54,7 @@ public class RoundRectangle2dDouble extends java.awt.geom.RoundRectangle2D.Doubl
      */
     public void initialise(Object value, boolean forInsert, boolean forUpdate) throws ClassCastException
     {
-        super.setRoundRect((RoundRectangle2D.Double) value);
+        super.setRect((Rectangle2D) value);
     }
 
     /*
@@ -72,7 +71,7 @@ public class RoundRectangle2dDouble extends java.awt.geom.RoundRectangle2D.Doubl
      */
     public Object getValue()
     {
-        return new java.awt.geom.RoundRectangle2D.Double(getX(), getY(), getWidth(), getHeight(), getArcWidth(), getArcHeight());
+        return new java.awt.geom.Rectangle2D.Double(getX(), getY(), getWidth(), getHeight());
     }
 
     /*
@@ -119,7 +118,7 @@ public class RoundRectangle2dDouble extends java.awt.geom.RoundRectangle2D.Doubl
      */
     public Object detachCopy(FetchPlanState state)
     {
-        return new java.awt.geom.RoundRectangle2D.Double(getX(), getY(), getWidth(), getHeight(), getArcWidth(), getArcHeight());
+        return new java.awt.geom.Rectangle2D.Double(getX(), getY(), getWidth(), getHeight());
     }
 
     /*
@@ -132,19 +131,15 @@ public class RoundRectangle2dDouble extends java.awt.geom.RoundRectangle2D.Doubl
         double oldY = getY();
         double oldW = getWidth();
         double oldH = getHeight();
-        double oldAW = getArcWidth();
-        double oldAH = getArcHeight();
         initialise(value, false, true);
 
         // Check if the field has changed, and set the owner field as dirty if necessary
-        RoundRectangle2dDouble rect = (RoundRectangle2dDouble) value;
+        Rectangle2dDouble rect = (Rectangle2dDouble) value;
         double newX = rect.getX();
         double newY = rect.getY();
         double newW = rect.getWidth();
         double newH = rect.getHeight();
-        double newAW = rect.getArcWidth();
-        double newAH = rect.getArcHeight();
-        if (oldX != newX || oldY != newY || oldW != newW || oldH != newH || oldAW != newAW || oldAH != newAH)
+        if (oldX != newX || oldY != newY || oldW != newW || oldH != newH)
         {
             makeDirty();
         }
@@ -161,40 +156,73 @@ public class RoundRectangle2dDouble extends java.awt.geom.RoundRectangle2D.Doubl
     public Object clone()
     {
         Object obj = super.clone();
-        ((RoundRectangle2dDouble) obj).unsetOwner();
+        ((Rectangle2dDouble) obj).unsetOwner();
         return obj;
     }
 
     /*
      * (non-Javadoc)
-     * @see java.awt.geom.RoundRectangle2D.Double#setRoundRect(double, double, double, double, double, double)
+     * @see java.awt.geom.Rectangle2D.Double#setRect(double, double, double, double)
      */
     @Override
-    public void setRoundRect(double x, double y, double w, double h, double arcw, double arch)
+    public void setRect(double x, double y, double w, double h)
     {
-        super.setRoundRect(x, y, w, h, arcw, arch);
+        super.setRect(x, y, w, h);
         makeDirty();
     }
 
     /*
      * (non-Javadoc)
-     * @see java.awt.geom.RoundRectangle2D.Double#setRoundRect(java.awt.geom.RoundRectangle2D)
+     * @see java.awt.geom.Rectangle2D.Double#setRect(java.awt.geom.Rectangle2D)
      */
     @Override
-    public void setRoundRect(RoundRectangle2D rr)
+    public void setRect(Rectangle2D r)
     {
-        super.setRoundRect(rr);
+        super.setRect(r);
         makeDirty();
     }
 
     /*
      * (non-Javadoc)
-     * @see java.awt.geom.RoundRectangle2D#setFrame(double, double, double, double)
+     * @see java.awt.geom.Rectangle2D#setFrame(double, double, double, double)
      */
     @Override
     public void setFrame(double x, double y, double w, double h)
     {
         super.setFrame(x, y, w, h);
+        makeDirty();
+    }
+
+    /*
+     * (non-Javadoc)
+     * @see java.awt.geom.Rectangle2D#add(double, double)
+     */
+    @Override
+    public void add(double newx, double newy)
+    {
+        super.add(newx, newy);
+        makeDirty();
+    }
+
+    /*
+     * (non-Javadoc)
+     * @see java.awt.geom.Rectangle2D#add(java.awt.geom.Point2D)
+     */
+    @Override
+    public void add(Point2D pt)
+    {
+        super.add(pt);
+        makeDirty();
+    }
+
+    /*
+     * (non-Javadoc)
+     * @see java.awt.geom.Rectangle2D#add(java.awt.geom.Rectangle2D)
+     */
+    @Override
+    public void add(Rectangle2D r)
+    {
+        super.add(r);
         makeDirty();
     }
 
