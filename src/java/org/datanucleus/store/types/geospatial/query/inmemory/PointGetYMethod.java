@@ -23,17 +23,12 @@ import org.datanucleus.exceptions.NucleusException;
 import org.datanucleus.query.expression.InvokeExpression;
 import org.datanucleus.query.inmemory.InMemoryExpressionEvaluator;
 import org.datanucleus.query.inmemory.InvocationEvaluator;
-import org.datanucleus.util.Localiser;
 
 /**
  * Evaluator for the method "{pointExpr}.getY()".
  */
 public class PointGetYMethod implements InvocationEvaluator
 {
-    /** Localisation utility for output messages */
-    protected static final Localiser LOCALISER = Localiser.getInstance("org.datanucleus.Localisation",
-        org.datanucleus.ClassConstants.NUCLEUS_CONTEXT_LOADER);
-
     /*
      * (non-Javadoc)
      * @see
@@ -54,7 +49,7 @@ public class PointGetYMethod implements InvocationEvaluator
         }
         else
         {
-            throw new NucleusException(LOCALISER.msg("021011", method, invokedValue.getClass().getName()));
+            throw new NucleusException(eval.getLocaliser().msg("021011", method, invokedValue.getClass().getName()));
         }
     }
 }

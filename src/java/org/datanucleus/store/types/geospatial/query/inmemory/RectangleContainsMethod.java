@@ -30,17 +30,12 @@ import org.datanucleus.query.expression.ParameterExpression;
 import org.datanucleus.query.expression.PrimaryExpression;
 import org.datanucleus.query.inmemory.InMemoryExpressionEvaluator;
 import org.datanucleus.query.inmemory.InvocationEvaluator;
-import org.datanucleus.util.Localiser;
 
 /**
  * Evaluator for the method "{rectExpr}.contains(pointExpr)" or "{rectExpr}.contains(rectExpr2)".
  */
 public class RectangleContainsMethod implements InvocationEvaluator
 {
-    /** Localisation utility for output messages */
-    protected static final Localiser LOCALISER = Localiser.getInstance("org.datanucleus.Localisation",
-        org.datanucleus.ClassConstants.NUCLEUS_CONTEXT_LOADER);
-
     /*
      * (non-Javadoc)
      * @see
@@ -104,7 +99,7 @@ public class RectangleContainsMethod implements InvocationEvaluator
         }
         else
         {
-            throw new NucleusException(LOCALISER.msg("021011", method, invokedValue.getClass().getName()));
+            throw new NucleusException(eval.getLocaliser().msg("021011", method, invokedValue.getClass().getName()));
         }
     }
 }
