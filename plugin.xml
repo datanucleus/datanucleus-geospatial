@@ -1007,7 +1007,7 @@ Contributors:
             evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.MySQLUnsupportedMethod" datastore="mysql"/>
     </extension>
 
-    <!-- QUERY METHODS -->
+    <!-- QUERY INMEMORY METHODS -->
     <extension point="org.datanucleus.query_method_evaluators">
         <query-method-evaluator class="java.awt.Point" method="getX"
             evaluator="org.datanucleus.store.types.geospatial.query.inmemory.PointGetXMethodEvaluator"/>
