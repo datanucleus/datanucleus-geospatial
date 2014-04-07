@@ -35,7 +35,7 @@ import org.datanucleus.util.Localiser;
 /**
  * Evaluator for the method "{rectExpr}.contains(pointExpr)" or "{rectExpr}.contains(rectExpr2)".
  */
-public class RectangleContainsMethodEvaluator implements InvocationEvaluator
+public class RectangleContainsMethod implements InvocationEvaluator
 {
     /** Localisation utility for output messages */
     protected static final Localiser LOCALISER = Localiser.getInstance("org.datanucleus.Localisation",

@@ -1009,20 +1009,13 @@ Contributors:
 
     <!-- QUERY INMEMORY METHODS -->
     <extension point="org.datanucleus.query_method_evaluators">
-        <query-method-evaluator class="java.awt.Point" method="getX"
-            evaluator="org.datanucleus.store.types.geospatial.query.inmemory.PointGetXMethodEvaluator"/>
-        <query-method-evaluator class="java.awt.Point" method="getY"
-            evaluator="org.datanucleus.store.types.geospatial.query.inmemory.PointGetYMethodEvaluator"/>
-        <query-method-evaluator class="java.awt.Rectangle" method="getX"
-            evaluator="org.datanucleus.store.types.geospatial.query.inmemory.RectangleGetXMethodEvaluator"/>
-        <query-method-evaluator class="java.awt.Rectangle" method="getY"
-            evaluator="org.datanucleus.store.types.geospatial.query.inmemory.RectangleGetYMethodEvaluator"/>
-        <query-method-evaluator class="java.awt.Rectangle" method="getWidth"
-            evaluator="org.datanucleus.store.types.geospatial.query.inmemory.RectangleGetWidthMethodEvaluator"/>
-        <query-method-evaluator class="java.awt.Rectangle" method="getHeight"
-            evaluator="org.datanucleus.store.types.geospatial.query.inmemory.RectangleGetHeightMethodEvaluator"/>
-        <query-method-evaluator class="java.awt.Rectangle" method="contains"
-            evaluator="org.datanucleus.store.types.geospatial.query.inmemory.RectangleContainsMethodEvaluator"/>
+        <query-method-evaluator class="java.awt.Point" method="getX" evaluator="org.datanucleus.store.types.geospatial.query.inmemory.PointGetXMethod"/>
+        <query-method-evaluator class="java.awt.Point" method="getY" evaluator="org.datanucleus.store.types.geospatial.query.inmemory.PointGetYMethod"/>
+        <query-method-evaluator class="java.awt.Rectangle" method="getX" evaluator="org.datanucleus.store.types.geospatial.query.inmemory.RectangleGetXMethod"/>
+        <query-method-evaluator class="java.awt.Rectangle" method="getY" evaluator="org.datanucleus.store.types.geospatial.query.inmemory.RectangleGetYMethod"/>
+        <query-method-evaluator class="java.awt.Rectangle" method="getWidth" evaluator="org.datanucleus.store.types.geospatial.query.inmemory.RectangleGetWidthMethod"/>
+        <query-method-evaluator class="java.awt.Rectangle" method="getHeight" evaluator="org.datanucleus.store.types.geospatial.query.inmemory.RectangleGetHeightMethod"/>
+        <query-method-evaluator class="java.awt.Rectangle" method="contains" evaluator="org.datanucleus.store.types.geospatial.query.inmemory.RectangleContainsMethod"/>
     </extension>
 
     <!-- QUERY METHOD PREFIXES -->

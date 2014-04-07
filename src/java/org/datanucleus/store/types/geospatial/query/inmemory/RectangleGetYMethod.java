@@ -26,9 +26,9 @@ import org.datanucleus.query.inmemory.InvocationEvaluator;
 import org.datanucleus.util.Localiser;
 
 /**
- * Evaluator for the method "{rectExpr}.getWidth()".
+ * Evaluator for the method "{rectExpr}.getY()".
  */
-public class RectangleGetWidthMethodEvaluator implements InvocationEvaluator
+public class RectangleGetYMethod implements InvocationEvaluator
 {
     /** Localisation utility for output messages */
     protected static final Localiser LOCALISER = Localiser.getInstance("org.datanucleus.Localisation",
@@ -50,7 +50,7 @@ public class RectangleGetWidthMethodEvaluator implements InvocationEvaluator
         }
         else if (invokedValue instanceof Rectangle)
         {
-            return ((Rectangle) invokedValue).getWidth();
+            return ((Rectangle) invokedValue).getY();
         }
         else
         {

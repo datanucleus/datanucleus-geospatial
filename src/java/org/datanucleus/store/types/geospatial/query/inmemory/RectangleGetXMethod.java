@@ -17,7 +17,7 @@ Contributors:
  **********************************************************************/
 package org.datanucleus.store.types.geospatial.query.inmemory;
 
-import java.awt.Point;
+import java.awt.Rectangle;
 
 import org.datanucleus.exceptions.NucleusException;
 import org.datanucleus.query.expression.InvokeExpression;
@@ -26,9 +26,9 @@ import org.datanucleus.query.inmemory.InvocationEvaluator;
 import org.datanucleus.util.Localiser;
 
 /**
- * Evaluator for the method "{pointExpr}.getX()".
+ * Evaluator for the method "{rectExpr}.getX()".
  */
-public class PointGetXMethodEvaluator implements InvocationEvaluator
+public class RectangleGetXMethod implements InvocationEvaluator
 {
     /** Localisation utility for output messages */
     protected static final Localiser LOCALISER = Localiser.getInstance("org.datanucleus.Localisation",
@@ -48,9 +48,9 @@ public class PointGetXMethodEvaluator implements InvocationEvaluator
         {
             return null;
         }
-        else if (invokedValue instanceof Point)
+        else if (invokedValue instanceof Rectangle)
         {
-            return ((Point) invokedValue).getX();
+            return ((Rectangle) invokedValue).getX();
         }
         else
         {

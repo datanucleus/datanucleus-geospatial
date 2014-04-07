@@ -28,7 +28,7 @@ import org.datanucleus.util.Localiser;
 /**
  * Evaluator for the method "{pointExpr}.getY()".
  */
-public class PointGetYMethodEvaluator implements InvocationEvaluator
+public class PointGetYMethod implements InvocationEvaluator
 {
     /** Localisation utility for output messages */
     protected static final Localiser LOCALISER = Localiser.getInstance("org.datanucleus.Localisation",
