@@ -132,8 +132,8 @@
                         <Bundle-SymbolicName>org.datanucleus.store.types.geospatial;singleton:=true</Bundle-SymbolicName>
                         <Import-Package>
                             javax.jdo*;version="${jdo.version}",
-                            org.datanucleus.api.jdo*;version="${dn.api.jdo.version}",
-                            org.datanucleus.store.rdbms*;version="${dn.rdbms.version}",
+                            org.datanucleus.api.jdo*;version="${dn.api.jdo.version}";resolution:=optional,
+                            org.datanucleus.store.rdbms*;version="${dn.rdbms.version}";resolution:=optional,
                             org.datanucleus*;version="${dn.core.version}",
                             *;resolution:=optional
                         </Import-Package>
