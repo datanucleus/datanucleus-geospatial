@@ -102,7 +102,7 @@ public class SpatialHelper
      * Returns the srid from datastore metadata for the given geometry field. Will return <code>null</code>,
      * if the datastore doesn't support such an operation (e.g. MySQL) or if there is no metadata in the
      * datastore available for the given class and field name.
-     * @param pc The <code>PersistenceCapable</code> class
+     * @param pc The persistable class
      * @param fieldName Name of the geometry field
      * @param pm <code>PersistenceManager</code> instance that should be used to access the datastore
      * @return The srid or <code>null</code>.
@@ -131,7 +131,7 @@ public class SpatialHelper
      * Returns the (estimated) spatial extent, also called <i>bounding box</i> from datastore metadata for the
      * given geometry field. Will return <code>null</code>, if the datastore doesn't support such an operation
      * (e.g. MySQL) or if there is no metadata in the datastore available for the given class and field name.
-     * @param pc The <code>PersistenceCapable</code> class
+     * @param pc The persistable class
      * @param fieldName Name of the geometry field
      * @param pm <code>PersistenceManager</code> instance that should be used to access the datastore
      * @return The bbox or <code>null</code>.
@@ -193,7 +193,7 @@ public class SpatialHelper
      * Returns the description of the Coordinate Reference System (CRS) for the given srid in WKT (Well-Known
      * Text). Will return <code>null</code>, if the datastore doesn't support such an operation (e.g. MySQL)
      * or if there is no metadata in the datastore available for the given class and srid.
-     * @param pc The <code>PersistenceCapable</code> class
+     * @param pc The persistable class
      * @param srid The srid
      * @param pm <code>PersistenceManager</code> instance that should be used to access the datastore
      * @return Description of the CRS in WKT or <code>null</code>.
@@ -224,7 +224,7 @@ public class SpatialHelper
      * Returns the name of the Coordinate Reference System (CRS) for the given srid. Will return
      * <code>null</code>, if the datastore doesn't support such an operation (e.g. MySQL) or if there is no
      * metadata in the datastore available for the given class and srid.
-     * @param pc The <code>PersistenceCapable</code> class
+     * @param pc The persistable class
      * @param srid The srid
      * @param pm <code>PersistenceManager</code> instance that should be used to access the datastore
      * @return Name the CRS or <code>null</code>.
@@ -286,7 +286,7 @@ public class SpatialHelper
 
     /**
      * Return all field names of the given class that are backed by a geometry column in the database.
-     * @param pc The <code>PersistenceCapable</code> class
+     * @param pc The persistable class
      * @return Array of names, may be empty, but never <code>null</code>.
      */
     public String[] getGeometryColumnBackedFields(Class pc)
@@ -308,7 +308,7 @@ public class SpatialHelper
 
     /**
      * Checks whether the given field name for the given class is backed by a geometry column in the database.
-     * @param pc The <code>PersistenceCapable</code> class
+     * @param pc The persistable class
      * @param fieldName Name of the field
      * @return <code>true</code>, if the field is backed by a geometry column, <code>false</code> otherwise.
      */

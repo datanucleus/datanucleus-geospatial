@@ -143,7 +143,7 @@ public class Point2dFloat extends java.awt.geom.Point2D.Float implements SCO
      * Creates and returns a copy of this object.
      * <p>
      * Mutable second-class Objects are required to provide a public clone method in order to allow for
-     * copying PersistenceCapable objects. In contrast to Object.clone(), this method must not throw a
+     * copying persistable objects. In contrast to Object.clone(), this method must not throw a
      * CloneNotSupportedException.
      * @return A clone of the object
      */
