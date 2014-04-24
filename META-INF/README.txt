@@ -71,19 +71,19 @@ Usage
   - The srid & dimension values are used in different places. One of them is the 
     schema creation in PostGIS. Another is, when you query the SpatialHelper. 
     
-    <extension vendor-name="jpox" key="spatial-srid" value="2001"/>
-    <extension vendor-name="jpox" key="spatial-dimension" value="2"/>
+    <extension vendor-name="datanucleus" key="spatial-srid" value="2001"/>
+    <extension vendor-name="datanucleus" key="spatial-dimension" value="2"/>
     
   - If you want to use measure types in PostGIS you have to define that like this:
   
-    <extension vendor-name="jpox" key="postgis-hasMeasure" value="true"/>
+    <extension vendor-name="datanucleus" key="postgis-hasMeasure" value="true"/>
     
   - Every JTS geometry object can have a user data object attached to it. The 
     default behaviour is to serialize that object and store it in a separate column 
     in the database. If for some reason this isn't desired, the following extension 
     can be used and JPOX-Spatial will ignore the user data objects.
 
-    <extension vendor-name="jpox" key="mapping" value="no-userdata"/>
+    <extension vendor-name="datanucleus" key="mapping" value="no-userdata"/>
     
  => The position of these tags in the meta-data determines their scope. If you use 
     them inside a <field>-tag the values are only used for that field specifically, 
