@@ -22,6 +22,7 @@ import java.util.StringTokenizer;
 
 import org.datanucleus.exceptions.NucleusDataStoreException;
 import org.datanucleus.store.types.converters.TypeConverter;
+import org.datanucleus.util.Localiser;
 
 /**
  * Class to handle the conversion between java.awt.geom.RoundRectangle2D.Float and a String form. The String
@@ -53,7 +54,7 @@ public class RoundRectangle2dFloatStringConverter implements TypeConverter<Round
             }
             catch (NumberFormatException nfe)
             {
-                throw new NucleusDataStoreException(LOCALISER.msg("016002", str, RoundRectangle2D.Float.class.getName()), nfe);
+                throw new NucleusDataStoreException(Localiser.msg("016002", str, RoundRectangle2D.Float.class.getName()), nfe);
             }
         }
         else
@@ -71,7 +72,7 @@ public class RoundRectangle2dFloatStringConverter implements TypeConverter<Round
             }
             catch (NumberFormatException nfe)
             {
-                throw new NucleusDataStoreException(LOCALISER.msg("016002", str, RoundRectangle2D.Float.class.getName()), nfe);
+                throw new NucleusDataStoreException(Localiser.msg("016002", str, RoundRectangle2D.Float.class.getName()), nfe);
             }
         }
         else
@@ -89,7 +90,7 @@ public class RoundRectangle2dFloatStringConverter implements TypeConverter<Round
             }
             catch (NumberFormatException nfe)
             {
-                throw new NucleusDataStoreException(LOCALISER.msg("016002", str, RoundRectangle2D.Float.class.getName()), nfe);
+                throw new NucleusDataStoreException(Localiser.msg("016002", str, RoundRectangle2D.Float.class.getName()), nfe);
             }
         }
         else
@@ -107,7 +108,7 @@ public class RoundRectangle2dFloatStringConverter implements TypeConverter<Round
             }
             catch (NumberFormatException nfe)
             {
-                throw new NucleusDataStoreException(LOCALISER.msg("016002", str, RoundRectangle2D.Float.class.getName()), nfe);
+                throw new NucleusDataStoreException(Localiser.msg("016002", str, RoundRectangle2D.Float.class.getName()), nfe);
             }
         }
         else
@@ -125,7 +126,7 @@ public class RoundRectangle2dFloatStringConverter implements TypeConverter<Round
             }
             catch (NumberFormatException nfe)
             {
-                throw new NucleusDataStoreException(LOCALISER.msg("016002", str, RoundRectangle2D.Float.class.getName()), nfe);
+                throw new NucleusDataStoreException(Localiser.msg("016002", str, RoundRectangle2D.Float.class.getName()), nfe);
             }
         }
         else
@@ -143,7 +144,7 @@ public class RoundRectangle2dFloatStringConverter implements TypeConverter<Round
             }
             catch (NumberFormatException nfe)
             {
-                throw new NucleusDataStoreException(LOCALISER.msg("016002", str, RoundRectangle2D.Float.class.getName()), nfe);
+                throw new NucleusDataStoreException(Localiser.msg("016002", str, RoundRectangle2D.Float.class.getName()), nfe);
             }
         }
         else

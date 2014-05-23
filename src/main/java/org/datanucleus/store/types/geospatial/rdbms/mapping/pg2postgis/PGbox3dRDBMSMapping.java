@@ -28,6 +28,7 @@ import org.datanucleus.store.rdbms.mapping.java.JavaTypeMapping;
 import org.datanucleus.store.types.geospatial.rdbms.schema.PostGISTypeInfo;
 import org.datanucleus.store.rdbms.schema.SQLTypeInfo;
 import org.datanucleus.store.rdbms.table.Column;
+import org.datanucleus.util.Localiser;
 
 /**
  * Mapping for a PostGIS-JDBC PGbox3d object to PostGIS.
@@ -66,7 +67,7 @@ public class PGbox3dRDBMSMapping extends AbstractDatastoreMapping
         }
         catch (SQLException e)
         {
-            throw new NucleusDataStoreException(LOCALISER.msg("RDBMS.Mapping.UnableToGetParam", "Object", "" + exprIndex, column,
+            throw new NucleusDataStoreException(Localiser.msg("RDBMS.Mapping.UnableToGetParam", "Object", "" + exprIndex, column,
                 e.getMessage()), e);
         }
     }
@@ -86,7 +87,7 @@ public class PGbox3dRDBMSMapping extends AbstractDatastoreMapping
         }
         catch (SQLException e)
         {
-            throw new NucleusDataStoreException(LOCALISER.msg("RDBMS.Mapping.UnableToSetParam", "Object", "" + value, column,
+            throw new NucleusDataStoreException(Localiser.msg("RDBMS.Mapping.UnableToSetParam", "Object", "" + value, column,
                 e.getMessage()), e);
         }
     }

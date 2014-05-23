@@ -22,6 +22,7 @@ import java.util.StringTokenizer;
 
 import org.datanucleus.exceptions.NucleusDataStoreException;
 import org.datanucleus.store.types.converters.TypeConverter;
+import org.datanucleus.util.Localiser;
 
 /**
  * Class to handle the conversion between java.awt.geom.QuadCurve2D.Double and a String form. The String form
@@ -55,7 +56,7 @@ public class QuadCurve2dDoubleStringConverter implements TypeConverter<QuadCurve
         }
         catch (NumberFormatException nfe)
         {
-            throw new NucleusDataStoreException(LOCALISER.msg("016002", str, QuadCurve2D.Double.class.getName()), nfe);
+            throw new NucleusDataStoreException(Localiser.msg("016002", str, QuadCurve2D.Double.class.getName()), nfe);
         }
         double y1 = 0;
         try
@@ -64,7 +65,7 @@ public class QuadCurve2dDoubleStringConverter implements TypeConverter<QuadCurve
         }
         catch (NumberFormatException nfe)
         {
-            throw new NucleusDataStoreException(LOCALISER.msg("016002", str, QuadCurve2D.Double.class.getName()), nfe);
+            throw new NucleusDataStoreException(Localiser.msg("016002", str, QuadCurve2D.Double.class.getName()), nfe);
         }
 
         token = tokeniser.nextToken();
@@ -78,7 +79,7 @@ public class QuadCurve2dDoubleStringConverter implements TypeConverter<QuadCurve
         }
         catch (NumberFormatException nfe)
         {
-            throw new NucleusDataStoreException(LOCALISER.msg("016002", str, QuadCurve2D.Double.class.getName()), nfe);
+            throw new NucleusDataStoreException(Localiser.msg("016002", str, QuadCurve2D.Double.class.getName()), nfe);
         }
         double y2 = 0;
         try
@@ -87,7 +88,7 @@ public class QuadCurve2dDoubleStringConverter implements TypeConverter<QuadCurve
         }
         catch (NumberFormatException nfe)
         {
-            throw new NucleusDataStoreException(LOCALISER.msg("016002", str, QuadCurve2D.Double.class.getName()), nfe);
+            throw new NucleusDataStoreException(Localiser.msg("016002", str, QuadCurve2D.Double.class.getName()), nfe);
         }
 
         token = tokeniser.nextToken();
@@ -101,7 +102,7 @@ public class QuadCurve2dDoubleStringConverter implements TypeConverter<QuadCurve
         }
         catch (NumberFormatException nfe)
         {
-            throw new NucleusDataStoreException(LOCALISER.msg("016002", str, QuadCurve2D.Double.class.getName()), nfe);
+            throw new NucleusDataStoreException(Localiser.msg("016002", str, QuadCurve2D.Double.class.getName()), nfe);
         }
         double yc = 0;
         try
@@ -110,7 +111,7 @@ public class QuadCurve2dDoubleStringConverter implements TypeConverter<QuadCurve
         }
         catch (NumberFormatException nfe)
         {
-            throw new NucleusDataStoreException(LOCALISER.msg("016002", str, QuadCurve2D.Double.class.getName()), nfe);
+            throw new NucleusDataStoreException(Localiser.msg("016002", str, QuadCurve2D.Double.class.getName()), nfe);
         }
 
         cc.setCurve(x1, y1, x2, y2, xc, yc);

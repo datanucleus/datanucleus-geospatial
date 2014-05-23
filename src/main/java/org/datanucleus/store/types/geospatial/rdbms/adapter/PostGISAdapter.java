@@ -21,7 +21,6 @@ import java.sql.DatabaseMetaData;
 import java.sql.Types;
 import java.util.Properties;
 
-import org.datanucleus.store.types.geospatial.jdo.SpatialHelper;
 import org.datanucleus.metadata.MetaDataUtils;
 import org.datanucleus.store.connection.ManagedConnection;
 import org.datanucleus.store.rdbms.adapter.PostgreSQLAdapter;
@@ -41,8 +40,10 @@ import org.datanucleus.util.Localiser;
  */
 public class PostGISAdapter extends PostgreSQLAdapter implements SpatialRDBMSAdapter
 {
-    protected static final Localiser LOCALISER_POSTGIS = Localiser.getInstance("org.datanucleus.store.rdbms.adapter.Localisation_PostGIS",
-        SpatialHelper.class.getClassLoader());
+    static
+    {
+        Localiser.registerBundle("org.datanucleus.store.rdbms.adapter.Localisation_PostGIS", PostGISAdapter.class.getClassLoader());
+    }
 
     /** Key name for the hasMeasure extension. **/
     public static final String HAS_MEASURE_EXTENSION_KEY = "postgis-hasMeasure";
@@ -150,7 +151,7 @@ public class PostGISAdapter extends PostgreSQLAdapter implements SpatialRDBMSAda
             catch (NumberFormatException nfe)
             {
                 NucleusLogger.DATASTORE.warn(
-                    LOCALISER_POSTGIS.msg("RDBMS.Adapter.InvalidExtensionValue", SRID_EXTENSION_KEY, extensionValue), nfe);
+                    Localiser.msg("RDBMS.Adapter.InvalidExtensionValue", SRID_EXTENSION_KEY, extensionValue), nfe);
             }
         }
 
@@ -164,7 +165,7 @@ public class PostGISAdapter extends PostgreSQLAdapter implements SpatialRDBMSAda
             catch (NumberFormatException nfe)
             {
                 NucleusLogger.DATASTORE.warn(
-                    LOCALISER_POSTGIS.msg("RDBMS.Adapter.InvalidExtensionValue", DIMENSION_EXTENSION_KEY, extensionValue), nfe);
+                    Localiser.msg("RDBMS.Adapter.InvalidExtensionValue", DIMENSION_EXTENSION_KEY, extensionValue), nfe);
             }
         }
 
@@ -178,7 +179,7 @@ public class PostGISAdapter extends PostgreSQLAdapter implements SpatialRDBMSAda
             catch (NumberFormatException nfe)
             {
                 NucleusLogger.DATASTORE.warn(
-                    LOCALISER_POSTGIS.msg("RDBMS.Adapter.InvalidExtensionValue", HAS_MEASURE_EXTENSION_KEY, extensionValue), nfe);
+                    Localiser.msg("RDBMS.Adapter.InvalidExtensionValue", HAS_MEASURE_EXTENSION_KEY, extensionValue), nfe);
             }
         }
 

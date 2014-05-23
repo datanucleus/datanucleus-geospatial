@@ -22,6 +22,7 @@ import java.util.StringTokenizer;
 
 import org.datanucleus.exceptions.NucleusDataStoreException;
 import org.datanucleus.store.types.converters.TypeConverter;
+import org.datanucleus.util.Localiser;
 
 /**
  * Class to handle the conversion between java.awt.Point and a String form. The String form is
@@ -52,7 +53,7 @@ public class PointStringConverter implements TypeConverter<Point, String>
             }
             catch (NumberFormatException nfe)
             {
-                throw new NucleusDataStoreException(LOCALISER.msg("016002", str, Point.class.getName()), nfe);
+                throw new NucleusDataStoreException(Localiser.msg("016002", str, Point.class.getName()), nfe);
             }
         }
         else
@@ -70,7 +71,7 @@ public class PointStringConverter implements TypeConverter<Point, String>
             }
             catch (NumberFormatException nfe)
             {
-                throw new NucleusDataStoreException(LOCALISER.msg("016002", str, Point.class.getName()), nfe);
+                throw new NucleusDataStoreException(Localiser.msg("016002", str, Point.class.getName()), nfe);
             }
         }
         else

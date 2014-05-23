@@ -28,6 +28,7 @@ import org.datanucleus.exceptions.NucleusDataStoreException;
 import org.datanucleus.store.rdbms.RDBMSStoreManager;
 import org.datanucleus.store.rdbms.mapping.datastore.AbstractDatastoreMapping;
 import org.datanucleus.store.rdbms.mapping.java.JavaTypeMapping;
+import org.datanucleus.util.Localiser;
 
 /**
  * Mapping for a PostGIS-JDBC PGbox2d object to PostGIS.
@@ -66,7 +67,7 @@ public class PGbox2dRDBMSMapping extends AbstractDatastoreMapping
         }
         catch (SQLException e)
         {
-            throw new NucleusDataStoreException(LOCALISER.msg("RDBMS.Mapping.UnableToGetParam", "Object", "" + exprIndex, column,
+            throw new NucleusDataStoreException(Localiser.msg("RDBMS.Mapping.UnableToGetParam", "Object", "" + exprIndex, column,
                 e.getMessage()), e);
         }
     }
@@ -86,7 +87,7 @@ public class PGbox2dRDBMSMapping extends AbstractDatastoreMapping
         }
         catch (SQLException e)
         {
-            throw new NucleusDataStoreException(LOCALISER.msg("RDBMS.Mapping.UnableToSetParam", "Object", "" + value, column,
+            throw new NucleusDataStoreException(Localiser.msg("RDBMS.Mapping.UnableToSetParam", "Object", "" + value, column,
                 e.getMessage()), e);
         }
     }

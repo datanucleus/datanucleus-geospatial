@@ -22,6 +22,7 @@ import java.util.StringTokenizer;
 
 import org.datanucleus.exceptions.NucleusDataStoreException;
 import org.datanucleus.store.types.converters.TypeConverter;
+import org.datanucleus.util.Localiser;
 
 /**
  * Class to handle the conversion between java.awt.geom.CubicCurve2D.Float and a String form. The String form
@@ -55,7 +56,7 @@ public class CubicCurve2dFloatStringConverter implements TypeConverter<CubicCurv
         }
         catch (NumberFormatException nfe)
         {
-            throw new NucleusDataStoreException(LOCALISER.msg("016002", str, CubicCurve2D.Float.class.getName()), nfe);
+            throw new NucleusDataStoreException(Localiser.msg("016002", str, CubicCurve2D.Float.class.getName()), nfe);
         }
         float y1 = 0;
         try
@@ -64,7 +65,7 @@ public class CubicCurve2dFloatStringConverter implements TypeConverter<CubicCurv
         }
         catch (NumberFormatException nfe)
         {
-            throw new NucleusDataStoreException(LOCALISER.msg("016002", str, CubicCurve2D.Float.class.getName()), nfe);
+            throw new NucleusDataStoreException(Localiser.msg("016002", str, CubicCurve2D.Float.class.getName()), nfe);
         }
 
         token = tokeniser.nextToken();
@@ -78,7 +79,7 @@ public class CubicCurve2dFloatStringConverter implements TypeConverter<CubicCurv
         }
         catch (NumberFormatException nfe)
         {
-            throw new NucleusDataStoreException(LOCALISER.msg("016002", str, CubicCurve2D.Float.class.getName()), nfe);
+            throw new NucleusDataStoreException(Localiser.msg("016002", str, CubicCurve2D.Float.class.getName()), nfe);
         }
         float y2 = 0;
         try
@@ -87,7 +88,7 @@ public class CubicCurve2dFloatStringConverter implements TypeConverter<CubicCurv
         }
         catch (NumberFormatException nfe)
         {
-            throw new NucleusDataStoreException(LOCALISER.msg("016002", str, CubicCurve2D.Float.class.getName()), nfe);
+            throw new NucleusDataStoreException(Localiser.msg("016002", str, CubicCurve2D.Float.class.getName()), nfe);
         }
 
         token = tokeniser.nextToken();
@@ -101,7 +102,7 @@ public class CubicCurve2dFloatStringConverter implements TypeConverter<CubicCurv
         }
         catch (NumberFormatException nfe)
         {
-            throw new NucleusDataStoreException(LOCALISER.msg("016002", str, CubicCurve2D.Float.class.getName()), nfe);
+            throw new NucleusDataStoreException(Localiser.msg("016002", str, CubicCurve2D.Float.class.getName()), nfe);
         }
         float yc1 = 0;
         try
@@ -110,7 +111,7 @@ public class CubicCurve2dFloatStringConverter implements TypeConverter<CubicCurv
         }
         catch (NumberFormatException nfe)
         {
-            throw new NucleusDataStoreException(LOCALISER.msg("016002", str, CubicCurve2D.Float.class.getName()), nfe);
+            throw new NucleusDataStoreException(Localiser.msg("016002", str, CubicCurve2D.Float.class.getName()), nfe);
         }
 
         token = tokeniser.nextToken();
@@ -124,7 +125,7 @@ public class CubicCurve2dFloatStringConverter implements TypeConverter<CubicCurv
         }
         catch (NumberFormatException nfe)
         {
-            throw new NucleusDataStoreException(LOCALISER.msg("016002", str, CubicCurve2D.Float.class.getName()), nfe);
+            throw new NucleusDataStoreException(Localiser.msg("016002", str, CubicCurve2D.Float.class.getName()), nfe);
         }
         float yc2 = 0;
         try
@@ -133,7 +134,7 @@ public class CubicCurve2dFloatStringConverter implements TypeConverter<CubicCurv
         }
         catch (NumberFormatException nfe)
         {
-            throw new NucleusDataStoreException(LOCALISER.msg("016002", str, CubicCurve2D.Float.class.getName()), nfe);
+            throw new NucleusDataStoreException(Localiser.msg("016002", str, CubicCurve2D.Float.class.getName()), nfe);
         }
 
         cc.setCurve(x1, y1, x2, y2, xc1, yc1, xc2, yc2);

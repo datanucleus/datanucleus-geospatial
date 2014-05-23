@@ -22,6 +22,7 @@ import java.util.StringTokenizer;
 
 import org.datanucleus.exceptions.NucleusDataStoreException;
 import org.datanucleus.store.types.converters.TypeConverter;
+import org.datanucleus.util.Localiser;
 
 /**
  * Class to handle the conversion between java.awt.geom.Arc2D.Float and a String form. The String form is
@@ -51,7 +52,7 @@ public class Arc2dDoubleStringConverter implements TypeConverter<Arc2D.Double, S
         }
         catch (NumberFormatException nfe)
         {
-            throw new NucleusDataStoreException(LOCALISER.msg("016002", str, Arc2D.Float.class.getName()), nfe);
+            throw new NucleusDataStoreException(Localiser.msg("016002", str, Arc2D.Float.class.getName()), nfe);
         }
 
         token = tokeniser.nextToken();
@@ -62,7 +63,7 @@ public class Arc2dDoubleStringConverter implements TypeConverter<Arc2D.Double, S
         }
         catch (NumberFormatException nfe)
         {
-            throw new NucleusDataStoreException(LOCALISER.msg("016002", str, Arc2D.Float.class.getName()), nfe);
+            throw new NucleusDataStoreException(Localiser.msg("016002", str, Arc2D.Float.class.getName()), nfe);
         }
 
         token = tokeniser.nextToken();
@@ -73,7 +74,7 @@ public class Arc2dDoubleStringConverter implements TypeConverter<Arc2D.Double, S
         }
         catch (NumberFormatException nfe)
         {
-            throw new NucleusDataStoreException(LOCALISER.msg("016002", str, Arc2D.Float.class.getName()), nfe);
+            throw new NucleusDataStoreException(Localiser.msg("016002", str, Arc2D.Float.class.getName()), nfe);
         }
 
         token = tokeniser.nextToken();
@@ -84,7 +85,7 @@ public class Arc2dDoubleStringConverter implements TypeConverter<Arc2D.Double, S
         }
         catch (NumberFormatException nfe)
         {
-            throw new NucleusDataStoreException(LOCALISER.msg("016002", str, Arc2D.Float.class.getName()), nfe);
+            throw new NucleusDataStoreException(Localiser.msg("016002", str, Arc2D.Float.class.getName()), nfe);
         }
 
         token = tokeniser.nextToken();
@@ -95,7 +96,7 @@ public class Arc2dDoubleStringConverter implements TypeConverter<Arc2D.Double, S
         }
         catch (NumberFormatException nfe)
         {
-            throw new NucleusDataStoreException(LOCALISER.msg("016002", str, Arc2D.Float.class.getName()), nfe);
+            throw new NucleusDataStoreException(Localiser.msg("016002", str, Arc2D.Float.class.getName()), nfe);
         }
 
         token = tokeniser.nextToken();
@@ -106,7 +107,7 @@ public class Arc2dDoubleStringConverter implements TypeConverter<Arc2D.Double, S
         }
         catch (NumberFormatException nfe)
         {
-            throw new NucleusDataStoreException(LOCALISER.msg("016002", str, Arc2D.Float.class.getName()), nfe);
+            throw new NucleusDataStoreException(Localiser.msg("016002", str, Arc2D.Float.class.getName()), nfe);
         }
 
         l.setArc(x, y, width, height, start, extent, 0);

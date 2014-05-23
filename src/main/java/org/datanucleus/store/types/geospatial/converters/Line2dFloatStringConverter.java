@@ -22,6 +22,7 @@ import java.util.StringTokenizer;
 
 import org.datanucleus.exceptions.NucleusDataStoreException;
 import org.datanucleus.store.types.converters.TypeConverter;
+import org.datanucleus.util.Localiser;
 
 /**
  * Class to handle the conversion between java.awt.geom.Line2D.Float and a String form. The String form is
@@ -54,7 +55,7 @@ public class Line2dFloatStringConverter implements TypeConverter<Line2D.Float, S
         }
         catch (NumberFormatException nfe)
         {
-            throw new NucleusDataStoreException(LOCALISER.msg("016002", str, Line2D.Float.class.getName()), nfe);
+            throw new NucleusDataStoreException(Localiser.msg("016002", str, Line2D.Float.class.getName()), nfe);
         }
         float y1 = 0;
         try
@@ -63,7 +64,7 @@ public class Line2dFloatStringConverter implements TypeConverter<Line2D.Float, S
         }
         catch (NumberFormatException nfe)
         {
-            throw new NucleusDataStoreException(LOCALISER.msg("016002", str, Line2D.Float.class.getName()), nfe);
+            throw new NucleusDataStoreException(Localiser.msg("016002", str, Line2D.Float.class.getName()), nfe);
         }
 
         token = tokeniser.nextToken();
@@ -77,7 +78,7 @@ public class Line2dFloatStringConverter implements TypeConverter<Line2D.Float, S
         }
         catch (NumberFormatException nfe)
         {
-            throw new NucleusDataStoreException(LOCALISER.msg("016002", str, Line2D.Float.class.getName()), nfe);
+            throw new NucleusDataStoreException(Localiser.msg("016002", str, Line2D.Float.class.getName()), nfe);
         }
         float y2 = 0;
         try
@@ -86,7 +87,7 @@ public class Line2dFloatStringConverter implements TypeConverter<Line2D.Float, S
         }
         catch (NumberFormatException nfe)
         {
-            throw new NucleusDataStoreException(LOCALISER.msg("016002", str, Line2D.Float.class.getName()), nfe);
+            throw new NucleusDataStoreException(Localiser.msg("016002", str, Line2D.Float.class.getName()), nfe);
         }
 
         l.setLine(x1, y1, x2, y2);

@@ -22,6 +22,7 @@ import java.util.StringTokenizer;
 
 import org.datanucleus.exceptions.NucleusDataStoreException;
 import org.datanucleus.store.types.converters.TypeConverter;
+import org.datanucleus.util.Localiser;
 
 /**
  * Class to handle the conversion between java.awt.Polygon and a String form. The String form is
@@ -61,7 +62,7 @@ public class PolygonStringConverter implements TypeConverter<Polygon, String>
             }
             catch (NumberFormatException nfe)
             {
-                throw new NucleusDataStoreException(LOCALISER.msg("016002", str, Polygon.class.getName()), nfe);
+                throw new NucleusDataStoreException(Localiser.msg("016002", str, Polygon.class.getName()), nfe);
             }
             try
             {
@@ -69,7 +70,7 @@ public class PolygonStringConverter implements TypeConverter<Polygon, String>
             }
             catch (NumberFormatException nfe)
             {
-                throw new NucleusDataStoreException(LOCALISER.msg("016002", str, Polygon.class.getName()), nfe);
+                throw new NucleusDataStoreException(Localiser.msg("016002", str, Polygon.class.getName()), nfe);
             }
             p.addPoint(x, y);
         }
