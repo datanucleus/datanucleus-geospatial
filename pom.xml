@@ -22,9 +22,9 @@
 
     <properties>
         <jdo.version>3.0</jdo.version>
-        <dn.core.version>4.0.0-m3</dn.core.version>
-        <dn.api.jdo.version>4.0.0-m3</dn.api.jdo.version>
-        <dn.rdbms.version>4.0.0-m3</dn.rdbms.version>
+        <dn.core.version>4.0.0-m4</dn.core.version>
+        <dn.api.jdo.version>4.0.0-m4</dn.api.jdo.version>
+        <dn.rdbms.version>4.0.0-m4</dn.rdbms.version>
     </properties>
 
     <repositories>
