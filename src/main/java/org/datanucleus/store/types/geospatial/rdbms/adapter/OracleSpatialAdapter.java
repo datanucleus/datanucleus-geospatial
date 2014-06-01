@@ -72,7 +72,7 @@ public class OracleSpatialAdapter extends OracleAdapter implements SpatialRDBMSA
     public String getCalculateBoundsStatement(Table table, Column column)
     {
         return "SELECT " + "SDO_GEOM.SDO_MIN_MBR_ORDINATE(SDO_AGGR_MBR(#column), 1), " + "SDO_GEOM.SDO_MIN_MBR_ORDINATE(SDO_AGGR_MBR(#column), 2), " + "SDO_GEOM.SDO_MAX_MBR_ORDINATE(SDO_AGGR_MBR(#column), 1), " + "SDO_GEOM.SDO_MAX_MBR_ORDINATE(SDO_AGGR_MBR(#column), 2) " + "FROM #table"
-                .replace("#column", column.getIdentifier().getIdentifierName())
-                .replace("#table", table.getIdentifier().getIdentifierName());
+                .replace("#column", column.getIdentifier().getName())
+                .replace("#table", table.getIdentifier().getName());
     }
 }

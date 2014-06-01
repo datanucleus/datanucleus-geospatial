@@ -131,8 +131,8 @@ public class PostGISAdapter extends PostgreSQLAdapter implements SpatialRDBMSAda
     public String getCalculateBoundsStatement(Table table, Column column)
     {
         return "SELECT " + "min(xmin(box2d(#column))), " + "min(ymin(box2d(#column))), " + "max(xmax(box2d(#column))), " + "max(ymax(box2d(#column)))" + "FROM #schema . #table"
-                .replace("#schema", table.getSchemaName()).replace("#table", "" + table.getIdentifier().getIdentifierName())
-                .replace("#column", "" + column.getIdentifier().getIdentifierName());
+                .replace("#schema", table.getSchemaName()).replace("#table", "" + table.getIdentifier().getName())
+                .replace("#column", "" + column.getIdentifier().getName());
     }
 
     private String getAddGeometryColumnStatement(Table table, Column column)
@@ -190,8 +190,8 @@ public class PostGISAdapter extends PostgreSQLAdapter implements SpatialRDBMSAda
 
         return "SELECT AddGeometryColumn( '#schema', '#table', '#column', #srid, '#type', #dimension )"
                 .replace("#schema", table.getSchemaName() == null ? "" : table.getSchemaName())
-                .replace("#table", table.getIdentifier().getIdentifierName())
-                .replace("#column", column.getIdentifier().getIdentifierName()).replace("#srid", "" + srid)
+                .replace("#table", table.getIdentifier().getName())
+                .replace("#column", column.getIdentifier().getName()).replace("#srid", "" + srid)
                 .replace("#type", column.getTypeInfo().getLocalTypeName().concat(hasMeasure ? "M" : ""))
                 .replace("#dimension", "" + dimension);
     }

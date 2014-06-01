@@ -75,7 +75,7 @@ public class MySQLSpatialAdapter extends MySQLAdapter implements SpatialRDBMSAda
     public String getCalculateBoundsStatement(Table table, Column column)
     {
         return "SELECT " + "min(X(PointN(ExteriorRing(Envelope(#column1)),1))), " + "min(Y(PointN(ExteriorRing(Envelope(#column2)),1))), " + "max(X(PointN(ExteriorRing(Envelope(#column3)),1))), " + "max(Y(PointN(ExteriorRing(Envelope(#column4)),1))) " + "FROM #table"
-                .replace("#column", column.getIdentifier().getIdentifierName())
-                .replace("#table", table.getIdentifier().getIdentifierName());
+                .replace("#column", column.getIdentifier().getName())
+                .replace("#table", table.getIdentifier().getName());
     }
 }
