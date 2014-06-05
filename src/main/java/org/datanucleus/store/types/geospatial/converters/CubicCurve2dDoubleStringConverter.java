@@ -150,7 +150,7 @@ public class CubicCurve2dDoubleStringConverter implements TypeConverter<CubicCur
         }
 
         // Create string form like "(x1,y1),(x2,y2),(xc1,yc1),(xc2,yc2)"
-        StringBuffer str = new StringBuffer();
+        StringBuilder str = new StringBuilder();
         str.append("(").append(cc.x1).append(",").append(cc.y1).append("),");
         str.append("(").append(cc.x2).append(",").append(cc.y2).append("),");
         str.append("(").append(cc.ctrlx1).append(",").append(cc.ctrly1).append("),");

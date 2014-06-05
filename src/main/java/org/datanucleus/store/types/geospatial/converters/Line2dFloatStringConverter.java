@@ -102,7 +102,7 @@ public class Line2dFloatStringConverter implements TypeConverter<Line2D.Float, S
         }
 
         // Create string form like "(x1,y1),(x2,y2)"
-        StringBuffer str = new StringBuffer();
+        StringBuilder str = new StringBuilder();
         str.append("(").append(line.x1).append(",").append(line.y1).append("),");
         str.append("(").append(line.x2).append(",").append(line.y2).append(")");
         return str.toString();

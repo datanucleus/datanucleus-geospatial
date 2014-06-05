@@ -127,7 +127,7 @@ public class QuadCurve2dDoubleStringConverter implements TypeConverter<QuadCurve
         }
 
         // Create string form like "(x1,y1),(x2,y2),(xc,yc)"
-        StringBuffer str = new StringBuffer();
+        StringBuilder str = new StringBuilder();
         str.append("(").append(cc.x1).append(",").append(cc.y1).append("),");
         str.append("(").append(cc.x2).append(",").append(cc.y2).append("),");
         str.append("(").append(cc.ctrlx).append(",").append(cc.ctrly).append("),");

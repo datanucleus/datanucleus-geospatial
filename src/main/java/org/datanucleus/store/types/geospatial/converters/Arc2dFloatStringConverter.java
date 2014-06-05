@@ -122,7 +122,7 @@ public class Arc2dFloatStringConverter implements TypeConverter<Arc2D.Float, Str
         }
 
         // Create string form like "x,y,width,height,start,extent"
-        StringBuffer str = new StringBuffer();
+        StringBuilder str = new StringBuilder();
         str.append(arc.x).append(",").append(arc.y).append(",").append(arc.width).append(",").append(arc.height);
         str.append(",").append(arc.start).append(",").append(arc.extent);
         return str.toString();

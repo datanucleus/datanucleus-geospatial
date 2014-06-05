@@ -90,7 +90,7 @@ public class PolygonStringConverter implements TypeConverter<Polygon, String>
         }
 
         // Create string form like "[(x1,y1),(x2,y2),...]"
-        StringBuffer str = new StringBuffer("[");
+        StringBuilder str = new StringBuilder("[");
         for (int i = 0; i < poly.npoints; i++)
         {
             str.append("(").append(poly.xpoints[i]).append(",").append(poly.ypoints[i]).append(")");
