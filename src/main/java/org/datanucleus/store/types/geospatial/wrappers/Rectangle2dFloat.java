@@ -31,6 +31,8 @@ import org.datanucleus.store.types.SCO;
  */
 public class Rectangle2dFloat extends java.awt.geom.Rectangle2D.Float implements SCO
 {
+    private static final long serialVersionUID = 6204949069264230370L;
+
     protected transient ObjectProvider ownerOP;
 
     protected transient String fieldName;

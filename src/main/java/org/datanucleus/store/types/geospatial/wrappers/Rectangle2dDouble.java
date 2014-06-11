@@ -31,6 +31,8 @@ import org.datanucleus.store.types.SCO;
  */
 public class Rectangle2dDouble extends java.awt.geom.Rectangle2D.Double implements SCO
 {
+    private static final long serialVersionUID = -348539619563292726L;
+
     protected transient ObjectProvider ownerOP;
 
     protected transient String fieldName;

@@ -32,6 +32,8 @@ import org.datanucleus.store.types.SCO;
  */
 public class Ellipse2dDouble extends java.awt.geom.Ellipse2D.Double implements SCO
 {
+    private static final long serialVersionUID = -6164859976643148517L;
+
     protected transient ObjectProvider ownerOP;
 
     protected transient String fieldName;

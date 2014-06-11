@@ -30,6 +30,8 @@ import org.datanucleus.store.types.SCO;
  */
 public class QuadCurve2dFloat extends java.awt.geom.QuadCurve2D.Float implements SCO
 {
+    private static final long serialVersionUID = 6257956228766228233L;
+
     protected transient ObjectProvider ownerOP;
 
     protected transient String fieldName;

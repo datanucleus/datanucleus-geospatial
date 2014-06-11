@@ -29,6 +29,8 @@ import org.datanucleus.store.types.SCO;
  */
 public class Point2dFloat extends java.awt.geom.Point2D.Float implements SCO
 {
+    private static final long serialVersionUID = -1944393892272029363L;
+
     protected transient ObjectProvider ownerOP;
 
     protected transient String fieldName;

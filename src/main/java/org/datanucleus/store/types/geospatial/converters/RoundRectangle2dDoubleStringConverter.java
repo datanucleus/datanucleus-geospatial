@@ -34,6 +34,8 @@ import org.datanucleus.util.Localiser;
  */
 public class RoundRectangle2dDoubleStringConverter implements TypeConverter<RoundRectangle2D.Double, String>
 {
+    private static final long serialVersionUID = 6073392036251240170L;
+
     public RoundRectangle2D.Double toMemberType(String str)
     {
         if (str == null)

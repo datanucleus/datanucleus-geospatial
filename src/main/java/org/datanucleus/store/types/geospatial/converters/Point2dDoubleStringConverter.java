@@ -33,6 +33,8 @@ import org.datanucleus.util.Localiser;
  */
 public class Point2dDoubleStringConverter implements TypeConverter<Point2D.Double, String>
 {
+    private static final long serialVersionUID = 160991909450687659L;
+
     public Point2D.Double toMemberType(String str)
     {
         if (str == null)

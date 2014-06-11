@@ -33,6 +33,8 @@ import org.datanucleus.util.Localiser;
  */
 public class Arc2dDoubleStringConverter implements TypeConverter<Arc2D.Double, String>
 {
+    private static final long serialVersionUID = 4093642494615103255L;
+
     public Arc2D.Double toMemberType(String str)
     {
         if (str == null)

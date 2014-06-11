@@ -30,6 +30,8 @@ import org.datanucleus.store.types.SCO;
  */
 public class Rectangle extends java.awt.Rectangle implements SCO
 {
+    private static final long serialVersionUID = -1108519549093893431L;
+
     protected transient ObjectProvider ownerOP;
 
     protected transient String fieldName;

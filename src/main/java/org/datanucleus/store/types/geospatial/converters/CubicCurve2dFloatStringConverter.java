@@ -34,6 +34,8 @@ import org.datanucleus.util.Localiser;
  */
 public class CubicCurve2dFloatStringConverter implements TypeConverter<CubicCurve2D.Float, String>
 {
+    private static final long serialVersionUID = -8319781737031848693L;
+
     public CubicCurve2D.Float toMemberType(String str)
     {
         if (str == null)

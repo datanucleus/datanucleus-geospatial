@@ -34,6 +34,8 @@ import org.datanucleus.util.Localiser;
  */
 public class RoundRectangle2dFloatStringConverter implements TypeConverter<RoundRectangle2D.Float, String>
 {
+    private static final long serialVersionUID = 5665958183989937680L;
+
     public RoundRectangle2D.Float toMemberType(String str)
     {
         if (str == null)

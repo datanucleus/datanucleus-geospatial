@@ -30,6 +30,8 @@ import org.datanucleus.store.types.SCO;
  */
 public class CubicCurve2dFloat extends java.awt.geom.CubicCurve2D.Float implements SCO
 {
+    private static final long serialVersionUID = 7837444931772565932L;
+
     protected transient ObjectProvider ownerOP;
 
     protected transient String fieldName;

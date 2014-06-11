@@ -33,6 +33,8 @@ import org.datanucleus.util.Localiser;
  */
 public class Point2dFloatStringConverter implements TypeConverter<Point2D.Float, String>
 {
+    private static final long serialVersionUID = 1302189302818548645L;
+
     public Point2D.Float toMemberType(String str)
     {
         if (str == null)

@@ -26,6 +26,8 @@ import org.datanucleus.store.types.converters.TypeConverter;
  */
 public class RectangleComponentsConverter implements TypeConverter<Rectangle, int[]>, MultiColumnConverter
 {
+    private static final long serialVersionUID = -2340126869283906772L;
+
     public Rectangle toMemberType(int[] values)
     {
         if (values == null)

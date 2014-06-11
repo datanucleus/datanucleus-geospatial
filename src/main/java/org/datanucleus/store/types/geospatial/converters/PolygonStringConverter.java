@@ -33,6 +33,8 @@ import org.datanucleus.util.Localiser;
  */
 public class PolygonStringConverter implements TypeConverter<Polygon, String>
 {
+    private static final long serialVersionUID = -5170566156665065600L;
+
     public Polygon toMemberType(String str)
     {
         if (str == null)

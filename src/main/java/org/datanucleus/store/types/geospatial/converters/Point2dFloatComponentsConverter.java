@@ -26,6 +26,8 @@ import org.datanucleus.store.types.converters.TypeConverter;
  */
 public class Point2dFloatComponentsConverter implements TypeConverter<Point2D.Float, float[]>, MultiColumnConverter
 {
+    private static final long serialVersionUID = -3913139397741760275L;
+
     public Point2D.Float toMemberType(float[] values)
     {
         if (values == null)

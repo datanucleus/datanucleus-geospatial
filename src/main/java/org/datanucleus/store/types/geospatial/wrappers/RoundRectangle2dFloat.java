@@ -32,6 +32,8 @@ import org.datanucleus.store.types.SCO;
  */
 public class RoundRectangle2dFloat extends java.awt.geom.RoundRectangle2D.Float implements SCO
 {
+    private static final long serialVersionUID = -4033294320394338528L;
+
     protected transient ObjectProvider ownerOP;
 
     protected transient String fieldName;

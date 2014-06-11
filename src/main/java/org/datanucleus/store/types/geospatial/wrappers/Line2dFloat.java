@@ -30,6 +30,8 @@ import org.datanucleus.store.types.SCO;
  */
 public class Line2dFloat extends java.awt.geom.Line2D.Float implements SCO
 {
+    private static final long serialVersionUID = 7554204283366263638L;
+
     protected transient ObjectProvider ownerOP;
 
     protected transient String fieldName;

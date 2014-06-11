@@ -29,6 +29,8 @@ import org.datanucleus.store.types.SCO;
  */
 public class Point2dDouble extends java.awt.geom.Point2D.Double implements SCO
 {
+    private static final long serialVersionUID = 2414040714206923039L;
+
     protected transient ObjectProvider ownerOP;
 
     protected transient String fieldName;

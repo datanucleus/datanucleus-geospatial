@@ -32,6 +32,8 @@ import org.datanucleus.store.types.SCO;
  */
 public class Ellipse2dFloat extends java.awt.geom.Ellipse2D.Float implements SCO
 {
+    private static final long serialVersionUID = -5951938691019092752L;
+
     protected transient ObjectProvider ownerOP;
 
     protected transient String fieldName;

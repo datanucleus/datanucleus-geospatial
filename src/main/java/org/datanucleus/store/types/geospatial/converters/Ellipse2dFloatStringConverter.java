@@ -33,6 +33,8 @@ import org.datanucleus.util.Localiser;
  */
 public class Ellipse2dFloatStringConverter implements TypeConverter<Ellipse2D.Float, String>
 {
+    private static final long serialVersionUID = 2519803594047053740L;
+
     public Ellipse2D.Float toMemberType(String str)
     {
         if (str == null)

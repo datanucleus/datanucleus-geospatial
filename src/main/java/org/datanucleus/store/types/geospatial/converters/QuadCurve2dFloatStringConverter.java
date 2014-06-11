@@ -34,6 +34,8 @@ import org.datanucleus.util.Localiser;
  */
 public class QuadCurve2dFloatStringConverter implements TypeConverter<QuadCurve2D.Float, String>
 {
+    private static final long serialVersionUID = 154199260161379454L;
+
     public QuadCurve2D.Float toMemberType(String str)
     {
         if (str == null)

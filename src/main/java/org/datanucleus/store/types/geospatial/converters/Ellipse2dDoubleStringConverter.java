@@ -33,6 +33,8 @@ import org.datanucleus.util.Localiser;
  */
 public class Ellipse2dDoubleStringConverter implements TypeConverter<Ellipse2D.Double, String>
 {
+    private static final long serialVersionUID = 3468739359296883796L;
+
     public Ellipse2D.Double toMemberType(String str)
     {
         if (str == null)

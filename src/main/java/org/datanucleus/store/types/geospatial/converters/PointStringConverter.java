@@ -33,6 +33,8 @@ import org.datanucleus.util.Localiser;
  */
 public class PointStringConverter implements TypeConverter<Point, String>
 {
+    private static final long serialVersionUID = -1868475857358495624L;
+
     public Point toMemberType(String str)
     {
         if (str == null)

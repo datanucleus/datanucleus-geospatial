@@ -33,6 +33,8 @@ import org.datanucleus.util.Localiser;
  */
 public class RectangleStringConverter implements TypeConverter<Rectangle, String>
 {
+    private static final long serialVersionUID = 5502050616877645560L;
+
     public Rectangle toMemberType(String str)
     {
         if (str == null)

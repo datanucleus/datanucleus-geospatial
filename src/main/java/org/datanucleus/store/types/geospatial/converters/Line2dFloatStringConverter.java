@@ -33,6 +33,8 @@ import org.datanucleus.util.Localiser;
  */
 public class Line2dFloatStringConverter implements TypeConverter<Line2D.Float, String>
 {
+    private static final long serialVersionUID = -5379075091827141527L;
+
     public Line2D.Float toMemberType(String str)
     {
         if (str == null)

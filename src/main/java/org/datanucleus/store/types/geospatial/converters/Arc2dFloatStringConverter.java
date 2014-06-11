@@ -33,6 +33,8 @@ import org.datanucleus.util.Localiser;
  */
 public class Arc2dFloatStringConverter implements TypeConverter<Arc2D.Float, String>
 {
+    private static final long serialVersionUID = 7905329424423996906L;
+
     public Arc2D.Float toMemberType(String str)
     {
         if (str == null)

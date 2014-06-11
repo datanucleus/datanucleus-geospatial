@@ -30,6 +30,8 @@ import org.datanucleus.store.types.SCO;
  */
 public class QuadCurve2dDouble extends java.awt.geom.QuadCurve2D.Double implements SCO
 {
+    private static final long serialVersionUID = -7376523376935310375L;
+
     protected transient ObjectProvider ownerOP;
 
     protected transient String fieldName;

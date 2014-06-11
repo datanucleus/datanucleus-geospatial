@@ -32,6 +32,8 @@ import org.datanucleus.store.types.SCO;
  */
 public class Arc2dFloat extends java.awt.geom.Arc2D.Float implements SCO
 {
+    private static final long serialVersionUID = 5319768140588872943L;
+
     protected transient ObjectProvider ownerOP;
 
     protected transient String fieldName;

@@ -30,6 +30,8 @@ import org.datanucleus.store.types.SCO;
  */
 public class Line2dDouble extends java.awt.geom.Line2D.Double implements SCO
 {
+    private static final long serialVersionUID = 5347062379876836763L;
+
     protected transient ObjectProvider ownerOP;
 
     protected transient String fieldName;

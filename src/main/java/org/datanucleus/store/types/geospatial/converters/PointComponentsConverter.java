@@ -26,6 +26,8 @@ import org.datanucleus.store.types.converters.TypeConverter;
  */
 public class PointComponentsConverter implements TypeConverter<Point, int[]>, MultiColumnConverter
 {
+    private static final long serialVersionUID = -2469117632418464697L;
+
     public Point toMemberType(int[] values)
     {
         if (values == null)

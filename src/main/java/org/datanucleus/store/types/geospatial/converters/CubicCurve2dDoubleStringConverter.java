@@ -34,6 +34,8 @@ import org.datanucleus.util.Localiser;
  */
 public class CubicCurve2dDoubleStringConverter implements TypeConverter<CubicCurve2D.Double, String>
 {
+    private static final long serialVersionUID = -5914935493373534595L;
+
     public CubicCurve2D.Double toMemberType(String str)
     {
         if (str == null)

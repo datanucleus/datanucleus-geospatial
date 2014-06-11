@@ -32,6 +32,8 @@ import org.datanucleus.store.types.SCO;
  */
 public class Arc2dDouble extends java.awt.geom.Arc2D.Double implements SCO
 {
+    private static final long serialVersionUID = 7104674022231272950L;
+
     protected transient ObjectProvider ownerOP;
 
     protected transient String fieldName;

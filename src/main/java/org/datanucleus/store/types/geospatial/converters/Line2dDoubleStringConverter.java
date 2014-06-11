@@ -33,6 +33,8 @@ import org.datanucleus.util.Localiser;
  */
 public class Line2dDoubleStringConverter implements TypeConverter<Line2D.Double, String>
 {
+    private static final long serialVersionUID = 9181260786593910491L;
+
     public Line2D.Double toMemberType(String str)
     {
         if (str == null)

@@ -32,6 +32,8 @@ import org.datanucleus.store.types.SCO;
  */
 public class RoundRectangle2dDouble extends java.awt.geom.RoundRectangle2D.Double implements SCO
 {
+    private static final long serialVersionUID = 1077370324877552921L;
+
     protected transient ObjectProvider ownerOP;
 
     protected transient String fieldName;
