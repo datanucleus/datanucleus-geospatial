@@ -71,11 +71,7 @@ public class GeometryRDBMSMapping extends AbstractDatastoreMapping
         try
         {
             Object result = rs.getObject(exprIndex);
-            if (rs.wasNull() || result == null)
-            {
-                value = null;
-            }
-            else
+            if (!rs.wasNull() && result != null)
             {
                 if (result instanceof JtsGeometry)
                 {
