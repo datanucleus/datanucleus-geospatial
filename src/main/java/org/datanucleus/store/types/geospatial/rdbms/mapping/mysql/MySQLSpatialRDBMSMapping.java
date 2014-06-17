@@ -75,10 +75,7 @@ public abstract class MySQLSpatialRDBMSMapping extends AbstractDatastoreMapping
         {
             return mysqlBinary[0] << 24 | (mysqlBinary[1] & 0xff) << 16 | (mysqlBinary[2] & 0xff) << 8 | (mysqlBinary[3] & 0xff);
         }
-        else
-        {
-            return mysqlBinary[3] << 24 | (mysqlBinary[2] & 0xff) << 16 | (mysqlBinary[1] & 0xff) << 8 | (mysqlBinary[0] & 0xff);
-        }
+        return mysqlBinary[3] << 24 | (mysqlBinary[2] & 0xff) << 16 | (mysqlBinary[1] & 0xff) << 8 | (mysqlBinary[0] & 0xff);
     }
 
     /**

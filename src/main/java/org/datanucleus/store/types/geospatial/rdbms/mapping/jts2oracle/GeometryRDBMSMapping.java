@@ -55,7 +55,7 @@ public class GeometryRDBMSMapping extends AbstractDatastoreMapping
 
     public SQLTypeInfo getTypeInfo()
     {
-        return ((RDBMSStoreManager) storeMgr).getSQLTypeInfoForJDBCType(OracleSpatialTypeInfo.TYPES_SDO_GEOMETRY);
+        return storeMgr.getSQLTypeInfoForJDBCType(OracleSpatialTypeInfo.TYPES_SDO_GEOMETRY);
     }
 
     public Object getObject(ResultSet rs, int exprIndex)
@@ -64,8 +64,8 @@ public class GeometryRDBMSMapping extends AbstractDatastoreMapping
 
         try
         {
-            Object st = ((ResultSet) rs).getObject(exprIndex);
-            if (((ResultSet) rs).wasNull() || st == null)
+            Object st = rs.getObject(exprIndex);
+            if (rs.wasNull() || st == null)
             {
                 value = null;
             }

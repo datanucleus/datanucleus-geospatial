@@ -53,7 +53,7 @@ public class JGeometryRDBMSMapping extends AbstractDatastoreMapping
 
     public SQLTypeInfo getTypeInfo()
     {
-        return ((RDBMSStoreManager) storeMgr).getSQLTypeInfoForJDBCType(OracleSpatialTypeInfo.TYPES_SDO_GEOMETRY);
+        return storeMgr.getSQLTypeInfoForJDBCType(OracleSpatialTypeInfo.TYPES_SDO_GEOMETRY);
     }
 
     public Object getObject(ResultSet rs, int exprIndex)
@@ -62,8 +62,8 @@ public class JGeometryRDBMSMapping extends AbstractDatastoreMapping
 
         try
         {
-            Object st = ((ResultSet) rs).getObject(exprIndex);
-            if (((ResultSet) rs).wasNull() || st == null)
+            Object st = rs.getObject(exprIndex);
+            if (rs.wasNull() || st == null)
             {
                 value = null;
             }
@@ -86,12 +86,12 @@ public class JGeometryRDBMSMapping extends AbstractDatastoreMapping
         {
             if (value == null)
             {
-                ((PreparedStatement) ps).setNull(exprIndex, getTypeInfo().getDataType(), getTypeInfo().getTypeName());
+                ps.setNull(exprIndex, getTypeInfo().getDataType(), getTypeInfo().getTypeName());
             }
             else
             {
-                Object obj = JGeometry.store((JGeometry) value, ((PreparedStatement) ps).getConnection().unwrap(OracleConnection.class));
-                ((PreparedStatement) ps).setObject(exprIndex, obj);
+                Object obj = JGeometry.store((JGeometry) value, ps.getConnection().unwrap(OracleConnection.class));
+                ps.setObject(exprIndex, obj);
             }
         }
         catch (SQLException e)

@@ -278,10 +278,7 @@ public class SpatialHelper
         {
             return null;
         }
-        else
-        {
-            return value;
-        }
+        return value;
     }
 
     /**
@@ -326,19 +323,19 @@ public class SpatialHelper
     protected Table getTable(Class pc)
     {
         ClassLoaderResolver clr = pmf.getNucleusContext().getClassLoaderResolver(getClass().getClassLoader());
-        return (Table) storeMgr.getDatastoreClass(pc.getName(), clr);
+        return storeMgr.getDatastoreClass(pc.getName(), clr);
     }
 
     protected Column getColumn(Class pc, String fieldName)
     {
         ClassLoaderResolver clr = pmf.getNucleusContext().getClassLoaderResolver(getClass().getClassLoader());
-        return (Column) storeMgr.getDatastoreClass(pc.getName(), clr).getMemberMapping(fieldName).getDatastoreMappings()[0].getColumn();
+        return storeMgr.getDatastoreClass(pc.getName(), clr).getMemberMapping(fieldName).getDatastoreMappings()[0].getColumn();
     }
 
     protected Column getColumn(Class pc, AbstractMemberMetaData mmd)
     {
         ClassLoaderResolver clr = pmf.getNucleusContext().getClassLoaderResolver(getClass().getClassLoader());
-        return (Column) storeMgr.getDatastoreClass(pc.getName(), clr).getMemberMapping(mmd).getDatastoreMappings()[0].getColumn();
+        return storeMgr.getDatastoreClass(pc.getName(), clr).getMemberMapping(mmd).getDatastoreMappings()[0].getColumn();
     }
 
     protected SpatialRDBMSAdapter getAdapter() throws ClassCastException

@@ -63,7 +63,7 @@ public class PGbox2dRDBMSMapping extends AbstractDatastoreMapping
     {
         try
         {
-            return ((ResultSet) rs).getObject(exprIndex);
+            return rs.getObject(exprIndex);
         }
         catch (SQLException e)
         {
@@ -78,11 +78,11 @@ public class PGbox2dRDBMSMapping extends AbstractDatastoreMapping
         {
             if (value == null)
             {
-                ((PreparedStatement) ps).setNull(exprIndex, getTypeInfo().getDataType(), getTypeInfo().getTypeName());
+                ps.setNull(exprIndex, getTypeInfo().getDataType(), getTypeInfo().getTypeName());
             }
             else
             {
-                ((PreparedStatement) ps).setObject(exprIndex, value);
+                ps.setObject(exprIndex, value);
             }
         }
         catch (SQLException e)

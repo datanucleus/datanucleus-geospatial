@@ -63,8 +63,8 @@ public class GeometryRDBMSMapping extends MySQLSpatialRDBMSMapping
 
         try
         {
-            byte[] mysqlBinary = ((ResultSet) rs).getBytes(exprIndex);
-            if (((ResultSet) rs).wasNull() || mysqlBinary == null)
+            byte[] mysqlBinary = rs.getBytes(exprIndex);
+            if (rs.wasNull() || mysqlBinary == null)
             {
                 value = null;
             }
@@ -89,14 +89,14 @@ public class GeometryRDBMSMapping extends MySQLSpatialRDBMSMapping
         {
             if (value == null)
             {
-                ((PreparedStatement) ps).setNull(exprIndex, getTypeInfo().getDataType(), getTypeInfo().getTypeName());
+                ps.setNull(exprIndex, getTypeInfo().getDataType(), getTypeInfo().getTypeName());
             }
             else
             {
                 WKBWriter wkbWriter = new WKBWriter(2, ByteOrderValues.LITTLE_ENDIAN);
                 byte[] wkb = wkbWriter.write((Geometry) value);
                 int srid = ((Geometry) value).getSRID();
-                ((PreparedStatement) ps).setBytes(exprIndex, wkbToMysqlBinary(wkb, srid));
+                ps.setBytes(exprIndex, wkbToMysqlBinary(wkb, srid));
             }
         }
         catch (SQLException e)

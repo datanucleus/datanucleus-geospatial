@@ -70,8 +70,8 @@ public class GeometryRDBMSMapping extends AbstractDatastoreMapping
 
         try
         {
-            Object result = ((ResultSet) rs).getObject(exprIndex);
-            if (((ResultSet) rs).wasNull() || result == null)
+            Object result = rs.getObject(exprIndex);
+            if (rs.wasNull() || result == null)
             {
                 value = null;
             }
@@ -109,12 +109,12 @@ public class GeometryRDBMSMapping extends AbstractDatastoreMapping
         {
             if (value == null)
             {
-                ((PreparedStatement) ps).setNull(exprIndex, getTypeInfo().getDataType(), getTypeInfo().getTypeName());
+                ps.setNull(exprIndex, getTypeInfo().getDataType(), getTypeInfo().getTypeName());
             }
             else
             {
                 Object obj = new JtsGeometry((Geometry) value);
-                ((PreparedStatement) ps).setObject(exprIndex, obj);
+                ps.setObject(exprIndex, obj);
             }
         }
         catch (SQLException e)
@@ -137,12 +137,12 @@ public class GeometryRDBMSMapping extends AbstractDatastoreMapping
         {
             String[] temp = PGgeometry.splitSRID(geometryString);
             int srid = Integer.parseInt(temp[0].substring(5));
-            geom = (Geometry) wktReader.read(temp[1]);
+            geom = wktReader.read(temp[1]);
             geom.setSRID(srid);
         }
         else
         {
-            geom = (Geometry) wktReader.read(geometryString);
+            geom = wktReader.read(geometryString);
         }
         return geom;
     }

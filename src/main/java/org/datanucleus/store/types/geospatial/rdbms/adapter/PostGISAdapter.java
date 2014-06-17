@@ -77,12 +77,9 @@ public class PostGISAdapter extends PostgreSQLAdapter implements SpatialRDBMSAda
     {
         if (isGeometryColumn(column))
         {
-            return getAddGeometryColumnStatement((Table) table, column);
+            return getAddGeometryColumnStatement(table, column);
         }
-        else
-        {
-            return super.getAddColumnStatement(table, column);
-        }
+        return super.getAddColumnStatement(table, column);
     }
 
     public String getCreateTableStatement(TableImpl table, Column[] columns, Properties props, IdentifierFactory factory)

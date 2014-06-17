@@ -98,10 +98,7 @@ public class GeometryLiteral extends GeometryExpression implements SQLLiteral
         {
             return new BooleanLiteral(stmt, mapping, new Boolean(value.equals(((GeometryLiteral) expr).value)));
         }
-        else
-        {
-            return super.eq(expr);
-        }
+        return super.eq(expr);
     }
 
     public BooleanExpression ne(SQLExpression expr)
@@ -110,9 +107,6 @@ public class GeometryLiteral extends GeometryExpression implements SQLLiteral
         {
             return new BooleanLiteral(stmt, mapping, new Boolean(!value.equals(((GeometryLiteral) expr).value)));
         }
-        else
-        {
-            return super.ne(expr);
-        }
+        return super.ne(expr);
     }
 }
