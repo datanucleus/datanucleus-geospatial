@@ -33,8 +33,8 @@ import org.datanucleus.store.rdbms.RDBMSStoreManager;
 import org.datanucleus.store.rdbms.mapping.MappingCallbacks;
 import org.datanucleus.store.rdbms.mapping.datastore.DatastoreMapping;
 import org.datanucleus.store.rdbms.mapping.datastore.AbstractDatastoreMapping;
+import org.datanucleus.store.rdbms.mapping.datastore.OracleBlobRDBMSMapping;
 import org.datanucleus.store.rdbms.mapping.java.SingleFieldMultiMapping;
-import org.datanucleus.store.rdbms.mapping.oracle.OracleBlobRDBMSMapping;
 import org.datanucleus.store.rdbms.table.Table;
 import org.datanucleus.util.NucleusLogger;
 
