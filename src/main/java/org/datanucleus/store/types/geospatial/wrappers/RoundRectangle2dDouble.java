@@ -30,7 +30,7 @@ import org.datanucleus.store.types.SCO;
 /**
  * A mutable second-class java.awt.geom.RoundRectangle2D.Double object.
  */
-public class RoundRectangle2dDouble extends java.awt.geom.RoundRectangle2D.Double implements SCO
+public class RoundRectangle2dDouble extends java.awt.geom.RoundRectangle2D.Double implements SCO<java.awt.geom.RoundRectangle2D.Double>
 {
     private static final long serialVersionUID = 1077370324877552921L;
 
@@ -51,13 +51,21 @@ public class RoundRectangle2dDouble extends java.awt.geom.RoundRectangle2D.Doubl
         this.fieldName = mmd.getName();
     }
 
+    /* (non-Javadoc)
+     * @see org.datanucleus.store.types.SCO#initialise(java.lang.Object, java.lang.Object)
+     */
+    public void initialise(java.awt.geom.RoundRectangle2D.Double newValue, Object oldValue)
+    {
+        super.setRoundRect(newValue);
+    }
+
     /*
      * (non-Javadoc)
-     * @see org.datanucleus.store.types.sco.SCO#initialise(java.lang.Object, boolean, boolean)
+     * @see org.datanucleus.store.types.sco.SCO#initialise(java.lang.Object)
      */
-    public void initialise(Object value, boolean forInsert, boolean forUpdate) throws ClassCastException
+    public void initialise(java.awt.geom.RoundRectangle2D.Double value)
     {
-        super.setRoundRect((RoundRectangle2D.Double) value);
+        super.setRoundRect(value);
     }
 
     /*
@@ -72,7 +80,7 @@ public class RoundRectangle2dDouble extends java.awt.geom.RoundRectangle2D.Doubl
      * (non-Javadoc)
      * @see org.datanucleus.store.types.sco.SCO#getValue()
      */
-    public Object getValue()
+    public java.awt.geom.RoundRectangle2D.Double getValue()
     {
         return new java.awt.geom.RoundRectangle2D.Double(getX(), getY(), getWidth(), getHeight(), getArcWidth(), getArcHeight());
     }
@@ -119,7 +127,7 @@ public class RoundRectangle2dDouble extends java.awt.geom.RoundRectangle2D.Doubl
      * (non-Javadoc)
      * @see org.datanucleus.store.types.sco.SCO#detachCopy(org.datanucleus.state.FetchPlanState)
      */
-    public Object detachCopy(FetchPlanState state)
+    public java.awt.geom.RoundRectangle2D.Double detachCopy(FetchPlanState state)
     {
         return new java.awt.geom.RoundRectangle2D.Double(getX(), getY(), getWidth(), getHeight(), getArcWidth(), getArcHeight());
     }
@@ -128,7 +136,7 @@ public class RoundRectangle2dDouble extends java.awt.geom.RoundRectangle2D.Doubl
      * (non-Javadoc)
      * @see org.datanucleus.store.types.sco.SCO#attachCopy(java.lang.Object)
      */
-    public void attachCopy(Object value)
+    public void attachCopy(java.awt.geom.RoundRectangle2D.Double value)
     {
         double oldX = getX();
         double oldY = getY();
@@ -136,7 +144,7 @@ public class RoundRectangle2dDouble extends java.awt.geom.RoundRectangle2D.Doubl
         double oldH = getHeight();
         double oldAW = getArcWidth();
         double oldAH = getArcHeight();
-        initialise(value, false, true);
+        initialise(value, null);
 
         // Check if the field has changed, and set the owner field as dirty if necessary
         RoundRectangle2dDouble rect = (RoundRectangle2dDouble) value;

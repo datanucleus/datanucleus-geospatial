@@ -28,7 +28,7 @@ import org.datanucleus.store.types.SCO;
 /**
  * A mutable second-class java.awt.geom.QuadCurve2D.Float object.
  */
-public class QuadCurve2dFloat extends java.awt.geom.QuadCurve2D.Float implements SCO
+public class QuadCurve2dFloat extends java.awt.geom.QuadCurve2D.Float implements SCO<java.awt.geom.QuadCurve2D.Float>
 {
     private static final long serialVersionUID = 6257956228766228233L;
 
@@ -49,13 +49,21 @@ public class QuadCurve2dFloat extends java.awt.geom.QuadCurve2D.Float implements
         this.fieldName = mmd.getName();
     }
 
+    /* (non-Javadoc)
+     * @see org.datanucleus.store.types.SCO#initialise(java.lang.Object, java.lang.Object)
+     */
+    public void initialise(java.awt.geom.QuadCurve2D.Float newValue, Object oldValue)
+    {
+        super.setCurve(newValue);
+    }
+
     /*
      * (non-Javadoc)
-     * @see org.datanucleus.store.types.sco.SCO#initialise(java.lang.Object, boolean, boolean)
+     * @see org.datanucleus.store.types.sco.SCO#initialise(java.lang.Object)
      */
-    public void initialise(Object value, boolean forInsert, boolean forUpdate) throws ClassCastException
+    public void initialise(java.awt.geom.QuadCurve2D.Float value)
     {
-        super.setCurve((QuadCurve2D.Float) value);
+        super.setCurve(value);
     }
 
     /*
@@ -70,7 +78,7 @@ public class QuadCurve2dFloat extends java.awt.geom.QuadCurve2D.Float implements
      * (non-Javadoc)
      * @see org.datanucleus.store.types.sco.SCO#getValue()
      */
-    public Object getValue()
+    public java.awt.geom.QuadCurve2D.Float getValue()
     {
         return new java.awt.geom.QuadCurve2D.Float((float) getX1(), (float) getY1(), (float) getCtrlX(), (float) getCtrlY(),
                 (float) getX2(), (float) getY2());
@@ -118,17 +126,16 @@ public class QuadCurve2dFloat extends java.awt.geom.QuadCurve2D.Float implements
      * (non-Javadoc)
      * @see org.datanucleus.store.types.sco.SCO#detachCopy(org.datanucleus.state.FetchPlanState)
      */
-    public Object detachCopy(FetchPlanState state)
+    public java.awt.geom.QuadCurve2D.Float detachCopy(FetchPlanState state)
     {
-        return new java.awt.geom.QuadCurve2D.Double((float) getX1(), (float) getY1(), (float) getCtrlX(), (float) getCtrlY(),
-                (float) getX2(), (float) getY2());
+        return new java.awt.geom.QuadCurve2D.Float((float) getX1(), (float) getY1(), (float) getCtrlX(), (float) getCtrlY(), (float) getX2(), (float) getY2());
     }
 
     /*
      * (non-Javadoc)
      * @see org.datanucleus.store.types.sco.SCO#attachCopy(java.lang.Object)
      */
-    public void attachCopy(Object value)
+    public void attachCopy(java.awt.geom.QuadCurve2D.Float value)
     {
         double oldX1 = getX1();
         double oldY1 = getY1();
@@ -136,7 +143,7 @@ public class QuadCurve2dFloat extends java.awt.geom.QuadCurve2D.Float implements
         double oldCY = getCtrlY();
         double oldX2 = getX2();
         double oldY2 = getY2();
-        initialise(value, false, true);
+        initialise(value, null);
 
         // Check if the field has changed, and set the owner field as dirty if necessary
         QuadCurve2dFloat rect = (QuadCurve2dFloat) value;

@@ -29,7 +29,7 @@ import org.datanucleus.store.types.SCO;
 /**
  * A mutable second-class java.awt.Point object.
  */
-public class Point extends java.awt.Point implements SCO
+public class Point extends java.awt.Point implements SCO<java.awt.Point>
 {
     protected transient ObjectProvider ownerOP;
 
@@ -57,16 +57,24 @@ public class Point extends java.awt.Point implements SCO
     {
     }
 
+    /* (non-Javadoc)
+     * @see org.datanucleus.store.types.SCO#initialise(java.lang.Object, java.lang.Object)
+     */
+    public void initialise(java.awt.Point newValue, Object oldValue)
+    {
+        initialising = true;
+        super.setLocation(newValue);
+        initialising = false;
+    }
+
     /**
      * Method to initialise the SCO from an existing value.
      * @param o The Object
-     * @param forInsert Whether the object needs inserting in the datastore with this value
-     * @param forUpdate Whether to update the datastore with this value
      */
-    public void initialise(Object o, boolean forInsert, boolean forUpdate)
+    public void initialise(java.awt.Point o)
     {
         initialising = true;
-        super.setLocation((java.awt.Point) o);
+        super.setLocation(o);
         initialising = false;
     }
 
@@ -74,7 +82,7 @@ public class Point extends java.awt.Point implements SCO
      * Accessor for the unwrapped value that we are wrapping.
      * @return The unwrapped value
      */
-    public Object getValue()
+    public java.awt.Point getValue()
     {
         return new java.awt.Point(this);
     }
@@ -121,7 +129,7 @@ public class Point extends java.awt.Point implements SCO
      * @param state State for detachment process
      * @return The detached object
      */
-    public Object detachCopy(FetchPlanState state)
+    public java.awt.Point detachCopy(FetchPlanState state)
     {
         return new java.awt.Point(this);
     }
@@ -130,15 +138,15 @@ public class Point extends java.awt.Point implements SCO
      * Method to attach the passed value.
      * @param value The new value
      */
-    public void attachCopy(Object value)
+    public void attachCopy(java.awt.Point value)
     {
         double oldX = getX();
         double oldY = getY();
-        initialise(value, false, true);
+        initialise(value, null);
 
         // Check if the field has changed, and set the owner field as dirty if necessary
-        double newX = ((java.awt.Point) value).getX();
-        double newY = ((java.awt.Point) value).getY();
+        double newX = value.getX();
+        double newY = value.getY();
         if (oldX != newX || oldY != newY)
         {
             makeDirty();

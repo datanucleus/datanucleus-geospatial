@@ -28,7 +28,7 @@ import org.datanucleus.store.types.SCO;
 /**
  * A mutable second-class java.awt.Rectangle object.
  */
-public class Rectangle extends java.awt.Rectangle implements SCO
+public class Rectangle extends java.awt.Rectangle implements SCO<java.awt.Rectangle>
 {
     private static final long serialVersionUID = -1108519549093893431L;
 
@@ -49,13 +49,21 @@ public class Rectangle extends java.awt.Rectangle implements SCO
         this.fieldName = mmd.getName();
     }
 
+    /* (non-Javadoc)
+     * @see org.datanucleus.store.types.SCO#initialise(java.lang.Object, java.lang.Object)
+     */
+    public void initialise(java.awt.Rectangle newValue, Object oldValue)
+    {
+        super.setRect(newValue);
+    }
+
     /*
      * (non-Javadoc)
-     * @see org.datanucleus.store.types.sco.SCO#initialise(java.lang.Object, boolean, boolean)
+     * @see org.datanucleus.store.types.sco.SCO#initialise(java.lang.Object)
      */
-    public void initialise(Object value, boolean forInsert, boolean forUpdate) throws ClassCastException
+    public void initialise(java.awt.Rectangle value)
     {
-        super.setRect((java.awt.Rectangle) value);
+        super.setRect(value);
     }
 
     /*
@@ -70,7 +78,7 @@ public class Rectangle extends java.awt.Rectangle implements SCO
      * (non-Javadoc)
      * @see org.datanucleus.store.types.sco.SCO#getValue()
      */
-    public Object getValue()
+    public java.awt.Rectangle getValue()
     {
         return new java.awt.Rectangle(this);
     }
@@ -117,7 +125,7 @@ public class Rectangle extends java.awt.Rectangle implements SCO
      * (non-Javadoc)
      * @see org.datanucleus.store.types.sco.SCO#detachCopy(org.datanucleus.state.FetchPlanState)
      */
-    public Object detachCopy(FetchPlanState state)
+    public java.awt.Rectangle detachCopy(FetchPlanState state)
     {
         return new java.awt.Rectangle(this);
     }
@@ -126,13 +134,13 @@ public class Rectangle extends java.awt.Rectangle implements SCO
      * (non-Javadoc)
      * @see org.datanucleus.store.types.sco.SCO#attachCopy(java.lang.Object)
      */
-    public void attachCopy(Object value)
+    public void attachCopy(java.awt.Rectangle value)
     {
         double oldX = getX();
         double oldY = getY();
         double oldWidth = getWidth();
         double oldHeight = getHeight();
-        initialise(value, false, true);
+        initialise(value, null);
 
         // Check if the field has changed, and set the owner field as dirty if necessary
         Rectangle rect = (Rectangle) value;

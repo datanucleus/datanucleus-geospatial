@@ -28,7 +28,7 @@ import org.datanucleus.store.types.SCO;
 /**
  * A mutable second-class java.awt.geom.CubicCurve2D.Float object.
  */
-public class CubicCurve2dFloat extends java.awt.geom.CubicCurve2D.Float implements SCO
+public class CubicCurve2dFloat extends java.awt.geom.CubicCurve2D.Float implements SCO<java.awt.geom.CubicCurve2D.Float>
 {
     private static final long serialVersionUID = 7837444931772565932L;
 
@@ -49,13 +49,21 @@ public class CubicCurve2dFloat extends java.awt.geom.CubicCurve2D.Float implemen
         this.fieldName = mmd.getName();
     }
 
+    /* (non-Javadoc)
+     * @see org.datanucleus.store.types.SCO#initialise(java.lang.Object, java.lang.Object)
+     */
+    public void initialise(java.awt.geom.CubicCurve2D.Float newValue, Object oldValue)
+    {
+        super.setCurve(newValue);
+    }
+
     /*
      * (non-Javadoc)
-     * @see org.datanucleus.store.types.sco.SCO#initialise(java.lang.Object, boolean, boolean)
+     * @see org.datanucleus.store.types.sco.SCO#initialise(java.lang.Object)
      */
-    public void initialise(Object value, boolean forInsert, boolean forUpdate) throws ClassCastException
+    public void initialise(java.awt.geom.CubicCurve2D.Float value)
     {
-        super.setCurve((CubicCurve2D.Float) value);
+        super.setCurve(value);
     }
 
     /*
@@ -70,7 +78,7 @@ public class CubicCurve2dFloat extends java.awt.geom.CubicCurve2D.Float implemen
      * (non-Javadoc)
      * @see org.datanucleus.store.types.sco.SCO#getValue()
      */
-    public Object getValue()
+    public java.awt.geom.CubicCurve2D.Float getValue()
     {
         return new java.awt.geom.CubicCurve2D.Float((float) getX1(), (float) getY1(), (float) getCtrlX1(), (float) getCtrlY1(),
                 (float) getX2(), (float) getY2(), (float) getCtrlX2(), (float) getCtrlY2());
@@ -118,7 +126,7 @@ public class CubicCurve2dFloat extends java.awt.geom.CubicCurve2D.Float implemen
      * (non-Javadoc)
      * @see org.datanucleus.store.types.sco.SCO#detachCopy(org.datanucleus.state.FetchPlanState)
      */
-    public Object detachCopy(FetchPlanState state)
+    public java.awt.geom.CubicCurve2D.Float detachCopy(FetchPlanState state)
     {
         return new java.awt.geom.CubicCurve2D.Float((float) getX1(), (float) getY1(), (float) getCtrlX1(), (float) getCtrlY1(),
                 (float) getX2(), (float) getY2(), (float) getCtrlX2(), (float) getCtrlY2());
@@ -128,7 +136,7 @@ public class CubicCurve2dFloat extends java.awt.geom.CubicCurve2D.Float implemen
      * (non-Javadoc)
      * @see org.datanucleus.store.types.sco.SCO#attachCopy(java.lang.Object)
      */
-    public void attachCopy(Object value)
+    public void attachCopy(java.awt.geom.CubicCurve2D.Float value)
     {
         double oldX1 = getX1();
         double oldY1 = getY1();
@@ -138,7 +146,7 @@ public class CubicCurve2dFloat extends java.awt.geom.CubicCurve2D.Float implemen
         double oldY2 = getY2();
         double oldCX2 = getCtrlX2();
         double oldCY2 = getCtrlY2();
-        initialise(value, false, true);
+        initialise(value, null);
 
         // Check if the field has changed, and set the owner field as dirty if necessary
         CubicCurve2dFloat rect = (CubicCurve2dFloat) value;

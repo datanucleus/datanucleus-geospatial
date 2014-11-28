@@ -30,7 +30,7 @@ import org.datanucleus.store.types.SCO;
 /**
  * A mutable second-class java.awt.geom.Ellipse2D.Double object.
  */
-public class Ellipse2dDouble extends java.awt.geom.Ellipse2D.Double implements SCO
+public class Ellipse2dDouble extends java.awt.geom.Ellipse2D.Double implements SCO<java.awt.geom.Ellipse2D.Double>
 {
     private static final long serialVersionUID = -6164859976643148517L;
 
@@ -51,13 +51,22 @@ public class Ellipse2dDouble extends java.awt.geom.Ellipse2D.Double implements S
         this.fieldName = mmd.getName();
     }
 
+    /* (non-Javadoc)
+     * @see org.datanucleus.store.types.SCO#initialise(java.lang.Object, java.lang.Object)
+     */
+    public void initialise(java.awt.geom.Ellipse2D.Double newValue, Object oldValue)
+    {
+        Ellipse2D.Double ellipse = newValue;
+        super.setFrame(ellipse.getX(), ellipse.getY(), ellipse.getWidth(), ellipse.getHeight());
+    }
+
     /*
      * (non-Javadoc)
-     * @see org.datanucleus.store.types.sco.SCO#initialise(java.lang.Object, boolean, boolean)
+     * @see org.datanucleus.store.types.sco.SCO#initialise(java.lang.Object)
      */
-    public void initialise(Object value, boolean forInsert, boolean forUpdate) throws ClassCastException
+    public void initialise(java.awt.geom.Ellipse2D.Double value)
     {
-        Ellipse2D.Double ellipse = (Ellipse2D.Double) value;
+        Ellipse2D.Double ellipse = value;
         super.setFrame(ellipse.getX(), ellipse.getY(), ellipse.getWidth(), ellipse.getHeight());
     }
 
@@ -73,7 +82,7 @@ public class Ellipse2dDouble extends java.awt.geom.Ellipse2D.Double implements S
      * (non-Javadoc)
      * @see org.datanucleus.store.types.sco.SCO#getValue()
      */
-    public Object getValue()
+    public java.awt.geom.Ellipse2D.Double getValue()
     {
         return new java.awt.geom.Ellipse2D.Double(getX(), getY(), getWidth(), getHeight());
     }
@@ -120,7 +129,7 @@ public class Ellipse2dDouble extends java.awt.geom.Ellipse2D.Double implements S
      * (non-Javadoc)
      * @see org.datanucleus.store.types.sco.SCO#detachCopy(org.datanucleus.state.FetchPlanState)
      */
-    public Object detachCopy(FetchPlanState state)
+    public java.awt.geom.Ellipse2D.Double detachCopy(FetchPlanState state)
     {
         return new java.awt.geom.Ellipse2D.Double(getX(), getY(), getWidth(), getHeight());
     }
@@ -129,13 +138,13 @@ public class Ellipse2dDouble extends java.awt.geom.Ellipse2D.Double implements S
      * (non-Javadoc)
      * @see org.datanucleus.store.types.sco.SCO#attachCopy(java.lang.Object)
      */
-    public void attachCopy(Object value)
+    public void attachCopy(java.awt.geom.Ellipse2D.Double value)
     {
         double oldX = getX();
         double oldY = getY();
         double oldW = getWidth();
         double oldH = getHeight();
-        initialise(value, false, true);
+        initialise(value, null);
 
         // Check if the field has changed, and set the owner field as dirty if necessary
         Ellipse2dDouble rect = (Ellipse2dDouble) value;

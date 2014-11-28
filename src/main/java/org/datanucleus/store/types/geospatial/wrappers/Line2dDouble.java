@@ -28,7 +28,7 @@ import org.datanucleus.store.types.SCO;
 /**
  * A mutable second-class java.awt.geom.Line2D.Double object.
  */
-public class Line2dDouble extends java.awt.geom.Line2D.Double implements SCO
+public class Line2dDouble extends java.awt.geom.Line2D.Double implements SCO<java.awt.geom.Line2D.Double>
 {
     private static final long serialVersionUID = 5347062379876836763L;
 
@@ -49,13 +49,21 @@ public class Line2dDouble extends java.awt.geom.Line2D.Double implements SCO
         this.fieldName = mmd.getName();
     }
 
+    /* (non-Javadoc)
+     * @see org.datanucleus.store.types.SCO#initialise(java.lang.Object, java.lang.Object)
+     */
+    public void initialise(java.awt.geom.Line2D.Double newValue, Object oldValue)
+    {
+        super.setLine(newValue);
+    }
+
     /*
      * (non-Javadoc)
-     * @see org.datanucleus.store.types.sco.SCO#initialise(java.lang.Object, boolean, boolean)
+     * @see org.datanucleus.store.types.sco.SCO#initialise(java.lang.Object)
      */
-    public void initialise(Object value, boolean forInsert, boolean forUpdate) throws ClassCastException
+    public void initialise(java.awt.geom.Line2D.Double value)
     {
-        super.setLine((Line2D.Double) value);
+        super.setLine(value);
     }
 
     /*
@@ -70,7 +78,7 @@ public class Line2dDouble extends java.awt.geom.Line2D.Double implements SCO
      * (non-Javadoc)
      * @see org.datanucleus.store.types.sco.SCO#getValue()
      */
-    public Object getValue()
+    public java.awt.geom.Line2D.Double getValue()
     {
         return new java.awt.geom.Line2D.Double(getX1(), getY1(), getX2(), getY2());
     }
@@ -117,7 +125,7 @@ public class Line2dDouble extends java.awt.geom.Line2D.Double implements SCO
      * (non-Javadoc)
      * @see org.datanucleus.store.types.sco.SCO#detachCopy(org.datanucleus.state.FetchPlanState)
      */
-    public Object detachCopy(FetchPlanState state)
+    public java.awt.geom.Line2D.Double detachCopy(FetchPlanState state)
     {
         return new java.awt.geom.Line2D.Double(getX1(), getY1(), getX2(), getY2());
     }
@@ -126,13 +134,13 @@ public class Line2dDouble extends java.awt.geom.Line2D.Double implements SCO
      * (non-Javadoc)
      * @see org.datanucleus.store.types.sco.SCO#attachCopy(java.lang.Object)
      */
-    public void attachCopy(Object value)
+    public void attachCopy(java.awt.geom.Line2D.Double value)
     {
         double oldX1 = getX1();
         double oldY1 = getY1();
         double oldX2 = getX2();
         double oldY2 = getY2();
-        initialise(value, false, true);
+        initialise(value, null);
 
         // Check if the field has changed, and set the owner field as dirty if necessary
         Line2dDouble rect = (Line2dDouble) value;

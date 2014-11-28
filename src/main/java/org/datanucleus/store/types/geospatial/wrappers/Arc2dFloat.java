@@ -30,7 +30,7 @@ import org.datanucleus.store.types.SCO;
 /**
  * A mutable second-class java.awt.geom.Arc2D.Float object.
  */
-public class Arc2dFloat extends java.awt.geom.Arc2D.Float implements SCO
+public class Arc2dFloat extends java.awt.geom.Arc2D.Float implements SCO<java.awt.geom.Arc2D.Float>
 {
     private static final long serialVersionUID = 5319768140588872943L;
 
@@ -51,13 +51,21 @@ public class Arc2dFloat extends java.awt.geom.Arc2D.Float implements SCO
         this.fieldName = mmd.getName();
     }
 
+    /* (non-Javadoc)
+     * @see org.datanucleus.store.types.SCO#initialise(java.lang.Object, java.lang.Object)
+     */
+    public void initialise(java.awt.geom.Arc2D.Float newValue, Object oldValue)
+    {
+        super.setArc(newValue);
+    }
+
     /*
      * (non-Javadoc)
-     * @see org.datanucleus.store.types.sco.SCO#initialise(java.lang.Object, boolean, boolean)
+     * @see org.datanucleus.store.types.sco.SCO#initialise(java.lang.Object)
      */
-    public void initialise(Object value, boolean forInsert, boolean forUpdate) throws ClassCastException
+    public void initialise(java.awt.geom.Arc2D.Float value)
     {
-        super.setArc((Arc2D.Float) value);
+        super.setArc(value);
     }
 
     /*
@@ -72,7 +80,7 @@ public class Arc2dFloat extends java.awt.geom.Arc2D.Float implements SCO
      * (non-Javadoc)
      * @see org.datanucleus.store.types.sco.SCO#getValue()
      */
-    public Object getValue()
+    public java.awt.geom.Arc2D.Float getValue()
     {
         return new java.awt.geom.Arc2D.Float((float) getX(), (float) getY(), (float) getWidth(), (float) getHeight(),
                 (float) getAngleStart(), (float) getAngleExtent(), getArcType());
@@ -120,7 +128,7 @@ public class Arc2dFloat extends java.awt.geom.Arc2D.Float implements SCO
      * (non-Javadoc)
      * @see org.datanucleus.store.types.sco.SCO#detachCopy(org.datanucleus.state.FetchPlanState)
      */
-    public Object detachCopy(FetchPlanState state)
+    public java.awt.geom.Arc2D.Float detachCopy(FetchPlanState state)
     {
         return new java.awt.geom.Arc2D.Float((float) getX(), (float) getY(), (float) getWidth(), (float) getHeight(),
                 (float) getAngleStart(), (float) getAngleExtent(), getArcType());
@@ -130,7 +138,7 @@ public class Arc2dFloat extends java.awt.geom.Arc2D.Float implements SCO
      * (non-Javadoc)
      * @see org.datanucleus.store.types.sco.SCO#attachCopy(java.lang.Object)
      */
-    public void attachCopy(Object value)
+    public void attachCopy(java.awt.geom.Arc2D.Float value)
     {
         double oldX = getX();
         double oldY = getY();
@@ -139,7 +147,7 @@ public class Arc2dFloat extends java.awt.geom.Arc2D.Float implements SCO
         double oldS = getAngleStart();
         double oldE = getAngleExtent();
         double oldT = getArcType();
-        initialise(value, false, true);
+        initialise(value, null);
 
         // Check if the field has changed, and set the owner field as dirty if necessary
         Arc2dFloat rect = (Arc2dFloat) value;

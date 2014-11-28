@@ -27,7 +27,7 @@ import org.datanucleus.store.types.SCO;
 /**
  * A mutable second-class java.awt.geom.Point2D.Float object.
  */
-public class Point2dFloat extends java.awt.geom.Point2D.Float implements SCO
+public class Point2dFloat extends java.awt.geom.Point2D.Float implements SCO<java.awt.geom.Point2D.Float>
 {
     private static final long serialVersionUID = -1944393892272029363L;
 
@@ -48,13 +48,21 @@ public class Point2dFloat extends java.awt.geom.Point2D.Float implements SCO
         this.fieldName = mmd.getName();
     }
 
+    /* (non-Javadoc)
+     * @see org.datanucleus.store.types.SCO#initialise(java.lang.Object, java.lang.Object)
+     */
+    public void initialise(java.awt.geom.Point2D.Float newValue, Object oldValue)
+    {
+        super.setLocation(newValue);
+    }
+
     /*
      * (non-Javadoc)
-     * @see org.datanucleus.store.types.sco.SCO#initialise(java.lang.Object, boolean, boolean)
+     * @see org.datanucleus.store.types.sco.SCO#initialise(java.lang.Object)
      */
-    public void initialise(Object value, boolean forInsert, boolean forUpdate) throws ClassCastException
+    public void initialise(java.awt.geom.Point2D.Float value)
     {
-        super.setLocation((Point2D.Float) value);
+        super.setLocation(value);
     }
 
     /*
@@ -69,7 +77,7 @@ public class Point2dFloat extends java.awt.geom.Point2D.Float implements SCO
      * (non-Javadoc)
      * @see org.datanucleus.store.types.sco.SCO#getValue()
      */
-    public Object getValue()
+    public java.awt.geom.Point2D.Float getValue()
     {
         return new java.awt.geom.Point2D.Float((float) getX(), (float) getY());
     }
@@ -116,7 +124,7 @@ public class Point2dFloat extends java.awt.geom.Point2D.Float implements SCO
      * (non-Javadoc)
      * @see org.datanucleus.store.types.sco.SCO#detachCopy(org.datanucleus.state.FetchPlanState)
      */
-    public Object detachCopy(FetchPlanState state)
+    public java.awt.geom.Point2D.Float detachCopy(FetchPlanState state)
     {
         return new java.awt.geom.Point2D.Float((float) getX(), (float) getY());
     }
@@ -125,11 +133,11 @@ public class Point2dFloat extends java.awt.geom.Point2D.Float implements SCO
      * (non-Javadoc)
      * @see org.datanucleus.store.types.sco.SCO#attachCopy(java.lang.Object)
      */
-    public void attachCopy(Object value)
+    public void attachCopy(java.awt.geom.Point2D.Float value)
     {
         double oldX = getX();
         double oldY = getY();
-        initialise(value, false, true);
+        initialise(value, null);
 
         // Check if the field has changed, and set the owner field as dirty if necessary
         Point2dFloat rect = (Point2dFloat) value;

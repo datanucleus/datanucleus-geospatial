@@ -28,7 +28,7 @@ import org.datanucleus.store.types.SCO;
 /**
  * A mutable second-class java.awt.geom.Line2D.Float object.
  */
-public class Line2dFloat extends java.awt.geom.Line2D.Float implements SCO
+public class Line2dFloat extends java.awt.geom.Line2D.Float implements SCO<java.awt.geom.Line2D.Float>
 {
     private static final long serialVersionUID = 7554204283366263638L;
 
@@ -49,13 +49,21 @@ public class Line2dFloat extends java.awt.geom.Line2D.Float implements SCO
         this.fieldName = mmd.getName();
     }
 
+    /* (non-Javadoc)
+     * @see org.datanucleus.store.types.SCO#initialise(java.lang.Object, java.lang.Object)
+     */
+    public void initialise(java.awt.geom.Line2D.Float newValue, Object oldValue)
+    {
+        super.setLine(newValue);
+    }
+
     /*
      * (non-Javadoc)
-     * @see org.datanucleus.store.types.sco.SCO#initialise(java.lang.Object, boolean, boolean)
+     * @see org.datanucleus.store.types.sco.SCO#initialise(java.lang.Object)
      */
-    public void initialise(Object value, boolean forInsert, boolean forUpdate) throws ClassCastException
+    public void initialise(java.awt.geom.Line2D.Float value)
     {
-        super.setLine((Line2D.Float) value);
+        super.setLine(value);
     }
 
     /*
@@ -70,7 +78,7 @@ public class Line2dFloat extends java.awt.geom.Line2D.Float implements SCO
      * (non-Javadoc)
      * @see org.datanucleus.store.types.sco.SCO#getValue()
      */
-    public Object getValue()
+    public java.awt.geom.Line2D.Float getValue()
     {
         return new java.awt.geom.Line2D.Float((float) getX1(), (float) getY1(), (float) getX2(), (float) getY2());
     }
@@ -117,7 +125,7 @@ public class Line2dFloat extends java.awt.geom.Line2D.Float implements SCO
      * (non-Javadoc)
      * @see org.datanucleus.store.types.sco.SCO#detachCopy(org.datanucleus.state.FetchPlanState)
      */
-    public Object detachCopy(FetchPlanState state)
+    public java.awt.geom.Line2D.Float detachCopy(FetchPlanState state)
     {
         return new java.awt.geom.Line2D.Float((float) getX1(), (float) getY1(), (float) getX2(), (float) getY2());
     }
@@ -126,13 +134,13 @@ public class Line2dFloat extends java.awt.geom.Line2D.Float implements SCO
      * (non-Javadoc)
      * @see org.datanucleus.store.types.sco.SCO#attachCopy(java.lang.Object)
      */
-    public void attachCopy(Object value)
+    public void attachCopy(java.awt.geom.Line2D.Float value)
     {
         double oldX1 = getX1();
         double oldY1 = getY1();
         double oldX2 = getX2();
         double oldY2 = getY2();
-        initialise(value, false, true);
+        initialise(value, null);
 
         // Check if the field has changed, and set the owner field as dirty if necessary
         Line2dFloat rect = (Line2dFloat) value;

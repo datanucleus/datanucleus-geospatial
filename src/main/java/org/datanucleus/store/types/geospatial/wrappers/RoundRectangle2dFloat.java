@@ -30,7 +30,7 @@ import org.datanucleus.store.types.SCO;
 /**
  * A mutable second-class java.awt.geom.RoundRectangle2D.Float object.
  */
-public class RoundRectangle2dFloat extends java.awt.geom.RoundRectangle2D.Float implements SCO
+public class RoundRectangle2dFloat extends java.awt.geom.RoundRectangle2D.Float implements SCO<java.awt.geom.RoundRectangle2D.Float>
 {
     private static final long serialVersionUID = -4033294320394338528L;
 
@@ -50,13 +50,21 @@ public class RoundRectangle2dFloat extends java.awt.geom.RoundRectangle2D.Float 
         this.fieldName = mmd.getName();
     }
 
+    /* (non-Javadoc)
+     * @see org.datanucleus.store.types.SCO#initialise(java.lang.Object, java.lang.Object)
+     */
+    public void initialise(java.awt.geom.RoundRectangle2D.Float newValue, Object oldValue)
+    {
+        super.setRoundRect(newValue);
+    }
+
     /*
      * (non-Javadoc)
-     * @see org.datanucleus.store.types.sco.SCO#initialise(java.lang.Object, boolean, boolean)
+     * @see org.datanucleus.store.types.sco.SCO#initialise(java.lang.Object)
      */
-    public void initialise(Object value, boolean forInsert, boolean forUpdate) throws ClassCastException
+    public void initialise(java.awt.geom.RoundRectangle2D.Float value)
     {
-        super.setRoundRect((RoundRectangle2D.Float) value);
+        super.setRoundRect(value);
     }
 
     /*
@@ -71,7 +79,7 @@ public class RoundRectangle2dFloat extends java.awt.geom.RoundRectangle2D.Float 
      * (non-Javadoc)
      * @see org.datanucleus.store.types.sco.SCO#getValue()
      */
-    public Object getValue()
+    public java.awt.geom.RoundRectangle2D.Float getValue()
     {
         return new java.awt.geom.RoundRectangle2D.Float((float) getX(), (float) getY(), (float) getWidth(), (float) getHeight(),
                 (float) getArcWidth(), (float) getArcHeight());
@@ -119,17 +127,16 @@ public class RoundRectangle2dFloat extends java.awt.geom.RoundRectangle2D.Float 
      * (non-Javadoc)
      * @see org.datanucleus.store.types.sco.SCO#detachCopy(org.datanucleus.state.FetchPlanState)
      */
-    public Object detachCopy(FetchPlanState state)
+    public java.awt.geom.RoundRectangle2D.Float detachCopy(FetchPlanState state)
     {
-        return new java.awt.geom.RoundRectangle2D.Float((float) getX(), (float) getY(), (float) getWidth(), (float) getHeight(),
-                (float) getArcWidth(), (float) getArcHeight());
+        return new java.awt.geom.RoundRectangle2D.Float((float) getX(), (float) getY(), (float) getWidth(), (float) getHeight(), (float) getArcWidth(), (float) getArcHeight());
     }
 
     /*
      * (non-Javadoc)
      * @see org.datanucleus.store.types.sco.SCO#attachCopy(java.lang.Object)
      */
-    public void attachCopy(Object value)
+    public void attachCopy(java.awt.geom.RoundRectangle2D.Float value)
     {
         double oldX = getX();
         double oldY = getY();
@@ -137,7 +144,7 @@ public class RoundRectangle2dFloat extends java.awt.geom.RoundRectangle2D.Float 
         double oldH = getHeight();
         double oldAW = getArcWidth();
         double oldAH = getArcHeight();
-        initialise(value, false, true);
+        initialise(value, null);
 
         // Check if the field has changed, and set the owner field as dirty if necessary
         RoundRectangle2dFloat rect = (RoundRectangle2dFloat) value;

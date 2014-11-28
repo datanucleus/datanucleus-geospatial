@@ -29,7 +29,7 @@ import org.datanucleus.store.types.SCO;
 /**
  * A mutable second-class java.awt.geom.Rectangle2D.Float object.
  */
-public class Rectangle2dFloat extends java.awt.geom.Rectangle2D.Float implements SCO
+public class Rectangle2dFloat extends java.awt.geom.Rectangle2D.Float implements SCO<java.awt.geom.Rectangle2D.Float>
 {
     private static final long serialVersionUID = 6204949069264230370L;
 
@@ -50,13 +50,21 @@ public class Rectangle2dFloat extends java.awt.geom.Rectangle2D.Float implements
         this.fieldName = mmd.getName();
     }
 
+    /* (non-Javadoc)
+     * @see org.datanucleus.store.types.SCO#initialise(java.lang.Object, java.lang.Object)
+     */
+    public void initialise(java.awt.geom.Rectangle2D.Float newValue, Object oldValue)
+    {
+        super.setRect(newValue);
+    }
+
     /*
      * (non-Javadoc)
-     * @see org.datanucleus.store.types.sco.SCO#initialise(java.lang.Object, boolean, boolean)
+     * @see org.datanucleus.store.types.sco.SCO#initialise(java.lang.Object)
      */
-    public void initialise(Object value, boolean forInsert, boolean forUpdate) throws ClassCastException
+    public void initialise(java.awt.geom.Rectangle2D.Float value)
     {
-        super.setRect((Rectangle2D) value);
+        super.setRect(value);
     }
 
     /*
@@ -71,7 +79,7 @@ public class Rectangle2dFloat extends java.awt.geom.Rectangle2D.Float implements
      * (non-Javadoc)
      * @see org.datanucleus.store.types.sco.SCO#getValue()
      */
-    public Object getValue()
+    public java.awt.geom.Rectangle2D.Float getValue()
     {
         return new java.awt.geom.Rectangle2D.Float((float) getX(), (float) getY(), (float) getWidth(), (float) getHeight());
     }
@@ -118,7 +126,7 @@ public class Rectangle2dFloat extends java.awt.geom.Rectangle2D.Float implements
      * (non-Javadoc)
      * @see org.datanucleus.store.types.sco.SCO#detachCopy(org.datanucleus.state.FetchPlanState)
      */
-    public Object detachCopy(FetchPlanState state)
+    public java.awt.geom.Rectangle2D.Float detachCopy(FetchPlanState state)
     {
         return new java.awt.geom.Rectangle2D.Float((float) getX(), (float) getY(), (float) getWidth(), (float) getHeight());
     }
@@ -127,13 +135,13 @@ public class Rectangle2dFloat extends java.awt.geom.Rectangle2D.Float implements
      * (non-Javadoc)
      * @see org.datanucleus.store.types.sco.SCO#attachCopy(java.lang.Object)
      */
-    public void attachCopy(Object value)
+    public void attachCopy(java.awt.geom.Rectangle2D.Float value)
     {
         double oldX = getX();
         double oldY = getY();
         double oldW = getWidth();
         double oldH = getHeight();
-        initialise(value, false, true);
+        initialise(value, null);
 
         // Check if the field has changed, and set the owner field as dirty if necessary
         Rectangle2dFloat rect = (Rectangle2dFloat) value;

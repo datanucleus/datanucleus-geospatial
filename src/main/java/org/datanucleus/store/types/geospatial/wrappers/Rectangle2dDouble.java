@@ -29,7 +29,7 @@ import org.datanucleus.store.types.SCO;
 /**
  * A mutable second-class java.awt.geom.Rectangle2D.Double object.
  */
-public class Rectangle2dDouble extends java.awt.geom.Rectangle2D.Double implements SCO
+public class Rectangle2dDouble extends java.awt.geom.Rectangle2D.Double implements SCO<java.awt.geom.Rectangle2D.Double>
 {
     private static final long serialVersionUID = -348539619563292726L;
 
@@ -50,13 +50,21 @@ public class Rectangle2dDouble extends java.awt.geom.Rectangle2D.Double implemen
         this.fieldName = mmd.getName();
     }
 
+    /* (non-Javadoc)
+     * @see org.datanucleus.store.types.SCO#initialise(java.lang.Object, java.lang.Object)
+     */
+    public void initialise(java.awt.geom.Rectangle2D.Double newValue, Object oldValue)
+    {
+        super.setRect(newValue);
+    }
+
     /*
      * (non-Javadoc)
-     * @see org.datanucleus.store.types.sco.SCO#initialise(java.lang.Object, boolean, boolean)
+     * @see org.datanucleus.store.types.sco.SCO#initialise(java.lang.Object)
      */
-    public void initialise(Object value, boolean forInsert, boolean forUpdate) throws ClassCastException
+    public void initialise(java.awt.geom.Rectangle2D.Double value)
     {
-        super.setRect((Rectangle2D) value);
+        super.setRect(value);
     }
 
     /*
@@ -71,7 +79,7 @@ public class Rectangle2dDouble extends java.awt.geom.Rectangle2D.Double implemen
      * (non-Javadoc)
      * @see org.datanucleus.store.types.sco.SCO#getValue()
      */
-    public Object getValue()
+    public java.awt.geom.Rectangle2D.Double getValue()
     {
         return new java.awt.geom.Rectangle2D.Double(getX(), getY(), getWidth(), getHeight());
     }
@@ -118,7 +126,7 @@ public class Rectangle2dDouble extends java.awt.geom.Rectangle2D.Double implemen
      * (non-Javadoc)
      * @see org.datanucleus.store.types.sco.SCO#detachCopy(org.datanucleus.state.FetchPlanState)
      */
-    public Object detachCopy(FetchPlanState state)
+    public java.awt.geom.Rectangle2D.Double detachCopy(FetchPlanState state)
     {
         return new java.awt.geom.Rectangle2D.Double(getX(), getY(), getWidth(), getHeight());
     }
@@ -127,13 +135,13 @@ public class Rectangle2dDouble extends java.awt.geom.Rectangle2D.Double implemen
      * (non-Javadoc)
      * @see org.datanucleus.store.types.sco.SCO#attachCopy(java.lang.Object)
      */
-    public void attachCopy(Object value)
+    public void attachCopy(java.awt.geom.Rectangle2D.Double value)
     {
         double oldX = getX();
         double oldY = getY();
         double oldW = getWidth();
         double oldH = getHeight();
-        initialise(value, false, true);
+        initialise(value, null);
 
         // Check if the field has changed, and set the owner field as dirty if necessary
         Rectangle2dDouble rect = (Rectangle2dDouble) value;
