@@ -42,14 +42,12 @@ import org.datanucleus.util.NucleusLogger;
  * <p>
  * Helper class to search and access Spatial MetaData. This class wraps some of the spatial functions that
  * datanucleus-spatial offers via JDOQL in "real" Java methods and also adds extended functionality, like
- * reading values from JDO-Metadata and getting CRS (Coordinate Reference System) information from the
- * database.
+ * reading values from JDO-Metadata and getting CRS (Coordinate Reference System) information from the database.
  * </p>
  * <p>
  * The datatypes and terminology used in this class is (like most of datanucleus-spatial) heavily based on
- * OGC's Simple Feature specification. See <a
- * href="http://www.opengeospatial.org/standards/sfa">http://www.opengeospatial.org/standards/sfa</a> for
- * details.
+ * OGC's Simple Feature specification. See <a href="http://www.opengeospatial.org/standards/sfa">http://www.opengeospatial.org/standards/sfa</a> 
+ * for details.
  * </p>
  */
 public class SpatialHelper
