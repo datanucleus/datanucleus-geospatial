@@ -9,7 +9,7 @@
     </parent>
 
     <artifactId>datanucleus-geospatial</artifactId>
-    <version>4.1.0-m3-SNAPSHOT</version>
+    <version>4.1.0-m3</version>
 
     <name>DataNucleus Geospatial</name>
     <description>DataNucleus Geospatial</description>
