@@ -27,7 +27,6 @@ import oracle.spatial.geometry.JGeometry;
 import oracle.sql.STRUCT;
 
 import org.datanucleus.store.types.geospatial.rdbms.schema.OracleSpatialTypeInfo;
-import org.datanucleus.store.rdbms.schema.SQLTypeInfo;
 import org.datanucleus.store.rdbms.table.Column;
 import org.datanucleus.exceptions.NucleusDataStoreException;
 import org.datanucleus.store.rdbms.RDBMSStoreManager;
@@ -51,9 +50,9 @@ public class JGeometryRDBMSMapping extends AbstractDatastoreMapping
         initTypeInfo();
     }
 
-    public SQLTypeInfo getTypeInfo()
+    public int getJDBCType()
     {
-        return storeMgr.getSQLTypeInfoForJDBCType(OracleSpatialTypeInfo.TYPES_SDO_GEOMETRY);
+        return OracleSpatialTypeInfo.TYPES_SDO_GEOMETRY;
     }
 
     public Object getObject(ResultSet rs, int exprIndex)
@@ -86,7 +85,7 @@ public class JGeometryRDBMSMapping extends AbstractDatastoreMapping
         {
             if (value == null)
             {
-                ps.setNull(exprIndex, getTypeInfo().getDataType(), getTypeInfo().getTypeName());
+                ps.setNull(exprIndex, getJDBCType(), getTypeInfo().getTypeName());
             }
             else
             {

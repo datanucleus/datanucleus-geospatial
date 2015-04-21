@@ -54,6 +54,11 @@ public class PGbox2dRDBMSMapping extends AbstractDatastoreMapping
         initTypeInfo();
     }
 
+    public int getJDBCType()
+    {
+        return typeInfo.getDataType();
+    }
+
     public SQLTypeInfo getTypeInfo()
     {
         return typeInfo;

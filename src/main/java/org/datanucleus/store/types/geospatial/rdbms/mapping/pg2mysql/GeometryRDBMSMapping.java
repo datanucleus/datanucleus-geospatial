@@ -55,6 +55,11 @@ public class GeometryRDBMSMapping extends MySQLSpatialRDBMSMapping
         super(mapping, storeMgr, col);
     }
 
+    public int getJDBCType()
+    {
+        return typeInfo.getDataType();
+    }
+
     public SQLTypeInfo getTypeInfo()
     {
         return typeInfo;

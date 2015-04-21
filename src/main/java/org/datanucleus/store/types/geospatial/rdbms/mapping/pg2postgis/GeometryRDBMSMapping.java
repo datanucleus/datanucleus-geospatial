@@ -55,6 +55,11 @@ public class GeometryRDBMSMapping extends AbstractDatastoreMapping
         initTypeInfo();
     }
 
+    public int getJDBCType()
+    {
+        return typeInfo.getDataType();
+    }
+
     public SQLTypeInfo getTypeInfo()
     {
         return typeInfo;
