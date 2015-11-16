@@ -264,6 +264,7 @@ Contributors:
 
     <!-- RDBMS : SQL METHODS -->
     <extension point="org.datanucleus.store.rdbms.sql_method">
+        <!-- Method invocation on object, for JDOQL. -->
         <sql-method class="java.awt.Point" method="getX"
             evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.PointGetXMethod"/>
         <sql-method class="java.awt.Point" method="getY"
@@ -277,54 +278,6 @@ Contributors:
         <sql-method class="java.awt.Rectangle" method="getHeight"
             evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.RectangleGetHeightMethod"/>
 
-        <sql-method method="MySQL.mbrEqual"
-            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.MySqlMbrEqualMethod" datastore="mysql"/>
-        <sql-method method="MySQL.mbrDisjoint"
-            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.MySqlMbrDisjointMethod" datastore="mysql"/>
-        <sql-method method="MySQL.mbrIntersects"
-            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.MySqlMbrIntersectsMethod" datastore="mysql"/>
-        <sql-method method="MySQL.mbrTouches"
-            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.MySqlMbrTouchesMethod" datastore="mysql"/>
-        <sql-method method="MySQL.mbrWithin"
-            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.MySqlMbrWithinMethod" datastore="mysql"/>
-        <sql-method method="MySQL.mbrContains"
-            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.MySqlMbrContainsMethod" datastore="mysql"/>
-        <sql-method method="MySQL.mbrOverlaps"
-            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.MySqlMbrOverlapsMethod" datastore="mysql"/>
-
-        <sql-method method="Oracle.sdo_elem_info_array"
-            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.OracleSdoElemInfoArrayMethod" datastore="oracle"/>
-        <sql-method method="Oracle.sdo_geometry"
-            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.OracleSdoGeometryMethod" datastore="oracle"/>
-        <sql-method method="Oracle.sdo_ordinate_array"
-            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.OracleSdoOrdinateArrayMethod" datastore="oracle"/>
-        <sql-method method="Oracle.sdo_point_type"
-            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.OracleSdoPointTypeMethod" datastore="oracle"/>
-
-        <sql-method method="PostGIS.bboxBelow"
-            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.PostGISBboxBelowMethod" datastore="postgresql"/>
-        <sql-method method="PostGIS.bboxAbove"
-            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.PostGISBboxAboveMethod" datastore="postgresql"/>
-        <sql-method method="PostGIS.bboxLeft"
-            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.PostGISBboxLeftMethod" datastore="postgresql"/>
-        <sql-method method="PostGIS.bboxRight"
-            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.PostGISBboxRightMethod" datastore="postgresql"/>
-        <sql-method method="PostGIS.bboxOverlapsBelow"
-            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.PostGISBboxOverlapsBelowMethod" datastore="postgresql"/>
-        <sql-method method="PostGIS.bboxOverlapsAbove"
-            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.PostGISBboxOverlapsAboveMethod" datastore="postgresql"/>
-        <sql-method method="PostGIS.bboxOverlapsLeft"
-            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.PostGISBboxOverlapsLeftMethod" datastore="postgresql"/>
-        <sql-method method="PostGIS.bboxOverlapsRight"
-            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.PostGISBboxOverlapsRightMethod" datastore="postgresql"/>
-        <sql-method method="PostGIS.bboxContains"
-            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.PostGISBboxContainsMethod" datastore="postgresql"/>
-        <sql-method method="PostGIS.bboxWithin"
-            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.PostGISBboxWithinMethod" datastore="postgresql"/>
-        <sql-method method="PostGIS.sameAs"
-            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.PostGISSameAsMethod" datastore="postgresql"/>
-
-        <!-- This is how methods should be defined eventually -->
         <sql-method class="com.vividsolutions.jts.geom.Point" method="getX"
             evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialXMethod"/>
         <sql-method class="com.vividsolutions.jts.geom.Point" method="getX"
@@ -610,7 +563,55 @@ Contributors:
             evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialEqualsMethod2" datastore="oracle"/>
 		<sql-method class="org.postgis.Geometry" method="equals"
             evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialEqualsMethod3" datastore="postgresql"/>
-            
+
+        <!-- Static method invocation, for JPQL and legacy. -->
+        <sql-method method="MySQL.mbrEqual"
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.MySqlMbrEqualMethod" datastore="mysql"/>
+        <sql-method method="MySQL.mbrDisjoint"
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.MySqlMbrDisjointMethod" datastore="mysql"/>
+        <sql-method method="MySQL.mbrIntersects"
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.MySqlMbrIntersectsMethod" datastore="mysql"/>
+        <sql-method method="MySQL.mbrTouches"
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.MySqlMbrTouchesMethod" datastore="mysql"/>
+        <sql-method method="MySQL.mbrWithin"
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.MySqlMbrWithinMethod" datastore="mysql"/>
+        <sql-method method="MySQL.mbrContains"
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.MySqlMbrContainsMethod" datastore="mysql"/>
+        <sql-method method="MySQL.mbrOverlaps"
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.MySqlMbrOverlapsMethod" datastore="mysql"/>
+
+        <sql-method method="Oracle.sdo_elem_info_array"
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.OracleSdoElemInfoArrayMethod" datastore="oracle"/>
+        <sql-method method="Oracle.sdo_geometry"
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.OracleSdoGeometryMethod" datastore="oracle"/>
+        <sql-method method="Oracle.sdo_ordinate_array"
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.OracleSdoOrdinateArrayMethod" datastore="oracle"/>
+        <sql-method method="Oracle.sdo_point_type"
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.OracleSdoPointTypeMethod" datastore="oracle"/>
+
+        <sql-method method="PostGIS.bboxBelow"
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.PostGISBboxBelowMethod" datastore="postgresql"/>
+        <sql-method method="PostGIS.bboxAbove"
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.PostGISBboxAboveMethod" datastore="postgresql"/>
+        <sql-method method="PostGIS.bboxLeft"
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.PostGISBboxLeftMethod" datastore="postgresql"/>
+        <sql-method method="PostGIS.bboxRight"
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.PostGISBboxRightMethod" datastore="postgresql"/>
+        <sql-method method="PostGIS.bboxOverlapsBelow"
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.PostGISBboxOverlapsBelowMethod" datastore="postgresql"/>
+        <sql-method method="PostGIS.bboxOverlapsAbove"
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.PostGISBboxOverlapsAboveMethod" datastore="postgresql"/>
+        <sql-method method="PostGIS.bboxOverlapsLeft"
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.PostGISBboxOverlapsLeftMethod" datastore="postgresql"/>
+        <sql-method method="PostGIS.bboxOverlapsRight"
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.PostGISBboxOverlapsRightMethod" datastore="postgresql"/>
+        <sql-method method="PostGIS.bboxContains"
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.PostGISBboxContainsMethod" datastore="postgresql"/>
+        <sql-method method="PostGIS.bboxWithin"
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.PostGISBboxWithinMethod" datastore="postgresql"/>
+        <sql-method method="PostGIS.sameAs"
+            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.PostGISSameAsMethod" datastore="postgresql"/>
+
         <sql-method method="Spatial.bboxTest"
             evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialBboxTestMethod"/>
         <sql-method method="Spatial.bboxTest"
