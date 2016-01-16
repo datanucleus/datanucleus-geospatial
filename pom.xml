@@ -48,7 +48,7 @@
         <dependency>
             <groupId>org.datanucleus</groupId>
             <artifactId>datanucleus-api-jdo</artifactId>
-            <version>[${dn.api.jdo.version}, 4.1.99)</version>
+            <version>[${dn.api.jdo.version}, 4.9)</version>
             <scope>provided</scope>
             <optional>true</optional>
         </dependency>
