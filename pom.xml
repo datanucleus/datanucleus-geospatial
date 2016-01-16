@@ -5,11 +5,11 @@
     <parent>
         <groupId>org.datanucleus</groupId>
         <artifactId>datanucleus-maven-parent</artifactId>
-        <version>4.0.5</version>
+        <version>5.0.0</version>
     </parent>
 
     <artifactId>datanucleus-geospatial</artifactId>
-    <version>4.1.1-SNAPSHOT</version>
+    <version>5.0.0-m1-SNAPSHOT</version>
 
     <name>DataNucleus Geospatial</name>
     <description>DataNucleus Geospatial</description>
@@ -21,10 +21,10 @@
     </scm>
 
     <properties>
-        <jdo.version>3.0</jdo.version>
-        <dn.core.version>4.1.0-release</dn.core.version>
-        <dn.api.jdo.version>4.1.0-release</dn.api.jdo.version>
-        <dn.rdbms.version>4.1.0-release</dn.rdbms.version>
+        <jdo.version>3.2.0-m3</jdo.version>
+        <dn.core.version>5.0.0-m1-SNAPSHOT</dn.core.version>
+        <dn.api.jdo.version>5.0.0-m1-SNAPSHOT</dn.api.jdo.version>
+        <dn.rdbms.version>5.0.0-m1-SNAPSHOT</dn.rdbms.version>
     </properties>
 
     <repositories>
@@ -60,8 +60,8 @@
             <optional>true</optional>
         </dependency>
         <dependency>
-            <groupId>javax.jdo</groupId>
-            <artifactId>jdo-api</artifactId>
+            <groupId>org.datanucleus</groupId>
+            <artifactId>javax.jdo</artifactId>
             <version>[${jdo.version}, )</version>
             <scope>provided</scope>
         </dependency>
