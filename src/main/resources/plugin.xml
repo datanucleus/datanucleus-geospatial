@@ -542,204 +542,105 @@ Contributors:
         <sql-method method="Spatial.exteriorRing" evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialExteriorRingMethod"/>
         <sql-method method="Spatial.exteriorRing" evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialExteriorRingMethod2" datastore="oracle"/>
         <sql-method method="Spatial.exteriorRing" evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialExteriorRingMethod3" datastore="postgresql"/>
-        <sql-method method="Spatial.equals"
-            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialEqualsMethod"/>
-        <sql-method method="Spatial.equals"
-            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialEqualsMethod2" datastore="oracle"/>
-        <sql-method method="Spatial.equals"
-            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialEqualsMethod3" datastore="postgresql"/>
-        <sql-method method="Spatial.disjoint"
-            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialDisjointMethod"/>
-        <sql-method method="Spatial.disjoint"
-            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialDisjointMethod2" datastore="oracle"/>
-        <sql-method method="Spatial.disjoint"
-            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialDisjointMethod3" datastore="postgresql"/>
-        <sql-method method="Spatial.intersects"
-            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialIntersectsMethod"/>
-        <sql-method method="Spatial.intersects"
-            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialIntersectsMethod2" datastore="oracle"/>
-        <sql-method method="Spatial.intersects"
-            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialIntersectsMethod3" datastore="postgresql"/>
-        <sql-method method="Spatial.touches"
-            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialTouchesMethod"/>
-        <sql-method method="Spatial.touches"
-            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialTouchesMethod2" datastore="oracle"/>
-        <sql-method method="Spatial.touches"
-            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialTouchesMethod3" datastore="postgresql"/>
-        <sql-method method="Spatial.crosses"
-            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialCrossesMethod"/>
-        <sql-method method="Spatial.crosses"
-            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialCrossesMethod2" datastore="oracle"/>
-        <sql-method method="Spatial.crosses"
-            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialCrossesMethod3" datastore="postgresql"/>
-        <sql-method method="Spatial.crosses"
-            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.MySQLUnsupportedMethod" datastore="mysql"/>
-        <sql-method method="Spatial.within"
-            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialWithinMethod"/>
-        <sql-method method="Spatial.within"
-            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialWithinMethod2" datastore="oracle"/>
-        <sql-method method="Spatial.within"
-            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialWithinMethod3" datastore="postgresql"/>
-        <sql-method method="Spatial.contains"
-            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialContainsMethod"/>
-        <sql-method method="Spatial.contains"
-            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialContainsMethod2" datastore="oracle"/>
-        <sql-method method="Spatial.contains"
-            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialContainsMethod3" datastore="postgresql"/>
-        <sql-method method="Spatial.overlaps"
-            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialOverlapsMethod"/>
-        <sql-method method="Spatial.overlaps"
-            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialOverlapsMethod2" datastore="oracle"/>
-        <sql-method method="Spatial.overlaps"
-            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialOverlapsMethod3" datastore="postgresql"/>
-        <sql-method method="Spatial.relate"
-            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialRelateMethod"/>
-        <sql-method method="Spatial.relate"
-            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialRelateMethod2" datastore="oracle"/>
-        <sql-method method="Spatial.relate"
-            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialRelateMethod3" datastore="postgresql"/>
-        <sql-method method="Spatial.relate"
-            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.MySQLUnsupportedMethod" datastore="mysql"/>
-        <sql-method method="Spatial.isClosed"
-            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialIsClosedMethod"/>
-        <sql-method method="Spatial.isClosed"
-            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialIsClosedMethod2" datastore="oracle"/>
-        <sql-method method="Spatial.isClosed"
-            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialIsClosedMethod3" datastore="postgresql"/>
-        <sql-method method="Spatial.isEmpty"
-            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialIsEmptyMethod"/>
-        <sql-method method="Spatial.isEmpty"
-            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialIsEmptyMethod2" datastore="oracle"/>
-        <sql-method method="Spatial.isEmpty"
-            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialIsEmptyMethod3" datastore="postgresql"/>
-        <sql-method method="Spatial.isEmpty"
-            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.MySQLUnsupportedMethod" datastore="mysql"/>
-        <sql-method method="Spatial.isRing"
-            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialIsRingMethod"/>
-        <sql-method method="Spatial.isRing"
-            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialIsRingMethod2" datastore="oracle"/>
-        <sql-method method="Spatial.isRing"
-            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialIsRingMethod3" datastore="postgresql"/>
-        <sql-method method="Spatial.isRing"
-            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.MySQLUnsupportedMethod" datastore="mysql"/>
-        <sql-method method="Spatial.isSimple"
-            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialIsSimpleMethod"/>
-        <sql-method method="Spatial.isSimple"
-            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialIsSimpleMethod2" datastore="oracle"/>
-        <sql-method method="Spatial.isSimple"
-            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialIsSimpleMethod3" datastore="postgresql"/>
-        <sql-method method="Spatial.isSimple"
-            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.MySQLUnsupportedMethod" datastore="mysql"/>
-        <sql-method method="Spatial.buffer"
-            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialBufferMethod"/>
-        <sql-method method="Spatial.buffer"
-            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialBufferMethod2" datastore="oracle"/>
-        <sql-method method="Spatial.buffer"
-            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialBufferMethod3" datastore="postgresql"/>
-        <sql-method method="Spatial.buffer"
-            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.MySQLUnsupportedMethod" datastore="mysql"/>
-        <sql-method method="Spatial.difference"
-            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialDifferenceMethod"/>
-        <sql-method method="Spatial.difference"
-            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialDifferenceMethod2" datastore="oracle"/>
-        <sql-method method="Spatial.difference"
-            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialDifferenceMethod3" datastore="postgresql"/>
-        <sql-method method="Spatial.difference"
-            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.MySQLUnsupportedMethod" datastore="mysql"/>
-        <sql-method method="Spatial.intersection"
-            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialIntersectionMethod"/>
-        <sql-method method="Spatial.intersection"
-            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialIntersectionMethod2" datastore="oracle"/>
-        <sql-method method="Spatial.intersection"
-            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialIntersectionMethod3" datastore="postgresql"/>
-        <sql-method method="Spatial.intersection"
-            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.MySQLUnsupportedMethod" datastore="mysql"/>
-        <sql-method method="Spatial.union"
-            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialUnionMethod"/>
-        <sql-method method="Spatial.union"
-            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialUnionMethod2" datastore="oracle"/>
-        <sql-method method="Spatial.union"
-            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialUnionMethod3" datastore="postgresql"/>
-        <sql-method method="Spatial.union"
-            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.MySQLUnsupportedMethod" datastore="mysql"/>
-        <sql-method method="Spatial.symDifference"
-            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialSymDifferenceMethod"/>
-        <sql-method method="Spatial.symDifference"
-            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialSymDifferenceMethod2" datastore="oracle"/>
-        <sql-method method="Spatial.symDifference"
-            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialSymDifferenceMethod3" datastore="postgresql"/>
-        <sql-method method="Spatial.symDifference"
-            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.MySQLUnsupportedMethod" datastore="mysql"/>
-        <sql-method method="Spatial.interiorRingN"
-            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialInteriorRingNMethod"/>
-        <sql-method method="Spatial.interiorRingN"
-            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialInteriorRingNMethod2" datastore="oracle"/>
-        <sql-method method="Spatial.interiorRingN"
-            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialInteriorRingNMethod3" datastore="postgresql"/>
-        <sql-method method="Spatial.pointN"
-            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialPointNMethod"/>
-        <sql-method method="Spatial.pointN"
-            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialPointNMethod2" datastore="oracle"/>
-        <sql-method method="Spatial.pointN"
-            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialPointNMethod3" datastore="postgresql"/>
-        <sql-method method="Spatial.geogFromWKB"
-            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialGeographyFromWKBMethod" datastore="postgresql"/>
-        <sql-method method="Spatial.geometryN"
-            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialGeometryNMethod"/>
-        <sql-method method="Spatial.geometryN"
-            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialGeometryNMethod2" datastore="oracle"/>
-        <sql-method method="Spatial.geometryN"
-            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialGeometryNMethod3" datastore="postgresql"/>
-        <sql-method method="Spatial.transform"
-            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialGeomTransformMethod" datastore="postgresql"/>
-        <sql-method method="Spatial.geomFromWKB"
-            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialGeomFromWKBMethod"/>
-        <sql-method method="Spatial.geomFromWKB"
-            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialGeomFromWKBMethod2" datastore="oracle"/>
-        <sql-method method="Spatial.geomFromWKB"
-            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialGeomFromWKBMethod3" datastore="postgresql"/>
-        <sql-method method="Spatial.geomCollFromWKB"
-            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialGeomCollFromWKBMethod"/>
-        <sql-method method="Spatial.geomCollFromWKB"
-            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialGeomCollFromWKBMethod2" datastore="oracle"/>
-        <sql-method method="Spatial.geomCollFromWKB"
-            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialGeomFromWKBMethod3" datastore="postgresql"/>                    
-        <sql-method method="Spatial.pointFromWKB"
-            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialPointFromWKBMethod"/>        
-        <sql-method method="Spatial.pointFromWKB"
-            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialPointFromWKBMethod2" datastore="oracle"/>
-        <sql-method method="Spatial.pointFromWKB"
-            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialGeomFromWKBMethod3" datastore="postgresql"/>
-        <sql-method method="Spatial.mPointFromWKB"
-            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialMPointFromWKBMethod"/>
-        <sql-method method="Spatial.mPointFromWKB"
-            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialMPointFromWKBMethod2" datastore="oracle"/>
-        <sql-method method="Spatial.mPointFromWKB"
-            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialGeomFromWKBMethod3" datastore="postgresql"/>
-        <sql-method method="Spatial.lineFromWKB"
-            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialLineFromWKBMethod"/>
-        <sql-method method="Spatial.lineFromWKB"
-            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialLineFromWKBMethod2" datastore="oracle"/>
-        <sql-method method="Spatial.lineFromWKB"
-            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialGeomFromWKBMethod3" datastore="postgresql"/>
-        <sql-method method="Spatial.mLineFromWKB"
-            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialMLineFromWKBMethod"/>
-        <sql-method method="Spatial.mLineFromWKB"
-            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialMLineFromWKBMethod2" datastore="oracle"/>
-       	<sql-method method="Spatial.mLineFromWKB"
-            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialGeomFromWKBMethod3" datastore="postgresql"/>
-        <sql-method method="Spatial.polyFromWKB"
-            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialPolyFromWKBMethod"/>
-        <sql-method method="Spatial.polyFromWKB"
-            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialPolyFromWKBMethod2" datastore="oracle"/>
-        <sql-method method="Spatial.polyFromWKB"
-            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialGeomFromWKBMethod3" datastore="postgresql"/>
-        <sql-method method="Spatial.mPolyFromWKB"
-            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialMPolyFromWKBMethod"/>
-        <sql-method method="Spatial.mPolyFromWKB"
-            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialMPolyFromWKBMethod2" datastore="oracle"/>
-        <sql-method method="Spatial.mPolyFromWKB"
-            evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialGeomFromWKBMethod3" datastore="postgresql"/>
+        <sql-method method="Spatial.equals" evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialEqualsMethod"/>
+        <sql-method method="Spatial.equals" evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialEqualsMethod2" datastore="oracle"/>
+        <sql-method method="Spatial.equals" evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialEqualsMethod3" datastore="postgresql"/>
+        <sql-method method="Spatial.disjoint" evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialDisjointMethod"/>
+        <sql-method method="Spatial.disjoint" evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialDisjointMethod2" datastore="oracle"/>
+        <sql-method method="Spatial.disjoint" evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialDisjointMethod3" datastore="postgresql"/>
+        <sql-method method="Spatial.intersects" evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialIntersectsMethod"/>
+        <sql-method method="Spatial.intersects" evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialIntersectsMethod2" datastore="oracle"/>
+        <sql-method method="Spatial.intersects" evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialIntersectsMethod3" datastore="postgresql"/>
+        <sql-method method="Spatial.touches" evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialTouchesMethod"/>
+        <sql-method method="Spatial.touches" evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialTouchesMethod2" datastore="oracle"/>
+        <sql-method method="Spatial.touches" evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialTouchesMethod3" datastore="postgresql"/>
+        <sql-method method="Spatial.crosses" evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialCrossesMethod"/>
+        <sql-method method="Spatial.crosses" evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialCrossesMethod2" datastore="oracle"/>
+        <sql-method method="Spatial.crosses" evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialCrossesMethod3" datastore="postgresql"/>
+        <sql-method method="Spatial.crosses" evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.MySQLUnsupportedMethod" datastore="mysql"/>
+        <sql-method method="Spatial.within" evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialWithinMethod"/>
+        <sql-method method="Spatial.within" evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialWithinMethod2" datastore="oracle"/>
+        <sql-method method="Spatial.within" evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialWithinMethod3" datastore="postgresql"/>
+        <sql-method method="Spatial.contains" evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialContainsMethod"/>
+        <sql-method method="Spatial.contains" evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialContainsMethod2" datastore="oracle"/>
+        <sql-method method="Spatial.contains" evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialContainsMethod3" datastore="postgresql"/>
+        <sql-method method="Spatial.overlaps" evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialOverlapsMethod"/>
+        <sql-method method="Spatial.overlaps" evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialOverlapsMethod2" datastore="oracle"/>
+        <sql-method method="Spatial.overlaps" evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialOverlapsMethod3" datastore="postgresql"/>
+        <sql-method method="Spatial.relate" evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialRelateMethod"/>
+        <sql-method method="Spatial.relate" evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialRelateMethod2" datastore="oracle"/>
+        <sql-method method="Spatial.relate" evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialRelateMethod3" datastore="postgresql"/>
+        <sql-method method="Spatial.relate" evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.MySQLUnsupportedMethod" datastore="mysql"/>
+        <sql-method method="Spatial.isClosed" evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialIsClosedMethod"/>
+        <sql-method method="Spatial.isClosed" evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialIsClosedMethod2" datastore="oracle"/>
+        <sql-method method="Spatial.isClosed" evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialIsClosedMethod3" datastore="postgresql"/>
+        <sql-method method="Spatial.isEmpty" evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialIsEmptyMethod"/>
+        <sql-method method="Spatial.isEmpty" evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialIsEmptyMethod2" datastore="oracle"/>
+        <sql-method method="Spatial.isEmpty" evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialIsEmptyMethod3" datastore="postgresql"/>
+        <sql-method method="Spatial.isEmpty" evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.MySQLUnsupportedMethod" datastore="mysql"/>
+        <sql-method method="Spatial.isRing" evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialIsRingMethod"/>
+        <sql-method method="Spatial.isRing" evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialIsRingMethod2" datastore="oracle"/>
+        <sql-method method="Spatial.isRing" evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialIsRingMethod3" datastore="postgresql"/>
+        <sql-method method="Spatial.isRing" evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.MySQLUnsupportedMethod" datastore="mysql"/>
+        <sql-method method="Spatial.isSimple" evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialIsSimpleMethod"/>
+        <sql-method method="Spatial.isSimple" evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialIsSimpleMethod2" datastore="oracle"/>
+        <sql-method method="Spatial.isSimple" evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialIsSimpleMethod3" datastore="postgresql"/>
+        <sql-method method="Spatial.isSimple" evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.MySQLUnsupportedMethod" datastore="mysql"/>
+        <sql-method method="Spatial.buffer" evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialBufferMethod"/>
+        <sql-method method="Spatial.buffer" evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialBufferMethod2" datastore="oracle"/>
+        <sql-method method="Spatial.buffer" evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialBufferMethod3" datastore="postgresql"/>
+        <sql-method method="Spatial.buffer" evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.MySQLUnsupportedMethod" datastore="mysql"/>
+        <sql-method method="Spatial.difference" evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialDifferenceMethod"/>
+        <sql-method method="Spatial.difference" evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialDifferenceMethod2" datastore="oracle"/>
+        <sql-method method="Spatial.difference" evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialDifferenceMethod3" datastore="postgresql"/>
+        <sql-method method="Spatial.difference" evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.MySQLUnsupportedMethod" datastore="mysql"/>
+        <sql-method method="Spatial.intersection" evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialIntersectionMethod"/>
+        <sql-method method="Spatial.intersection" evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialIntersectionMethod2" datastore="oracle"/>
+        <sql-method method="Spatial.intersection" evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialIntersectionMethod3" datastore="postgresql"/>
+        <sql-method method="Spatial.intersection" evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.MySQLUnsupportedMethod" datastore="mysql"/>
+        <sql-method method="Spatial.union" evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialUnionMethod"/>
+        <sql-method method="Spatial.union" evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialUnionMethod2" datastore="oracle"/>
+        <sql-method method="Spatial.union" evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialUnionMethod3" datastore="postgresql"/>
+        <sql-method method="Spatial.union" evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.MySQLUnsupportedMethod" datastore="mysql"/>
+        <sql-method method="Spatial.symDifference" evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialSymDifferenceMethod"/>
+        <sql-method method="Spatial.symDifference" evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialSymDifferenceMethod2" datastore="oracle"/>
+        <sql-method method="Spatial.symDifference" evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialSymDifferenceMethod3" datastore="postgresql"/>
+        <sql-method method="Spatial.symDifference" evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.MySQLUnsupportedMethod" datastore="mysql"/>
+        <sql-method method="Spatial.interiorRingN" evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialInteriorRingNMethod"/>
+        <sql-method method="Spatial.interiorRingN" evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialInteriorRingNMethod2" datastore="oracle"/>
+        <sql-method method="Spatial.interiorRingN" evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialInteriorRingNMethod3" datastore="postgresql"/>
+        <sql-method method="Spatial.pointN" evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialPointNMethod"/>
+        <sql-method method="Spatial.pointN" evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialPointNMethod2" datastore="oracle"/>
+        <sql-method method="Spatial.pointN" evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialPointNMethod3" datastore="postgresql"/>
+        <sql-method method="Spatial.geogFromWKB" evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialGeographyFromWKBMethod" datastore="postgresql"/>
+        <sql-method method="Spatial.geometryN" evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialGeometryNMethod"/>
+        <sql-method method="Spatial.geometryN" evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialGeometryNMethod2" datastore="oracle"/>
+        <sql-method method="Spatial.geometryN" evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialGeometryNMethod3" datastore="postgresql"/>
+        <sql-method method="Spatial.transform" evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialGeomTransformMethod" datastore="postgresql"/>
+        <sql-method method="Spatial.geomFromWKB" evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialGeomFromWKBMethod"/>
+        <sql-method method="Spatial.geomFromWKB" evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialGeomFromWKBMethod2" datastore="oracle"/>
+        <sql-method method="Spatial.geomFromWKB" evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialGeomFromWKBMethod3" datastore="postgresql"/>
+        <sql-method method="Spatial.geomCollFromWKB" evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialGeomCollFromWKBMethod"/>
+        <sql-method method="Spatial.geomCollFromWKB" evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialGeomCollFromWKBMethod2" datastore="oracle"/>
+        <sql-method method="Spatial.geomCollFromWKB" evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialGeomFromWKBMethod3" datastore="postgresql"/>                    
+        <sql-method method="Spatial.pointFromWKB" evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialPointFromWKBMethod"/>        
+        <sql-method method="Spatial.pointFromWKB" evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialPointFromWKBMethod2" datastore="oracle"/>
+        <sql-method method="Spatial.pointFromWKB" evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialGeomFromWKBMethod3" datastore="postgresql"/>
+        <sql-method method="Spatial.mPointFromWKB" evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialMPointFromWKBMethod"/>
+        <sql-method method="Spatial.mPointFromWKB" evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialMPointFromWKBMethod2" datastore="oracle"/>
+        <sql-method method="Spatial.mPointFromWKB" evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialGeomFromWKBMethod3" datastore="postgresql"/>
+        <sql-method method="Spatial.lineFromWKB" evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialLineFromWKBMethod"/>
+        <sql-method method="Spatial.lineFromWKB" evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialLineFromWKBMethod2" datastore="oracle"/>
+        <sql-method method="Spatial.lineFromWKB" evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialGeomFromWKBMethod3" datastore="postgresql"/>
+        <sql-method method="Spatial.mLineFromWKB" evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialMLineFromWKBMethod"/>
+        <sql-method method="Spatial.mLineFromWKB" evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialMLineFromWKBMethod2" datastore="oracle"/>
+       	<sql-method method="Spatial.mLineFromWKB" evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialGeomFromWKBMethod3" datastore="postgresql"/>
+        <sql-method method="Spatial.polyFromWKB" evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialPolyFromWKBMethod"/>
+        <sql-method method="Spatial.polyFromWKB" evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialPolyFromWKBMethod2" datastore="oracle"/>
+        <sql-method method="Spatial.polyFromWKB" evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialGeomFromWKBMethod3" datastore="postgresql"/>
+        <sql-method method="Spatial.mPolyFromWKB" evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialMPolyFromWKBMethod"/>
+        <sql-method method="Spatial.mPolyFromWKB" evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialMPolyFromWKBMethod2" datastore="oracle"/>
+        <sql-method method="Spatial.mPolyFromWKB" evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialGeomFromWKBMethod3" datastore="postgresql"/>
     </extension>
 
     <!-- QUERY INMEMORY METHODS -->
@@ -784,52 +685,31 @@ Contributors:
         <mapping java-type="java.awt.geom.RoundRectangle2D$Float" mapping-class="org.datanucleus.store.types.geospatial.rdbms.mapping.RoundRectangle2dFloatMapping"/>
 
 		<!-- Oracle's JGeometry -->
-		<mapping java-type="oracle.spatial.geometry.JGeometry"
-             mapping-class="org.datanucleus.store.types.geospatial.rdbms.mapping.jgeom.JGeometryMapping"/>
+		<mapping java-type="oracle.spatial.geometry.JGeometry" mapping-class="org.datanucleus.store.types.geospatial.rdbms.mapping.jgeom.JGeometryMapping"/>
 
 		<!-- JTS geometries -->
-		<mapping java-type="com.vividsolutions.jts.geom.Geometry"
-             mapping-class="org.datanucleus.store.types.geospatial.rdbms.mapping.jts.GeometryMapping"/>
-		<mapping java-type="com.vividsolutions.jts.geom.GeometryCollection"
-             mapping-class="org.datanucleus.store.types.geospatial.rdbms.mapping.jts.GeometryCollectionMapping"/>
-		<mapping java-type="com.vividsolutions.jts.geom.LinearRing" 
-            mapping-class="org.datanucleus.store.types.geospatial.rdbms.mapping.jts.LinearRingMapping"/>
-		<mapping java-type="com.vividsolutions.jts.geom.LineString"
-             mapping-class="org.datanucleus.store.types.geospatial.rdbms.mapping.jts.LineStringMapping"/>
-		<mapping java-type="com.vividsolutions.jts.geom.MultiLineString"
-             mapping-class="org.datanucleus.store.types.geospatial.rdbms.mapping.jts.MultiLineStringMapping"/>
-		<mapping java-type="com.vividsolutions.jts.geom.MultiPoint"
-             mapping-class="org.datanucleus.store.types.geospatial.rdbms.mapping.jts.MultiPointMapping"/>
-		<mapping java-type="com.vividsolutions.jts.geom.MultiPolygon"
-             mapping-class="org.datanucleus.store.types.geospatial.rdbms.mapping.jts.MultiPolygonMapping"/>
-		<mapping java-type="com.vividsolutions.jts.geom.Point"
-             mapping-class="org.datanucleus.store.types.geospatial.rdbms.mapping.jts.PointMapping"/>
-		<mapping java-type="com.vividsolutions.jts.geom.Polygon"
-             mapping-class="org.datanucleus.store.types.geospatial.rdbms.mapping.jts.PolygonMapping"/>
+		<mapping java-type="com.vividsolutions.jts.geom.Geometry" mapping-class="org.datanucleus.store.types.geospatial.rdbms.mapping.jts.GeometryMapping"/>
+		<mapping java-type="com.vividsolutions.jts.geom.GeometryCollection" mapping-class="org.datanucleus.store.types.geospatial.rdbms.mapping.jts.GeometryCollectionMapping"/>
+		<mapping java-type="com.vividsolutions.jts.geom.LinearRing" mapping-class="org.datanucleus.store.types.geospatial.rdbms.mapping.jts.LinearRingMapping"/>
+		<mapping java-type="com.vividsolutions.jts.geom.LineString" mapping-class="org.datanucleus.store.types.geospatial.rdbms.mapping.jts.LineStringMapping"/>
+		<mapping java-type="com.vividsolutions.jts.geom.MultiLineString" mapping-class="org.datanucleus.store.types.geospatial.rdbms.mapping.jts.MultiLineStringMapping"/>
+		<mapping java-type="com.vividsolutions.jts.geom.MultiPoint" mapping-class="org.datanucleus.store.types.geospatial.rdbms.mapping.jts.MultiPointMapping"/>
+		<mapping java-type="com.vividsolutions.jts.geom.MultiPolygon" mapping-class="org.datanucleus.store.types.geospatial.rdbms.mapping.jts.MultiPolygonMapping"/>
+		<mapping java-type="com.vividsolutions.jts.geom.Point" mapping-class="org.datanucleus.store.types.geospatial.rdbms.mapping.jts.PointMapping"/>
+		<mapping java-type="com.vividsolutions.jts.geom.Polygon" mapping-class="org.datanucleus.store.types.geospatial.rdbms.mapping.jts.PolygonMapping"/>
 
 		<!-- PostGIS JDBC geometries -->
-		<mapping java-type="org.postgis.PGbox2d"
-             mapping-class="org.datanucleus.store.types.geospatial.rdbms.mapping.pg.PGbox2dMapping"/>
-		<mapping java-type="org.postgis.PGbox3d"
-             mapping-class="org.datanucleus.store.types.geospatial.rdbms.mapping.pg.PGbox3dMapping"/>
-		<mapping java-type="org.postgis.Geometry"
-             mapping-class="org.datanucleus.store.types.geospatial.rdbms.mapping.pg.GeometryMapping"/>
-		<mapping java-type="org.postgis.GeometryCollection"
-             mapping-class="org.datanucleus.store.types.geospatial.rdbms.mapping.pg.GeometryCollectionMapping"/>
-		<mapping java-type="org.postgis.LinearRing"
-             mapping-class="org.datanucleus.store.types.geospatial.rdbms.mapping.pg.LinearRingMapping"/>
-		<mapping java-type="org.postgis.LineString"
-             mapping-class="org.datanucleus.store.types.geospatial.rdbms.mapping.pg.LineStringMapping"/>
-		<mapping java-type="org.postgis.MultiLineString"
-             mapping-class="org.datanucleus.store.types.geospatial.rdbms.mapping.pg.MultiLineStringMapping"/>
-		<mapping java-type="org.postgis.MultiPoint"
-             mapping-class="org.datanucleus.store.types.geospatial.rdbms.mapping.pg.MultiPointMapping"/>
-		<mapping java-type="org.postgis.MultiPolygon"
-             mapping-class="org.datanucleus.store.types.geospatial.rdbms.mapping.pg.MultiPolygonMapping"/>
-		<mapping java-type="org.postgis.Point"
-             mapping-class="org.datanucleus.store.types.geospatial.rdbms.mapping.pg.PointMapping"/>
-		<mapping java-type="org.postgis.Polygon"
-             mapping-class="org.datanucleus.store.types.geospatial.rdbms.mapping.pg.PolygonMapping"/>
+		<mapping java-type="org.postgis.PGbox2d" mapping-class="org.datanucleus.store.types.geospatial.rdbms.mapping.pg.PGbox2dMapping"/>
+		<mapping java-type="org.postgis.PGbox3d" mapping-class="org.datanucleus.store.types.geospatial.rdbms.mapping.pg.PGbox3dMapping"/>
+		<mapping java-type="org.postgis.Geometry" mapping-class="org.datanucleus.store.types.geospatial.rdbms.mapping.pg.GeometryMapping"/>
+		<mapping java-type="org.postgis.GeometryCollection" mapping-class="org.datanucleus.store.types.geospatial.rdbms.mapping.pg.GeometryCollectionMapping"/>
+		<mapping java-type="org.postgis.LinearRing" mapping-class="org.datanucleus.store.types.geospatial.rdbms.mapping.pg.LinearRingMapping"/>
+		<mapping java-type="org.postgis.LineString" mapping-class="org.datanucleus.store.types.geospatial.rdbms.mapping.pg.LineStringMapping"/>
+		<mapping java-type="org.postgis.MultiLineString" mapping-class="org.datanucleus.store.types.geospatial.rdbms.mapping.pg.MultiLineStringMapping"/>
+		<mapping java-type="org.postgis.MultiPoint" mapping-class="org.datanucleus.store.types.geospatial.rdbms.mapping.pg.MultiPointMapping"/>
+		<mapping java-type="org.postgis.MultiPolygon" mapping-class="org.datanucleus.store.types.geospatial.rdbms.mapping.pg.MultiPolygonMapping"/>
+		<mapping java-type="org.postgis.Point" mapping-class="org.datanucleus.store.types.geospatial.rdbms.mapping.pg.PointMapping"/>
+		<mapping java-type="org.postgis.Polygon" mapping-class="org.datanucleus.store.types.geospatial.rdbms.mapping.pg.PolygonMapping"/>
 	</extension>
 
 	<!-- RDBMS : DATASTORE TYPES MAPPING -->
