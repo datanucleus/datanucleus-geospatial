@@ -37,7 +37,7 @@ public class SpatialYMethod3 extends AbstractSQLMethod
         {
             throw new NucleusUserException("Cannot invoke Spatial.y without 1 argument");
         }
-        else if (expr != null && args != null && args.size() > 0)
+        else if (expr != null && args != null && !args.isEmpty())
         {
             throw new NucleusUserException("Cannot invoke geom.getY() with arguments");
         }

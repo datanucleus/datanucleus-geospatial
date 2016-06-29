@@ -34,7 +34,7 @@ public abstract class RectangleComponentMethod extends AbstractSQLMethod
 {
     public SQLExpression getExpressionForMapping(SQLExpression expr, List args, int mappingIndex)
     {
-        if (expr == null || (args != null && args.size() > 0))
+        if (expr == null || (args != null && !args.isEmpty()))
         {
             throw new NucleusUserException("Cannot invoke Rectangle.getX/getY/getWidth/getHeight on null object");
         }

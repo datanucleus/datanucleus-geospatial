@@ -37,7 +37,7 @@ public class SpatialAsTextMethod3 extends AbstractSQLMethod
         {
             throw new NucleusUserException("Cannot invoke Spatial.asText without 1 argument");
         }
-        else if (expr != null && args != null && args.size() > 0)
+        else if (expr != null && args != null && !args.isEmpty())
         {
             throw new NucleusUserException("Cannot invoke geom.asText() with arguments");
         }

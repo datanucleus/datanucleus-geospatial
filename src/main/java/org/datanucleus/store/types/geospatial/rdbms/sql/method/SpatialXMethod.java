@@ -43,7 +43,7 @@ public class SpatialXMethod extends AbstractSQLMethod
         {
             throw new NucleusUserException("Cannot invoke Spatial.x without 1 argument");
         }
-        else if (expr != null && args != null && args.size() > 0)
+        else if (expr != null && args != null && !args.isEmpty())
         {
             throw new NucleusUserException("Cannot invoke geom.getX() with arguments");
         }
