@@ -358,6 +358,7 @@ Contributors:
         <sql-method class="com.vividsolutions.jts.geom.Geometry" method="distance" evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialDistanceMethod"/>
         <sql-method class="com.vividsolutions.jts.geom.Geometry" method="distance" evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialDistanceMethod2" datastore="oracle"/>
         <sql-method class="com.vividsolutions.jts.geom.Geometry" method="distance" evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialDistanceMethod3" datastore="postgresql"/>
+        <sql-method class="com.vividsolutions.jts.geom.Geometry" method="distance" evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialDistanceMethod3" datastore="mysql"/>
         <sql-method class="com.vividsolutions.jts.geom.Geometry" method="buffer" evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialBufferMethod"/>
         <sql-method class="com.vividsolutions.jts.geom.Geometry" method="buffer" evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialBufferMethod2" datastore="oracle"/>
         <sql-method class="com.vividsolutions.jts.geom.Geometry" method="buffer" evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialBufferMethod3" datastore="postgresql"/>
@@ -469,7 +470,7 @@ Contributors:
         <sql-method method="Spatial.distance" evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialDistanceMethod"/>
         <sql-method method="Spatial.distance" evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialDistanceMethod2" datastore="oracle"/>
         <sql-method method="Spatial.distance" evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialDistanceMethod3" datastore="postgresql"/>
-        <sql-method method="Spatial.distance" evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.MySQLUnsupportedMethod" datastore="mysql"/>
+        <sql-method method="Spatial.distance" evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialDistanceMethod3" datastore="mysql"/>
         <sql-method method="Spatial.numPoints" evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialNumPointsMethod"/>
         <sql-method method="Spatial.numPoints" evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialNumPointsMethod2" datastore="oracle"/>
         <sql-method method="Spatial.numPoints" evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialNumPointsMethod3" datastore="postgresql"/>
