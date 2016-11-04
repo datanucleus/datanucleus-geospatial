@@ -21,7 +21,7 @@ import java.awt.geom.CubicCurve2D;
 import java.awt.geom.Point2D;
 
 import org.datanucleus.metadata.AbstractMemberMetaData;
-import org.datanucleus.state.FetchPlanState;
+import org.datanucleus.FetchPlanState;
 import org.datanucleus.state.ObjectProvider;
 import org.datanucleus.store.types.SCO;
 
