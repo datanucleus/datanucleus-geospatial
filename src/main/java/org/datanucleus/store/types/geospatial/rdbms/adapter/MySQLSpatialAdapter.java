@@ -22,7 +22,6 @@ import java.sql.Types;
 
 import org.datanucleus.store.connection.ManagedConnection;
 import org.datanucleus.store.rdbms.adapter.MySQLAdapter;
-import org.datanucleus.store.types.geospatial.rdbms.schema.MySQLSpatialTypeInfo;
 import org.datanucleus.store.rdbms.schema.SQLTypeInfo;
 import org.datanucleus.store.rdbms.table.Column;
 import org.datanucleus.store.rdbms.table.Table;

@@ -17,9 +17,9 @@
  **********************************************************************/
 package org.datanucleus.store.types.geospatial.rdbms.mapping.jts2postgis;
 
-import org.datanucleus.store.types.geospatial.rdbms.schema.PostGISTypeInfo;
 import org.datanucleus.store.rdbms.schema.SQLTypeInfo;
 import org.datanucleus.store.rdbms.table.Column;
+import org.datanucleus.store.types.geospatial.rdbms.adapter.PostGISTypeInfo;
 import org.datanucleus.store.rdbms.RDBMSStoreManager;
 import org.datanucleus.store.rdbms.mapping.java.JavaTypeMapping;
 

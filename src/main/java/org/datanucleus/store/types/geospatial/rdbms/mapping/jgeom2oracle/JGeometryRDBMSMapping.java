@@ -26,8 +26,8 @@ import oracle.jdbc.OracleConnection;
 import oracle.spatial.geometry.JGeometry;
 import oracle.sql.STRUCT;
 
-import org.datanucleus.store.types.geospatial.rdbms.schema.OracleSpatialTypeInfo;
 import org.datanucleus.store.rdbms.table.Column;
+import org.datanucleus.store.types.geospatial.rdbms.adapter.OracleSpatialTypeInfo;
 import org.datanucleus.exceptions.NucleusDataStoreException;
 import org.datanucleus.store.rdbms.RDBMSStoreManager;
 import org.datanucleus.store.rdbms.mapping.datastore.AbstractDatastoreMapping;

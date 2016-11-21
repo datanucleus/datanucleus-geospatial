@@ -17,14 +17,13 @@
  **********************************************************************/
 package org.datanucleus.store.types.geospatial.rdbms.adapter;
 
+import static org.datanucleus.store.types.geospatial.rdbms.adapter.OracleSpatialTypeInfo.TYPES_SDO_GEOMETRY_PATTERN;
+
 import java.sql.DatabaseMetaData;
 import java.sql.Types;
 
-import static org.datanucleus.store.types.geospatial.rdbms.schema.OracleSpatialTypeInfo.TYPES_SDO_GEOMETRY_PATTERN;
-
 import org.datanucleus.store.connection.ManagedConnection;
 import org.datanucleus.store.rdbms.adapter.OracleAdapter;
-import org.datanucleus.store.types.geospatial.rdbms.schema.OracleSpatialTypeInfo;
 import org.datanucleus.store.rdbms.schema.SQLTypeInfo;
 import org.datanucleus.store.rdbms.table.Column;
 import org.datanucleus.store.rdbms.table.Table;

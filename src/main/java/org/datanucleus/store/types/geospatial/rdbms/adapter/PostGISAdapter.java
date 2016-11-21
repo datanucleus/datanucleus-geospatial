@@ -26,7 +26,6 @@ import org.datanucleus.store.connection.ManagedConnection;
 import org.datanucleus.store.rdbms.adapter.PostgreSQLAdapter;
 import org.datanucleus.store.rdbms.identifier.IdentifierFactory;
 import org.datanucleus.store.rdbms.key.PrimaryKey;
-import org.datanucleus.store.types.geospatial.rdbms.schema.PostGISTypeInfo;
 import org.datanucleus.store.rdbms.schema.SQLTypeInfo;
 import org.datanucleus.store.rdbms.table.Column;
 import org.datanucleus.store.rdbms.table.Table;

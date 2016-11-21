@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.datanucleus.store.types.geospatial.rdbms.schema;
+package org.datanucleus.store.types.geospatial.rdbms.adapter;
 
 import java.sql.ResultSet;
 import org.datanucleus.store.rdbms.schema.SQLTypeInfo;

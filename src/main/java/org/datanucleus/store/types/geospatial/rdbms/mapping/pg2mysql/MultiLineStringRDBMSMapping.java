@@ -17,9 +17,9 @@
  **********************************************************************/
 package org.datanucleus.store.types.geospatial.rdbms.mapping.pg2mysql;
 
-import org.datanucleus.store.types.geospatial.rdbms.schema.MySQLSpatialTypeInfo;
 import org.datanucleus.store.rdbms.schema.SQLTypeInfo;
 import org.datanucleus.store.rdbms.table.Column;
+import org.datanucleus.store.types.geospatial.rdbms.adapter.MySQLSpatialTypeInfo;
 import org.datanucleus.store.rdbms.RDBMSStoreManager;
 import org.datanucleus.store.rdbms.mapping.java.JavaTypeMapping;
 

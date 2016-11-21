@@ -16,7 +16,7 @@
 
 package org.datanucleus.store.types.geospatial.rdbms.schema;
 
-import org.datanucleus.store.types.geospatial.rdbms.schema.OracleSpatialTypeInfo;
+import org.datanucleus.store.types.geospatial.rdbms.adapter.OracleSpatialTypeInfo;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 

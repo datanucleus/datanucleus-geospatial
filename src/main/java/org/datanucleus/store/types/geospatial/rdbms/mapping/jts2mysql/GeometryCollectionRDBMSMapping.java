@@ -19,9 +19,9 @@ package org.datanucleus.store.types.geospatial.rdbms.mapping.jts2mysql;
 
 import org.datanucleus.store.rdbms.RDBMSStoreManager;
 import org.datanucleus.store.rdbms.mapping.java.JavaTypeMapping;
-import org.datanucleus.store.types.geospatial.rdbms.schema.MySQLSpatialTypeInfo;
 import org.datanucleus.store.rdbms.schema.SQLTypeInfo;
 import org.datanucleus.store.rdbms.table.Column;
+import org.datanucleus.store.types.geospatial.rdbms.adapter.MySQLSpatialTypeInfo;
 
 /**
  * Mapping for a JTS GeometryCollection object to MySQL.

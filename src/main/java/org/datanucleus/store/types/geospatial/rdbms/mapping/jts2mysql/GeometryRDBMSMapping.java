@@ -22,8 +22,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import org.datanucleus.store.rdbms.mapping.java.JavaTypeMapping;
+import org.datanucleus.store.types.geospatial.rdbms.adapter.MySQLSpatialTypeInfo;
 import org.datanucleus.store.types.geospatial.rdbms.mapping.mysql.MySQLSpatialRDBMSMapping;
-import org.datanucleus.store.types.geospatial.rdbms.schema.MySQLSpatialTypeInfo;
 import org.datanucleus.store.rdbms.schema.SQLTypeInfo;
 import org.datanucleus.store.rdbms.table.Column;
 import org.datanucleus.exceptions.NucleusDataStoreException;
