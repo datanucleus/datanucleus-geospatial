@@ -49,7 +49,7 @@ public class OracleSpatialAdapter extends OracleAdapter implements SpatialRDBMSA
     {
         super.initialiseTypes(handler, mconn);
 
-        SQLTypeInfo sqlType = new org.datanucleus.store.rdbms.schema.OracleTypeInfo("SDO_GEOMETRY", (short) Types.STRUCT, 0, null, null,
+        SQLTypeInfo sqlType = new org.datanucleus.store.rdbms.adapter.OracleTypeInfo("SDO_GEOMETRY", (short) Types.STRUCT, 0, null, null,
                 null, 1, false, (short) 0, false, false, false, "SDO_GEOMETRY", (short) 0, (short) 0, 10);
         addSQLTypeForJDBCType(handler, mconn, (short) OracleSpatialTypeInfo.TYPES_SDO_GEOMETRY, sqlType, true);
     }
