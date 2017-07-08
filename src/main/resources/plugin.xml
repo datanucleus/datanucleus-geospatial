@@ -656,14 +656,6 @@ Contributors:
         <query-method-evaluator class="java.awt.Rectangle" method="contains" evaluator="org.datanucleus.store.types.geospatial.query.inmemory.RectangleContainsMethod"/>
     </extension>
 
-    <!-- QUERY METHOD PREFIXES -->
-    <extension point="org.datanucleus.query_method_prefix">
-        <query-method-prefix prefix="Spatial" alias="Spatial"/>
-        <query-method-prefix prefix="MySQL" alias="MySQL"/>
-        <query-method-prefix prefix="Oracle" alias="Oracle"/>
-        <query-method-prefix prefix="PostGIS" alias="PostGIS"/>
-    </extension>
-
 	<!-- RDBMS : JAVA TYPES MAPPING -->
 	<extension point="org.datanucleus.store.rdbms.java_mapping">
         <mapping java-type="java.awt.Rectangle" mapping-class="org.datanucleus.store.types.geospatial.rdbms.mapping.RectangleMapping"/>
