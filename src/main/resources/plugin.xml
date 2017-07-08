@@ -645,6 +645,14 @@ Contributors:
         <sql-method method="Spatial.mPolyFromWKB" evaluator="org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialGeomFromWKBMethod3" datastore="postgresql"/>
     </extension>
 
+    <!-- QUERY METHOD PREFIXES -->
+    <extension point="org.datanucleus.query_method_prefix">
+        <query-method-prefix prefix="Spatial" alias="Spatial"/>
+        <query-method-prefix prefix="MySQL" alias="MySQL"/>
+        <query-method-prefix prefix="Oracle" alias="Oracle"/>
+        <query-method-prefix prefix="PostGIS" alias="PostGIS"/>
+    </extension>
+
     <!-- QUERY INMEMORY METHODS -->
     <extension point="org.datanucleus.query_method_evaluators">
         <query-method-evaluator class="java.awt.Point" method="getX" evaluator="org.datanucleus.store.types.geospatial.query.inmemory.PointGetXMethod"/>
