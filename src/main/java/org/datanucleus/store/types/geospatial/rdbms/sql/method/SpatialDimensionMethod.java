@@ -22,14 +22,15 @@ import java.util.List;
 
 import org.datanucleus.exceptions.NucleusUserException;
 import org.datanucleus.store.rdbms.mapping.java.JavaTypeMapping;
+import org.datanucleus.store.rdbms.sql.SQLStatement;
 import org.datanucleus.store.rdbms.sql.expression.NumericExpression;
 import org.datanucleus.store.rdbms.sql.expression.SQLExpression;
-import org.datanucleus.store.rdbms.sql.method.AbstractSQLMethod;
+import org.datanucleus.store.rdbms.sql.method.SQLMethod;
 
 /**
  * Implementation of "Spatial.dimension(expr)" or "{expr}.getDimension()" method.
  */
-public class SpatialDimensionMethod extends AbstractSQLMethod
+public class SpatialDimensionMethod implements SQLMethod
 {
     /*
      * (non-Javadoc)
@@ -37,7 +38,7 @@ public class SpatialDimensionMethod extends AbstractSQLMethod
      * org.datanucleus.store.rdbms.sql.method.SQLMethod#getExpression(org.datanucleus.store.rdbms.sql.expression
      * .SQLExpression, java.util.List)
      */
-    public SQLExpression getExpression(SQLExpression expr, List args)
+    public SQLExpression getExpression(SQLStatement stmt, SQLExpression expr, List args)
     {
         if (expr == null && (args == null || args.size() != 1))
         {
@@ -57,7 +58,7 @@ public class SpatialDimensionMethod extends AbstractSQLMethod
         ArrayList funcArgs = new ArrayList();
         funcArgs.add(argExpr);
 
-        JavaTypeMapping m = getMappingForClass(int.class);
+        JavaTypeMapping m = stmt.getSQLExpressionFactory().getMappingForType(int.class);
         return new NumericExpression(stmt, m, "Dimension", funcArgs);
     }
 }

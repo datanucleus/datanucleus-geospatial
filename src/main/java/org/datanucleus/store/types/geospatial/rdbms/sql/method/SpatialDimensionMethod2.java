@@ -20,17 +20,19 @@ package org.datanucleus.store.types.geospatial.rdbms.sql.method;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.datanucleus.ClassLoaderResolver;
 import org.datanucleus.exceptions.NucleusUserException;
 import org.datanucleus.store.rdbms.mapping.java.JavaTypeMapping;
 import org.datanucleus.store.types.geospatial.rdbms.sql.expression.GeometryExpression;
+import org.datanucleus.store.rdbms.sql.SQLStatement;
 import org.datanucleus.store.rdbms.sql.expression.NumericExpression;
 import org.datanucleus.store.rdbms.sql.expression.SQLExpression;
-import org.datanucleus.store.rdbms.sql.method.AbstractSQLMethod;
+import org.datanucleus.store.rdbms.sql.method.SQLMethod;
 
 /**
  * Implementation of "Spatial.dimension(expr)" or "{expr}.getDimension()" method for Oracle.
  */
-public class SpatialDimensionMethod2 extends AbstractSQLMethod
+public class SpatialDimensionMethod2 implements SQLMethod
 {
     /*
      * (non-Javadoc)
@@ -38,7 +40,7 @@ public class SpatialDimensionMethod2 extends AbstractSQLMethod
      * org.datanucleus.store.rdbms.sql.method.SQLMethod#getExpression(org.datanucleus.store.rdbms.sql.expression
      * .SQLExpression, java.util.List)
      */
-    public SQLExpression getExpression(SQLExpression expr, List args)
+    public SQLExpression getExpression(SQLStatement stmt, SQLExpression expr, List args)
     {
         if (expr == null && (args == null || args.size() != 1))
         {
@@ -55,6 +57,7 @@ public class SpatialDimensionMethod2 extends AbstractSQLMethod
             argExpr = (SQLExpression) args.get(0);
         }
 
+        ClassLoaderResolver clr = stmt.getQueryGenerator().getClassLoaderResolver();
         ArrayList geomFuncArgs = new ArrayList();
         geomFuncArgs.add(argExpr);
         GeometryExpression geomExpr = new GeometryExpression(stmt, SpatialMethodHelper.getGeometryMapping(clr, argExpr),
@@ -63,7 +66,7 @@ public class SpatialDimensionMethod2 extends AbstractSQLMethod
         ArrayList funcArgs = new ArrayList();
         funcArgs.add(geomExpr);
 
-        JavaTypeMapping m = getMappingForClass(int.class);
+        JavaTypeMapping m = stmt.getSQLExpressionFactory().getMappingForType(int.class);
         return new NumericExpression(stmt, m, "dimension", funcArgs);
     }
 }

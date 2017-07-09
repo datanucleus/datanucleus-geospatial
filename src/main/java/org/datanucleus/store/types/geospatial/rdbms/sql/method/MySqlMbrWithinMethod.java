@@ -21,13 +21,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.datanucleus.exceptions.NucleusUserException;
+import org.datanucleus.store.rdbms.sql.SQLStatement;
 import org.datanucleus.store.rdbms.sql.expression.SQLExpression;
-import org.datanucleus.store.rdbms.sql.method.AbstractSQLMethod;
+import org.datanucleus.store.rdbms.sql.expression.SQLExpressionFactory;
+import org.datanucleus.store.rdbms.sql.method.SQLMethod;
 
 /**
  * Implementation of "MySQL.mbrWithin" method.
  */
-public class MySqlMbrWithinMethod extends AbstractSQLMethod
+public class MySqlMbrWithinMethod implements SQLMethod
 {
     /*
      * (non-Javadoc)
@@ -35,7 +37,7 @@ public class MySqlMbrWithinMethod extends AbstractSQLMethod
      * org.datanucleus.store.rdbms.sql.method.SQLMethod#getExpression(org.datanucleus.store.rdbms.sql.expression
      * .SQLExpression, java.util.List)
      */
-    public SQLExpression getExpression(SQLExpression ignore, List args)
+    public SQLExpression getExpression(SQLStatement stmt, SQLExpression ignore, List args)
     {
         if (args == null || args.size() != 2)
         {
@@ -49,6 +51,7 @@ public class MySqlMbrWithinMethod extends AbstractSQLMethod
         funcArgs.add(argExpr1);
         funcArgs.add(argExpr2);
 
+        SQLExpressionFactory exprFactory = stmt.getSQLExpressionFactory();
         return SpatialMethodHelper.getBooleanExpression(stmt, "MBRWithin", funcArgs, exprFactory);
     }
 }

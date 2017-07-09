@@ -20,13 +20,14 @@ package org.datanucleus.store.types.geospatial.rdbms.sql.method;
 import java.util.List;
 
 import org.datanucleus.store.query.QueryCompilerSyntaxException;
+import org.datanucleus.store.rdbms.sql.SQLStatement;
 import org.datanucleus.store.rdbms.sql.expression.SQLExpression;
-import org.datanucleus.store.rdbms.sql.method.AbstractSQLMethod;
+import org.datanucleus.store.rdbms.sql.method.SQLMethod;
 
 /**
  * Handler for methods that MySQL doesn't currently support.
  */
-public class MySQLUnsupportedMethod extends AbstractSQLMethod
+public class MySQLUnsupportedMethod implements SQLMethod
 {
     /*
      * (non-Javadoc)
@@ -34,7 +35,7 @@ public class MySQLUnsupportedMethod extends AbstractSQLMethod
      * org.datanucleus.store.rdbms.sql.method.SQLMethod#getExpression(org.datanucleus.store.rdbms.sql.expression
      * .SQLExpression, java.util.List)
      */
-    public SQLExpression getExpression(SQLExpression expr, List args)
+    public SQLExpression getExpression(SQLStatement stmt, SQLExpression expr, List args)
     {
         throw new QueryCompilerSyntaxException("MySQL does not yet (Version 5.1) implement this OGC SF function");
     }

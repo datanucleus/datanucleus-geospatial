@@ -20,16 +20,18 @@ package org.datanucleus.store.types.geospatial.rdbms.sql.method;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.datanucleus.ClassLoaderResolver;
 import org.datanucleus.exceptions.NucleusUserException;
 import org.datanucleus.store.rdbms.mapping.java.JavaTypeMapping;
 import org.datanucleus.store.types.geospatial.rdbms.sql.expression.GeometryExpression;
+import org.datanucleus.store.rdbms.sql.SQLStatement;
 import org.datanucleus.store.rdbms.sql.expression.SQLExpression;
-import org.datanucleus.store.rdbms.sql.method.AbstractSQLMethod;
+import org.datanucleus.store.rdbms.sql.method.SQLMethod;
 
 /**
  * Implementation of Spatial "pointOnSurface" method for Oracle.
  */
-public class SpatialPointOnSurfaceMethod2 extends AbstractSQLMethod
+public class SpatialPointOnSurfaceMethod2 implements SQLMethod
 {
     /*
      * (non-Javadoc)
@@ -37,7 +39,7 @@ public class SpatialPointOnSurfaceMethod2 extends AbstractSQLMethod
      * datanucleus.store.rdbms.sql.expression.SQLExpression, java.util.List)
      * http://docs.oracle.com/cd/B19306_01/appdev.102/b14255/sdo_objgeom.htm#i860858
      */
-    public SQLExpression getExpression(SQLExpression expr, List args)
+    public SQLExpression getExpression(SQLStatement stmt, SQLExpression expr, List args)
     {
         if (args == null || args.size() != 2)
         {
@@ -47,6 +49,7 @@ public class SpatialPointOnSurfaceMethod2 extends AbstractSQLMethod
         SQLExpression argExpr1 = (SQLExpression) args.get(0);
         SQLExpression argExpr2 = (SQLExpression) args.get(1);
 
+        ClassLoaderResolver clr = stmt.getQueryGenerator().getClassLoaderResolver();
         ArrayList funcArgs = new ArrayList();
         funcArgs.add(argExpr1);
         funcArgs.add(argExpr2);

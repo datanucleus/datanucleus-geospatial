@@ -22,15 +22,16 @@ import java.util.List;
 
 import org.datanucleus.exceptions.NucleusUserException;
 import org.datanucleus.store.rdbms.mapping.java.JavaTypeMapping;
+import org.datanucleus.store.rdbms.sql.SQLStatement;
 import org.datanucleus.store.rdbms.sql.expression.SQLExpression;
 import org.datanucleus.store.rdbms.sql.expression.StringExpression;
 import org.datanucleus.store.rdbms.sql.expression.StringLiteral;
-import org.datanucleus.store.rdbms.sql.method.AbstractSQLMethod;
+import org.datanucleus.store.rdbms.sql.method.SQLMethod;
 
 /**
  * Implementation of "Spatial.bboxTest" method for Oracle.
  */
-public class SpatialBboxTestMethod3 extends AbstractSQLMethod
+public class SpatialBboxTestMethod3 implements SQLMethod
 {
     private final static String RELATE_MASK_FOR_BBOXTEST = "MASK=OVERLAPBDYINTERSECT QUERYTYPE=WINDOW";
 
@@ -39,7 +40,7 @@ public class SpatialBboxTestMethod3 extends AbstractSQLMethod
      * @see org.datanucleus.store.rdbms.sql.method.SQLMethod#getExpression(org.
      * datanucleus.store.rdbms.sql.expression.SQLExpression, java.util.List)
      */
-    public SQLExpression getExpression(SQLExpression ignore, List args)
+    public SQLExpression getExpression(SQLStatement stmt, SQLExpression ignore, List args)
     {
         if (args == null || args.size() != 3)
         {
@@ -58,7 +59,7 @@ public class SpatialBboxTestMethod3 extends AbstractSQLMethod
         funcArgs.add(argGeometry2);
         funcArgs.add(argTolerance);
 
-        JavaTypeMapping m = getMappingForClass(String.class);
+        JavaTypeMapping m = stmt.getSQLExpressionFactory().getMappingForType(String.class, true);
         StringExpression relateExp = new StringExpression(stmt, m, "SDO_GEOM.RELATE", funcArgs);
 
         return relateExp.eq(mask);

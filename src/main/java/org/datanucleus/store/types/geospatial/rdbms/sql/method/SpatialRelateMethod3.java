@@ -21,15 +21,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.datanucleus.exceptions.NucleusUserException;
+import org.datanucleus.store.rdbms.sql.SQLStatement;
 import org.datanucleus.store.rdbms.sql.expression.SQLExpression;
-import org.datanucleus.store.rdbms.sql.method.AbstractSQLMethod;
+import org.datanucleus.store.rdbms.sql.expression.SQLExpressionFactory;
+import org.datanucleus.store.rdbms.sql.method.SQLMethod;
 
 /**
  * Implementation of "Spatial.relate(expr, expr2, expr3)" or "expr.relate(expr2,expr3)" method for Postgresql.
  */
-public class SpatialRelateMethod3 extends AbstractSQLMethod
+public class SpatialRelateMethod3 implements SQLMethod
 {
-    public SQLExpression getExpression(SQLExpression expr, List args)
+    public SQLExpression getExpression(SQLStatement stmt, SQLExpression expr, List args)
     {
         if (args == null)
         {
@@ -66,6 +68,7 @@ public class SpatialRelateMethod3 extends AbstractSQLMethod
         funcArgs.add(argExpr2);
         funcArgs.add(argExpr3);
 
+        SQLExpressionFactory exprFactory = stmt.getSQLExpressionFactory();
         return SpatialMethodHelper.getBooleanExpression(stmt, "st_relate", funcArgs, exprFactory);
     }
 }

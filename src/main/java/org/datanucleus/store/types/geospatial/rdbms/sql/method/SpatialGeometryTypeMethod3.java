@@ -22,16 +22,17 @@ import java.util.List;
 
 import org.datanucleus.exceptions.NucleusUserException;
 import org.datanucleus.store.rdbms.mapping.java.JavaTypeMapping;
+import org.datanucleus.store.rdbms.sql.SQLStatement;
 import org.datanucleus.store.rdbms.sql.expression.SQLExpression;
 import org.datanucleus.store.rdbms.sql.expression.StringExpression;
-import org.datanucleus.store.rdbms.sql.method.AbstractSQLMethod;
+import org.datanucleus.store.rdbms.sql.method.SQLMethod;
 
 /**
  * Implementation of "Spatial.geometryType(expr)" or "{expr}.getGeometryType()" method for Postgresql.
  */
-public class SpatialGeometryTypeMethod3 extends AbstractSQLMethod
+public class SpatialGeometryTypeMethod3 implements SQLMethod
 {
-    public SQLExpression getExpression(SQLExpression expr, List args)
+    public SQLExpression getExpression(SQLStatement stmt, SQLExpression expr, List args)
     {
         if (expr == null && (args == null || args.size() != 1))
         {
@@ -51,7 +52,7 @@ public class SpatialGeometryTypeMethod3 extends AbstractSQLMethod
         ArrayList<SQLExpression> funcArgs = new ArrayList<SQLExpression>();
         funcArgs.add(argExpr);
 
-        JavaTypeMapping m = getMappingForClass(String.class);
+        JavaTypeMapping m = stmt.getSQLExpressionFactory().getMappingForType(String.class);
         return new StringExpression(stmt, m, "geometrytype", funcArgs);
     }
 }

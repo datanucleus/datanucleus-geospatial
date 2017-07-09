@@ -23,14 +23,15 @@ import java.util.List;
 import org.datanucleus.exceptions.NucleusUserException;
 import org.datanucleus.store.rdbms.mapping.java.JavaTypeMapping;
 import org.datanucleus.store.types.geospatial.rdbms.sql.expression.GeometryExpression;
+import org.datanucleus.store.rdbms.sql.SQLStatement;
 import org.datanucleus.store.rdbms.sql.expression.NumericExpression;
 import org.datanucleus.store.rdbms.sql.expression.SQLExpression;
-import org.datanucleus.store.rdbms.sql.method.AbstractSQLMethod;
+import org.datanucleus.store.rdbms.sql.method.SQLMethod;
 
 /**
  * Implementation of "Spatial.distance(expr, expr2)" or "{expr}.distance(expr2)" method for Oracle.
  */
-public class SpatialDistanceMethod2 extends AbstractSQLMethod
+public class SpatialDistanceMethod2 implements SQLMethod
 {
     /*
      * (non-Javadoc)
@@ -38,7 +39,7 @@ public class SpatialDistanceMethod2 extends AbstractSQLMethod
      * org.datanucleus.store.rdbms.sql.method.SQLMethod#getExpression(org.datanucleus.store.rdbms.sql.expression
      * .SQLExpression, java.util.List)
      */
-    public SQLExpression getExpression(SQLExpression expr, List args)
+    public SQLExpression getExpression(SQLStatement stmt, SQLExpression expr, List args)
     {
         if (args == null)
         {
@@ -78,7 +79,7 @@ public class SpatialDistanceMethod2 extends AbstractSQLMethod
         ArrayList funcArgs = new ArrayList();
         funcArgs.add(geom1Expr);
         funcArgs.add(geom2Expr);
-        JavaTypeMapping m = getMappingForClass(double.class);
+        JavaTypeMapping m = stmt.getSQLExpressionFactory().getMappingForType(double.class);
         return new NumericExpression(stmt, m, "distance", funcArgs);
     }
 }

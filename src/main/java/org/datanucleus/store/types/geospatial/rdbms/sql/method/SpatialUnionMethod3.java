@@ -20,16 +20,18 @@ package org.datanucleus.store.types.geospatial.rdbms.sql.method;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.datanucleus.ClassLoaderResolver;
 import org.datanucleus.exceptions.NucleusUserException;
 import org.datanucleus.store.rdbms.mapping.java.JavaTypeMapping;
 import org.datanucleus.store.types.geospatial.rdbms.sql.expression.GeometryExpression;
+import org.datanucleus.store.rdbms.sql.SQLStatement;
 import org.datanucleus.store.rdbms.sql.expression.SQLExpression;
-import org.datanucleus.store.rdbms.sql.method.AbstractSQLMethod;
+import org.datanucleus.store.rdbms.sql.method.SQLMethod;
 
 /**
  * Implementation of "Spatial.union(expr, expr2)" or "{expr}.union(expr2)" method for PostGIS.
  */
-public class SpatialUnionMethod3 extends AbstractSQLMethod
+public class SpatialUnionMethod3 implements SQLMethod
 {
     /*
      * (non-Javadoc)
@@ -37,7 +39,7 @@ public class SpatialUnionMethod3 extends AbstractSQLMethod
      * org.datanucleus.store.rdbms.sql.method.SQLMethod#getExpression(org.datanucleus.store.rdbms.sql.expression
      * .SQLExpression, java.util.List)
      */
-    public SQLExpression getExpression(SQLExpression expr, List args)
+    public SQLExpression getExpression(SQLStatement stmt, SQLExpression expr, List args)
     {
         if (args == null)
         {
@@ -70,6 +72,7 @@ public class SpatialUnionMethod3 extends AbstractSQLMethod
         funcArgs.add(argExpr1);
         funcArgs.add(argExpr2);
 
+        ClassLoaderResolver clr = stmt.getQueryGenerator().getClassLoaderResolver();
         JavaTypeMapping geomMapping = SpatialMethodHelper.getGeometryMapping(clr, argExpr1);
         return new GeometryExpression(stmt, geomMapping, "st_union", funcArgs, null);
     }

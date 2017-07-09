@@ -22,14 +22,15 @@ import java.util.List;
 import org.datanucleus.exceptions.NucleusUserException;
 import org.datanucleus.query.expression.Expression;
 import org.datanucleus.query.expression.Expression.DyadicOperator;
+import org.datanucleus.store.rdbms.sql.SQLStatement;
 import org.datanucleus.store.rdbms.sql.expression.BooleanExpression;
 import org.datanucleus.store.rdbms.sql.expression.SQLExpression;
-import org.datanucleus.store.rdbms.sql.method.AbstractSQLMethod;
+import org.datanucleus.store.rdbms.sql.method.SQLMethod;
 
 /**
  * Implementation of "Spatial.bboxTest" method for PostGIS.
  */
-public class SpatialBboxTestMethod extends AbstractSQLMethod
+public class SpatialBboxTestMethod implements SQLMethod
 {
     private static final DyadicOperator BBOX_OVERLAPS = new Expression.DyadicOperator("&&", 3, false);
 
@@ -39,7 +40,7 @@ public class SpatialBboxTestMethod extends AbstractSQLMethod
      * org.datanucleus.store.rdbms.sql.method.SQLMethod#getExpression(org.datanucleus.store.rdbms.sql.expression
      * .SQLExpression, java.util.List)
      */
-    public SQLExpression getExpression(SQLExpression ignore, List args)
+    public SQLExpression getExpression(SQLStatement stmt, SQLExpression ignore, List args)
     {
         if (args == null || args.size() != 2)
         {

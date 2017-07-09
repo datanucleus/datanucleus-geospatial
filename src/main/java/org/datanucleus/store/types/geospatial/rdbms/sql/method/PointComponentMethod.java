@@ -23,16 +23,17 @@ import org.datanucleus.exceptions.NucleusException;
 import org.datanucleus.exceptions.NucleusUserException;
 import org.datanucleus.store.types.geospatial.rdbms.mapping.PointMapping;
 import org.datanucleus.store.rdbms.mapping.datastore.DatastoreMapping;
+import org.datanucleus.store.rdbms.sql.SQLStatement;
 import org.datanucleus.store.rdbms.sql.expression.NumericExpression;
 import org.datanucleus.store.rdbms.sql.expression.SQLExpression;
-import org.datanucleus.store.rdbms.sql.method.AbstractSQLMethod;
+import org.datanucleus.store.rdbms.sql.method.SQLMethod;
 
 /**
  * Abstract implementation of method for component access to Point objects.
  */
-public abstract class PointComponentMethod extends AbstractSQLMethod
+public abstract class PointComponentMethod implements SQLMethod
 {
-    public SQLExpression getExpressionForMapping(SQLExpression expr, List args, int mappingIndex)
+    public SQLExpression getExpressionForMapping(SQLStatement stmt, SQLExpression expr, List args, int mappingIndex)
     {
         if (expr == null || (args != null && !args.isEmpty()))
         {

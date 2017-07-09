@@ -21,13 +21,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.datanucleus.exceptions.NucleusUserException;
+import org.datanucleus.store.rdbms.sql.SQLStatement;
 import org.datanucleus.store.rdbms.sql.expression.SQLExpression;
-import org.datanucleus.store.rdbms.sql.method.AbstractSQLMethod;
+import org.datanucleus.store.rdbms.sql.expression.SQLExpressionFactory;
+import org.datanucleus.store.rdbms.sql.method.SQLMethod;
 
 /**
  * Implementation of "Spatial.overlaps(expr1, expr2)" or "{expr}.overlaps(expr2)" method.
  */
-public class SpatialOverlapsMethod extends AbstractSQLMethod
+public class SpatialOverlapsMethod implements SQLMethod
 {
     /*
      * (non-Javadoc)
@@ -35,7 +37,7 @@ public class SpatialOverlapsMethod extends AbstractSQLMethod
      * org.datanucleus.store.rdbms.sql.method.SQLMethod#getExpression(org.datanucleus.store.rdbms.sql.expression
      * .SQLExpression, java.util.List)
      */
-    public SQLExpression getExpression(SQLExpression expr, List args)
+    public SQLExpression getExpression(SQLStatement stmt, SQLExpression expr, List args)
     {
         if (args == null)
         {
@@ -68,6 +70,7 @@ public class SpatialOverlapsMethod extends AbstractSQLMethod
         funcArgs.add(argExpr1);
         funcArgs.add(argExpr2);
 
+        SQLExpressionFactory exprFactory = stmt.getSQLExpressionFactory();
         return SpatialMethodHelper.getBooleanExpression(stmt, "Overlaps", funcArgs, exprFactory);
     }
 }

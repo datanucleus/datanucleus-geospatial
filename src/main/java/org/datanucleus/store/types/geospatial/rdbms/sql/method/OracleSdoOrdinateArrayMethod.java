@@ -23,14 +23,16 @@ import java.util.List;
 import org.datanucleus.exceptions.NucleusUserException;
 import org.datanucleus.store.rdbms.mapping.java.JavaTypeMapping;
 import org.datanucleus.store.types.geospatial.rdbms.sql.expression.GeometryExpression;
+import org.datanucleus.store.rdbms.sql.SQLStatement;
 import org.datanucleus.store.rdbms.sql.expression.SQLExpression;
+import org.datanucleus.store.rdbms.sql.expression.SQLExpressionFactory;
 import org.datanucleus.store.rdbms.sql.expression.StringLiteral;
-import org.datanucleus.store.rdbms.sql.method.AbstractSQLMethod;
+import org.datanucleus.store.rdbms.sql.method.SQLMethod;
 
 /**
  * Implementation of "Oracle.sdo_ordinate_array" method.
  */
-public class OracleSdoOrdinateArrayMethod extends AbstractSQLMethod
+public class OracleSdoOrdinateArrayMethod implements SQLMethod
 {
     /*
      * (non-Javadoc)
@@ -38,7 +40,7 @@ public class OracleSdoOrdinateArrayMethod extends AbstractSQLMethod
      * org.datanucleus.store.rdbms.sql.method.SQLMethod#getExpression(org.datanucleus.store.rdbms.sql.expression
      * .SQLExpression, java.util.List)
      */
-    public SQLExpression getExpression(SQLExpression ignore, List args)
+    public SQLExpression getExpression(SQLStatement stmt, SQLExpression ignore, List args)
     {
         if (args == null || args.size() != 1)
         {
@@ -50,12 +52,13 @@ public class OracleSdoOrdinateArrayMethod extends AbstractSQLMethod
         ArrayList funcArgs = new ArrayList();
         if (numbersExpr instanceof StringLiteral)
         {
-            JavaTypeMapping m = getMappingForClass(Double.class);
+            JavaTypeMapping m = stmt.getSQLExpressionFactory().getMappingForType(Double.class);
 
             // Numbers is a comma separated list of doubles
             String[] token = ((String) ((StringLiteral) numbersExpr).getValue()).split(",");
             try
             {
+                SQLExpressionFactory exprFactory = stmt.getSQLExpressionFactory();
                 for (int i = 0; i < token.length; i++)
                 {
                     SQLExpression numberLit = exprFactory.newLiteral(stmt, m, Double.valueOf(token[i]));

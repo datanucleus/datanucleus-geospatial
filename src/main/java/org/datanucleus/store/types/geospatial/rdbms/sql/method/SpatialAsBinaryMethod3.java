@@ -22,16 +22,17 @@ import java.util.List;
 
 import org.datanucleus.exceptions.NucleusUserException;
 import org.datanucleus.store.rdbms.mapping.java.JavaTypeMapping;
+import org.datanucleus.store.rdbms.sql.SQLStatement;
 import org.datanucleus.store.rdbms.sql.expression.BinaryExpression;
 import org.datanucleus.store.rdbms.sql.expression.SQLExpression;
-import org.datanucleus.store.rdbms.sql.method.AbstractSQLMethod;
+import org.datanucleus.store.rdbms.sql.method.SQLMethod;
 
 /**
  * Implementation of Spatial "asBinary" method for Postgresql.
  */
-public class SpatialAsBinaryMethod3 extends AbstractSQLMethod
+public class SpatialAsBinaryMethod3 implements SQLMethod
 {
-    public SQLExpression getExpression(SQLExpression expr, List args)
+    public SQLExpression getExpression(SQLStatement stmt, SQLExpression expr, List args)
     {
         if (args == null || args.size() != 1)
         {
@@ -43,7 +44,7 @@ public class SpatialAsBinaryMethod3 extends AbstractSQLMethod
         ArrayList<SQLExpression> funcArgs = new ArrayList<SQLExpression>();
         funcArgs.add(argExpr1);
 
-        JavaTypeMapping m = getMappingForClass(String.class);
+        JavaTypeMapping m = stmt.getSQLExpressionFactory().getMappingForType(String.class, true);
         return new BinaryExpression(stmt, m, "st_asbinary", funcArgs, null);
     }
 }

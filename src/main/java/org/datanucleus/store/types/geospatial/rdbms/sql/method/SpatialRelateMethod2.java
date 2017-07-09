@@ -22,13 +22,15 @@ import java.util.List;
 
 import org.datanucleus.exceptions.NucleusUserException;
 import org.datanucleus.store.types.geospatial.rdbms.sql.expression.GeometryExpression;
+import org.datanucleus.store.rdbms.sql.SQLStatement;
 import org.datanucleus.store.rdbms.sql.expression.SQLExpression;
-import org.datanucleus.store.rdbms.sql.method.AbstractSQLMethod;
+import org.datanucleus.store.rdbms.sql.expression.SQLExpressionFactory;
+import org.datanucleus.store.rdbms.sql.method.SQLMethod;
 
 /**
  * Implementation of "Spatial.relate(expr, expr2, expr3)" or "expr.relate(expr2,expr3)" method for Oracle.
  */
-public class SpatialRelateMethod2 extends AbstractSQLMethod
+public class SpatialRelateMethod2 implements SQLMethod
 {
     /*
      * (non-Javadoc)
@@ -36,7 +38,7 @@ public class SpatialRelateMethod2 extends AbstractSQLMethod
      * org.datanucleus.store.rdbms.sql.method.SQLMethod#getExpression(org.datanucleus.store.rdbms.sql.expression
      * .SQLExpression, java.util.List)
      */
-    public SQLExpression getExpression(SQLExpression expr, List args)
+    public SQLExpression getExpression(SQLStatement stmt, SQLExpression expr, List args)
     {
         if (args == null)
         {
@@ -81,6 +83,7 @@ public class SpatialRelateMethod2 extends AbstractSQLMethod
         funcArgs.add(geomExpr2);
         funcArgs.add(argExpr3);
 
+        SQLExpressionFactory exprFactory = stmt.getSQLExpressionFactory();
         return SpatialMethodHelper.getBooleanExpression(stmt, "relate", funcArgs, exprFactory);
     }
 }

@@ -22,16 +22,17 @@ import java.util.List;
 
 import org.datanucleus.exceptions.NucleusUserException;
 import org.datanucleus.store.rdbms.mapping.java.JavaTypeMapping;
+import org.datanucleus.store.rdbms.sql.SQLStatement;
 import org.datanucleus.store.rdbms.sql.expression.NumericExpression;
 import org.datanucleus.store.rdbms.sql.expression.SQLExpression;
-import org.datanucleus.store.rdbms.sql.method.AbstractSQLMethod;
+import org.datanucleus.store.rdbms.sql.method.SQLMethod;
 
 /**
  * Implementation of "Spatial.dimension(expr)" or "{expr}.getDimension()" method for Postgresql.
  */
-public class SpatialDimensionMethod3 extends AbstractSQLMethod
+public class SpatialDimensionMethod3 implements SQLMethod
 {
-    public SQLExpression getExpression(SQLExpression expr, List args)
+    public SQLExpression getExpression(SQLStatement stmt, SQLExpression expr, List args)
     {
         if (expr == null && (args == null || args.size() != 1))
         {
@@ -56,7 +57,7 @@ public class SpatialDimensionMethod3 extends AbstractSQLMethod
         ArrayList<SQLExpression> funcArgs = new ArrayList<SQLExpression>();
         funcArgs.add(argExpr1);
 
-        JavaTypeMapping m = getMappingForClass(int.class);
+        JavaTypeMapping m = stmt.getSQLExpressionFactory().getMappingForType(int.class);
         return new NumericExpression(stmt, m, "st_dimension", funcArgs);
     }
 }

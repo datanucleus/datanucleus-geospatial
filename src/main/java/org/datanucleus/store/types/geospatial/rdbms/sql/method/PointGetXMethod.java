@@ -19,6 +19,7 @@ package org.datanucleus.store.types.geospatial.rdbms.sql.method;
 
 import java.util.List;
 
+import org.datanucleus.store.rdbms.sql.SQLStatement;
 import org.datanucleus.store.rdbms.sql.expression.SQLExpression;
 
 /**
@@ -32,8 +33,8 @@ public class PointGetXMethod extends PointComponentMethod
      * org.datanucleus.store.rdbms.sql.method.SQLMethod#getExpression(org.datanucleus.store.rdbms.sql.expression
      * .SQLExpression, java.util.List)
      */
-    public SQLExpression getExpression(SQLExpression expr, List args)
+    public SQLExpression getExpression(SQLStatement stmt, SQLExpression expr, List args)
     {
-        return getExpressionForMapping(expr, args, 0);
+        return getExpressionForMapping(stmt, expr, args, 0);
     }
 }

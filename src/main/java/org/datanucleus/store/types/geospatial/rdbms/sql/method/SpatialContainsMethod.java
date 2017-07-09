@@ -21,13 +21,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.datanucleus.exceptions.NucleusUserException;
+import org.datanucleus.store.rdbms.sql.SQLStatement;
 import org.datanucleus.store.rdbms.sql.expression.SQLExpression;
-import org.datanucleus.store.rdbms.sql.method.AbstractSQLMethod;
+import org.datanucleus.store.rdbms.sql.expression.SQLExpressionFactory;
+import org.datanucleus.store.rdbms.sql.method.SQLMethod;
 
 /**
  * Implementation of "Spatial.contains(expr, argExpr)" or "{expr}.contains(argExpr)" method.
  */
-public class SpatialContainsMethod extends AbstractSQLMethod
+public class SpatialContainsMethod implements SQLMethod
 {
     /*
      * (non-Javadoc)
@@ -35,7 +37,7 @@ public class SpatialContainsMethod extends AbstractSQLMethod
      * org.datanucleus.store.rdbms.sql.method.SQLMethod#getExpression(org.datanucleus.store.rdbms.sql.expression
      * .SQLExpression, java.util.List)
      */
-    public SQLExpression getExpression(SQLExpression expr, List args)
+    public SQLExpression getExpression(SQLStatement stmt, SQLExpression expr, List args)
     {
         if (args == null)
         {
@@ -68,6 +70,7 @@ public class SpatialContainsMethod extends AbstractSQLMethod
         funcArgs.add(argExpr1);
         funcArgs.add(argExpr2);
 
+        SQLExpressionFactory exprFactory = stmt.getSQLExpressionFactory();
         return SpatialMethodHelper.getBooleanExpression(stmt, "Contains", funcArgs, exprFactory);
     }
 }
