@@ -32,7 +32,6 @@ import org.datanucleus.state.ObjectProvider;
 import org.datanucleus.store.rdbms.RDBMSStoreManager;
 import org.datanucleus.store.rdbms.mapping.MappingCallbacks;
 import org.datanucleus.store.rdbms.mapping.datastore.DatastoreMapping;
-import org.datanucleus.store.rdbms.mapping.datastore.AbstractDatastoreMapping;
 import org.datanucleus.store.rdbms.mapping.datastore.OracleBlobRDBMSMapping;
 import org.datanucleus.store.rdbms.mapping.java.SingleFieldMultiMapping;
 import org.datanucleus.store.rdbms.table.Table;
@@ -171,11 +170,7 @@ public class GeometryMapping extends SingleFieldMultiMapping implements MappingC
             if (exprIndex.length == 2)
             {
                 DatastoreMapping mapping = getDatastoreMapping(1);
-                if (mapping instanceof AbstractDatastoreMapping && !((AbstractDatastoreMapping) mapping).insertValuesOnInsert())
-                {
-
-                }
-                else
+                if (mapping.insertValuesOnInsert())
                 {
                     getDatastoreMapping(1).setObject(ps, exprIndex[1], geom.getUserData());
                 }
