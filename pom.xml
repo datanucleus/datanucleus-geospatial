@@ -84,6 +84,7 @@
             <version>11.2.0</version>
             <optional>true</optional>
         </dependency>
+
         <dependency>
             <groupId>com.vividsolutions</groupId>
             <artifactId>jts</artifactId>
@@ -96,6 +97,7 @@
             <version>1.12</version>
             <optional>true</optional>
         </dependency>
+
         <dependency>
             <groupId>postgresql</groupId>
             <artifactId>postgresql</artifactId>
@@ -114,6 +116,7 @@
             <version>1.1.5</version>
             <optional>true</optional>
         </dependency>
+
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>

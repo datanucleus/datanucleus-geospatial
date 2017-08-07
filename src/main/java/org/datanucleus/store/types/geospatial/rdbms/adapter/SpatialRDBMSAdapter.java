@@ -40,8 +40,7 @@ public interface SpatialRDBMSAdapter extends DatastoreAdapter
     boolean isGeometryColumn(Column column);
 
     /**
-     * Returns the appropriate SQL statement to retrieve description of the Coordinate Reference System (CRS)
-     * with the given srid.
+     * Returns the appropriate SQL statement to retrieve description of the Coordinate Reference System (CRS) with the given srid.
      * @param table A table
      * @param srid The srid
      * @return SQL statement, <code>null</code> if not available for the datastore
@@ -49,8 +48,7 @@ public interface SpatialRDBMSAdapter extends DatastoreAdapter
     String getRetrieveCrsWktStatement(Table table, int srid);
 
     /**
-     * Returns the appropriate SQL statement to retrieve the name of the Coordinate Reference System (CRS)
-     * with the given srid.
+     * Returns the appropriate SQL statement to retrieve the name of the Coordinate Reference System (CRS) with the given srid.
      * @param table A table
      * @param srid The srid
      * @return SQL statement, <code>null</code> if not available for the datastore
