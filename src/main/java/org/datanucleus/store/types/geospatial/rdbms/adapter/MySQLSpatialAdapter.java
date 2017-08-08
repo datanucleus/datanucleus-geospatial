@@ -176,11 +176,8 @@ public class MySQLSpatialAdapter extends MySQLAdapter implements SpatialRDBMSAda
             if ("Spatial.geomCollFromText".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialGeomCollFromTextMethod.class;
             if ("Spatial.envelope".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialEnvelopeMethod.class;
             if ("Spatial.boundary".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialBoundaryMethod.class;
-            if ("Spatial.convexHull".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.MySQLUnsupportedMethod.class;
             if ("Spatial.startPoint".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialStartPointMethod.class;
             if ("Spatial.endPoint".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialEndPointMethod.class;
-            if ("Spatial.centroid".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.MySQLUnsupportedMethod.class;
-            if ("Spatial.pointOnSurface".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.MySQLUnsupportedMethod.class;
             if ("Spatial.exteriorRing".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialExteriorRingMethod.class;
             if ("Spatial.equals".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialEqualsMethod.class;
             if ("Spatial.disjoint".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialDisjointMethod.class;
@@ -195,11 +192,6 @@ public class MySQLSpatialAdapter extends MySQLAdapter implements SpatialRDBMSAda
             if ("Spatial.isEmpty".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialIsEmptyMethod3.class;
             if ("Spatial.isRing".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialIsRingMethod3.class;
             if ("Spatial.isSimple".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialIsSimpleMethod3.class;
-            if ("Spatial.buffer".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.MySQLUnsupportedMethod.class;
-            if ("Spatial.difference".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.MySQLUnsupportedMethod.class;
-            if ("Spatial.intersection".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.MySQLUnsupportedMethod.class;
-            if ("Spatial.union".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.MySQLUnsupportedMethod.class;
-            if ("Spatial.symDifference".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.MySQLUnsupportedMethod.class;
             if ("Spatial.interiorRingN".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialInteriorRingNMethod.class;
             if ("Spatial.pointN".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialPointNMethod.class;
             if ("Spatial.geometryN".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialGeometryNMethod.class;
@@ -211,6 +203,16 @@ public class MySQLSpatialAdapter extends MySQLAdapter implements SpatialRDBMSAda
             if ("Spatial.mLineFromWKB".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialMLineFromWKBMethod.class;
             if ("Spatial.polyFromWKB".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialPolyFromWKBMethod.class;
             if ("Spatial.mPolyFromWKB".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialMPolyFromWKBMethod.class;
+
+            // TODO Maybe we should just omit these, since not supported by MySQL/MariaDB
+            if ("Spatial.convexHull".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.MySQLUnsupportedMethod.class;
+            if ("Spatial.centroid".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.MySQLUnsupportedMethod.class;
+            if ("Spatial.pointOnSurface".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.MySQLUnsupportedMethod.class;
+            if ("Spatial.buffer".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.MySQLUnsupportedMethod.class;
+            if ("Spatial.difference".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.MySQLUnsupportedMethod.class;
+            if ("Spatial.intersection".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.MySQLUnsupportedMethod.class;
+            if ("Spatial.union".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.MySQLUnsupportedMethod.class;
+            if ("Spatial.symDifference".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.MySQLUnsupportedMethod.class;
         }
         else
         {
@@ -243,18 +245,20 @@ public class MySQLSpatialAdapter extends MySQLAdapter implements SpatialRDBMSAda
                 if ("crosses".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialCrossesMethod.class;
                 if ("within".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialWithinMethod.class;
                 if ("intersects".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialIntersectsMethod.class;
-                if ("intersection".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialIntersectionMethod.class;
                 if ("equals".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialEqualsMethod.class;
                 if ("disjoint".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialDisjointMethod.class;
                 if ("relate".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialRelateMethod.class;
-                if ("difference".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialDifferenceMethod.class;
-                if ("symDifference".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialSymDifferenceMethod.class;
-                if ("getCentroid".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialCentroidMethod.class;
                 if ("toText".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialAsTextMethod.class;
-                if ("union".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialUnionMethod.class;
                 if ("getGeometryType".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialGeometryTypeMethod.class;
                 if ("distance".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialDistanceMethod3.class;
+
+                // TODO These are marked as not supported via Spatial function, but not here. Why?
+                if ("intersection".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialIntersectionMethod.class;
                 if ("buffer".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialBufferMethod.class;
+                if ("symDifference".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialSymDifferenceMethod.class;
+                if ("difference".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialDifferenceMethod.class;
+                if ("getCentroid".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialCentroidMethod.class;
+                if ("union".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialUnionMethod.class;
                 if ("convexHull".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialConvexHullMethod.class;
             }
             if ("com.vividsolutions.jts.geom.LineString".equals(className) || (cls != null && com.vividsolutions.jts.geom.LineString.class.isAssignableFrom(cls)))
