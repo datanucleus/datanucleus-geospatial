@@ -117,9 +117,9 @@ public class PostGISAdapter extends PostgreSQLAdapter implements SpatialRDBMSAda
         registerDatastoreMapping(org.postgis.Polygon.class.getName(), org.datanucleus.store.types.geospatial.rdbms.mapping.pg2postgis.GeometryRDBMSMapping.class, 
             JDBCType.OTHER, "geometry", true);
         registerDatastoreMapping(org.postgis.PGbox2d.class.getName(), org.datanucleus.store.types.geospatial.rdbms.mapping.pg2postgis.GeometryRDBMSMapping.class, 
-            JDBCType.OTHER, "geometry", true);
+            JDBCType.OTHER, "box2d", true);
         registerDatastoreMapping(org.postgis.PGbox3d.class.getName(), org.datanucleus.store.types.geospatial.rdbms.mapping.pg2postgis.GeometryRDBMSMapping.class, 
-            JDBCType.OTHER, "geometry", true);
+            JDBCType.OTHER, "box3d", true);
 
         super.loadDatastoreMappings(mgr, clr);
     }
