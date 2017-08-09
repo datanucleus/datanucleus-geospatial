@@ -112,13 +112,13 @@ public class PostGISAdapter extends PostgreSQLAdapter implements SpatialRDBMSAda
             JDBCType.OTHER, "geometry", true);
         registerDatastoreMapping(org.postgis.MultiPoint.class.getName(), org.datanucleus.store.types.geospatial.rdbms.mapping.pg2postgis.MultiPointRDBMSMapping.class, 
             JDBCType.OTHER, "geometry", true);
-        registerDatastoreMapping(org.postgis.Point.class.getName(), org.datanucleus.store.types.geospatial.rdbms.mapping.pg2postgis.GeometryRDBMSMapping.class, 
+        registerDatastoreMapping(org.postgis.Point.class.getName(), org.datanucleus.store.types.geospatial.rdbms.mapping.pg2postgis.PointRDBMSMapping.class, 
             JDBCType.OTHER, "geometry", true);
-        registerDatastoreMapping(org.postgis.Polygon.class.getName(), org.datanucleus.store.types.geospatial.rdbms.mapping.pg2postgis.GeometryRDBMSMapping.class, 
+        registerDatastoreMapping(org.postgis.Polygon.class.getName(), org.datanucleus.store.types.geospatial.rdbms.mapping.pg2postgis.PolygonRDBMSMapping.class, 
             JDBCType.OTHER, "geometry", true);
-        registerDatastoreMapping(org.postgis.PGbox2d.class.getName(), org.datanucleus.store.types.geospatial.rdbms.mapping.pg2postgis.GeometryRDBMSMapping.class, 
+        registerDatastoreMapping(org.postgis.PGbox2d.class.getName(), org.datanucleus.store.types.geospatial.rdbms.mapping.pg2postgis.PGbox2dRDBMSMapping.class, 
             JDBCType.OTHER, "box2d", true);
-        registerDatastoreMapping(org.postgis.PGbox3d.class.getName(), org.datanucleus.store.types.geospatial.rdbms.mapping.pg2postgis.GeometryRDBMSMapping.class, 
+        registerDatastoreMapping(org.postgis.PGbox3d.class.getName(), org.datanucleus.store.types.geospatial.rdbms.mapping.pg2postgis.PGbox3dRDBMSMapping.class, 
             JDBCType.OTHER, "box3d", true);
 
         super.loadDatastoreMappings(mgr, clr);
