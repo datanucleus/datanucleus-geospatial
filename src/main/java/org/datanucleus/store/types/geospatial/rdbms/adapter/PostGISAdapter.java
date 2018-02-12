@@ -45,7 +45,7 @@ public class PostGISAdapter extends PostgreSQLAdapter implements SpatialRDBMSAda
 {
     static
     {
-        Localiser.registerBundle("org.datanucleus.store.rdbms.adapter.Localisation_PostGIS", PostGISAdapter.class.getClassLoader());
+        Localiser.registerBundle("org.datanucleus.store.types.geospatial.rdbms.adapter.Localisation_PostGIS", PostGISAdapter.class.getClassLoader());
     }
 
     /** Key name for the hasMeasure extension. **/
