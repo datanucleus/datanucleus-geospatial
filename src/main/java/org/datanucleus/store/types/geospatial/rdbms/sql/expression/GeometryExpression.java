@@ -36,87 +36,16 @@ import org.datanucleus.store.rdbms.sql.expression.SQLExpression;
  */
 public class GeometryExpression extends SQLExpression
 {
-    /**
-     * Perform an operation
-     * 
-     * <pre>
-     * op
-     * </pre>
-     * 
-     * between
-     * 
-     * <pre>
-     * expr1
-     * </pre>
-     * 
-     * and
-     * 
-     * <pre>
-     * expr2
-     * </pre>
-     * 
-     * .
-     * @param stmt The statement
-     * @param table Table
-     * @param mapping The mapping in the table for this expression
-     */
     public GeometryExpression(SQLStatement stmt, SQLTable table, JavaTypeMapping mapping)
     {
         super(stmt, table, getMappingForUseWithExpression(mapping));
     }
 
-    /**
-     * Perform an operation
-     * 
-     * <pre>
-     * op
-     * </pre>
-     * 
-     * between
-     * 
-     * <pre>
-     * expr1
-     * </pre>
-     * 
-     * and
-     * 
-     * <pre>
-     * expr2
-     * </pre>
-     * 
-     * .
-     * @param op Operation
-     * @param expr1 The expression
-     */
     public GeometryExpression(MonadicOperator op, SQLExpression expr1)
     {
         super(op, expr1);
     }
 
-    /**
-     * Perform an operation
-     * 
-     * <pre>
-     * op
-     * </pre>
-     * 
-     * between
-     * 
-     * <pre>
-     * expr1
-     * </pre>
-     * 
-     * and
-     * 
-     * <pre>
-     * expr2
-     * </pre>
-     * 
-     * .
-     * @param expr1 First expression
-     * @param op The operation
-     * @param expr2 Second operation
-     */
     public GeometryExpression(SQLExpression expr1, DyadicOperator op, SQLExpression expr2)
     {
         super(expr1, op, expr2);
