@@ -42,7 +42,7 @@
         <dependency>
             <groupId>org.datanucleus</groupId>
             <artifactId>datanucleus-core</artifactId>
-            <version>[${dn.core.version}, )</version>
+            <version>[${dn.core.version}, 5.1.99)</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
@@ -55,7 +55,7 @@
         <dependency>
             <groupId>org.datanucleus</groupId>
             <artifactId>datanucleus-rdbms</artifactId>
-            <version>[${dn.rdbms.version}, )</version>
+            <version>[${dn.rdbms.version}, 5.1.99)</version>
             <scope>provided</scope>
             <optional>true</optional>
         </dependency>
