@@ -85,7 +85,7 @@ public class Arc2dFloatMapping extends SingleFieldMultiMapping
      * @param value The overall value for this java type
      * @return The value for this datastore index
      */
-    public Object getValueForDatastoreMapping(NucleusContext nucleusCtx, int index, Object value)
+    public Object getValueForColumnMapping(NucleusContext nucleusCtx, int index, Object value)
     {
         Arc2D.Float arc = (Arc2D.Float) value;
         if (index == 0)
@@ -131,18 +131,18 @@ public class Arc2dFloatMapping extends SingleFieldMultiMapping
         {
             for (int i = 0; i < exprIndex.length; i++)
             {
-                getDatastoreMapping(i).setObject(ps, exprIndex[i], null);
+                getColumnMapping(i).setObject(ps, exprIndex[i], null);
             }
         }
         else
         {
-            getDatastoreMapping(0).setInt(ps, exprIndex[0], arc.getArcType());
-            getDatastoreMapping(1).setFloat(ps, exprIndex[1], arc.x);
-            getDatastoreMapping(2).setFloat(ps, exprIndex[2], arc.y);
-            getDatastoreMapping(3).setFloat(ps, exprIndex[3], arc.width);
-            getDatastoreMapping(4).setFloat(ps, exprIndex[4], arc.height);
-            getDatastoreMapping(5).setFloat(ps, exprIndex[5], arc.start);
-            getDatastoreMapping(6).setFloat(ps, exprIndex[6], arc.extent);
+            getColumnMapping(0).setInt(ps, exprIndex[0], arc.getArcType());
+            getColumnMapping(1).setFloat(ps, exprIndex[1], arc.x);
+            getColumnMapping(2).setFloat(ps, exprIndex[2], arc.y);
+            getColumnMapping(3).setFloat(ps, exprIndex[3], arc.width);
+            getColumnMapping(4).setFloat(ps, exprIndex[4], arc.height);
+            getColumnMapping(5).setFloat(ps, exprIndex[5], arc.start);
+            getColumnMapping(6).setFloat(ps, exprIndex[6], arc.extent);
         }
     }
 
@@ -154,18 +154,18 @@ public class Arc2dFloatMapping extends SingleFieldMultiMapping
     public Object getObject(ExecutionContext ec, ResultSet resultSet, int[] exprIndex)
     {
         // Check for null entries
-        if (getDatastoreMapping(0).getObject(resultSet, exprIndex[0]) == null)
+        if (getColumnMapping(0).getObject(resultSet, exprIndex[0]) == null)
         {
             return null;
         }
 
-        int type = getDatastoreMapping(0).getInt(resultSet, exprIndex[0]);
-        float x = getDatastoreMapping(1).getFloat(resultSet, exprIndex[1]);
-        float y = getDatastoreMapping(2).getFloat(resultSet, exprIndex[2]);
-        float width = getDatastoreMapping(3).getFloat(resultSet, exprIndex[3]);
-        float height = getDatastoreMapping(4).getFloat(resultSet, exprIndex[4]);
-        float start = getDatastoreMapping(5).getFloat(resultSet, exprIndex[5]);
-        float extent = getDatastoreMapping(6).getFloat(resultSet, exprIndex[6]);
+        int type = getColumnMapping(0).getInt(resultSet, exprIndex[0]);
+        float x = getColumnMapping(1).getFloat(resultSet, exprIndex[1]);
+        float y = getColumnMapping(2).getFloat(resultSet, exprIndex[2]);
+        float width = getColumnMapping(3).getFloat(resultSet, exprIndex[3]);
+        float height = getColumnMapping(4).getFloat(resultSet, exprIndex[4]);
+        float start = getColumnMapping(5).getFloat(resultSet, exprIndex[5]);
+        float extent = getColumnMapping(6).getFloat(resultSet, exprIndex[6]);
         return new Arc2D.Float(x, y, width, height, start, extent, type);
     }
 }

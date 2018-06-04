@@ -84,7 +84,7 @@ public class QuadCurve2dDoubleMapping extends SingleFieldMultiMapping
      * @param value The overall value for this java type
      * @return The value for this datastore index
      */
-    public Object getValueForDatastoreMapping(NucleusContext nucleusCtx, int index, Object value)
+    public Object getValueForColumnMapping(NucleusContext nucleusCtx, int index, Object value)
     {
         QuadCurve2D.Double qc = (QuadCurve2D.Double) value;
         if (index == 0)
@@ -126,17 +126,17 @@ public class QuadCurve2dDoubleMapping extends SingleFieldMultiMapping
         {
             for (int i = 0; i < exprIndex.length; i++)
             {
-                getDatastoreMapping(i).setObject(ps, exprIndex[i], null);
+                getColumnMapping(i).setObject(ps, exprIndex[i], null);
             }
         }
         else
         {
-            getDatastoreMapping(0).setDouble(ps, exprIndex[0], line.getX1());
-            getDatastoreMapping(1).setDouble(ps, exprIndex[1], line.getY1());
-            getDatastoreMapping(2).setDouble(ps, exprIndex[2], line.getCtrlX());
-            getDatastoreMapping(3).setDouble(ps, exprIndex[3], line.getCtrlY());
-            getDatastoreMapping(4).setDouble(ps, exprIndex[4], line.getX2());
-            getDatastoreMapping(5).setDouble(ps, exprIndex[5], line.getY2());
+            getColumnMapping(0).setDouble(ps, exprIndex[0], line.getX1());
+            getColumnMapping(1).setDouble(ps, exprIndex[1], line.getY1());
+            getColumnMapping(2).setDouble(ps, exprIndex[2], line.getCtrlX());
+            getColumnMapping(3).setDouble(ps, exprIndex[3], line.getCtrlY());
+            getColumnMapping(4).setDouble(ps, exprIndex[4], line.getX2());
+            getColumnMapping(5).setDouble(ps, exprIndex[5], line.getY2());
         }
     }
 
@@ -148,17 +148,17 @@ public class QuadCurve2dDoubleMapping extends SingleFieldMultiMapping
     public Object getObject(ExecutionContext ec, ResultSet resultSet, int[] exprIndex)
     {
         // Check for null entries
-        if (getDatastoreMapping(0).getObject(resultSet, exprIndex[0]) == null)
+        if (getColumnMapping(0).getObject(resultSet, exprIndex[0]) == null)
         {
             return null;
         }
 
-        double x1 = getDatastoreMapping(0).getDouble(resultSet, exprIndex[0]);
-        double y1 = getDatastoreMapping(1).getDouble(resultSet, exprIndex[1]);
-        double ctrlx = getDatastoreMapping(2).getDouble(resultSet, exprIndex[2]);
-        double ctrly = getDatastoreMapping(3).getDouble(resultSet, exprIndex[3]);
-        double x2 = getDatastoreMapping(4).getDouble(resultSet, exprIndex[5]);
-        double y2 = getDatastoreMapping(5).getDouble(resultSet, exprIndex[6]);
+        double x1 = getColumnMapping(0).getDouble(resultSet, exprIndex[0]);
+        double y1 = getColumnMapping(1).getDouble(resultSet, exprIndex[1]);
+        double ctrlx = getColumnMapping(2).getDouble(resultSet, exprIndex[2]);
+        double ctrly = getColumnMapping(3).getDouble(resultSet, exprIndex[3]);
+        double x2 = getColumnMapping(4).getDouble(resultSet, exprIndex[5]);
+        double y2 = getColumnMapping(5).getDouble(resultSet, exprIndex[6]);
         return new QuadCurve2D.Double(x1, y1, ctrlx, ctrly, x2, y2);
     }
 }

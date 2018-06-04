@@ -31,8 +31,8 @@ import org.datanucleus.metadata.MetaDataUtils;
 import org.datanucleus.state.ObjectProvider;
 import org.datanucleus.store.rdbms.RDBMSStoreManager;
 import org.datanucleus.store.rdbms.mapping.MappingCallbacks;
-import org.datanucleus.store.rdbms.mapping.datastore.DatastoreMapping;
-import org.datanucleus.store.rdbms.mapping.datastore.OracleBlobRDBMSMapping;
+import org.datanucleus.store.rdbms.mapping.datastore.ColumnMapping;
+import org.datanucleus.store.rdbms.mapping.datastore.OracleBlobColumnMapping;
 import org.datanucleus.store.rdbms.mapping.java.SingleFieldMultiMapping;
 import org.datanucleus.store.rdbms.table.Table;
 import org.datanucleus.util.NucleusLogger;
@@ -67,7 +67,7 @@ public class GeometryMapping extends SingleFieldMultiMapping implements MappingC
         }
     }
 
-    public String getJavaTypeForDatastoreMapping(int index)
+    public String getJavaTypeForColumnMapping(int index)
     {
         return getJavaType().getName();
     }
@@ -126,7 +126,7 @@ public class GeometryMapping extends SingleFieldMultiMapping implements MappingC
 
     public Object getObject(ExecutionContext ec, ResultSet datastoreResults, int[] exprIndex)
     {
-        Geometry geom = (Geometry) getDatastoreMapping(0).getObject(datastoreResults, exprIndex[0]);
+        Geometry geom = (Geometry) getColumnMapping(0).getObject(datastoreResults, exprIndex[0]);
 
         if (geom == null)
         {
@@ -135,7 +135,7 @@ public class GeometryMapping extends SingleFieldMultiMapping implements MappingC
 
         if (mapUserdataObject)
         {
-            Object userData = getDatastoreMapping(1).getObject(datastoreResults, exprIndex[1]);
+            Object userData = getColumnMapping(1).getObject(datastoreResults, exprIndex[1]);
             geom.setUserData(userData);
         }
 
@@ -158,21 +158,21 @@ public class GeometryMapping extends SingleFieldMultiMapping implements MappingC
         Geometry geom = (Geometry) value;
         if (geom == null)
         {
-            getDatastoreMapping(0).setObject(ps, exprIndex[0], null);
+            getColumnMapping(0).setObject(ps, exprIndex[0], null);
             if (exprIndex.length == 2)
             {
-                getDatastoreMapping(1).setObject(ps, exprIndex[1], null);
+                getColumnMapping(1).setObject(ps, exprIndex[1], null);
             }
         }
         else
         {
-            getDatastoreMapping(0).setObject(ps, exprIndex[0], geom);
+            getColumnMapping(0).setObject(ps, exprIndex[0], geom);
             if (exprIndex.length == 2)
             {
-                DatastoreMapping mapping = getDatastoreMapping(1);
+                ColumnMapping mapping = getColumnMapping(1);
                 if (mapping.insertValuesOnInsert())
                 {
-                    getDatastoreMapping(1).setObject(ps, exprIndex[1], geom.getUserData());
+                    getColumnMapping(1).setObject(ps, exprIndex[1], geom.getUserData());
                 }
             }
         }
@@ -183,7 +183,7 @@ public class GeometryMapping extends SingleFieldMultiMapping implements MappingC
      */
     public void insertPostProcessing(ObjectProvider op)
     {
-        if (!mapUserdataObject || !(getDatastoreMapping(1) instanceof OracleBlobRDBMSMapping))
+        if (!mapUserdataObject || !(getColumnMapping(1) instanceof OracleBlobColumnMapping))
             return;
 
         Object geom = op.provideField(mmd.getAbsoluteFieldNumber());
@@ -208,7 +208,7 @@ public class GeometryMapping extends SingleFieldMultiMapping implements MappingC
         }
 
         // Update the BLOB
-        OracleBlobRDBMSMapping.updateBlobColumn(op, getTable(), getDatastoreMapping(1), bytes);
+        OracleBlobColumnMapping.updateBlobColumn(op, getTable(), getColumnMapping(1), bytes);
     }
 
     public void postInsert(ObjectProvider op)
@@ -236,8 +236,8 @@ public class GeometryMapping extends SingleFieldMultiMapping implements MappingC
             geomMapping.mmd = this.mmd;
             geomMapping.mapUserdataObject = this.mapUserdataObject;
             geomMapping.table = this.table;
-            geomMapping.datastoreMappings = new DatastoreMapping[1];
-            geomMapping.datastoreMappings[0] = this.datastoreMappings[0]; // Geometry
+            geomMapping.columnMappings = new ColumnMapping[1];
+            geomMapping.columnMappings[0] = this.columnMappings[0]; // Geometry
             return geomMapping;
         }
         catch (Exception e)

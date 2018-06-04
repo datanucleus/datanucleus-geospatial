@@ -85,7 +85,7 @@ public class Arc2dDoubleMapping extends SingleFieldMultiMapping
      * @param value The overall value for this java type
      * @return The value for this datastore index
      */
-    public Object getValueForDatastoreMapping(NucleusContext nucleusCtx, int index, Object value)
+    public Object getValueForColumnMapping(NucleusContext nucleusCtx, int index, Object value)
     {
         Arc2D.Double arc = (Arc2D.Double) value;
         if (index == 0)
@@ -131,18 +131,18 @@ public class Arc2dDoubleMapping extends SingleFieldMultiMapping
         {
             for (int i = 0; i < exprIndex.length; i++)
             {
-                getDatastoreMapping(i).setObject(ps, exprIndex[i], null);
+                getColumnMapping(i).setObject(ps, exprIndex[i], null);
             }
         }
         else
         {
-            getDatastoreMapping(0).setInt(ps, exprIndex[0], arc.getArcType());
-            getDatastoreMapping(1).setDouble(ps, exprIndex[1], arc.getX());
-            getDatastoreMapping(2).setDouble(ps, exprIndex[2], arc.getY());
-            getDatastoreMapping(3).setDouble(ps, exprIndex[3], arc.getWidth());
-            getDatastoreMapping(4).setDouble(ps, exprIndex[4], arc.getHeight());
-            getDatastoreMapping(5).setDouble(ps, exprIndex[5], arc.getAngleStart());
-            getDatastoreMapping(6).setDouble(ps, exprIndex[6], arc.getAngleExtent());
+            getColumnMapping(0).setInt(ps, exprIndex[0], arc.getArcType());
+            getColumnMapping(1).setDouble(ps, exprIndex[1], arc.getX());
+            getColumnMapping(2).setDouble(ps, exprIndex[2], arc.getY());
+            getColumnMapping(3).setDouble(ps, exprIndex[3], arc.getWidth());
+            getColumnMapping(4).setDouble(ps, exprIndex[4], arc.getHeight());
+            getColumnMapping(5).setDouble(ps, exprIndex[5], arc.getAngleStart());
+            getColumnMapping(6).setDouble(ps, exprIndex[6], arc.getAngleExtent());
         }
     }
 
@@ -154,18 +154,18 @@ public class Arc2dDoubleMapping extends SingleFieldMultiMapping
     public Object getObject(ExecutionContext ec, ResultSet resultSet, int[] exprIndex)
     {
         // Check for null entries
-        if (getDatastoreMapping(0).getObject(resultSet, exprIndex[0]) == null)
+        if (getColumnMapping(0).getObject(resultSet, exprIndex[0]) == null)
         {
             return null;
         }
 
-        int type = getDatastoreMapping(0).getInt(resultSet, exprIndex[0]);
-        double x = getDatastoreMapping(1).getDouble(resultSet, exprIndex[1]);
-        double y = getDatastoreMapping(2).getDouble(resultSet, exprIndex[2]);
-        double width = getDatastoreMapping(3).getDouble(resultSet, exprIndex[3]);
-        double height = getDatastoreMapping(4).getDouble(resultSet, exprIndex[4]);
-        double start = getDatastoreMapping(5).getDouble(resultSet, exprIndex[5]);
-        double extent = getDatastoreMapping(6).getDouble(resultSet, exprIndex[6]);
+        int type = getColumnMapping(0).getInt(resultSet, exprIndex[0]);
+        double x = getColumnMapping(1).getDouble(resultSet, exprIndex[1]);
+        double y = getColumnMapping(2).getDouble(resultSet, exprIndex[2]);
+        double width = getColumnMapping(3).getDouble(resultSet, exprIndex[3]);
+        double height = getColumnMapping(4).getDouble(resultSet, exprIndex[4]);
+        double start = getColumnMapping(5).getDouble(resultSet, exprIndex[5]);
+        double extent = getColumnMapping(6).getDouble(resultSet, exprIndex[6]);
         return new Arc2D.Double(x, y, width, height, start, extent, type);
     }
 }

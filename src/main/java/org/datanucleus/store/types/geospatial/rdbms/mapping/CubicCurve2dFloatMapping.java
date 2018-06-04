@@ -86,7 +86,7 @@ public class CubicCurve2dFloatMapping extends SingleFieldMultiMapping
      * @param value The overall value for this java type
      * @return The value for this datastore index
      */
-    public Object getValueForDatastoreMapping(NucleusContext nucleusCtx, int index, Object value)
+    public Object getValueForColumnMapping(NucleusContext nucleusCtx, int index, Object value)
     {
         CubicCurve2D.Float cc = (CubicCurve2D.Float) value;
         if (index == 0)
@@ -136,19 +136,19 @@ public class CubicCurve2dFloatMapping extends SingleFieldMultiMapping
         {
             for (int i = 0; i < exprIndex.length; i++)
             {
-                getDatastoreMapping(i).setObject(ps, exprIndex[i], null);
+                getColumnMapping(i).setObject(ps, exprIndex[i], null);
             }
         }
         else
         {
-            getDatastoreMapping(0).setFloat(ps, exprIndex[0], cubicCurve.x1);
-            getDatastoreMapping(1).setFloat(ps, exprIndex[1], cubicCurve.y1);
-            getDatastoreMapping(2).setFloat(ps, exprIndex[2], cubicCurve.ctrlx1);
-            getDatastoreMapping(3).setFloat(ps, exprIndex[3], cubicCurve.ctrly1);
-            getDatastoreMapping(4).setFloat(ps, exprIndex[4], cubicCurve.ctrlx2);
-            getDatastoreMapping(5).setFloat(ps, exprIndex[5], cubicCurve.ctrly2);
-            getDatastoreMapping(6).setFloat(ps, exprIndex[6], cubicCurve.x2);
-            getDatastoreMapping(7).setFloat(ps, exprIndex[7], cubicCurve.y2);
+            getColumnMapping(0).setFloat(ps, exprIndex[0], cubicCurve.x1);
+            getColumnMapping(1).setFloat(ps, exprIndex[1], cubicCurve.y1);
+            getColumnMapping(2).setFloat(ps, exprIndex[2], cubicCurve.ctrlx1);
+            getColumnMapping(3).setFloat(ps, exprIndex[3], cubicCurve.ctrly1);
+            getColumnMapping(4).setFloat(ps, exprIndex[4], cubicCurve.ctrlx2);
+            getColumnMapping(5).setFloat(ps, exprIndex[5], cubicCurve.ctrly2);
+            getColumnMapping(6).setFloat(ps, exprIndex[6], cubicCurve.x2);
+            getColumnMapping(7).setFloat(ps, exprIndex[7], cubicCurve.y2);
         }
     }
 
@@ -160,19 +160,19 @@ public class CubicCurve2dFloatMapping extends SingleFieldMultiMapping
     public Object getObject(ExecutionContext ec, ResultSet resultSet, int[] exprIndex)
     {
         // Check for null entries
-        if (getDatastoreMapping(0).getObject(resultSet, exprIndex[0]) == null)
+        if (getColumnMapping(0).getObject(resultSet, exprIndex[0]) == null)
         {
             return null;
         }
 
-        float x1 = getDatastoreMapping(0).getFloat(resultSet, exprIndex[0]);
-        float y1 = getDatastoreMapping(1).getFloat(resultSet, exprIndex[1]);
-        float ctrlx1 = getDatastoreMapping(2).getFloat(resultSet, exprIndex[2]);
-        float ctrly1 = getDatastoreMapping(3).getFloat(resultSet, exprIndex[3]);
-        float ctrlx2 = getDatastoreMapping(4).getFloat(resultSet, exprIndex[4]);
-        float ctrly2 = getDatastoreMapping(5).getFloat(resultSet, exprIndex[5]);
-        float x2 = getDatastoreMapping(6).getFloat(resultSet, exprIndex[6]);
-        float y2 = getDatastoreMapping(7).getFloat(resultSet, exprIndex[7]);
+        float x1 = getColumnMapping(0).getFloat(resultSet, exprIndex[0]);
+        float y1 = getColumnMapping(1).getFloat(resultSet, exprIndex[1]);
+        float ctrlx1 = getColumnMapping(2).getFloat(resultSet, exprIndex[2]);
+        float ctrly1 = getColumnMapping(3).getFloat(resultSet, exprIndex[3]);
+        float ctrlx2 = getColumnMapping(4).getFloat(resultSet, exprIndex[4]);
+        float ctrly2 = getColumnMapping(5).getFloat(resultSet, exprIndex[5]);
+        float x2 = getColumnMapping(6).getFloat(resultSet, exprIndex[6]);
+        float y2 = getColumnMapping(7).getFloat(resultSet, exprIndex[7]);
         return new CubicCurve2D.Float(x1, y1, ctrlx1, ctrly1, ctrlx2, ctrly2, x2, y2);
     }
 }

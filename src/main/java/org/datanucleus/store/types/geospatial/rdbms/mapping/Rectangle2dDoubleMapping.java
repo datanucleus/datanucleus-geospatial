@@ -82,7 +82,7 @@ public class Rectangle2dDoubleMapping extends SingleFieldMultiMapping
      * @param value The overall value for this java type
      * @return The value for this datastore index
      */
-    public Object getValueForDatastoreMapping(NucleusContext nucleusCtx, int index, Object value)
+    public Object getValueForColumnMapping(NucleusContext nucleusCtx, int index, Object value)
     {
         Rectangle2D.Double qc = (Rectangle2D.Double) value;
         if (index == 0)
@@ -116,15 +116,15 @@ public class Rectangle2dDoubleMapping extends SingleFieldMultiMapping
         {
             for (int i = 0; i < exprIndex.length; i++)
             {
-                getDatastoreMapping(i).setObject(ps, exprIndex[i], null);
+                getColumnMapping(i).setObject(ps, exprIndex[i], null);
             }
         }
         else
         {
-            getDatastoreMapping(0).setDouble(ps, exprIndex[0], rectangle.getX());
-            getDatastoreMapping(1).setDouble(ps, exprIndex[1], rectangle.getY());
-            getDatastoreMapping(2).setDouble(ps, exprIndex[2], rectangle.getWidth());
-            getDatastoreMapping(3).setDouble(ps, exprIndex[3], rectangle.getHeight());
+            getColumnMapping(0).setDouble(ps, exprIndex[0], rectangle.getX());
+            getColumnMapping(1).setDouble(ps, exprIndex[1], rectangle.getY());
+            getColumnMapping(2).setDouble(ps, exprIndex[2], rectangle.getWidth());
+            getColumnMapping(3).setDouble(ps, exprIndex[3], rectangle.getHeight());
         }
     }
 
@@ -136,15 +136,15 @@ public class Rectangle2dDoubleMapping extends SingleFieldMultiMapping
     public Object getObject(ExecutionContext ec, ResultSet resultSet, int[] exprIndex)
     {
         // Check for null entries
-        if (getDatastoreMapping(0).getObject(resultSet, exprIndex[0]) == null)
+        if (getColumnMapping(0).getObject(resultSet, exprIndex[0]) == null)
         {
             return null;
         }
 
-        double x = getDatastoreMapping(0).getDouble(resultSet, exprIndex[0]);
-        double y = getDatastoreMapping(1).getDouble(resultSet, exprIndex[1]);
-        double width = getDatastoreMapping(2).getDouble(resultSet, exprIndex[2]);
-        double height = getDatastoreMapping(3).getDouble(resultSet, exprIndex[3]);
+        double x = getColumnMapping(0).getDouble(resultSet, exprIndex[0]);
+        double y = getColumnMapping(1).getDouble(resultSet, exprIndex[1]);
+        double width = getColumnMapping(2).getDouble(resultSet, exprIndex[2]);
+        double height = getColumnMapping(3).getDouble(resultSet, exprIndex[3]);
         return new Rectangle2D.Double(x, y, width, height);
     }
 }

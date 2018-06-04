@@ -22,7 +22,7 @@ import java.util.List;
 import org.datanucleus.exceptions.NucleusException;
 import org.datanucleus.exceptions.NucleusUserException;
 import org.datanucleus.store.types.geospatial.rdbms.mapping.PointMapping;
-import org.datanucleus.store.rdbms.mapping.datastore.DatastoreMapping;
+import org.datanucleus.store.rdbms.mapping.datastore.ColumnMapping;
 import org.datanucleus.store.rdbms.sql.SQLStatement;
 import org.datanucleus.store.rdbms.sql.expression.NumericExpression;
 import org.datanucleus.store.rdbms.sql.expression.SQLExpression;
@@ -40,7 +40,7 @@ public abstract class PointComponentMethod implements SQLMethod
             throw new NucleusUserException("Cannot invoke Point.getX/getY on null object");
         }
 
-        DatastoreMapping datastoreMapping = expr.getJavaTypeMapping().getDatastoreMapping(0);
+        ColumnMapping datastoreMapping = expr.getJavaTypeMapping().getColumnMapping(0);
         Object javaTypeMapping = datastoreMapping.getJavaTypeMapping();
         if (!(javaTypeMapping instanceof PointMapping))
         {

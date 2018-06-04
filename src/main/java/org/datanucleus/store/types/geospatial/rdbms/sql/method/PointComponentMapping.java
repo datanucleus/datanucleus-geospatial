@@ -20,7 +20,7 @@ package org.datanucleus.store.types.geospatial.rdbms.sql.method;
 import java.awt.Point;
 
 import org.datanucleus.store.types.geospatial.rdbms.mapping.PointMapping;
-import org.datanucleus.store.rdbms.mapping.datastore.DatastoreMapping;
+import org.datanucleus.store.rdbms.mapping.datastore.ColumnMapping;
 import org.datanucleus.store.rdbms.mapping.java.IntegerMapping;
 
 /**
@@ -46,18 +46,18 @@ public class PointComponentMapping extends IntegerMapping
         this.mappingIndex = mappingIndex;
     }
 
-    public DatastoreMapping[] getDatastoreMappings()
+    public ColumnMapping[] getColumnMappings()
     {
-        DatastoreMapping[] startColumnMapping = {pointMapping.getDatastoreMappings()[mappingIndex]};
+        ColumnMapping[] startColumnMapping = {pointMapping.getColumnMappings()[mappingIndex]};
         return startColumnMapping;
     }
 
-    public DatastoreMapping getDatastoreMapping(int index)
+    public ColumnMapping getColumnMapping(int index)
     {
-        return pointMapping.getDatastoreMappings()[mappingIndex];
+        return pointMapping.getColumnMappings()[mappingIndex];
     }
 
-    public int getNumberOfDatastoreMappings()
+    public int getNumberOfColumnMappings()
     {
         return 1;
     }

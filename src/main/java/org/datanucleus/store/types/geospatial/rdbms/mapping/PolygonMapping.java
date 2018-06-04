@@ -80,7 +80,7 @@ public class PolygonMapping extends SingleFieldMultiMapping
      * @param value The overall value for this java type
      * @return The value for this datastore index
      */
-    public Object getValueForDatastoreMapping(NucleusContext nucleusCtx, int index, Object value)
+    public Object getValueForColumnMapping(NucleusContext nucleusCtx, int index, Object value)
     {
         Polygon poly = (Polygon) value;
         if (index == 0)
@@ -108,15 +108,15 @@ public class PolygonMapping extends SingleFieldMultiMapping
         Polygon poly = (Polygon) value;
         if (poly == null)
         {
-            getDatastoreMapping(0).setObject(ps, exprIndex[0], null);
-            getDatastoreMapping(1).setObject(ps, exprIndex[1], null);
-            getDatastoreMapping(2).setObject(ps, exprIndex[2], null);
+            getColumnMapping(0).setObject(ps, exprIndex[0], null);
+            getColumnMapping(1).setObject(ps, exprIndex[1], null);
+            getColumnMapping(2).setObject(ps, exprIndex[2], null);
         }
         else
         {
-            getDatastoreMapping(0).setObject(ps, exprIndex[0], poly.xpoints);
-            getDatastoreMapping(1).setObject(ps, exprIndex[1], poly.ypoints);
-            getDatastoreMapping(2).setInt(ps, exprIndex[2], poly.npoints);
+            getColumnMapping(0).setObject(ps, exprIndex[0], poly.xpoints);
+            getColumnMapping(1).setObject(ps, exprIndex[1], poly.ypoints);
+            getColumnMapping(2).setInt(ps, exprIndex[2], poly.npoints);
         }
     }
 
@@ -128,14 +128,14 @@ public class PolygonMapping extends SingleFieldMultiMapping
     public Object getObject(ExecutionContext ec, ResultSet resultSet, int[] exprIndex)
     {
         // Check for null entries
-        if (getDatastoreMapping(0).getObject(resultSet, exprIndex[0]) == null)
+        if (getColumnMapping(0).getObject(resultSet, exprIndex[0]) == null)
         {
             return null;
         }
 
-        int[] xpoints = (int[]) getDatastoreMapping(0).getObject(resultSet, exprIndex[0]);
-        int[] ypoints = (int[]) getDatastoreMapping(1).getObject(resultSet, exprIndex[1]);
-        int npoints = getDatastoreMapping(2).getInt(resultSet, exprIndex[2]);
+        int[] xpoints = (int[]) getColumnMapping(0).getObject(resultSet, exprIndex[0]);
+        int[] ypoints = (int[]) getColumnMapping(1).getObject(resultSet, exprIndex[1]);
+        int npoints = getColumnMapping(2).getInt(resultSet, exprIndex[2]);
         return new Polygon(xpoints, ypoints, npoints);
     }
 }

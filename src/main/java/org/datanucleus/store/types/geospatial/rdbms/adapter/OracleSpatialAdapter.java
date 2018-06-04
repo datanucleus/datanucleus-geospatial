@@ -70,7 +70,7 @@ public class OracleSpatialAdapter extends OracleAdapter implements SpatialRDBMSA
             if (cls != null)
             {
                 // jgeom2oracle
-                registerDatastoreMapping(oracle.spatial.geometry.JGeometry.class.getName(), org.datanucleus.store.types.geospatial.rdbms.mapping.jgeom2oracle.JGeometryRDBMSMapping.class, 
+                registerDatastoreMapping(oracle.spatial.geometry.JGeometry.class.getName(), org.datanucleus.store.types.geospatial.rdbms.mapping.jgeom2oracle.JGeometryColumnMapping.class, 
                     JDBCType.STRUCT, "SDO_GEOMETRY", true);
             }
         }
@@ -85,23 +85,23 @@ public class OracleSpatialAdapter extends OracleAdapter implements SpatialRDBMSA
             if (cls != null)
             {
                 // jts2oracle
-                registerDatastoreMapping(com.vividsolutions.jts.geom.Geometry.class.getName(), org.datanucleus.store.types.geospatial.rdbms.mapping.jts2oracle.GeometryRDBMSMapping.class, 
+                registerDatastoreMapping(com.vividsolutions.jts.geom.Geometry.class.getName(), org.datanucleus.store.types.geospatial.rdbms.mapping.jts2oracle.GeometryColumnMapping.class, 
                     JDBCType.STRUCT, "SDO_GEOMETRY", true);
-                registerDatastoreMapping(com.vividsolutions.jts.geom.GeometryCollection.class.getName(), org.datanucleus.store.types.geospatial.rdbms.mapping.jts2oracle.GeometryRDBMSMapping.class, 
+                registerDatastoreMapping(com.vividsolutions.jts.geom.GeometryCollection.class.getName(), org.datanucleus.store.types.geospatial.rdbms.mapping.jts2oracle.GeometryColumnMapping.class, 
                     JDBCType.STRUCT, "SDO_GEOMETRY", true);
-                registerDatastoreMapping(com.vividsolutions.jts.geom.LinearRing.class.getName(), org.datanucleus.store.types.geospatial.rdbms.mapping.jts2oracle.LinearRingRDBMSMapping.class, 
+                registerDatastoreMapping(com.vividsolutions.jts.geom.LinearRing.class.getName(), org.datanucleus.store.types.geospatial.rdbms.mapping.jts2oracle.LinearRingColumnMapping.class, 
                     JDBCType.STRUCT, "SDO_GEOMETRY", true);
-                registerDatastoreMapping(com.vividsolutions.jts.geom.LineString.class.getName(), org.datanucleus.store.types.geospatial.rdbms.mapping.jts2oracle.GeometryRDBMSMapping.class, 
+                registerDatastoreMapping(com.vividsolutions.jts.geom.LineString.class.getName(), org.datanucleus.store.types.geospatial.rdbms.mapping.jts2oracle.GeometryColumnMapping.class, 
                     JDBCType.STRUCT, "SDO_GEOMETRY", true);
-                registerDatastoreMapping(com.vividsolutions.jts.geom.MultiLineString.class.getName(), org.datanucleus.store.types.geospatial.rdbms.mapping.jts2oracle.GeometryRDBMSMapping.class, 
+                registerDatastoreMapping(com.vividsolutions.jts.geom.MultiLineString.class.getName(), org.datanucleus.store.types.geospatial.rdbms.mapping.jts2oracle.GeometryColumnMapping.class, 
                     JDBCType.STRUCT, "SDO_GEOMETRY", true);
-                registerDatastoreMapping(com.vividsolutions.jts.geom.MultiPolygon.class.getName(), org.datanucleus.store.types.geospatial.rdbms.mapping.jts2oracle.GeometryRDBMSMapping.class, 
+                registerDatastoreMapping(com.vividsolutions.jts.geom.MultiPolygon.class.getName(), org.datanucleus.store.types.geospatial.rdbms.mapping.jts2oracle.GeometryColumnMapping.class, 
                     JDBCType.STRUCT, "SDO_GEOMETRY", true);
-                registerDatastoreMapping(com.vividsolutions.jts.geom.MultiPoint.class.getName(), org.datanucleus.store.types.geospatial.rdbms.mapping.jts2oracle.GeometryRDBMSMapping.class, 
+                registerDatastoreMapping(com.vividsolutions.jts.geom.MultiPoint.class.getName(), org.datanucleus.store.types.geospatial.rdbms.mapping.jts2oracle.GeometryColumnMapping.class, 
                     JDBCType.STRUCT, "SDO_GEOMETRY", true);
-                registerDatastoreMapping(com.vividsolutions.jts.geom.Point.class.getName(), org.datanucleus.store.types.geospatial.rdbms.mapping.jts2oracle.GeometryRDBMSMapping.class, 
+                registerDatastoreMapping(com.vividsolutions.jts.geom.Point.class.getName(), org.datanucleus.store.types.geospatial.rdbms.mapping.jts2oracle.GeometryColumnMapping.class, 
                     JDBCType.STRUCT, "SDO_GEOMETRY", true);
-                registerDatastoreMapping(com.vividsolutions.jts.geom.Polygon.class.getName(), org.datanucleus.store.types.geospatial.rdbms.mapping.jts2oracle.GeometryRDBMSMapping.class, 
+                registerDatastoreMapping(com.vividsolutions.jts.geom.Polygon.class.getName(), org.datanucleus.store.types.geospatial.rdbms.mapping.jts2oracle.GeometryColumnMapping.class, 
                     JDBCType.STRUCT, "SDO_GEOMETRY", true);
             }
         }

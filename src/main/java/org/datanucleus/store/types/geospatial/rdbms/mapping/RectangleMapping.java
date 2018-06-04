@@ -81,7 +81,7 @@ public class RectangleMapping extends SingleFieldMultiMapping
      * @param value The overall value for this java type
      * @return The value for this datastore index
      */
-    public Object getValueForDatastoreMapping(NucleusContext nucleusCtx, int index, Object value)
+    public Object getValueForColumnMapping(NucleusContext nucleusCtx, int index, Object value)
     {
         Rectangle.Double rect = (Rectangle.Double) value;
         if (index == 0)
@@ -115,15 +115,15 @@ public class RectangleMapping extends SingleFieldMultiMapping
         {
             for (int i = 0; i < exprIndex.length; i++)
             {
-                getDatastoreMapping(i).setObject(ps, exprIndex[i], null);
+                getColumnMapping(i).setObject(ps, exprIndex[i], null);
             }
         }
         else
         {
-            getDatastoreMapping(0).setInt(ps, exprIndex[0], rectangle.x);
-            getDatastoreMapping(1).setInt(ps, exprIndex[1], rectangle.y);
-            getDatastoreMapping(2).setInt(ps, exprIndex[2], rectangle.width);
-            getDatastoreMapping(3).setInt(ps, exprIndex[3], rectangle.height);
+            getColumnMapping(0).setInt(ps, exprIndex[0], rectangle.x);
+            getColumnMapping(1).setInt(ps, exprIndex[1], rectangle.y);
+            getColumnMapping(2).setInt(ps, exprIndex[2], rectangle.width);
+            getColumnMapping(3).setInt(ps, exprIndex[3], rectangle.height);
         }
     }
 
@@ -135,15 +135,15 @@ public class RectangleMapping extends SingleFieldMultiMapping
     public Object getObject(ExecutionContext ec, ResultSet resultSet, int[] exprIndex)
     {
         // Check for null entries
-        if (getDatastoreMapping(0).getObject(resultSet, exprIndex[0]) == null)
+        if (getColumnMapping(0).getObject(resultSet, exprIndex[0]) == null)
         {
             return null;
         }
 
-        int x = getDatastoreMapping(0).getInt(resultSet, exprIndex[0]);
-        int y = getDatastoreMapping(1).getInt(resultSet, exprIndex[1]);
-        int width = getDatastoreMapping(2).getInt(resultSet, exprIndex[2]);
-        int height = getDatastoreMapping(3).getInt(resultSet, exprIndex[3]);
+        int x = getColumnMapping(0).getInt(resultSet, exprIndex[0]);
+        int y = getColumnMapping(1).getInt(resultSet, exprIndex[1]);
+        int width = getColumnMapping(2).getInt(resultSet, exprIndex[2]);
+        int height = getColumnMapping(3).getInt(resultSet, exprIndex[3]);
         return new Rectangle(x, y, width, height);
     }
 }

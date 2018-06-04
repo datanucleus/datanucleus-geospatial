@@ -80,7 +80,7 @@ public class Point2dDoubleMapping extends SingleFieldMultiMapping
      * @param value The overall value for this java type
      * @return The value for this datastore index
      */
-    public Object getValueForDatastoreMapping(NucleusContext nucleusCtx, int index, Object value)
+    public Object getValueForColumnMapping(NucleusContext nucleusCtx, int index, Object value)
     {
         Point2D.Double pt = (Point2D.Double) value;
         if (index == 0)
@@ -104,13 +104,13 @@ public class Point2dDoubleMapping extends SingleFieldMultiMapping
         Point2D.Double pt = (Point2D.Double) value;
         if (pt == null)
         {
-            getDatastoreMapping(0).setObject(ps, exprIndex[0], null);
-            getDatastoreMapping(1).setObject(ps, exprIndex[1], null);
+            getColumnMapping(0).setObject(ps, exprIndex[0], null);
+            getColumnMapping(1).setObject(ps, exprIndex[1], null);
         }
         else
         {
-            getDatastoreMapping(0).setDouble(ps, exprIndex[0], pt.getX());
-            getDatastoreMapping(1).setDouble(ps, exprIndex[1], pt.getY());
+            getColumnMapping(0).setDouble(ps, exprIndex[0], pt.getX());
+            getColumnMapping(1).setDouble(ps, exprIndex[1], pt.getY());
         }
     }
 
@@ -122,13 +122,13 @@ public class Point2dDoubleMapping extends SingleFieldMultiMapping
     public Object getObject(ExecutionContext ec, ResultSet resultSet, int[] exprIndex)
     {
         // Check for null entries
-        if (getDatastoreMapping(0).getObject(resultSet, exprIndex[0]) == null)
+        if (getColumnMapping(0).getObject(resultSet, exprIndex[0]) == null)
         {
             return null;
         }
 
-        double x = getDatastoreMapping(0).getDouble(resultSet, exprIndex[0]);
-        double y = getDatastoreMapping(1).getDouble(resultSet, exprIndex[1]);
+        double x = getColumnMapping(0).getDouble(resultSet, exprIndex[0]);
+        double y = getColumnMapping(1).getDouble(resultSet, exprIndex[1]);
         return new Point2D.Double(x, y);
     }
 }

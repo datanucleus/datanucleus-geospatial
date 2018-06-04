@@ -84,7 +84,7 @@ public class RoundRectangle2dFloatMapping extends SingleFieldMultiMapping
      * @param value The overall value for this java type
      * @return The value for this datastore index
      */
-    public Object getValueForDatastoreMapping(NucleusContext nucleusCtx, int index, Object value)
+    public Object getValueForColumnMapping(NucleusContext nucleusCtx, int index, Object value)
     {
         RoundRectangle2D.Float rr = (RoundRectangle2D.Float) value;
         if (index == 0)
@@ -126,17 +126,17 @@ public class RoundRectangle2dFloatMapping extends SingleFieldMultiMapping
         {
             for (int i = 0; i < exprIndex.length; i++)
             {
-                getDatastoreMapping(i).setObject(ps, exprIndex[i], null);
+                getColumnMapping(i).setObject(ps, exprIndex[i], null);
             }
         }
         else
         {
-            getDatastoreMapping(0).setFloat(ps, exprIndex[0], roundRectangle.x);
-            getDatastoreMapping(1).setFloat(ps, exprIndex[1], roundRectangle.y);
-            getDatastoreMapping(2).setFloat(ps, exprIndex[2], roundRectangle.width);
-            getDatastoreMapping(3).setFloat(ps, exprIndex[3], roundRectangle.height);
-            getDatastoreMapping(4).setFloat(ps, exprIndex[4], roundRectangle.arcwidth);
-            getDatastoreMapping(5).setFloat(ps, exprIndex[5], roundRectangle.archeight);
+            getColumnMapping(0).setFloat(ps, exprIndex[0], roundRectangle.x);
+            getColumnMapping(1).setFloat(ps, exprIndex[1], roundRectangle.y);
+            getColumnMapping(2).setFloat(ps, exprIndex[2], roundRectangle.width);
+            getColumnMapping(3).setFloat(ps, exprIndex[3], roundRectangle.height);
+            getColumnMapping(4).setFloat(ps, exprIndex[4], roundRectangle.arcwidth);
+            getColumnMapping(5).setFloat(ps, exprIndex[5], roundRectangle.archeight);
         }
     }
 
@@ -148,17 +148,17 @@ public class RoundRectangle2dFloatMapping extends SingleFieldMultiMapping
     public Object getObject(ExecutionContext ec, ResultSet resultSet, int[] exprIndex)
     {
         // Check for null entries
-        if (getDatastoreMapping(0).getObject(resultSet, exprIndex[0]) == null)
+        if (getColumnMapping(0).getObject(resultSet, exprIndex[0]) == null)
         {
             return null;
         }
 
-        float x = getDatastoreMapping(0).getFloat(resultSet, exprIndex[0]);
-        float y = getDatastoreMapping(1).getFloat(resultSet, exprIndex[1]);
-        float width = getDatastoreMapping(2).getFloat(resultSet, exprIndex[2]);
-        float height = getDatastoreMapping(3).getFloat(resultSet, exprIndex[3]);
-        float arcwidth = getDatastoreMapping(4).getFloat(resultSet, exprIndex[4]);
-        float archeight = getDatastoreMapping(5).getFloat(resultSet, exprIndex[5]);
+        float x = getColumnMapping(0).getFloat(resultSet, exprIndex[0]);
+        float y = getColumnMapping(1).getFloat(resultSet, exprIndex[1]);
+        float width = getColumnMapping(2).getFloat(resultSet, exprIndex[2]);
+        float height = getColumnMapping(3).getFloat(resultSet, exprIndex[3]);
+        float arcwidth = getColumnMapping(4).getFloat(resultSet, exprIndex[4]);
+        float archeight = getColumnMapping(5).getFloat(resultSet, exprIndex[5]);
         return new RoundRectangle2D.Float(x, y, width, height, arcwidth, archeight);
     }
 }

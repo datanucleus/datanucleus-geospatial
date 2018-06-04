@@ -80,7 +80,7 @@ public class PointMapping extends SingleFieldMultiMapping
      * @param value The overall value for this java type
      * @return The value for this datastore index
      */
-    public Object getValueForDatastoreMapping(NucleusContext nucleusCtx, int index, Object value)
+    public Object getValueForColumnMapping(NucleusContext nucleusCtx, int index, Object value)
     {
         Point pt = (Point) value;
         if (index == 0)
@@ -104,13 +104,13 @@ public class PointMapping extends SingleFieldMultiMapping
         Point pt = (Point) value;
         if (pt == null)
         {
-            getDatastoreMapping(0).setObject(ps, exprIndex[0], null);
-            getDatastoreMapping(1).setObject(ps, exprIndex[1], null);
+            getColumnMapping(0).setObject(ps, exprIndex[0], null);
+            getColumnMapping(1).setObject(ps, exprIndex[1], null);
         }
         else
         {
-            getDatastoreMapping(0).setInt(ps, exprIndex[0], (int) pt.getX());
-            getDatastoreMapping(1).setInt(ps, exprIndex[1], (int) pt.getY());
+            getColumnMapping(0).setInt(ps, exprIndex[0], (int) pt.getX());
+            getColumnMapping(1).setInt(ps, exprIndex[1], (int) pt.getY());
         }
     }
 
@@ -124,7 +124,7 @@ public class PointMapping extends SingleFieldMultiMapping
         try
         {
             // Check for null entries, just by checking first datastore mapping for null
-            if (getDatastoreMapping(0).getObject(resultSet, exprIndex[0]) == null)
+            if (getColumnMapping(0).getObject(resultSet, exprIndex[0]) == null)
             {
                 return null;
             }
@@ -134,8 +134,8 @@ public class PointMapping extends SingleFieldMultiMapping
             // Do nothing
         }
 
-        int x = getDatastoreMapping(0).getInt(resultSet, exprIndex[0]);
-        int y = getDatastoreMapping(1).getInt(resultSet, exprIndex[1]);
+        int x = getColumnMapping(0).getInt(resultSet, exprIndex[0]);
+        int y = getColumnMapping(1).getInt(resultSet, exprIndex[1]);
         return new Point(x, y);
     }
 }

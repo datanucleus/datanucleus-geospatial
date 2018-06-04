@@ -20,7 +20,7 @@ package org.datanucleus.store.types.geospatial.rdbms.sql.method;
 import java.awt.Rectangle;
 
 import org.datanucleus.store.types.geospatial.rdbms.mapping.RectangleMapping;
-import org.datanucleus.store.rdbms.mapping.datastore.DatastoreMapping;
+import org.datanucleus.store.rdbms.mapping.datastore.ColumnMapping;
 import org.datanucleus.store.rdbms.mapping.java.IntegerMapping;
 
 /**
@@ -46,18 +46,18 @@ public class RectangleComponentMapping extends IntegerMapping
         this.mappingIndex = mappingIndex;
     }
 
-    public DatastoreMapping[] getDatastoreMappings()
+    public ColumnMapping[] getColumnMappings()
     {
-        DatastoreMapping[] startColumnMapping = {rectMapping.getDatastoreMappings()[mappingIndex]};
+        ColumnMapping[] startColumnMapping = {rectMapping.getColumnMappings()[mappingIndex]};
         return startColumnMapping;
     }
 
-    public DatastoreMapping getDatastoreMapping(int index)
+    public ColumnMapping getColumnMapping(int index)
     {
-        return rectMapping.getDatastoreMappings()[mappingIndex];
+        return rectMapping.getColumnMappings()[mappingIndex];
     }
 
-    public int getNumberOfDatastoreMappings()
+    public int getNumberOfColumnMappings()
     {
         return 1;
     }

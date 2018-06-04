@@ -80,7 +80,7 @@ public class Point2dFloatMapping extends SingleFieldMultiMapping
      * @param value The overall value for this java type
      * @return The value for this datastore index
      */
-    public Object getValueForDatastoreMapping(NucleusContext nucleusCtx, int index, Object value)
+    public Object getValueForColumnMapping(NucleusContext nucleusCtx, int index, Object value)
     {
         Point2D.Float pt = (Point2D.Float) value;
         if (index == 0)
@@ -104,13 +104,13 @@ public class Point2dFloatMapping extends SingleFieldMultiMapping
         Point2D.Float pt = (Point2D.Float) value;
         if (pt == null)
         {
-            getDatastoreMapping(0).setObject(ps, exprIndex[0], null);
-            getDatastoreMapping(1).setObject(ps, exprIndex[1], null);
+            getColumnMapping(0).setObject(ps, exprIndex[0], null);
+            getColumnMapping(1).setObject(ps, exprIndex[1], null);
         }
         else
         {
-            getDatastoreMapping(0).setFloat(ps, exprIndex[0], pt.x);
-            getDatastoreMapping(1).setFloat(ps, exprIndex[1], pt.y);
+            getColumnMapping(0).setFloat(ps, exprIndex[0], pt.x);
+            getColumnMapping(1).setFloat(ps, exprIndex[1], pt.y);
         }
     }
 
@@ -122,13 +122,13 @@ public class Point2dFloatMapping extends SingleFieldMultiMapping
     public Object getObject(ExecutionContext ec, ResultSet resultSet, int[] exprIndex)
     {
         // Check for null entries
-        if (getDatastoreMapping(0).getObject(resultSet, exprIndex[0]) == null)
+        if (getColumnMapping(0).getObject(resultSet, exprIndex[0]) == null)
         {
             return null;
         }
 
-        float x = getDatastoreMapping(0).getFloat(resultSet, exprIndex[0]);
-        float y = getDatastoreMapping(1).getFloat(resultSet, exprIndex[1]);
+        float x = getColumnMapping(0).getFloat(resultSet, exprIndex[0]);
+        float y = getColumnMapping(1).getFloat(resultSet, exprIndex[1]);
         return new Point2D.Float(x, y);
     }
 }

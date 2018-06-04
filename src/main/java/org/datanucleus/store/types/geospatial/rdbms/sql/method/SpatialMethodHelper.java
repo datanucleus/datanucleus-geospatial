@@ -74,7 +74,7 @@ public class SpatialMethodHelper
         }
 
         return expr.getSQLStatement().getRDBMSManager().getMappingManager()
-                .getMappingWithDatastoreMapping(geometryClass, false, false, clr);
+                .getMappingWithColumnMapping(geometryClass, false, false, clr);
     }
 
     /**

@@ -83,23 +83,23 @@ public class PostGISAdapter extends PostgreSQLAdapter implements SpatialRDBMSAda
             if (cls != null)
             {
                 // jts2postgis
-                registerDatastoreMapping(com.vividsolutions.jts.geom.Geometry.class.getName(), org.datanucleus.store.types.geospatial.rdbms.mapping.jts2postgis.GeometryRDBMSMapping.class, 
+                registerDatastoreMapping(com.vividsolutions.jts.geom.Geometry.class.getName(), org.datanucleus.store.types.geospatial.rdbms.mapping.jts2postgis.GeometryColumnMapping.class, 
                     JDBCType.OTHER, "geometry", true);
-                registerDatastoreMapping(com.vividsolutions.jts.geom.GeometryCollection.class.getName(), org.datanucleus.store.types.geospatial.rdbms.mapping.jts2postgis.GeometryCollectionRDBMSMapping.class, 
+                registerDatastoreMapping(com.vividsolutions.jts.geom.GeometryCollection.class.getName(), org.datanucleus.store.types.geospatial.rdbms.mapping.jts2postgis.GeometryCollectionColumnMapping.class, 
                     JDBCType.OTHER, "geometry", true);
-                registerDatastoreMapping(com.vividsolutions.jts.geom.LinearRing.class.getName(), org.datanucleus.store.types.geospatial.rdbms.mapping.jts2postgis.LinearRingRDBMSMapping.class, 
+                registerDatastoreMapping(com.vividsolutions.jts.geom.LinearRing.class.getName(), org.datanucleus.store.types.geospatial.rdbms.mapping.jts2postgis.LinearRingColumnMapping.class, 
                     JDBCType.OTHER, "geometry", true);
-                registerDatastoreMapping(com.vividsolutions.jts.geom.LineString.class.getName(), org.datanucleus.store.types.geospatial.rdbms.mapping.jts2postgis.LineStringRDBMSMapping.class, 
+                registerDatastoreMapping(com.vividsolutions.jts.geom.LineString.class.getName(), org.datanucleus.store.types.geospatial.rdbms.mapping.jts2postgis.LineStringColumnMapping.class, 
                     JDBCType.OTHER, "geometry", true);
-                registerDatastoreMapping(com.vividsolutions.jts.geom.MultiLineString.class.getName(), org.datanucleus.store.types.geospatial.rdbms.mapping.jts2postgis.MultiLineStringRDBMSMapping.class, 
+                registerDatastoreMapping(com.vividsolutions.jts.geom.MultiLineString.class.getName(), org.datanucleus.store.types.geospatial.rdbms.mapping.jts2postgis.MultiLineStringColumnMapping.class, 
                     JDBCType.OTHER, "geometry", true);
-                registerDatastoreMapping(com.vividsolutions.jts.geom.MultiPolygon.class.getName(), org.datanucleus.store.types.geospatial.rdbms.mapping.jts2postgis.MultiPolygonRDBMSMapping.class, 
+                registerDatastoreMapping(com.vividsolutions.jts.geom.MultiPolygon.class.getName(), org.datanucleus.store.types.geospatial.rdbms.mapping.jts2postgis.MultiPolygonColumnMapping.class, 
                     JDBCType.OTHER, "geometry", true);
-                registerDatastoreMapping(com.vividsolutions.jts.geom.MultiPoint.class.getName(), org.datanucleus.store.types.geospatial.rdbms.mapping.jts2postgis.MultiPointRDBMSMapping.class, 
+                registerDatastoreMapping(com.vividsolutions.jts.geom.MultiPoint.class.getName(), org.datanucleus.store.types.geospatial.rdbms.mapping.jts2postgis.MultiPointColumnMapping.class, 
                     JDBCType.OTHER, "geometry", true);
-                registerDatastoreMapping(com.vividsolutions.jts.geom.Point.class.getName(), org.datanucleus.store.types.geospatial.rdbms.mapping.jts2postgis.PointRDBMSMapping.class, 
+                registerDatastoreMapping(com.vividsolutions.jts.geom.Point.class.getName(), org.datanucleus.store.types.geospatial.rdbms.mapping.jts2postgis.PointColumnMapping.class, 
                     JDBCType.OTHER, "geometry", true);
-                registerDatastoreMapping(com.vividsolutions.jts.geom.Polygon.class.getName(), org.datanucleus.store.types.geospatial.rdbms.mapping.jts2postgis.PolygonRDBMSMapping.class, 
+                registerDatastoreMapping(com.vividsolutions.jts.geom.Polygon.class.getName(), org.datanucleus.store.types.geospatial.rdbms.mapping.jts2postgis.PolygonColumnMapping.class, 
                     JDBCType.OTHER, "geometry", true);
             }
         }
@@ -114,27 +114,27 @@ public class PostGISAdapter extends PostgreSQLAdapter implements SpatialRDBMSAda
             if (cls != null)
             {
                 // pg2postgis
-                registerDatastoreMapping(org.postgis.Geometry.class.getName(), org.datanucleus.store.types.geospatial.rdbms.mapping.pg2postgis.GeometryRDBMSMapping.class, 
+                registerDatastoreMapping(org.postgis.Geometry.class.getName(), org.datanucleus.store.types.geospatial.rdbms.mapping.pg2postgis.GeometryColumnMapping.class, 
                     JDBCType.OTHER, "geometry", true);
-                registerDatastoreMapping(org.postgis.GeometryCollection.class.getName(), org.datanucleus.store.types.geospatial.rdbms.mapping.pg2postgis.GeometryCollectionRDBMSMapping.class, 
+                registerDatastoreMapping(org.postgis.GeometryCollection.class.getName(), org.datanucleus.store.types.geospatial.rdbms.mapping.pg2postgis.GeometryCollectionColumnMapping.class, 
                     JDBCType.OTHER, "geometry", true);
-                registerDatastoreMapping(org.postgis.LinearRing.class.getName(), org.datanucleus.store.types.geospatial.rdbms.mapping.pg2postgis.LinearRingRDBMSMapping.class, 
+                registerDatastoreMapping(org.postgis.LinearRing.class.getName(), org.datanucleus.store.types.geospatial.rdbms.mapping.pg2postgis.LinearRingColumnMapping.class, 
                     JDBCType.OTHER, "geometry", true);
-                registerDatastoreMapping(org.postgis.LineString.class.getName(), org.datanucleus.store.types.geospatial.rdbms.mapping.pg2postgis.LineStringRDBMSMapping.class, 
+                registerDatastoreMapping(org.postgis.LineString.class.getName(), org.datanucleus.store.types.geospatial.rdbms.mapping.pg2postgis.LineStringColumnMapping.class, 
                     JDBCType.OTHER, "geometry", true);
-                registerDatastoreMapping(org.postgis.MultiLineString.class.getName(), org.datanucleus.store.types.geospatial.rdbms.mapping.pg2postgis.MultiLineStringRDBMSMapping.class, 
+                registerDatastoreMapping(org.postgis.MultiLineString.class.getName(), org.datanucleus.store.types.geospatial.rdbms.mapping.pg2postgis.MultiLineStringColumnMapping.class, 
                     JDBCType.OTHER, "geometry", true);
-                registerDatastoreMapping(org.postgis.MultiPolygon.class.getName(), org.datanucleus.store.types.geospatial.rdbms.mapping.pg2postgis.MultiPolygonRDBMSMapping.class, 
+                registerDatastoreMapping(org.postgis.MultiPolygon.class.getName(), org.datanucleus.store.types.geospatial.rdbms.mapping.pg2postgis.MultiPolygonColumnMapping.class, 
                     JDBCType.OTHER, "geometry", true);
-                registerDatastoreMapping(org.postgis.MultiPoint.class.getName(), org.datanucleus.store.types.geospatial.rdbms.mapping.pg2postgis.MultiPointRDBMSMapping.class, 
+                registerDatastoreMapping(org.postgis.MultiPoint.class.getName(), org.datanucleus.store.types.geospatial.rdbms.mapping.pg2postgis.MultiPointColumnMapping.class, 
                     JDBCType.OTHER, "geometry", true);
-                registerDatastoreMapping(org.postgis.Point.class.getName(), org.datanucleus.store.types.geospatial.rdbms.mapping.pg2postgis.PointRDBMSMapping.class, 
+                registerDatastoreMapping(org.postgis.Point.class.getName(), org.datanucleus.store.types.geospatial.rdbms.mapping.pg2postgis.PointColumnMapping.class, 
                     JDBCType.OTHER, "geometry", true);
-                registerDatastoreMapping(org.postgis.Polygon.class.getName(), org.datanucleus.store.types.geospatial.rdbms.mapping.pg2postgis.PolygonRDBMSMapping.class, 
+                registerDatastoreMapping(org.postgis.Polygon.class.getName(), org.datanucleus.store.types.geospatial.rdbms.mapping.pg2postgis.PolygonColumnMapping.class, 
                     JDBCType.OTHER, "geometry", true);
-                registerDatastoreMapping(org.postgis.PGbox2d.class.getName(), org.datanucleus.store.types.geospatial.rdbms.mapping.pg2postgis.PGbox2dRDBMSMapping.class, 
+                registerDatastoreMapping(org.postgis.PGbox2d.class.getName(), org.datanucleus.store.types.geospatial.rdbms.mapping.pg2postgis.PGbox2dColumnMapping.class, 
                     JDBCType.OTHER, "box2d", true);
-                registerDatastoreMapping(org.postgis.PGbox3d.class.getName(), org.datanucleus.store.types.geospatial.rdbms.mapping.pg2postgis.PGbox3dRDBMSMapping.class, 
+                registerDatastoreMapping(org.postgis.PGbox3d.class.getName(), org.datanucleus.store.types.geospatial.rdbms.mapping.pg2postgis.PGbox3dColumnMapping.class, 
                     JDBCType.OTHER, "box3d", true);
             }
         }
