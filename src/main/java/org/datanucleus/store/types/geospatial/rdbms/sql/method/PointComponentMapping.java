@@ -20,7 +20,7 @@ package org.datanucleus.store.types.geospatial.rdbms.sql.method;
 import java.awt.Point;
 
 import org.datanucleus.store.types.geospatial.rdbms.mapping.PointMapping;
-import org.datanucleus.store.rdbms.mapping.datastore.ColumnMapping;
+import org.datanucleus.store.rdbms.mapping.column.ColumnMapping;
 import org.datanucleus.store.rdbms.mapping.java.IntegerMapping;
 
 /**

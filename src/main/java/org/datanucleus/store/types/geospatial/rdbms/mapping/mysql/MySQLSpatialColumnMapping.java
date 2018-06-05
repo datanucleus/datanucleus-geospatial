@@ -19,7 +19,7 @@ package org.datanucleus.store.types.geospatial.rdbms.mapping.mysql;
 
 import java.sql.SQLException;
 
-import org.datanucleus.store.rdbms.mapping.datastore.AbstractColumnMapping;
+import org.datanucleus.store.rdbms.mapping.column.AbstractColumnMapping;
 import org.datanucleus.store.rdbms.mapping.java.JavaTypeMapping;
 import org.datanucleus.store.rdbms.RDBMSStoreManager;
 import org.datanucleus.store.rdbms.table.Column;
