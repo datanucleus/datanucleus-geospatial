@@ -57,10 +57,10 @@ public class MySQLSpatialAdapter extends MySQLAdapter implements SpatialRDBMSAda
     }
 
     /* (non-Javadoc)
-     * @see org.datanucleus.store.rdbms.adapter.MySQLAdapter#loadDatastoreMappings(org.datanucleus.plugin.PluginManager, org.datanucleus.ClassLoaderResolver)
+     * @see org.datanucleus.store.rdbms.adapter.MySQLAdapter#loadColumnMappings(org.datanucleus.plugin.PluginManager, org.datanucleus.ClassLoaderResolver)
      */
     @Override
-    protected void loadDatastoreMappings(PluginManager mgr, ClassLoaderResolver clr)
+    protected void loadColumnMappings(PluginManager mgr, ClassLoaderResolver clr)
     {
         try
         {
@@ -68,7 +68,7 @@ public class MySQLSpatialAdapter extends MySQLAdapter implements SpatialRDBMSAda
             if (cls != null)
             {
                 // jgeom2mysql
-                registerDatastoreMapping(oracle.spatial.geometry.JGeometry.class.getName(), org.datanucleus.store.types.geospatial.rdbms.mapping.jgeom2mysql.JGeometryColumnMapping.class, 
+                registerColumnMapping(oracle.spatial.geometry.JGeometry.class.getName(), org.datanucleus.store.types.geospatial.rdbms.mapping.jgeom2mysql.JGeometryColumnMapping.class, 
                     JDBCType.BINARY, "geometry", true);
             }
         }
@@ -83,23 +83,23 @@ public class MySQLSpatialAdapter extends MySQLAdapter implements SpatialRDBMSAda
             if (cls != null)
             {
                 // jts2mysql
-                registerDatastoreMapping(com.vividsolutions.jts.geom.Geometry.class.getName(), org.datanucleus.store.types.geospatial.rdbms.mapping.jts2mysql.GeometryColumnMapping.class, 
+                registerColumnMapping(com.vividsolutions.jts.geom.Geometry.class.getName(), org.datanucleus.store.types.geospatial.rdbms.mapping.jts2mysql.GeometryColumnMapping.class, 
                     JDBCType.BINARY, "geometry", true);
-                registerDatastoreMapping(com.vividsolutions.jts.geom.GeometryCollection.class.getName(), org.datanucleus.store.types.geospatial.rdbms.mapping.jts2mysql.GeometryCollectionColumnMapping.class, 
+                registerColumnMapping(com.vividsolutions.jts.geom.GeometryCollection.class.getName(), org.datanucleus.store.types.geospatial.rdbms.mapping.jts2mysql.GeometryCollectionColumnMapping.class, 
                     JDBCType.BINARY, "geometrycollection", true);
-                registerDatastoreMapping(com.vividsolutions.jts.geom.LinearRing.class.getName(), org.datanucleus.store.types.geospatial.rdbms.mapping.jts2mysql.LinearRingColumnMapping.class, 
+                registerColumnMapping(com.vividsolutions.jts.geom.LinearRing.class.getName(), org.datanucleus.store.types.geospatial.rdbms.mapping.jts2mysql.LinearRingColumnMapping.class, 
                     JDBCType.BINARY, "linestring", true);
-                registerDatastoreMapping(com.vividsolutions.jts.geom.LineString.class.getName(), org.datanucleus.store.types.geospatial.rdbms.mapping.jts2mysql.LineStringColumnMapping.class, 
+                registerColumnMapping(com.vividsolutions.jts.geom.LineString.class.getName(), org.datanucleus.store.types.geospatial.rdbms.mapping.jts2mysql.LineStringColumnMapping.class, 
                     JDBCType.BINARY, "linestring", true);
-                registerDatastoreMapping(com.vividsolutions.jts.geom.MultiLineString.class.getName(), org.datanucleus.store.types.geospatial.rdbms.mapping.jts2mysql.MultiLineStringColumnMapping.class, 
+                registerColumnMapping(com.vividsolutions.jts.geom.MultiLineString.class.getName(), org.datanucleus.store.types.geospatial.rdbms.mapping.jts2mysql.MultiLineStringColumnMapping.class, 
                     JDBCType.BINARY, "multilinestring", true);
-                registerDatastoreMapping(com.vividsolutions.jts.geom.MultiPolygon.class.getName(), org.datanucleus.store.types.geospatial.rdbms.mapping.jts2mysql.MultiPolygonColumnMapping.class, 
+                registerColumnMapping(com.vividsolutions.jts.geom.MultiPolygon.class.getName(), org.datanucleus.store.types.geospatial.rdbms.mapping.jts2mysql.MultiPolygonColumnMapping.class, 
                     JDBCType.BINARY, "multipolygon", true);
-                registerDatastoreMapping(com.vividsolutions.jts.geom.MultiPoint.class.getName(), org.datanucleus.store.types.geospatial.rdbms.mapping.jts2mysql.MultiPointColumnMapping.class, 
+                registerColumnMapping(com.vividsolutions.jts.geom.MultiPoint.class.getName(), org.datanucleus.store.types.geospatial.rdbms.mapping.jts2mysql.MultiPointColumnMapping.class, 
                     JDBCType.BINARY, "multipoint", true);
-                registerDatastoreMapping(com.vividsolutions.jts.geom.Point.class.getName(), org.datanucleus.store.types.geospatial.rdbms.mapping.jts2mysql.PointColumnMapping.class, 
+                registerColumnMapping(com.vividsolutions.jts.geom.Point.class.getName(), org.datanucleus.store.types.geospatial.rdbms.mapping.jts2mysql.PointColumnMapping.class, 
                     JDBCType.BINARY, "point", true);
-                registerDatastoreMapping(com.vividsolutions.jts.geom.Polygon.class.getName(), org.datanucleus.store.types.geospatial.rdbms.mapping.jts2mysql.PolygonColumnMapping.class, 
+                registerColumnMapping(com.vividsolutions.jts.geom.Polygon.class.getName(), org.datanucleus.store.types.geospatial.rdbms.mapping.jts2mysql.PolygonColumnMapping.class, 
                     JDBCType.BINARY, "polygon", true);
             }
         }
@@ -114,23 +114,23 @@ public class MySQLSpatialAdapter extends MySQLAdapter implements SpatialRDBMSAda
             if (cls != null)
             {
                 // pg2mysql
-                registerDatastoreMapping(org.postgis.Geometry.class.getName(), org.datanucleus.store.types.geospatial.rdbms.mapping.pg2mysql.GeometryColumnMapping.class, 
+                registerColumnMapping(org.postgis.Geometry.class.getName(), org.datanucleus.store.types.geospatial.rdbms.mapping.pg2mysql.GeometryColumnMapping.class, 
                     JDBCType.BINARY, "geometry", true);
-                registerDatastoreMapping(org.postgis.GeometryCollection.class.getName(), org.datanucleus.store.types.geospatial.rdbms.mapping.pg2mysql.GeometryCollectionColumnMapping.class, 
+                registerColumnMapping(org.postgis.GeometryCollection.class.getName(), org.datanucleus.store.types.geospatial.rdbms.mapping.pg2mysql.GeometryCollectionColumnMapping.class, 
                     JDBCType.BINARY, "geometry", true);
-                registerDatastoreMapping(org.postgis.LinearRing.class.getName(), org.datanucleus.store.types.geospatial.rdbms.mapping.pg2mysql.LinearRingColumnMapping.class, 
+                registerColumnMapping(org.postgis.LinearRing.class.getName(), org.datanucleus.store.types.geospatial.rdbms.mapping.pg2mysql.LinearRingColumnMapping.class, 
                     JDBCType.BINARY, "geometry", true);
-                registerDatastoreMapping(org.postgis.LineString.class.getName(), org.datanucleus.store.types.geospatial.rdbms.mapping.pg2mysql.LineStringColumnMapping.class, 
+                registerColumnMapping(org.postgis.LineString.class.getName(), org.datanucleus.store.types.geospatial.rdbms.mapping.pg2mysql.LineStringColumnMapping.class, 
                     JDBCType.BINARY, "geometry", true);
-                registerDatastoreMapping(org.postgis.MultiLineString.class.getName(), org.datanucleus.store.types.geospatial.rdbms.mapping.pg2mysql.MultiLineStringColumnMapping.class, 
+                registerColumnMapping(org.postgis.MultiLineString.class.getName(), org.datanucleus.store.types.geospatial.rdbms.mapping.pg2mysql.MultiLineStringColumnMapping.class, 
                     JDBCType.BINARY, "geometry", true);
-                registerDatastoreMapping(org.postgis.MultiPolygon.class.getName(), org.datanucleus.store.types.geospatial.rdbms.mapping.pg2mysql.MultiPolygonColumnMapping.class, 
+                registerColumnMapping(org.postgis.MultiPolygon.class.getName(), org.datanucleus.store.types.geospatial.rdbms.mapping.pg2mysql.MultiPolygonColumnMapping.class, 
                     JDBCType.BINARY, "geometry", true);
-                registerDatastoreMapping(org.postgis.MultiPoint.class.getName(), org.datanucleus.store.types.geospatial.rdbms.mapping.pg2mysql.MultiPointColumnMapping.class, 
+                registerColumnMapping(org.postgis.MultiPoint.class.getName(), org.datanucleus.store.types.geospatial.rdbms.mapping.pg2mysql.MultiPointColumnMapping.class, 
                     JDBCType.BINARY, "geometry", true);
-                registerDatastoreMapping(org.postgis.Point.class.getName(), org.datanucleus.store.types.geospatial.rdbms.mapping.pg2mysql.PointColumnMapping.class, 
+                registerColumnMapping(org.postgis.Point.class.getName(), org.datanucleus.store.types.geospatial.rdbms.mapping.pg2mysql.PointColumnMapping.class, 
                     JDBCType.BINARY, "geometry", true);
-                registerDatastoreMapping(org.postgis.Polygon.class.getName(), org.datanucleus.store.types.geospatial.rdbms.mapping.pg2mysql.PolygonColumnMapping.class, 
+                registerColumnMapping(org.postgis.Polygon.class.getName(), org.datanucleus.store.types.geospatial.rdbms.mapping.pg2mysql.PolygonColumnMapping.class, 
                     JDBCType.BINARY, "geometry", true);
             }
         }
@@ -139,7 +139,7 @@ public class MySQLSpatialAdapter extends MySQLAdapter implements SpatialRDBMSAda
             NucleusLogger.DATASTORE.warn("Not loading RDBMS support for PostGIS types since not present");
         }
         
-        super.loadDatastoreMappings(mgr, clr);
+        super.loadColumnMappings(mgr, clr);
     }
 
     public boolean isGeometryColumn(Column c)
