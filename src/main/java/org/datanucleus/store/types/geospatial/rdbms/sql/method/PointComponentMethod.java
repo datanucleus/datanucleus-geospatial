@@ -40,8 +40,8 @@ public abstract class PointComponentMethod implements SQLMethod
             throw new NucleusUserException("Cannot invoke Point.getX/getY on null object");
         }
 
-        ColumnMapping datastoreMapping = expr.getJavaTypeMapping().getColumnMapping(0);
-        Object javaTypeMapping = datastoreMapping.getJavaTypeMapping();
+        ColumnMapping colMapping = expr.getJavaTypeMapping().getColumnMapping(0);
+        Object javaTypeMapping = colMapping.getJavaTypeMapping();
         if (!(javaTypeMapping instanceof PointMapping))
         {
             throw new NucleusException("Can only be used with 'PointMapping' Java Type mappings.");

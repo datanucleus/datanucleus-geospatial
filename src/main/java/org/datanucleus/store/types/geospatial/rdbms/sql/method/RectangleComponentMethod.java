@@ -40,8 +40,8 @@ public abstract class RectangleComponentMethod implements SQLMethod
             throw new NucleusUserException("Cannot invoke Rectangle.getX/getY/getWidth/getHeight on null object");
         }
 
-        ColumnMapping datastoreMapping = expr.getJavaTypeMapping().getColumnMapping(0);
-        Object javaTypeMapping = datastoreMapping.getJavaTypeMapping();
+        ColumnMapping colMapping = expr.getJavaTypeMapping().getColumnMapping(0);
+        Object javaTypeMapping = colMapping.getJavaTypeMapping();
         if (!(javaTypeMapping instanceof RectangleMapping))
         {
             throw new NucleusException("Can only be used with 'RectangleMapping' Java Type mappings.");
