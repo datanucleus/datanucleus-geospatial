@@ -32,7 +32,7 @@ import org.datanucleus.store.rdbms.table.Table;
 
 /**
  * Mapping for java.awt.geom.Arc2D.Float, maps the x, y, width, height, start and extent values to
- * float-precision datastore fields.
+ * float-precision columns.
  */
 public class Arc2dFloatMapping extends SingleFieldMultiMapping
 {

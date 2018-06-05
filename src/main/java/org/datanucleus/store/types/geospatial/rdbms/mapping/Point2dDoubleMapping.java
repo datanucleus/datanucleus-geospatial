@@ -32,7 +32,7 @@ import org.datanucleus.store.rdbms.mapping.java.SingleFieldMultiMapping;
 import org.datanucleus.store.rdbms.table.Table;
 
 /**
- * Mapping for java.awt.geom.Point2D.Double, maps the x and y values to double-precision datastore fields.
+ * Mapping for java.awt.geom.Point2D.Double, maps the x and y values to double-precision columns.
  */
 public class Point2dDoubleMapping extends SingleFieldMultiMapping
 {

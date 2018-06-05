@@ -31,7 +31,7 @@ import org.datanucleus.store.rdbms.mapping.java.SingleFieldMultiMapping;
 import org.datanucleus.store.rdbms.table.Table;
 
 /**
- * Mapping for java.awt.Rectangle, maps the x, y, width and height values to int-precision datastore fields
+ * Mapping for java.awt.Rectangle, maps the x, y, width and height values to int-precision columns
  */
 public class RectangleMapping extends SingleFieldMultiMapping
 {

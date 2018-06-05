@@ -32,7 +32,7 @@ import org.datanucleus.store.rdbms.table.Table;
 
 /**
  * Mapping for java.awt.geom.Ellipse2D.Float, maps the x, y, width and height values to float-precision
- * datastore fields.
+ * columns.
  */
 public class Ellipse2dFloatMapping extends SingleFieldMultiMapping
 {

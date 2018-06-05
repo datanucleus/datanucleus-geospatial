@@ -32,7 +32,7 @@ import org.datanucleus.store.rdbms.table.Table;
 
 /**
  * Mapping for java.awt.geom.Arc2D.Double, maps the x, y, width, height, start and extent values to
- * double-precision datastore fields.
+ * double-precision columns.
  */
 public class Arc2dDoubleMapping extends SingleFieldMultiMapping
 {

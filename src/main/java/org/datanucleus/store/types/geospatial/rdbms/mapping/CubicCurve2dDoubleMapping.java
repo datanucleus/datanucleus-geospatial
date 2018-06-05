@@ -32,7 +32,7 @@ import org.datanucleus.store.rdbms.table.Table;
 
 /**
  * Mapping for java.awt.geom.CubicCurve2D.Double, maps the x1, y1, ctrlx1, ctrly1, ctrlx2, ctrly2, x2 and y2
- * values to double-precision datastore fields.
+ * values to double-precision columns.
  */
 public class CubicCurve2dDoubleMapping extends SingleFieldMultiMapping
 {

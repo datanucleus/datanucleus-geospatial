@@ -31,7 +31,7 @@ import org.datanucleus.store.rdbms.mapping.java.SingleFieldMultiMapping;
 import org.datanucleus.store.rdbms.table.Table;
 
 /**
- * Mapping for java.awt.Polygon, maps the points to int-precision datastore fields.
+ * Mapping for java.awt.Polygon, maps the points to int-precision columns.
  */
 public class PolygonMapping extends SingleFieldMultiMapping
 {

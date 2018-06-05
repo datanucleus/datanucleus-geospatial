@@ -32,7 +32,7 @@ import org.datanucleus.store.rdbms.table.Table;
 
 /**
  * Mapping for java.awt.geom.Rectangle2D.Double, maps the x, y, width and height values to double-precision
- * datastore fields.
+ * columns.
  */
 public class Rectangle2dDoubleMapping extends SingleFieldMultiMapping
 {

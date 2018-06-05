@@ -32,7 +32,7 @@ import org.datanucleus.store.rdbms.table.Table;
 
 /**
  * Mapping for java.awt.geom.RoundRectangle2D.Double, maps the x, y, width, height, arc-width and arc-height
- * values to double-precision datastore fields.
+ * values to double-precision columns.
  */
 public class RoundRectangle2dDoubleMapping extends SingleFieldMultiMapping
 {
