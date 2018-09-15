@@ -28,7 +28,7 @@ import org.datanucleus.store.rdbms.sql.expression.SQLExpression;
 import org.datanucleus.store.rdbms.sql.method.SQLMethod;
 
 /**
- * Implementation of Spatial "asBinary" method.
+ * Implementation of Spatial.asBinary/{geometry}.toBinary() method.
  */
 public class SpatialAsBinaryMethod implements SQLMethod
 {
@@ -40,12 +40,21 @@ public class SpatialAsBinaryMethod implements SQLMethod
      */
     public SQLExpression getExpression(SQLStatement stmt, SQLExpression expr, List args)
     {
-        if (args == null || args.size() != 1)
+        if (expr == null && (args == null || args.size() != 1))
         {
             throw new NucleusUserException("Cannot invoke Spatial.asBinary without 1 argument");
         }
+        else if (expr != null && args != null && !args.isEmpty())
+        {
+            throw new NucleusUserException("Cannot invoke geom.toBinary() with arguments");
+        }
 
-        SQLExpression argExpr1 = (SQLExpression) args.get(0); // Geometry
+        SQLExpression argExpr1 = expr;
+        if (expr == null)
+        {
+            // "Spatial." method
+            argExpr1 = (SQLExpression) args.get(0); // Geometry
+        }
 
         ArrayList funcArgs = new ArrayList();
         funcArgs.add(argExpr1);
