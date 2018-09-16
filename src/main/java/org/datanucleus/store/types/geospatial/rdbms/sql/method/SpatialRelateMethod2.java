@@ -35,8 +35,7 @@ public class SpatialRelateMethod2 implements SQLMethod
     /*
      * (non-Javadoc)
      * @see
-     * org.datanucleus.store.rdbms.sql.method.SQLMethod#getExpression(org.datanucleus.store.rdbms.sql.expression
-     * .SQLExpression, java.util.List)
+     * org.datanucleus.store.rdbms.sql.method.SQLMethod#getExpression(org.datanucleus.store.rdbms.sql.expression.SQLExpression, java.util.List)
      */
     public SQLExpression getExpression(SQLStatement stmt, SQLExpression expr, List args)
     {
@@ -53,20 +52,14 @@ public class SpatialRelateMethod2 implements SQLMethod
             throw new NucleusUserException("Cannot invoke geom.relate() without 2 argument");
         }
 
-        SQLExpression argExpr1 = null;
-        SQLExpression argExpr2 = null;
-        SQLExpression argExpr3 = null;
+        SQLExpression argExpr1 = expr; // Geometry 1
+        SQLExpression argExpr2 = (SQLExpression) args.get(0); // Geometry 2
+        SQLExpression argExpr3 = (SQLExpression) args.get(2); // Pattern
         if (expr == null)
         {
             // "Spatial." method
             argExpr1 = (SQLExpression) args.get(0); // Geometry 1
             argExpr2 = (SQLExpression) args.get(1); // Geometry 2
-            argExpr3 = (SQLExpression) args.get(2); // Pattern
-        }
-        else
-        {
-            argExpr1 = expr; // Geometry 1
-            argExpr2 = (SQLExpression) args.get(0); // Geometry 2
             argExpr3 = (SQLExpression) args.get(2); // Pattern
         }
 

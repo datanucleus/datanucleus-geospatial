@@ -49,14 +49,15 @@ public class SpatialNumPointsMethod implements SQLMethod
             throw new NucleusUserException("Cannot invoke geom.getNumPoints() with arguments");
         }
 
+        SQLExpression argExpr = expr;
         if (expr == null)
         {
             // "Spatial." method
-            expr = (SQLExpression) args.get(0); // Geometry
+            argExpr = (SQLExpression) args.get(0); // Geometry
         }
 
         ArrayList funcArgs = new ArrayList();
-        funcArgs.add(expr);
+        funcArgs.add(argExpr);
 
         JavaTypeMapping m = stmt.getSQLExpressionFactory().getMappingForType(int.class);
         return new NumericExpression(stmt, m, "NumPoints", funcArgs);

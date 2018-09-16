@@ -43,19 +43,15 @@ public class SpatialDimensionMethod3 implements SQLMethod
             throw new NucleusUserException("Cannot invoke geom.dimension() with an argument");
         }
 
-        SQLExpression argExpr1 = null;
+        SQLExpression argExpr = expr;
         if (expr == null)
         {
             // "Spatial." method
-            argExpr1 = (SQLExpression) args.get(0);
-        }
-        else
-        {
-            argExpr1 = expr;
+            argExpr = (SQLExpression) args.get(0);
         }
 
         ArrayList<SQLExpression> funcArgs = new ArrayList<SQLExpression>();
-        funcArgs.add(argExpr1);
+        funcArgs.add(argExpr);
 
         JavaTypeMapping m = stmt.getSQLExpressionFactory().getMappingForType(int.class);
         return new NumericExpression(stmt, m, "st_dimension", funcArgs);

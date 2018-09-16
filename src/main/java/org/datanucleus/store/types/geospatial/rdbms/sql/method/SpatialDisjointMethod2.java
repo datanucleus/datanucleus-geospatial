@@ -54,17 +54,12 @@ public class SpatialDisjointMethod2 implements SQLMethod
         }
 
         SQLExpression argExpr1 = expr;
-        SQLExpression argExpr2 = expr;
+        SQLExpression argExpr2 = (SQLExpression) args.get(0); // Geometry 2
         if (expr == null)
         {
             // "Spatial." method
             argExpr1 = (SQLExpression) args.get(0); // Geometry 1
             argExpr2 = (SQLExpression) args.get(1); // Geometry 2
-        }
-        else
-        {
-            argExpr1 = expr; // Geometry 1
-            argExpr2 = (SQLExpression) args.get(0); // Geometry 2
         }
 
         ArrayList geomFunc1Args = new ArrayList();

@@ -55,17 +55,12 @@ public class SpatialGeometryNMethod implements SQLMethod
         }
 
         SQLExpression geomExpr = expr;
-        SQLExpression distExpr = expr;
+        SQLExpression distExpr = (SQLExpression) args.get(0);
         if (expr == null)
         {
             // "Spatial." method
             geomExpr = (SQLExpression) args.get(0);
             distExpr = (SQLExpression) args.get(1);
-        }
-        else
-        {
-            geomExpr = expr;
-            distExpr = (SQLExpression) args.get(0);
         }
 
         ArrayList funcArgs = new ArrayList();

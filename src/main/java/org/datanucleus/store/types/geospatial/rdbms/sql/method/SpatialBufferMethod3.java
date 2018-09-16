@@ -48,18 +48,13 @@ public class SpatialBufferMethod3 implements SQLMethod
             throw new NucleusUserException("Cannot invoke geom.buffer without 1 argument");
         }
 
-        SQLExpression geomExpr = null;
-        SQLExpression distExpr = null;
+        SQLExpression geomExpr = expr;
+        SQLExpression distExpr = (SQLExpression) args.get(0);
         if (expr == null)
         {
             // "Spatial." method
             geomExpr = (SQLExpression) args.get(0);
             distExpr = (SQLExpression) args.get(1);
-        }
-        else
-        {
-            geomExpr = expr;
-            distExpr = (SQLExpression) args.get(0);
         }
 
         ArrayList<SQLExpression> funcArgs = new ArrayList<SQLExpression>();

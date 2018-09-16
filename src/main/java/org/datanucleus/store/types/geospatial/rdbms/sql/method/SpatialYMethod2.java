@@ -46,6 +46,7 @@ public class SpatialYMethod2 implements SQLMethod
         {
             throw new NucleusUserException("Cannot invoke geom.getY() with arguments");
         }
+
         if (expr == null)
         {
             // "Spatial." method

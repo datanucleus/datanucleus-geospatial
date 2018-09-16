@@ -43,14 +43,15 @@ public class SpatialYMethod3 implements SQLMethod
             throw new NucleusUserException("Cannot invoke geom.getY() with arguments");
         }
 
+        SQLExpression argExpr = expr;
         if (expr == null)
         {
             // "Spatial." method
-            expr = (SQLExpression) args.get(0); // Geometry
+            argExpr = (SQLExpression) args.get(0); // Geometry
         }
 
         ArrayList<SQLExpression> funcArgs = new ArrayList<SQLExpression>();
-        funcArgs.add(expr);
+        funcArgs.add(argExpr);
 
         JavaTypeMapping m = stmt.getSQLExpressionFactory().getMappingForType(double.class);
         return new NumericExpression(stmt, m, "st_y", funcArgs);

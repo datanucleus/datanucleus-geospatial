@@ -30,14 +30,14 @@ import org.datanucleus.store.rdbms.sql.method.SQLMethod;
 
 /**
  * Implementation of Spatial "pointOnSurface" method for Oracle.
+ * See http://docs.oracle.com/cd/B19306_01/appdev.102/b14255/sdo_objgeom.htm#i860858
+ * This takes 2 arguments to the method unlike the other datastores.
  */
 public class SpatialPointOnSurfaceMethod2 implements SQLMethod
 {
     /*
      * (non-Javadoc)
-     * @see org.datanucleus.store.rdbms.sql.method.SQLMethod#getExpression(org.
-     * datanucleus.store.rdbms.sql.expression.SQLExpression, java.util.List)
-     * http://docs.oracle.com/cd/B19306_01/appdev.102/b14255/sdo_objgeom.htm#i860858
+     * @see org.datanucleus.store.rdbms.sql.method.SQLMethod#getExpression(org.datanucleus.store.rdbms.sql.expression.SQLExpression, java.util.List)
      */
     public SQLExpression getExpression(SQLStatement stmt, SQLExpression expr, List args)
     {

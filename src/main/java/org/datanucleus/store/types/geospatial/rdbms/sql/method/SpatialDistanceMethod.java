@@ -53,18 +53,13 @@ public class SpatialDistanceMethod implements SQLMethod
             throw new NucleusUserException("Cannot invoke geom.distance without 1 argument");
         }
 
-        SQLExpression argExpr1 = null;
-        SQLExpression argExpr2 = null;
+        SQLExpression argExpr1 = expr;
+        SQLExpression argExpr2 = (SQLExpression) args.get(0);
         if (expr == null)
         {
             // "Spatial." method
             argExpr1 = (SQLExpression) args.get(0);
             argExpr2 = (SQLExpression) args.get(1);
-        }
-        else
-        {
-            argExpr1 = expr;
-            argExpr2 = (SQLExpression) args.get(0);
         }
 
         ArrayList funcArgs = new ArrayList();

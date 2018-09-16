@@ -41,12 +41,21 @@ public class SpatialPointOnSurfaceMethod implements SQLMethod
      */
     public SQLExpression getExpression(SQLStatement stmt, SQLExpression expr, List args)
     {
-        if (args == null || args.size() != 1)
+        if (expr == null && (args == null || args.size() != 1))
         {
-            throw new NucleusUserException("Cannot invoke Spatial.pointOnSurface without 1 arguments");
+            throw new NucleusUserException("Cannot invoke Spatial.pointOnSurface without 1 argument");
+        }
+        else if (expr != null && args != null && !args.isEmpty())
+        {
+            throw new NucleusUserException("Cannot invoke geom.getPointOnSurface() with arguments");
         }
 
-        SQLExpression argExpr = (SQLExpression) args.get(0);
+        SQLExpression argExpr = expr;
+        if (expr == null)
+        {
+            // "Spatial." method
+            argExpr = (SQLExpression) args.get(0); // Geometry
+        }
 
         ArrayList funcArgs = new ArrayList();
         funcArgs.add(argExpr);

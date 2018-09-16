@@ -60,8 +60,7 @@ public class SpatialSridMethod2 implements SQLMethod
         ClassLoaderResolver clr = stmt.getQueryGenerator().getClassLoaderResolver();
         ArrayList geomFuncArgs = new ArrayList();
         geomFuncArgs.add(argExpr);
-        GeometryExpression geomExpr = new GeometryExpression(stmt, SpatialMethodHelper.getGeometryMapping(clr, argExpr),
-                "geometry.from_sdo_geom", geomFuncArgs, null);
+        GeometryExpression geomExpr = new GeometryExpression(stmt, SpatialMethodHelper.getGeometryMapping(clr, argExpr), "geometry.from_sdo_geom", geomFuncArgs, null);
 
         ArrayList funcArgs = new ArrayList();
         funcArgs.add(geomExpr);

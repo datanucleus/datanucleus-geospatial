@@ -51,17 +51,17 @@ public class SpatialAsTextMethod2 implements SQLMethod
             throw new NucleusUserException("Cannot invoke geom.asText() with arguments");
         }
 
+        SQLExpression argExpr = expr;
         if (expr == null)
         {
             // "Spatial." method
-            expr = (SQLExpression) args.get(0); // Geometry
+            argExpr = (SQLExpression) args.get(0); // Geometry
         }
 
         ClassLoaderResolver clr = stmt.getQueryGenerator().getClassLoaderResolver();
         ArrayList geomFuncArgs = new ArrayList();
-        geomFuncArgs.add(expr);
-        GeometryExpression geomExpr = new GeometryExpression(stmt, SpatialMethodHelper.getGeometryMapping(clr, expr),
-                "geometry.from_sdo_geom", geomFuncArgs, null);
+        geomFuncArgs.add(argExpr);
+        GeometryExpression geomExpr = new GeometryExpression(stmt, SpatialMethodHelper.getGeometryMapping(clr, argExpr), "geometry.from_sdo_geom", geomFuncArgs, null);
 
         ArrayList funcArgs = new ArrayList();
         funcArgs.add(geomExpr);

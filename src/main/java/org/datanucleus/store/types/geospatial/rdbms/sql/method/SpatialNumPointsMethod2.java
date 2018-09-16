@@ -50,14 +50,15 @@ public class SpatialNumPointsMethod2 implements SQLMethod
             throw new NucleusUserException("Cannot invoke geom.getNumPoints() with arguments");
         }
 
+        SQLExpression argExpr = expr;
         if (expr == null)
         {
             // "Spatial." method
-            expr = (SQLExpression) args.get(0); // Geometry
+            argExpr = (SQLExpression) args.get(0); // Geometry
         }
 
         ArrayList geomFuncArgs = new ArrayList();
-        geomFuncArgs.add(expr);
+        geomFuncArgs.add(argExpr);
         GeometryExpression geomExpr = new GeometryExpression(stmt, null, "geometry.from_sdo_geom", geomFuncArgs, null);
 
         ArrayList treatFuncArgs = new ArrayList();
