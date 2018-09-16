@@ -246,6 +246,7 @@ public class OracleSpatialAdapter extends OracleAdapter implements SpatialRDBMSA
                 if ("difference".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialDifferenceMethod2.class;
                 if ("symDifference".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialSymDifferenceMethod2.class;
                 if ("getCentroid".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialCentroidMethod2.class;
+                if ("getPointOnSurface".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialPointOnSurfaceMethod2.class;
                 if ("toText".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialAsTextMethod2.class;
                 if ("toBinary".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialAsBinaryMethod2.class;
                 if ("union".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialUnionMethod2.class;

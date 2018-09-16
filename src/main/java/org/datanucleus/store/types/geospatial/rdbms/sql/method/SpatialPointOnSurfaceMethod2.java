@@ -30,7 +30,7 @@ import org.datanucleus.store.rdbms.sql.method.SQLMethod;
 
 /**
  * Implementation of Spatial "pointOnSurface" method for Oracle.
- * See http://docs.oracle.com/cd/B19306_01/appdev.102/b14255/sdo_objgeom.htm#i860858
+ * See https://docs.oracle.com/database/121/SPATL/sdo_geom-sdo_pointonsurface.htm#SPATL1124
  * This takes 2 arguments to the method unlike the other datastores.
  */
 public class SpatialPointOnSurfaceMethod2 implements SQLMethod
@@ -41,18 +41,33 @@ public class SpatialPointOnSurfaceMethod2 implements SQLMethod
      */
     public SQLExpression getExpression(SQLStatement stmt, SQLExpression expr, List args)
     {
-        if (args == null || args.size() != 2)
+        if (args == null)
+        {
+            throw new NucleusUserException("Cannot invoke Spatial.pointOnSurface without arguments");
+        }
+        if (expr == null && args.size() != 2)
         {
             throw new NucleusUserException("Cannot invoke Spatial.pointOnSurface without 2 arguments");
         }
+        else if (expr != null && args.size() != 1)
+        {
+            throw new NucleusUserException("Cannot invoke geom.getPointOnSurface() without 1 argument");
+        }
 
-        SQLExpression argExpr1 = (SQLExpression) args.get(0);
-        SQLExpression argExpr2 = (SQLExpression) args.get(1);
+        SQLExpression argExpr1 = expr;
+        SQLExpression argExpr2 = (SQLExpression) args.get(0); // Geometry 2
+        if (expr == null)
+        {
+            // "Spatial." method
+            argExpr1 = (SQLExpression) args.get(0); // Geometry 1
+            argExpr2 = (SQLExpression) args.get(1); // Geometry 2
+        }
 
         ClassLoaderResolver clr = stmt.getQueryGenerator().getClassLoaderResolver();
         ArrayList funcArgs = new ArrayList();
         funcArgs.add(argExpr1);
         funcArgs.add(argExpr2);
+
         JavaTypeMapping geomMapping = SpatialMethodHelper.getGeometryMapping(clr, argExpr1);
         return new GeometryExpression(stmt, geomMapping, "SDO_GEOM.SDO_POINTONSURFACE", funcArgs, null);
     }
