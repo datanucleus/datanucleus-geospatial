@@ -28,7 +28,7 @@ import org.datanucleus.store.rdbms.sql.expression.SQLExpression;
 import org.datanucleus.store.rdbms.sql.method.SQLMethod;
 
 /**
- * Implementation of "Spatial.length(expr)" or "{expr}.length()" method.
+ * Implementation of "Spatial.length" method where using "GLength" datastore method (MySQL).
  */
 public class SpatialLengthMethod implements SQLMethod
 {
@@ -59,6 +59,6 @@ public class SpatialLengthMethod implements SQLMethod
         funcArgs.add(argExpr);
 
         JavaTypeMapping m = stmt.getSQLExpressionFactory().getMappingForType(double.class);
-        return new NumericExpression(stmt, m, "Length", funcArgs);
+        return new NumericExpression(stmt, m, "GLength", funcArgs);
     }
 }

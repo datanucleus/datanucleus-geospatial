@@ -13,7 +13,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 
 Contributors:
-   ...
+   2013 barisergun75@gmail.com - NUCSPATIAL-28 Adding postgis support
  **********************************************************************/
 package org.datanucleus.store.types.geospatial.rdbms.sql.method;
 
@@ -22,23 +22,16 @@ import java.util.List;
 
 import org.datanucleus.exceptions.NucleusUserException;
 import org.datanucleus.store.rdbms.mapping.java.JavaTypeMapping;
-import org.datanucleus.store.types.geospatial.rdbms.sql.expression.GeometryExpression;
 import org.datanucleus.store.rdbms.sql.SQLStatement;
 import org.datanucleus.store.rdbms.sql.expression.NumericExpression;
 import org.datanucleus.store.rdbms.sql.expression.SQLExpression;
 import org.datanucleus.store.rdbms.sql.method.SQLMethod;
 
 /**
- * Implementation of "Spatial.numInteriorRing(expr)" or "{expr}.getNumInteriorRing()" method for Oracle.
+ * Implementation of "Spatial.numInteriorRing(expr)" or "{expr}.getNumInteriorRing()" method for Postgresql.
  */
 public class SpatialNumInteriorRingMethod3 implements SQLMethod
 {
-    /*
-     * (non-Javadoc)
-     * @see
-     * org.datanucleus.store.rdbms.sql.method.SQLMethod#getExpression(org.datanucleus.store.rdbms.sql.expression
-     * .SQLExpression, java.util.List)
-     */
     public SQLExpression getExpression(SQLStatement stmt, SQLExpression expr, List args)
     {
         if (expr == null && (args == null || args.size() != 1))
@@ -56,20 +49,10 @@ public class SpatialNumInteriorRingMethod3 implements SQLMethod
             argExpr = (SQLExpression) args.get(0);
         }
 
-        ArrayList geomFuncArgs = new ArrayList();
-        geomFuncArgs.add(argExpr);
-        GeometryExpression geomExpr = new GeometryExpression(stmt, null, "geometry.from_sdo_geom", geomFuncArgs, null);
-
-        ArrayList treatFuncArgs = new ArrayList();
-        treatFuncArgs.add(geomExpr);
-        ArrayList treatFuncTypeArgs = new ArrayList();
-        treatFuncTypeArgs.add("Polygon");
-        GeometryExpression treatExpr = new GeometryExpression(stmt, null, "treat", treatFuncArgs, treatFuncTypeArgs);
-
-        ArrayList funcArgs = new ArrayList();
-        funcArgs.add(treatExpr);
+        ArrayList<SQLExpression> funcArgs = new ArrayList<SQLExpression>();
+        funcArgs.add(argExpr);
 
         JavaTypeMapping m = stmt.getSQLExpressionFactory().getMappingForType(int.class);
-        return new NumericExpression(stmt, m, "numInteriorRings", funcArgs);
+        return new NumericExpression(stmt, m, "st_numinteriorring", funcArgs);
     }
 }

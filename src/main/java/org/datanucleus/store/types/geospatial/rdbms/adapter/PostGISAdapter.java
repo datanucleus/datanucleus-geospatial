@@ -299,10 +299,10 @@ public class PostGISAdapter extends PostgreSQLAdapter implements SpatialRDBMSAda
             if ("Spatial.x".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialXMethod3.class;
             if ("Spatial.y".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialYMethod3.class;
             if ("Spatial.area".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialAreaMethod3.class;
-            if ("Spatial.length".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialLengthMethod4.class;
+            if ("Spatial.length".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialLengthMethod3.class;
             if ("Spatial.distance".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialDistanceMethod3.class;
             if ("Spatial.numPoints".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialNumPointsMethod3.class;
-            if ("Spatial.numInteriorRing".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialNumInteriorRingMethod4.class;
+            if ("Spatial.numInteriorRing".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialNumInteriorRingMethod3.class;
             if ("Spatial.numGeometries".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialNumGeometriesMethod3.class;
             if ("Spatial.asBinary".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialAsBinaryMethod3.class;
             if ("Spatial.asText".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialAsTextMethod3.class;
@@ -377,7 +377,7 @@ public class PostGISAdapter extends PostgreSQLAdapter implements SpatialRDBMSAda
                 if ("contains".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialContainsMethod3.class;
                 if ("getEnvelope".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialEnvelopeMethod3.class;
                 if ("getDimension".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialDimensionMethod3.class;
-                if ("getLength".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialLengthMethod4.class;
+                if ("getLength".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialLengthMethod3.class;
                 if ("getBoundary".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialBoundaryMethod3.class;
                 if ("getSRID".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialSridMethod3.class;
                 if ("isSimple".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialIsSimpleMethod3.class;
@@ -415,7 +415,7 @@ public class PostGISAdapter extends PostgreSQLAdapter implements SpatialRDBMSAda
             {
                 if ("getExteriorRing".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialExteriorRingMethod3.class;
                 if ("getInteriorRingN".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialInteriorRingNMethod3.class;
-                if ("getNumInteriorRing".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialNumInteriorRingMethod4.class;
+                if ("getNumInteriorRing".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialNumInteriorRingMethod3.class;
             }
             if ("com.vividsolutions.jts.geom.GeometryCollection".equals(className) || (cls != null && com.vividsolutions.jts.geom.GeometryCollection.class.isAssignableFrom(cls)))
             {

@@ -28,7 +28,8 @@ import org.datanucleus.store.rdbms.sql.expression.SQLExpression;
 import org.datanucleus.store.rdbms.sql.method.SQLMethod;
 
 /**
- * Implementation of "Spatial.numInteriorRing(expr)" or "{expr}.getNumInteriorRing()" method.
+ * Implementation of "Spatial.numInteriorRing(expr)" or "{expr}.getNumInteriorRing()" where using
+ * "NumInteriorRings" method.
  */
 public class SpatialNumInteriorRingMethod implements SQLMethod
 {
@@ -59,6 +60,6 @@ public class SpatialNumInteriorRingMethod implements SQLMethod
         funcArgs.add(argExpr);
 
         JavaTypeMapping m = stmt.getSQLExpressionFactory().getMappingForType(int.class);
-        return new NumericExpression(stmt, m, "NumInteriorRing", funcArgs);
+        return new NumericExpression(stmt, m, "NumInteriorRings", funcArgs);
     }
 }

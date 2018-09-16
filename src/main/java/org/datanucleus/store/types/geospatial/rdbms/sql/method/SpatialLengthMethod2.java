@@ -22,13 +22,14 @@ import java.util.List;
 
 import org.datanucleus.exceptions.NucleusUserException;
 import org.datanucleus.store.rdbms.mapping.java.JavaTypeMapping;
+import org.datanucleus.store.types.geospatial.rdbms.sql.expression.GeometryExpression;
 import org.datanucleus.store.rdbms.sql.SQLStatement;
 import org.datanucleus.store.rdbms.sql.expression.NumericExpression;
 import org.datanucleus.store.rdbms.sql.expression.SQLExpression;
 import org.datanucleus.store.rdbms.sql.method.SQLMethod;
 
 /**
- * Implementation of "Spatial.length" method where using "GLength" datastore method (MySQL).
+ * Implementation of "Spatial.length(expr)" or "{expr}.getLength()" method for Oracle.
  */
 public class SpatialLengthMethod2 implements SQLMethod
 {
@@ -55,10 +56,20 @@ public class SpatialLengthMethod2 implements SQLMethod
             argExpr = (SQLExpression) args.get(0);
         }
 
+        ArrayList geomFuncArgs = new ArrayList();
+        geomFuncArgs.add(argExpr);
+        GeometryExpression geomExpr = new GeometryExpression(stmt, null, "geometry.from_sdo_geom", geomFuncArgs, null);
+
+        ArrayList treatFuncArgs = new ArrayList();
+        treatFuncArgs.add(geomExpr);
+        ArrayList treatFuncTypeArgs = new ArrayList();
+        treatFuncTypeArgs.add("curve");
+        GeometryExpression treatExpr = new GeometryExpression(stmt, null, "treat", treatFuncArgs, treatFuncTypeArgs);
+
         ArrayList funcArgs = new ArrayList();
-        funcArgs.add(argExpr);
+        funcArgs.add(treatExpr);
 
         JavaTypeMapping m = stmt.getSQLExpressionFactory().getMappingForType(double.class);
-        return new NumericExpression(stmt, m, "GLength", funcArgs);
+        return new NumericExpression(stmt, m, "ogc_length", funcArgs);
     }
 }
