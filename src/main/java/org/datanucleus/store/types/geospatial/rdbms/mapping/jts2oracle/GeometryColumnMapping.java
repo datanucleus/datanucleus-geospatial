@@ -92,7 +92,7 @@ public class GeometryColumnMapping extends AbstractColumnMapping
             else
             {
                 OracleConnection conn = (OracleConnection) ps.getConnection();
-                Object obj = new OraWriter(conn).write((Geometry) value);
+                Object obj = new OraWriter().write((Geometry) value, conn);
                 ps.setObject(exprIndex, obj);
             }
         }
