@@ -20,7 +20,7 @@ package org.datanucleus.store.types.geospatial.rdbms.mapping.jts;
 import com.vividsolutions.jts.geom.GeometryCollection;
 
 /**
- * Mapping for com.vividsolutions.jts.geom.GeometryCollection to its datastore representation.
+ * Mapping for JTS GeometryCollection to its datastore representation.
  */
 public class GeometryCollectionMapping extends GeometryMapping
 {

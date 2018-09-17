@@ -20,7 +20,7 @@ package org.datanucleus.store.types.geospatial.rdbms.mapping.jts;
 import com.vividsolutions.jts.geom.Polygon;
 
 /**
- * Mapping for com.vividsolutions.jts.geom.Polygon to its datastore representation.
+ * Mapping for JTS Polygon to its datastore representation.
  */
 public class PolygonMapping extends GeometryMapping
 {

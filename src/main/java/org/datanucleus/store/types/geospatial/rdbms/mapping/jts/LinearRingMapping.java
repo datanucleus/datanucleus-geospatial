@@ -20,7 +20,7 @@ package org.datanucleus.store.types.geospatial.rdbms.mapping.jts;
 import com.vividsolutions.jts.geom.LinearRing;
 
 /**
- * Mapping for com.vividsolutions.jts.geom.LinearRing to its datastore representation.
+ * Mapping for JTS LinearRing to its datastore representation.
  */
 public class LinearRingMapping extends GeometryMapping
 {

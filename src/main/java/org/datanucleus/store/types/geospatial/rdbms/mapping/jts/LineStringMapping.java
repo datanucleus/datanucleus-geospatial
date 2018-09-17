@@ -20,7 +20,7 @@ package org.datanucleus.store.types.geospatial.rdbms.mapping.jts;
 import com.vividsolutions.jts.geom.LineString;
 
 /**
- * Mapping for com.vividsolutions.jts.geom.LineString to its datastore representation.
+ * Mapping for JTS LineString to its datastore representation.
  */
 public class LineStringMapping extends GeometryMapping
 {

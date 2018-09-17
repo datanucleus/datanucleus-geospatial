@@ -20,7 +20,7 @@ package org.datanucleus.store.types.geospatial.rdbms.mapping.jts;
 import com.vividsolutions.jts.geom.Point;
 
 /**
- * Mapping for com.vividsolutions.jts.geom.Point to its datastore representation.
+ * Mapping for JTS Point to its datastore representation.
  */
 public class PointMapping extends GeometryMapping
 {

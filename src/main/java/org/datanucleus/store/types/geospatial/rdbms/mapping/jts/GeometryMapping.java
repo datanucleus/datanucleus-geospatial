@@ -42,7 +42,7 @@ import com.vividsolutions.jts.io.ParseException;
 import com.vividsolutions.jts.io.WKTReader;
 
 /**
- * Mapping for com.vividsolutions.jts.geom.Geometry to its datastore representation.
+ * Mapping for JTS Geometry to its datastore representation.
  */
 public class GeometryMapping extends SingleFieldMultiMapping implements MappingCallbacks
 {

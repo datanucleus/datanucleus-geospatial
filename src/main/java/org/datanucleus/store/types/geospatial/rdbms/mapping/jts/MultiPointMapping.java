@@ -20,7 +20,7 @@ package org.datanucleus.store.types.geospatial.rdbms.mapping.jts;
 import com.vividsolutions.jts.geom.MultiPoint;
 
 /**
- * Mapping for com.vividsolutions.jts.geom.MultiPoint to its datastore representation.
+ * Mapping for JTS MultiPoint to its datastore representation.
  */
 public class MultiPointMapping extends GeometryMapping
 {
