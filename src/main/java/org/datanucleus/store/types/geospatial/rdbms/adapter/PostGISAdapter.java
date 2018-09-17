@@ -358,6 +358,7 @@ public class PostGISAdapter extends PostgreSQLAdapter implements SpatialRDBMSAda
         }
         else
         {
+            // Methods invoked on an object
             Class cls = null;
             try
             {
@@ -365,12 +366,68 @@ public class PostGISAdapter extends PostgreSQLAdapter implements SpatialRDBMSAda
             }
             catch (ClassNotResolvedException cnre) {}
 
-            if ("com.vividsolutions.jts.geom.Point".equals(className) || (cls != null && com.vividsolutions.jts.geom.Point.class.isAssignableFrom(cls)))
+            boolean isGeometry = false;
+            boolean isPoint = false;
+            boolean isLineString = false;
+            boolean isMultiLineString = false;
+            boolean isLinearRing = false;
+            boolean isPolygon = false;
+            if (className.startsWith("com.vividsolutions.jts"))
             {
-                if ("getX".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialXMethod3.class;
-                if ("getY".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialYMethod3.class;
+                if (com.vividsolutions.jts.geom.Geometry.class.getName().equals(className) || (cls != null && com.vividsolutions.jts.geom.Geometry.class.isAssignableFrom(cls)))
+                {
+                    isGeometry = true;
+                }
+                if (com.vividsolutions.jts.geom.Point.class.getName().equals(className) || (cls != null && com.vividsolutions.jts.geom.Point.class.isAssignableFrom(cls)))
+                {
+                    isPoint = true;
+                }
+                if (com.vividsolutions.jts.geom.LineString.class.getName().equals(className) || (cls != null && com.vividsolutions.jts.geom.LineString.class.isAssignableFrom(cls)))
+                {
+                    isLineString = true;
+                }
+                if (com.vividsolutions.jts.geom.MultiLineString.class.getName().equals(className) || (cls != null && com.vividsolutions.jts.geom.MultiLineString.class.isAssignableFrom(cls)))
+                {
+                    isMultiLineString = true;
+                }
+                if (com.vividsolutions.jts.geom.LinearRing.class.getName().equals(className) || (cls != null && com.vividsolutions.jts.geom.LinearRing.class.isAssignableFrom(cls)))
+                {
+                    isLinearRing = true;
+                }
+                if (com.vividsolutions.jts.geom.Polygon.class.getName().equals(className) || (cls != null && com.vividsolutions.jts.geom.Polygon.class.isAssignableFrom(cls)))
+                {
+                    isPolygon = true;
+                }
             }
-            if ("com.vividsolutions.jts.geom.Geometry".equals(className) || (cls != null && com.vividsolutions.jts.geom.Geometry.class.isAssignableFrom(cls)))
+            else if (className.startsWith("org.postgis"))
+            {
+                if (org.postgis.Geometry.class.getName().equals(className) || (cls != null && org.postgis.Geometry.class.isAssignableFrom(cls)))
+                {
+                    isGeometry = true;
+                }
+                if (org.postgis.Point.class.getName().equals(className) || (cls != null && org.postgis.Point.class.isAssignableFrom(cls)))
+                {
+                    isPoint = true;
+                }
+                if (org.postgis.LineString.class.getName().equals(className) || (cls != null && org.postgis.LineString.class.isAssignableFrom(cls)))
+                {
+                    isLineString = true;
+                }
+                if (org.postgis.MultiLineString.class.getName().equals(className) || (cls != null && org.postgis.MultiLineString.class.isAssignableFrom(cls)))
+                {
+                    isMultiLineString = true;
+                }
+                if (org.postgis.LinearRing.class.getName().equals(className) || (cls != null && org.postgis.LinearRing.class.isAssignableFrom(cls)))
+                {
+                    isLinearRing = true;
+                }
+                if (org.postgis.Polygon.class.getName().equals(className) || (cls != null && org.postgis.Polygon.class.isAssignableFrom(cls)))
+                {
+                    isPolygon = true;
+                }
+            }
+
+            if (isGeometry)
             {
                 if ("getNumPoints".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialNumPointsMethod3.class;
                 if ("getArea".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialAreaMethod3.class;
@@ -402,37 +459,32 @@ public class PostGISAdapter extends PostgreSQLAdapter implements SpatialRDBMSAda
                 if ("distance".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialDistanceMethod3.class;
                 if ("buffer".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialBufferMethod3.class;
                 if ("convexHull".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialConvexHullMethod3.class;
-            }
-            if ("com.vividsolutions.jts.geom.LineString".equals(className) || (cls != null && com.vividsolutions.jts.geom.LineString.class.isAssignableFrom(cls)))
-            {
-                if ("isRing".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialIsRingMethod3.class;
-                if ("isClosed".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialIsClosedMethod3.class;
-                if ("getStartPoint".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialStartPointMethod3.class;
-                if ("getEndPoint".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialEndPointMethod3.class;
-                if ("getPointN".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialPointNMethod3.class;
-            }
-            if ("com.vividsolutions.jts.geom.Polygon".equals(className) || (cls != null && com.vividsolutions.jts.geom.Polygon.class.isAssignableFrom(cls)))
-            {
-                if ("getExteriorRing".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialExteriorRingMethod3.class;
-                if ("getInteriorRingN".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialInteriorRingNMethod3.class;
-                if ("getNumInteriorRing".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialNumInteriorRingMethod3.class;
-            }
-            if ("com.vividsolutions.jts.geom.GeometryCollection".equals(className) || (cls != null && com.vividsolutions.jts.geom.GeometryCollection.class.isAssignableFrom(cls)))
-            {
-                if ("getNumGeometries".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialNumGeometriesMethod3.class;
                 if ("getGeometryN".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialGeometryNMethod3.class;
-            }
-            if ("org.postgis.Point".equals(className) || (cls != null && org.postgis.Point.class.isAssignableFrom(cls)))
-            {
-                if ("getX".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialXMethod3.class;
-                if ("getY".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialYMethod3.class;
-            }
-            if ("org.postgis.Geometry".equals(className) || (cls != null && org.postgis.Geometry.class.isAssignableFrom(cls)))
-            {
-                if ("numPoints".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialNumPointsMethod3.class;
-                if ("getDimension".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialDimensionMethod3.class;
-                if ("getSrid".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialSridMethod3.class;
-                if ("equals".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialEqualsMethod3.class;
+                if ("getNumGeometries".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialNumGeometriesMethod3.class;
+
+                if (isPoint)
+                {
+                    if ("getX".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialXMethod3.class;
+                    if ("getY".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialYMethod3.class;
+                }
+                if (isLineString)
+                {
+                    if ("isRing".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialIsRingMethod3.class;
+                    if ("isClosed".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialIsClosedMethod3.class;
+                    if ("getStartPoint".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialStartPointMethod3.class;
+                    if ("getEndPoint".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialEndPointMethod3.class;
+                    if ("getPointN".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialPointNMethod3.class;
+                }
+                if (isMultiLineString || isLinearRing)
+                {
+                    if ("isClosed".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialIsClosedMethod3.class;
+                }
+                if (isPolygon)
+                {
+                    if ("getExteriorRing".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialExteriorRingMethod3.class;
+                    if ("getInteriorRingN".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialInteriorRingNMethod3.class;
+                    if ("getNumInteriorRing".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialNumInteriorRingMethod3.class;
+                }
             }
         }
 
