@@ -28,7 +28,6 @@ import javax.jdo.Transaction;
 
 import org.datanucleus.metadata.AbstractClassMetaData;
 import org.datanucleus.metadata.AbstractMemberMetaData;
-import org.datanucleus.metadata.MetaDataManager;
 import org.datanucleus.metadata.MetaDataUtils;
 import org.datanucleus.store.types.geospatial.rdbms.adapter.SpatialRDBMSAdapter;
 import org.datanucleus.ClassLoaderResolver;
@@ -40,14 +39,13 @@ import org.datanucleus.util.NucleusLogger;
 
 /**
  * <p>
- * Helper class to search and access Spatial MetaData. This class wraps some of the spatial functions that
- * datanucleus-spatial offers via JDOQL in "real" Java methods and also adds extended functionality, like
- * reading values from JDO-Metadata and getting CRS (Coordinate Reference System) information from the database.
+ * Helper class to search and access Spatial MetaData, for JDO API usage. 
+ * This class wraps some of the spatial functions that datanucleus-spatial offers via JDOQL in "real" Java methods and also adds extended functionality, 
+ * like reading values from internal Metadata and getting CRS (Coordinate Reference System) information from the database.
  * </p>
  * <p>
- * The datatypes and terminology used in this class is (like most of datanucleus-spatial) heavily based on
- * OGC's Simple Feature specification. See <a href="http://www.opengeospatial.org/standards/sfa">http://www.opengeospatial.org/standards/sfa</a> 
- * for details.
+ * The datatypes and terminology used in this class is (like most of datanucleus-spatial) heavily based on OGC's Simple Feature specification. 
+ * See <a href="http://www.opengeospatial.org/standards/sfa">http://www.opengeospatial.org/standards/sfa</a> for details.
  * </p>
  */
 public class SpatialHelper
@@ -71,8 +69,8 @@ public class SpatialHelper
     }
 
     /**
-     * Returns the srid from JDO-Metadata for the given geometry field. Will return <code>null</code>, if the
-     * user has not specified a value in his metadata.
+     * Returns the srid from JDO-Metadata for the given geometry field. 
+     * Will return <code>null</code>, if the user has not specified a value in his metadata.
      * @param pc The PersistenceCapapable class
      * @param fieldName Name of the geometry field
      * @return The srid or <code>null</code>.
@@ -80,12 +78,12 @@ public class SpatialHelper
      */
     public Integer getSridFromJdoMetadata(Class pc, String fieldName)
     {
-        return getIntegerFromJdoMetadata(pc, fieldName, SpatialRDBMSAdapter.SRID_EXTENSION_KEY);
+        return getIntegerValueForExtensionFromMetadata(pc, fieldName, SpatialRDBMSAdapter.SRID_EXTENSION_KEY);
     }
 
     /**
-     * Returns the dimension from JDO-Metadata for the given geometry field. Will return <code>null</code>, if
-     * the user has not specified a value in his metadata.
+     * Returns the dimension from JDO-Metadata for the given geometry field. 
+     * Will return <code>null</code>, if the user has not specified a value in his metadata.
      * @param pc The PersistenceCapapable class
      * @param fieldName Name of the geometry field
      * @return The dimension or <code>null</code>.
@@ -93,12 +91,12 @@ public class SpatialHelper
      */
     public Integer getDimensionFromJdoMetadata(Class pc, String fieldName)
     {
-        return getIntegerFromJdoMetadata(pc, fieldName, SpatialRDBMSAdapter.DIMENSION_EXTENSION_KEY);
+        return getIntegerValueForExtensionFromMetadata(pc, fieldName, SpatialRDBMSAdapter.DIMENSION_EXTENSION_KEY);
     }
 
     /**
-     * Returns the srid from datastore metadata for the given geometry field. Will return <code>null</code>,
-     * if the datastore doesn't support such an operation (e.g. MySQL) or if there is no metadata in the
+     * Returns the srid from datastore metadata for the given geometry field. 
+     * Will return <code>null</code>, if the datastore doesn't support such an operation (e.g. MySQL) or if there is no metadata in the
      * datastore available for the given class and field name.
      * @param pc The persistable class
      * @param fieldName Name of the geometry field
@@ -125,10 +123,9 @@ public class SpatialHelper
     }
 
     /**
-     * <p>
-     * Returns the (estimated) spatial extent, also called <i>bounding box</i> from datastore metadata for the
-     * given geometry field. Will return <code>null</code>, if the datastore doesn't support such an operation
-     * (e.g. MySQL) or if there is no metadata in the datastore available for the given class and field name.
+     * Returns the (estimated) spatial extent, also called <i>bounding box</i> from datastore metadata for the given geometry field. 
+     * Will return <code>null</code>, if the datastore doesn't support such an operation (e.g. MySQL) or if there is no metadata in the datastore available 
+     * for the given class and field name.
      * @param pc The persistable class
      * @param fieldName Name of the geometry field
      * @param pm <code>PersistenceManager</code> instance that should be used to access the datastore
@@ -188,8 +185,8 @@ public class SpatialHelper
     }
 
     /**
-     * Returns the description of the Coordinate Reference System (CRS) for the given srid in WKT (Well-Known
-     * Text). Will return <code>null</code>, if the datastore doesn't support such an operation (e.g. MySQL)
+     * Returns the description of the Coordinate Reference System (CRS) for the given srid in WKT (Well-Known Text). 
+     * Will return <code>null</code>, if the datastore doesn't support such an operation (e.g. MySQL)
      * or if there is no metadata in the datastore available for the given class and srid.
      * @param pc The persistable class
      * @param srid The srid
@@ -219,8 +216,8 @@ public class SpatialHelper
     }
 
     /**
-     * Returns the name of the Coordinate Reference System (CRS) for the given srid. Will return
-     * <code>null</code>, if the datastore doesn't support such an operation (e.g. MySQL) or if there is no
+     * Returns the name of the Coordinate Reference System (CRS) for the given srid. 
+     * Will return <code>null</code>, if the datastore doesn't support such an operation (e.g. MySQL) or if there is no
      * metadata in the datastore available for the given class and srid.
      * @param pc The persistable class
      * @param srid The srid
@@ -249,9 +246,18 @@ public class SpatialHelper
         return crsName;
     }
 
-    protected Integer getIntegerFromJdoMetadata(Class pc, String fieldName, String extensionKey)
+    protected Integer getIntegerValueForExtensionFromMetadata(Class pc, String memberName, String extensionKey)
     {
-        String value = getValueFromJdoMetadata(pc, fieldName, extensionKey);
+        checkValid(pc, memberName);
+
+        AbstractClassMetaData cmd = storeMgr.getMetaDataManager().getMetaDataForClass(pc, storeMgr.getNucleusContext().getClassLoaderResolver(null));
+        AbstractMemberMetaData mmd = (cmd != null ? cmd.getMetaDataForMember(memberName) : null);
+        String value = MetaDataUtils.getValueForExtensionRecursively(mmd, extensionKey);
+        if (value == null || value.trim().equals(""))
+        {
+            value = null;
+        }
+
         Integer integer = null;
         try
         {
@@ -264,21 +270,6 @@ public class SpatialHelper
         return integer;
     }
 
-    protected String getValueFromJdoMetadata(Class pc, String memberName, String extensionKey)
-    {
-        checkValid(pc, memberName);
-
-        AbstractClassMetaData cmd = storeMgr.getMetaDataManager().getMetaDataForClass(pc,
-            storeMgr.getNucleusContext().getClassLoaderResolver(null));
-        AbstractMemberMetaData fmd = (cmd != null ? cmd.getMetaDataForMember(memberName) : null);
-        String value = MetaDataUtils.getValueForExtensionRecursively(fmd, extensionKey);
-        if (value == null || value.trim().equals(""))
-        {
-            return null;
-        }
-        return value;
-    }
-
     /**
      * Return all field names of the given class that are backed by a geometry column in the database.
      * @param pc The persistable class
@@ -288,7 +279,7 @@ public class SpatialHelper
     {
         List fieldNames = new ArrayList();
 
-        AbstractMemberMetaData[] fieldMetaData = getMetaDataManager().getMetaDataForClass(pc, null).getManagedMembers();
+        AbstractMemberMetaData[] fieldMetaData = pmf.getNucleusContext().getMetaDataManager().getMetaDataForClass(pc, null).getManagedMembers();
         for (int i = 0; i < fieldMetaData.length; i++)
         {
             Column c = getColumn(pc, fieldMetaData[i]);
@@ -341,11 +332,6 @@ public class SpatialHelper
         return (SpatialRDBMSAdapter) storeMgr.getDatastoreAdapter();
     }
 
-    protected MetaDataManager getMetaDataManager()
-    {
-        return pmf.getNucleusContext().getMetaDataManager();
-    }
-
     protected void checkValid(Class pc, String fieldName) throws IllegalArgumentException, NullPointerException
     {
         // TODO: Better exceptions??
@@ -376,8 +362,8 @@ public class SpatialHelper
     }
 
     /**
-     * Abstract helper class to execute queries. Applies the <i>Template Method</i> pattern. TODO Doesn't
-     * close the query after use.
+     * Abstract helper class to execute queries. Applies the <i>Template Method</i> pattern. 
+     * TODO Doesn't close the query after use.
      */
     protected abstract class QueryExecutor
     {
