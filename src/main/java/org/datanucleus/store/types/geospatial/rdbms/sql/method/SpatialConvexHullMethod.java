@@ -29,7 +29,7 @@ import org.datanucleus.store.rdbms.sql.expression.SQLExpression;
 import org.datanucleus.store.rdbms.sql.method.SQLMethod;
 
 /**
- * Implementation of "Spatial.convexHull(expr)" or "{expr}.convexHull(expr2)" method.
+ * Implementation of "Spatial.convexHull(expr)" or "{expr}.convexHull()" method.
  */
 public class SpatialConvexHullMethod implements SQLMethod
 {
