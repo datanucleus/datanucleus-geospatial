@@ -143,12 +143,6 @@ public class OracleSpatialAdapter extends OracleAdapter implements SpatialRDBMSA
     {
         if (className == null)
         {
-            if ("Oracle.sdo_elem_info_array".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.OracleSdoElemInfoArrayMethod.class;
-            if ("Oracle.sdo_geometry".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.OracleSdoGeometryMethod.class;
-            if ("Oracle.sdo_ordinate_array".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.OracleSdoOrdinateArrayMethod.class;
-            if ("Oracle.sdo_point_type".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.OracleSdoPointTypeMethod.class;
-
-            if ("Spatial.bboxTest".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialBboxTestMethod3.class;
             if ("Spatial.dimension".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialDimensionMethod2.class;
             if ("Spatial.srid".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialSridMethod2.class;
             if ("Spatial.x".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialXMethod2.class;
@@ -162,14 +156,6 @@ public class OracleSpatialAdapter extends OracleAdapter implements SpatialRDBMSA
             if ("Spatial.asBinary".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialAsBinaryMethod2.class;
             if ("Spatial.asText".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialAsTextMethod2.class;
             if ("Spatial.geometryType".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialGeometryTypeMethod2.class;
-            if ("Spatial.geomFromText".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialGeomFromTextMethod2.class;
-            if ("Spatial.pointFromText".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialPointFromTextMethod2.class;
-            if ("Spatial.lineFromText".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialLineFromTextMethod2.class;
-            if ("Spatial.polyFromText".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialPolyFromTextMethod2.class;
-            if ("Spatial.mLineFromText".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialMLineFromTextMethod2.class;
-            if ("Spatial.mPointFromText".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialMPointFromTextMethod2.class;
-            if ("Spatial.mPolyFromText".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialMPolyFromTextMethod2.class;
-            if ("Spatial.geomCollFromText".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialGeomCollFromTextMethod2.class;
             if ("Spatial.envelope".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialEnvelopeMethod2.class;
             if ("Spatial.boundary".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialBoundaryMethod2.class;
             if ("Spatial.convexHull".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialConvexHullMethod2.class;
@@ -199,6 +185,24 @@ public class OracleSpatialAdapter extends OracleAdapter implements SpatialRDBMSA
             if ("Spatial.interiorRingN".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialInteriorRingNMethod2.class;
             if ("Spatial.pointN".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialPointNMethod2.class;
             if ("Spatial.geometryN".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialGeometryNMethod2.class;
+
+            // Purely static methods
+            if ("Oracle.sdo_elem_info_array".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.OracleSdoElemInfoArrayMethod.class;
+            if ("Oracle.sdo_geometry".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.OracleSdoGeometryMethod.class;
+            if ("Oracle.sdo_ordinate_array".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.OracleSdoOrdinateArrayMethod.class;
+            if ("Oracle.sdo_point_type".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.OracleSdoPointTypeMethod.class;
+
+            if ("Spatial.bboxTest".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialBboxTestMethod3.class;
+
+            if ("Spatial.geomFromText".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialGeomFromTextMethod2.class;
+            if ("Spatial.pointFromText".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialPointFromTextMethod2.class;
+            if ("Spatial.lineFromText".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialLineFromTextMethod2.class;
+            if ("Spatial.polyFromText".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialPolyFromTextMethod2.class;
+            if ("Spatial.mLineFromText".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialMLineFromTextMethod2.class;
+            if ("Spatial.mPointFromText".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialMPointFromTextMethod2.class;
+            if ("Spatial.mPolyFromText".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialMPolyFromTextMethod2.class;
+            if ("Spatial.geomCollFromText".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialGeomCollFromTextMethod2.class;
+
             if ("Spatial.geomFromWKB".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialGeomFromWKBMethod2.class;
             if ("Spatial.geomCollFromWKB".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialGeomCollFromWKBMethod2.class;
             if ("Spatial.pointFromWKB".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialPointFromWKBMethod2.class;
