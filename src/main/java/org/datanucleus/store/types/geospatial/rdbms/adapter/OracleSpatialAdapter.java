@@ -264,36 +264,45 @@ public class OracleSpatialAdapter extends OracleAdapter implements SpatialRDBMSA
 
             if (isGeometry)
             {
-                if ("getNumPoints".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialNumPointsMethod2.class;
-                if ("getArea".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialAreaMethod2.class;
-                if ("contains".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialContainsMethod2.class;
                 if ("getEnvelope".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialEnvelopeMethod2.class;
                 if ("getDimension".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialDimensionMethod2.class;
-                if ("getLength".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialLengthMethod2.class;
                 if ("getBoundary".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialBoundaryMethod2.class;
                 if ("getSRID".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialSridMethod2.class;
                 if ("isSimple".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialIsSimpleMethod2.class;
                 if ("isEmpty".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialIsEmptyMethod2.class;
+                if ("toText".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialAsTextMethod2.class;
+                if ("toBinary".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialAsBinaryMethod2.class;
+                if ("getGeometryType".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialGeometryTypeMethod2.class;
+
+                if ("contains".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialContainsMethod2.class;
                 if ("overlaps".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialOverlapsMethod2.class;
                 if ("touches".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialTouchesMethod2.class;
                 if ("crosses".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialCrossesMethod2.class;
                 if ("within".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialWithinMethod2.class;
                 if ("intersects".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialIntersectsMethod2.class;
-                if ("intersection".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialIntersectionMethod2.class;
                 if ("equals".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialEqualsMethod2.class;
                 if ("disjoint".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialDisjointMethod2.class;
                 if ("relate".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialRelateMethod2.class;
-                if ("difference".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialDifferenceMethod2.class;
-                if ("symDifference".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialSymDifferenceMethod2.class;
-                if ("getCentroid".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialCentroidMethod2.class;
-                if ("getPointOnSurface".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialPointOnSurfaceMethod2.class;
-                if ("toText".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialAsTextMethod2.class;
-                if ("toBinary".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialAsBinaryMethod2.class;
-                if ("union".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialUnionMethod2.class;
-                if ("getGeometryType".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialGeometryTypeMethod2.class;
                 if ("distance".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialDistanceMethod2.class;
+                if ("intersection".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialIntersectionMethod2.class;
                 if ("buffer".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialBufferMethod2.class;
                 if ("convexHull".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialConvexHullMethod2.class;
+                if ("symDifference".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialSymDifferenceMethod2.class;
+                if ("difference".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialDifferenceMethod2.class;
+                if ("union".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialUnionMethod2.class;
+
+                // Curve
+                if ("getLength".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialLengthMethod2.class;
+
+                // LineString
+                if ("getNumPoints".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialNumPointsMethod2.class;
+
+                // Surface
+                if ("getCentroid".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialCentroidMethod2.class;
+                if ("getArea".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialAreaMethod2.class;
+                if ("getPointOnSurface".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialPointOnSurfaceMethod2.class;
+
+                // GeomCollection
                 if ("getNumGeometries".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialNumGeometriesMethod2.class;
                 if ("getGeometryN".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialGeometryNMethod2.class;
 
