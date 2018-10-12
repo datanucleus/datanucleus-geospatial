@@ -229,6 +229,8 @@ public class MySQLSpatialAdapter extends MySQLAdapter implements SpatialRDBMSAda
             if ("Spatial.numInteriorRing".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialNumInteriorRingMethod.class;
             if ("Spatial.interiorRingN".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialInteriorRingNMethod.class;
 
+            if ("Spatial.bboxTest".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialBboxTestMethod2.class;
+
             // Purely static methods
             if ("MySQL.mbrEqual".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.MySqlMbrEqualMethod.class;
             if ("MySQL.mbrDisjoint".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.MySqlMbrDisjointMethod.class;
@@ -237,8 +239,6 @@ public class MySQLSpatialAdapter extends MySQLAdapter implements SpatialRDBMSAda
             if ("MySQL.mbrWithin".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.MySqlMbrWithinMethod.class;
             if ("MySQL.mbrContains".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.MySqlMbrContainsMethod.class;
             if ("MySQL.mbrOverlaps".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.MySqlMbrOverlapsMethod.class;
-
-            if ("Spatial.bboxTest".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialBboxTestMethod2.class;
 
             if ("Spatial.geomFromText".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialGeomFromTextMethod.class;
             if ("Spatial.pointFromText".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialPointFromTextMethod.class;
@@ -368,6 +368,7 @@ public class MySQLSpatialAdapter extends MySQLAdapter implements SpatialRDBMSAda
                 if ("symDifference".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialSymDifferenceMethod.class;
                 if ("difference".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialDifferenceMethod.class;
                 if ("union".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialUnionMethod.class;
+                if ("bboxTest".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialBboxTestMethod2.class;
 
                 // Curve
                 if ("getLength".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialLengthMethod.class;

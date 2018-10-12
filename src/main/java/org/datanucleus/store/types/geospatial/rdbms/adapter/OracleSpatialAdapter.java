@@ -186,13 +186,13 @@ public class OracleSpatialAdapter extends OracleAdapter implements SpatialRDBMSA
             if ("Spatial.pointN".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialPointNMethod2.class;
             if ("Spatial.geometryN".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialGeometryNMethod2.class;
 
+            if ("Spatial.bboxTest".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialBboxTestMethod3.class;
+
             // Purely static methods
             if ("Oracle.sdo_elem_info_array".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.OracleSdoElemInfoArrayMethod.class;
             if ("Oracle.sdo_geometry".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.OracleSdoGeometryMethod.class;
             if ("Oracle.sdo_ordinate_array".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.OracleSdoOrdinateArrayMethod.class;
             if ("Oracle.sdo_point_type".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.OracleSdoPointTypeMethod.class;
-
-            if ("Spatial.bboxTest".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialBboxTestMethod3.class;
 
             if ("Spatial.geomFromText".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialGeomFromTextMethod2.class;
             if ("Spatial.pointFromText".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialPointFromTextMethod2.class;
@@ -294,6 +294,7 @@ public class OracleSpatialAdapter extends OracleAdapter implements SpatialRDBMSA
                 if ("symDifference".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialSymDifferenceMethod2.class;
                 if ("difference".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialDifferenceMethod2.class;
                 if ("union".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialUnionMethod2.class;
+                if ("bboxTest".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialBboxTestMethod3.class;
 
                 // Curve
                 if ("getLength".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialLengthMethod2.class;

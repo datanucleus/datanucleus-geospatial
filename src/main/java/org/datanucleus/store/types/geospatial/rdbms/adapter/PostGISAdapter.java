@@ -334,6 +334,8 @@ public class PostGISAdapter extends PostgreSQLAdapter implements SpatialRDBMSAda
 
             if ("Spatial.transform".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialGeomTransformMethod.class;
 
+            if ("Spatial.bboxTest".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialBboxTestMethod.class;
+
             // Purely static methods
             if ("PostGIS.bboxBelow".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.PostGISBboxBelowMethod.class;
             if ("PostGIS.bboxAbove".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.PostGISBboxAboveMethod.class;
@@ -346,8 +348,6 @@ public class PostGISAdapter extends PostgreSQLAdapter implements SpatialRDBMSAda
             if ("PostGIS.bboxContains".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.PostGISBboxContainsMethod.class;
             if ("PostGIS.bboxWithin".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.PostGISBboxWithinMethod.class;
             if ("PostGIS.sameAs".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.PostGISSameAsMethod.class;
-
-            if ("Spatial.bboxTest".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialBboxTestMethod.class;
 
             if ("Spatial.geogFromText".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialGeographyFromTextMethod.class;
             if ("Spatial.geomFromText".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialGeomFromTextMethod3.class;
@@ -468,6 +468,7 @@ public class PostGISAdapter extends PostgreSQLAdapter implements SpatialRDBMSAda
                 if ("symDifference".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialSymDifferenceMethod3.class;
                 if ("difference".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialDifferenceMethod3.class;
                 if ("union".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialUnionMethod3.class;
+                if ("bboxTest".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialBboxTestMethod.class;
 
                 // Curve
                 if ("getLength".equals(methodName)) return org.datanucleus.store.types.geospatial.rdbms.sql.method.SpatialLengthMethod3.class;

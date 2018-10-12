@@ -40,15 +40,34 @@ public class SpatialBboxTestMethod implements SQLMethod
      * org.datanucleus.store.rdbms.sql.method.SQLMethod#getExpression(org.datanucleus.store.rdbms.sql.expression
      * .SQLExpression, java.util.List)
      */
-    public SQLExpression getExpression(SQLStatement stmt, SQLExpression ignore, List args)
+    public SQLExpression getExpression(SQLStatement stmt, SQLExpression expr, List args)
     {
-        if (args == null || args.size() != 2)
+        if (args == null)
+        {
+            throw new NucleusUserException("Cannot invoke Spatial.bboxTest without arguments");
+        }
+        if (expr == null && args.size() != 2)
         {
             throw new NucleusUserException("Cannot invoke Spatial.bboxTest without 2 arguments");
         }
+        else if (expr != null && args.size() != 1)
+        {
+            throw new NucleusUserException("Cannot invoke geom.bboxTest() without 1 argument");
+        }
 
-        SQLExpression argExpr1 = (SQLExpression) args.get(0); // Geometry 1
-        SQLExpression argExpr2 = (SQLExpression) args.get(1); // Geometry 2
+        SQLExpression argExpr1 = null;
+        SQLExpression argExpr2 = null;
+
+        if (expr == null)
+        {
+            argExpr1 = (SQLExpression) args.get(0);
+            argExpr2 = (SQLExpression) args.get(1);
+        }
+        else
+        {
+            argExpr1 = expr;
+            argExpr2 = (SQLExpression) args.get(0);
+        }
 
         BooleanExpression boolExpr = new BooleanExpression(argExpr1, BBOX_OVERLAPS, argExpr2);
         boolExpr.setJavaTypeMapping(stmt.getSQLExpressionFactory().getMappingForType(boolean.class, false));

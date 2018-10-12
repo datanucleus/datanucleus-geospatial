@@ -40,24 +40,45 @@ public class SpatialBboxTestMethod3 implements SQLMethod
      * @see org.datanucleus.store.rdbms.sql.method.SQLMethod#getExpression(org.
      * datanucleus.store.rdbms.sql.expression.SQLExpression, java.util.List)
      */
-    public SQLExpression getExpression(SQLStatement stmt, SQLExpression ignore, List args)
+    public SQLExpression getExpression(SQLStatement stmt, SQLExpression expr, List args)
     {
-        if (args == null || args.size() != 3)
+        if (args == null)
         {
-            throw new NucleusUserException("Cannot invoke bBoxTest without 3 arguments");
+            throw new NucleusUserException("Cannot invoke Spatial.bboxTest without arguments");
+        }
+        if (expr == null && args.size() != 3)
+        {
+            throw new NucleusUserException("Cannot invoke Spatial.bboxTest without 3 arguments");
+        }
+        else if (expr != null && args.size() != 2)
+        {
+            throw new NucleusUserException("Cannot invoke geom.bboxTest() without 2 arguments");
         }
 
-        SQLExpression argGeometry1 = (SQLExpression) args.get(0); // Geometry 1
-        SQLExpression argGeometry2 = (SQLExpression) args.get(1); // Geometry 2
-        SQLExpression argTolerance = (SQLExpression) args.get(2); // Tolerance
+        SQLExpression argExpr1 = null;
+        SQLExpression argExpr2 = null;
+        SQLExpression argTol = null;
+
+        if (expr == null)
+        {
+            argExpr1 = (SQLExpression) args.get(0);
+            argExpr2 = (SQLExpression) args.get(1);
+            argTol = (SQLExpression) args.get(2);
+        }
+        else
+        {
+            argExpr1 = expr;
+            argExpr2 = (SQLExpression) args.get(0);
+            argTol = (SQLExpression) args.get(1);
+        }
 
         StringLiteral mask = new StringLiteral(stmt, null, RELATE_MASK_FOR_BBOXTEST, null);
 
         ArrayList funcArgs = new ArrayList();
-        funcArgs.add(argGeometry1);
+        funcArgs.add(argExpr1);
         funcArgs.add(mask);
-        funcArgs.add(argGeometry2);
-        funcArgs.add(argTolerance);
+        funcArgs.add(argExpr2);
+        funcArgs.add(argTol);
 
         JavaTypeMapping m = stmt.getSQLExpressionFactory().getMappingForType(String.class, true);
         StringExpression relateExp = new StringExpression(stmt, m, "SDO_GEOM.RELATE", funcArgs);
