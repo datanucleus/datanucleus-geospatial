@@ -49,6 +49,8 @@ public class PostGISAdapter extends PostgreSQLAdapter implements SpatialRDBMSAda
     public PostGISAdapter(DatabaseMetaData metadata)
     {
         super(metadata);
+
+        // If we have geometry columns then we create an empty table and add columns one by one, so cannot define the PK in the CREATE statement
         supportedOptions.remove(PRIMARYKEY_IN_CREATE_STATEMENTS);
     }
 
@@ -62,8 +64,7 @@ public class PostGISAdapter extends PostgreSQLAdapter implements SpatialRDBMSAda
         super.initialiseTypes(handler, mconn);
 
         // Add on any missing JDBC types
-        SQLTypeInfo sqlType = PostGISTypeInfo.TYPEINFO_PROTOTYPE;
-        addSQLTypeForJDBCType(handler, mconn, (short) Types.OTHER, sqlType, true);
+        addSQLTypeForJDBCType(handler, mconn, (short) Types.OTHER, PostGISTypeInfo.TYPEINFO_PROTOTYPE, true);
     }
 
     /* (non-Javadoc)
@@ -143,7 +144,7 @@ public class PostGISAdapter extends PostgreSQLAdapter implements SpatialRDBMSAda
 
     public String getAddPrimaryKeyStatement(PrimaryKey pk, IdentifierFactory factory)
     {
-        // TODO Document why we override this. See above PRIMARYKEY_IN_CREATE_STATEMENTS
+        // See above PRIMARYKEY_IN_CREATE_STATEMENTS
         return "ALTER TABLE " + pk.getTable().toString() + " ADD " + pk;
     }
 
@@ -153,6 +154,7 @@ public class PostGISAdapter extends PostgreSQLAdapter implements SpatialRDBMSAda
         {
             return getAddGeometryColumnStatement(table, column);
         }
+
         return super.getAddColumnStatement(table, column);
     }
 
@@ -172,10 +174,8 @@ public class PostGISAdapter extends PostgreSQLAdapter implements SpatialRDBMSAda
             return super.getCreateTableStatement(table, columns, null, factory);
         }
 
+        // Create empty table first, then add each column individually, because the geometry columns have to be added via SQL function.
         StringBuilder createStatements = new StringBuilder();
-
-        // Create empty table first, then add each column individually,
-        // because the geometry columns have to be added via SQL function.
         createStatements.append("CREATE TABLE ").append(table.toString()).append(" ();").append(getContinuationString());
 
         for (Column col : columns)
@@ -257,7 +257,8 @@ public class PostGISAdapter extends PostgreSQLAdapter implements SpatialRDBMSAda
         return "SELECT AddGeometryColumn( '#schema', '#table', '#column', #srid, '#type', #dimension )"
                 .replace("#schema", table.getSchemaName() == null ? "" : table.getSchemaName())
                 .replace("#table", table.getIdentifier().getName())
-                .replace("#column", column.getIdentifier().getName()).replace("#srid", "" + srid)
+                .replace("#column", column.getIdentifier().getName())
+                .replace("#srid", "" + srid)
                 .replace("#type", column.getTypeInfo().getLocalTypeName().concat(hasMeasure ? "M" : ""))
                 .replace("#dimension", "" + dimension);
     }
