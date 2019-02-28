@@ -21,10 +21,10 @@
     </scm>
 
     <properties>
-        <jdo.version>3.2.0-m10</jdo.version>
-        <dn.core.version>5.2.0-m2</dn.core.version>
-        <dn.api.jdo.version>5.2.0-m2</dn.api.jdo.version>
-        <dn.rdbms.version>5.2.0-m2</dn.rdbms.version>
+        <jdo.version>3.2.0-m11</jdo.version>
+        <dn.core.version>5.2.0-release</dn.core.version>
+        <dn.api.jdo.version>5.2.0-release</dn.api.jdo.version>
+        <dn.rdbms.version>5.2.0-release</dn.rdbms.version>
     </properties>
 
     <repositories>
@@ -42,27 +42,27 @@
         <dependency>
             <groupId>org.datanucleus</groupId>
             <artifactId>datanucleus-core</artifactId>
-            <version>[${dn.core.version}, )</version>
+            <version>[${dn.core.version}, 5.9)</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.datanucleus</groupId>
             <artifactId>datanucleus-api-jdo</artifactId>
-            <version>[${dn.api.jdo.version}, )</version>
+            <version>[${dn.api.jdo.version}, 5.9)</version>
             <scope>provided</scope>
             <optional>true</optional>
         </dependency>
         <dependency>
             <groupId>org.datanucleus</groupId>
             <artifactId>datanucleus-rdbms</artifactId>
-            <version>[${dn.rdbms.version}, )</version>
+            <version>[${dn.rdbms.version}, 5.9)</version>
             <scope>provided</scope>
             <optional>true</optional>
         </dependency>
         <dependency>
             <groupId>org.datanucleus</groupId>
             <artifactId>javax.jdo</artifactId>
-            <version>[${jdo.version}, )</version>
+            <version>[${jdo.version}, 3.3)</version>
             <scope>provided</scope>
         </dependency>
 
