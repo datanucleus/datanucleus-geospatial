@@ -36,8 +36,8 @@ public class PointComponentMapping extends IntegerMapping
     private final int mappingIndex;
 
     /**
-     * @param pointMapping The <tt>PointMapping</tt> instance we are getting our data from.
-     * @param mappingIndex The index of the mapping in the previously supplied <tt>PointMapping</tt> instance
+     * @param pointMapping The <i>PointMapping</i> instance we are getting our data from.
+     * @param mappingIndex The index of the mapping in the previously supplied <i>PointMapping</i> instance
      * we should return (ie. the mapping we pretend is the only that exists).
      */
     public PointComponentMapping(PointMapping pointMapping, int mappingIndex)

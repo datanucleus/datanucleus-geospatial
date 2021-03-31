@@ -36,8 +36,8 @@ public class RectangleComponentMapping extends IntegerMapping
     private final int mappingIndex;
 
     /**
-     * @param rectMapping The <tt>RectangleMapping</tt> instance we are getting our data from.
-     * @param mappingIndex The index of the mapping in the previously supplied <tt>PointMapping</tt> instance
+     * @param rectMapping The <i>RectangleMapping</i> instance we are getting our data from.
+     * @param mappingIndex The index of the mapping in the previously supplied <i>PointMapping</i> instance
      * we should return (ie. the mapping we pretend is the only that exists).
      */
     public RectangleComponentMapping(RectangleMapping rectMapping, int mappingIndex)

@@ -37,7 +37,7 @@ public class Rectangle extends java.awt.Rectangle implements SCO<java.awt.Rectan
     protected transient String fieldName;
 
     /**
-     * Creates a <tt>Point</tt> object. Assigns owning object and field name.
+     * Creates a <i>Point</i> object. Assigns owning object and field name.
      * @param ownerSM the owning object
      * @param mmd Metadata for the member
      */
