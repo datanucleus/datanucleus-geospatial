@@ -52,7 +52,7 @@ public class Rectangle2dDoubleStringConverter implements TypeConverter<Rectangle
             String token = tokeniser.nextToken().trim();
             try
             {
-                x = new Double(token).doubleValue();
+                x = Double.valueOf(token).doubleValue();
             }
             catch (NumberFormatException nfe)
             {
@@ -70,7 +70,7 @@ public class Rectangle2dDoubleStringConverter implements TypeConverter<Rectangle
             String token = tokeniser.nextToken().trim();
             try
             {
-                y = new Double(token).doubleValue();
+                y = Double.valueOf(token).doubleValue();
             }
             catch (NumberFormatException nfe)
             {
@@ -88,7 +88,7 @@ public class Rectangle2dDoubleStringConverter implements TypeConverter<Rectangle
             String token = tokeniser.nextToken().trim();
             try
             {
-                width = new Double(token).doubleValue();
+                width = Double.valueOf(token).doubleValue();
             }
             catch (NumberFormatException nfe)
             {
@@ -106,7 +106,7 @@ public class Rectangle2dDoubleStringConverter implements TypeConverter<Rectangle
             String token = tokeniser.nextToken().trim();
             try
             {
-                height = new Double(token).doubleValue();
+                height = Double.valueOf(token).doubleValue();
             }
             catch (NumberFormatException nfe)
             {

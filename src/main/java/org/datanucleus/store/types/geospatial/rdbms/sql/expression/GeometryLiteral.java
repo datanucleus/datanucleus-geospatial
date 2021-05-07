@@ -96,7 +96,7 @@ public class GeometryLiteral extends GeometryExpression implements SQLLiteral
     {
         if (expr instanceof GeometryLiteral)
         {
-            return new BooleanLiteral(stmt, mapping, new Boolean(value.equals(((GeometryLiteral) expr).value)));
+            return new BooleanLiteral(stmt, mapping, Boolean.valueOf(value.equals(((GeometryLiteral) expr).value)));
         }
         return super.eq(expr);
     }
@@ -105,7 +105,7 @@ public class GeometryLiteral extends GeometryExpression implements SQLLiteral
     {
         if (expr instanceof GeometryLiteral)
         {
-            return new BooleanLiteral(stmt, mapping, new Boolean(!value.equals(((GeometryLiteral) expr).value)));
+            return new BooleanLiteral(stmt, mapping, Boolean.valueOf(!value.equals(((GeometryLiteral) expr).value)));
         }
         return super.ne(expr);
     }

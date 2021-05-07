@@ -230,7 +230,7 @@ public class GeometryMapping extends SingleFieldMultiMapping implements MappingC
         GeometryMapping geomMapping;
         try
         {
-            geomMapping = getClass().newInstance();
+            geomMapping = getClass().getDeclaredConstructor().newInstance();
             geomMapping.storeMgr = this.storeMgr;
             geomMapping.type = this.type;
             geomMapping.mmd = this.mmd;
