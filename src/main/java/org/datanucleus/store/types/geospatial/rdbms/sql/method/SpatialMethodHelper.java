@@ -20,7 +20,7 @@ package org.datanucleus.store.types.geospatial.rdbms.sql.method;
 import java.util.List;
 
 import org.datanucleus.ClassLoaderResolver;
-import org.datanucleus.query.expression.Expression;
+import org.datanucleus.store.query.expression.Expression;
 import org.datanucleus.store.rdbms.mapping.java.JavaTypeMapping;
 import org.datanucleus.store.rdbms.sql.SQLStatement;
 import org.datanucleus.store.rdbms.sql.expression.BooleanExpression;

@@ -20,8 +20,8 @@ package org.datanucleus.store.types.geospatial.rdbms.sql.method;
 import java.util.List;
 
 import org.datanucleus.exceptions.NucleusUserException;
-import org.datanucleus.query.expression.Expression;
-import org.datanucleus.query.expression.Expression.DyadicOperator;
+import org.datanucleus.store.query.expression.Expression;
+import org.datanucleus.store.query.expression.Expression.DyadicOperator;
 import org.datanucleus.store.rdbms.sql.SQLStatement;
 import org.datanucleus.store.rdbms.sql.expression.BooleanExpression;
 import org.datanucleus.store.rdbms.sql.expression.SQLExpression;

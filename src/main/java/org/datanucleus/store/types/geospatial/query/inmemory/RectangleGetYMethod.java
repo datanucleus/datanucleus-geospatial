@@ -20,9 +20,9 @@ package org.datanucleus.store.types.geospatial.query.inmemory;
 import java.awt.Rectangle;
 
 import org.datanucleus.exceptions.NucleusException;
-import org.datanucleus.query.expression.InvokeExpression;
-import org.datanucleus.query.inmemory.InMemoryExpressionEvaluator;
-import org.datanucleus.query.inmemory.InvocationEvaluator;
+import org.datanucleus.store.query.expression.InvokeExpression;
+import org.datanucleus.store.query.inmemory.InMemoryExpressionEvaluator;
+import org.datanucleus.store.query.inmemory.InvocationEvaluator;
 import org.datanucleus.util.Localiser;
 
 /**

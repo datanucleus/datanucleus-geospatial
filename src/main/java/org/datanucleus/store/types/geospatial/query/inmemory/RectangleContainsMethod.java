@@ -22,14 +22,14 @@ import java.awt.Rectangle;
 import java.util.List;
 
 import org.datanucleus.exceptions.NucleusException;
-import org.datanucleus.query.QueryUtils;
-import org.datanucleus.query.expression.Expression;
-import org.datanucleus.query.expression.InvokeExpression;
-import org.datanucleus.query.expression.Literal;
-import org.datanucleus.query.expression.ParameterExpression;
-import org.datanucleus.query.expression.PrimaryExpression;
-import org.datanucleus.query.inmemory.InMemoryExpressionEvaluator;
-import org.datanucleus.query.inmemory.InvocationEvaluator;
+import org.datanucleus.store.query.QueryUtils;
+import org.datanucleus.store.query.expression.Expression;
+import org.datanucleus.store.query.expression.InvokeExpression;
+import org.datanucleus.store.query.expression.Literal;
+import org.datanucleus.store.query.expression.ParameterExpression;
+import org.datanucleus.store.query.expression.PrimaryExpression;
+import org.datanucleus.store.query.inmemory.InMemoryExpressionEvaluator;
+import org.datanucleus.store.query.inmemory.InvocationEvaluator;
 import org.datanucleus.util.Localiser;
 
 /**
