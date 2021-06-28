@@ -30,7 +30,6 @@ import org.datanucleus.metadata.AbstractMemberMetaData;
 import org.datanucleus.metadata.MetaDataUtils;
 import org.datanucleus.state.ObjectProvider;
 import org.datanucleus.store.rdbms.RDBMSStoreManager;
-import org.datanucleus.store.rdbms.mapping.MappingCallbacks;
 import org.datanucleus.store.rdbms.mapping.column.ColumnMapping;
 import org.datanucleus.store.rdbms.mapping.column.OracleBlobColumnMapping;
 import org.datanucleus.store.rdbms.mapping.java.SingleFieldMultiMapping;
@@ -44,7 +43,7 @@ import com.vividsolutions.jts.io.WKTReader;
 /**
  * Mapping for JTS Geometry to its datastore representation.
  */
-public class GeometryMapping extends SingleFieldMultiMapping implements MappingCallbacks
+public class GeometryMapping extends SingleFieldMultiMapping
 {
     private static WKTReader wktReader;
 
@@ -179,12 +178,14 @@ public class GeometryMapping extends SingleFieldMultiMapping implements MappingC
     }
 
     /**
-     * Some nasty stuff that's only needed for Oracle.
+     * Oracle specific handling for BLOB/CLOBs where it inserts an empty BLOB/CLOB and then you put the value in after.
      */
-    public void insertPostProcessing(ObjectProvider op)
+    public void setValuePostProcessing(ObjectProvider op)
     {
         if (!mapUserdataObject || !(getColumnMapping(1) instanceof OracleBlobColumnMapping))
+        {
             return;
+        }
 
         Object geom = op.provideField(mmd.getAbsoluteFieldNumber());
         if (geom == null || !(geom instanceof Geometry) || ((Geometry) geom).getUserData() == null)
@@ -193,7 +194,6 @@ public class GeometryMapping extends SingleFieldMultiMapping implements MappingC
         }
 
         Object value = ((Geometry) geom).getUserData();
-
         byte[] bytes = new byte[0];
         try
         {
@@ -209,16 +209,6 @@ public class GeometryMapping extends SingleFieldMultiMapping implements MappingC
 
         // Update the BLOB
         OracleBlobColumnMapping.updateBlobColumn(op, getTable(), getColumnMapping(1), bytes);
-    }
-
-    public void postInsert(ObjectProvider op)
-    {
-        // do nothing
-    }
-
-    public void postUpdate(ObjectProvider op)
-    {
-        insertPostProcessing(op);
     }
 
     /**
@@ -245,20 +235,5 @@ public class GeometryMapping extends SingleFieldMultiMapping implements MappingC
             NucleusLogger.PERSISTENCE.info("Exception creating copy of mapping without user-data", e);
         }
         return this;
-    }
-
-    public void deleteDependent(ObjectProvider op)
-    {
-        // do nothing
-    }
-
-    public void postFetch(ObjectProvider op)
-    {
-        // do nothing
-    }
-
-    public void preDelete(ObjectProvider op)
-    {
-        // do nothing
     }
 }
