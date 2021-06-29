@@ -31,6 +31,7 @@ import org.datanucleus.metadata.MetaDataUtils;
 import org.datanucleus.state.ObjectProvider;
 import org.datanucleus.store.rdbms.RDBMSStoreManager;
 import org.datanucleus.store.rdbms.mapping.column.ColumnMapping;
+import org.datanucleus.store.rdbms.mapping.column.ColumnMappingPostSet;
 import org.datanucleus.store.rdbms.mapping.column.OracleBlobColumnMapping;
 import org.datanucleus.store.rdbms.mapping.java.SingleFieldMultiMapping;
 import org.datanucleus.store.rdbms.table.Table;
@@ -178,21 +179,21 @@ public class GeometryMapping extends SingleFieldMultiMapping
     }
 
     /**
-     * Oracle specific handling for BLOB/CLOBs where it inserts an empty BLOB/CLOB and then you put the value in after.
+     * Oracle specific handling for BLOB/CLOBs (for the userdata), where it inserts an empty BLOB/CLOB and then you put the value in after.
      */
     public void setValuePostProcessing(ObjectProvider op)
     {
-        if (!mapUserdataObject || !(getColumnMapping(1) instanceof OracleBlobColumnMapping))
+        if (!mapUserdataObject || !(columnMappings[1] instanceof OracleBlobColumnMapping))
         {
             return;
         }
-
         Object geom = op.provideField(mmd.getAbsoluteFieldNumber());
         if (geom == null || !(geom instanceof Geometry) || ((Geometry) geom).getUserData() == null)
         {
             return;
         }
 
+        // Create the value to put into the BLOB
         Object value = ((Geometry) geom).getUserData();
         byte[] bytes = new byte[0];
         try
@@ -208,7 +209,7 @@ public class GeometryMapping extends SingleFieldMultiMapping
         }
 
         // Update the BLOB
-        OracleBlobColumnMapping.updateBlobColumn(op, getTable(), getColumnMapping(1), bytes);
+        ((ColumnMappingPostSet)columnMappings[1]).setPostProcessing(op, bytes);
     }
 
     /**
