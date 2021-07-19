@@ -174,7 +174,10 @@ public class PostGISAdapter extends PostgreSQLAdapter implements SpatialRDBMSAda
             return super.getCreateTableStatement(table, columns, null, factory);
         }
 
-        // TODO This should ONLY be used when using PostGIS v1, see https://github.com/datanucleus/datanucleus-geospatial/issues/14
+        // TODO See https://github.com/datanucleus/datanucleus-geospatial/issues/14
+        // We could just do below when org.postgis.Version.MAJOR == 1, and create "normally" otherwise, except that in that case
+        // the GEOMETRY column type would need to pass in the type and extent, e.g     COL1 GEOMETRY(POINT, 2)
+
         // Create empty table first, then add each column individually, because the geometry columns have to be added via SQL function.
         StringBuilder createStatements = new StringBuilder();
         createStatements.append("CREATE TABLE ").append(table.toString()).append(" ();").append(getContinuationString());
