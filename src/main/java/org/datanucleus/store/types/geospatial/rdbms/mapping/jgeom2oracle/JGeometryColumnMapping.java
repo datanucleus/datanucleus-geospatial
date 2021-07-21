@@ -13,7 +13,7 @@
  limitations under the License.
 
  Contributors:
- 2006 Thomas Marti & Stefan Schmid - Adapted for new JPOX-Spatial plugin
+ 2006 Thomas Marti & Stefan Schmid - Adapted for new DataNucleus-Spatial plugin
  ...
  **********************************************************************/
 package org.datanucleus.store.types.geospatial.rdbms.mapping.jgeom2oracle;
