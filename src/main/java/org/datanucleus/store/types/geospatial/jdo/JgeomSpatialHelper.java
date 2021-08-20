@@ -21,22 +21,21 @@ import javax.jdo.PersistenceManager;
 
 import oracle.spatial.geometry.JGeometry;
 
-import org.datanucleus.api.jdo.JDOPersistenceManagerFactory;
+import org.datanucleus.store.rdbms.RDBMSStoreManager;
 
 /**
- * Helper class to read Spatial MetaData from the datastore, specialized for Oracle's JGeometry class. The
- * methods assumes that users know what they're doing and will automatically downcast query results to
- * <code>JGeometry</code>.
+ * Helper class to read Spatial MetaData from the datastore, specialized for Oracle's JGeometry class. 
+ * The methods assumes that users know what they're doing and will automatically downcast query results to <code>JGeometry</code>.
  */
 public class JgeomSpatialHelper extends SpatialHelper
 {
     /**
-     * Creates a new <code>JgeomSpatialHelper</code> instance for the given PMF.
-     * @param pmf The PMF, can't be <code>null</code> or closed.
+     * Creates a new <code>JgeomSpatialHelper</code> instance for the given StoreManager.
+     * @param storeMgr The StoreManager, can't be <code>null</code> or closed.
      */
-    public JgeomSpatialHelper(JDOPersistenceManagerFactory pmf)
+    public JgeomSpatialHelper(RDBMSStoreManager storeMgr)
     {
-        super(pmf);
+        super(storeMgr);
     }
 
     /**

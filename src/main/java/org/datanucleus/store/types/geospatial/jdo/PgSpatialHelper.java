@@ -19,7 +19,7 @@ package org.datanucleus.store.types.geospatial.jdo;
 
 import javax.jdo.PersistenceManager;
 
-import org.datanucleus.api.jdo.JDOPersistenceManagerFactory;
+import org.datanucleus.store.rdbms.RDBMSStoreManager;
 import org.postgis.Geometry;
 
 /**
@@ -30,12 +30,12 @@ import org.postgis.Geometry;
 public class PgSpatialHelper extends SpatialHelper
 {
     /**
-     * Creates a new <code>PgSpatialHelper</code> instance for the given PMF.
-     * @param pmf The PMF, can't be <code>null</code> or closed.
+     * Creates a new <code>PgSpatialHelper</code> instance for the given StoreManager.
+     * @param storeMgr The StoreManager, can't be <code>null</code> or closed.
      */
-    public PgSpatialHelper(JDOPersistenceManagerFactory pmf)
+    public PgSpatialHelper(RDBMSStoreManager storeMgr)
     {
-        super(pmf);
+        super(storeMgr);
     }
 
     /**

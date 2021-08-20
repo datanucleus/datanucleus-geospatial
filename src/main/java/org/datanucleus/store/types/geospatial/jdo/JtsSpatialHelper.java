@@ -19,24 +19,23 @@ package org.datanucleus.store.types.geospatial.jdo;
 
 import javax.jdo.PersistenceManager;
 
-import org.datanucleus.api.jdo.JDOPersistenceManagerFactory;
+import org.datanucleus.store.rdbms.RDBMSStoreManager;
 
 import com.vividsolutions.jts.geom.Geometry;
 
 /**
- * Helper class to read Spatial MetaData from the datastore, specialized for the geometry classes of the Java
- * Topology Suite (JTS). The methods assumes that users know what they're doing and will automatically
- * downcast query results to <code>com.vividsolutions.jts.geom.Geometry</code>.
+ * Helper class to read Spatial MetaData from the datastore, specialized for the geometry classes of the Java Topology Suite (JTS). 
+ * The methods assumes that users know what they're doing and will automatically downcast query results to <code>com.vividsolutions.jts.geom.Geometry</code>.
  */
 public class JtsSpatialHelper extends SpatialHelper
 {
     /**
      * Creates a new <code>JtsSpatialHelper</code> instance for the given PMF.
-     * @param pmf The PMF, can't be <code>null</code> or closed.
+     * @param storeMgr The StoreManager, can't be <code>null</code> or closed.
      */
-    public JtsSpatialHelper(JDOPersistenceManagerFactory pmf)
+    public JtsSpatialHelper(RDBMSStoreManager storeMgr)
     {
-        super(pmf);
+        super(storeMgr);
     }
 
     /**

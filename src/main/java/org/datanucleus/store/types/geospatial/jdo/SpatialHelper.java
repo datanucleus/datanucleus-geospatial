@@ -31,7 +31,6 @@ import org.datanucleus.metadata.AbstractMemberMetaData;
 import org.datanucleus.metadata.MetaDataUtils;
 import org.datanucleus.store.types.geospatial.rdbms.adapter.SpatialRDBMSAdapter;
 import org.datanucleus.ClassLoaderResolver;
-import org.datanucleus.api.jdo.JDOPersistenceManagerFactory;
 import org.datanucleus.store.rdbms.RDBMSStoreManager;
 import org.datanucleus.store.rdbms.table.Column;
 import org.datanucleus.store.rdbms.table.Table;
@@ -39,33 +38,31 @@ import org.datanucleus.util.NucleusLogger;
 
 /**
  * <p>
- * Helper class to search and access Spatial MetaData, for JDO API usage. 
- * This class wraps some of the spatial functions that datanucleus-spatial offers via JDOQL in "real" Java methods and also adds extended functionality, 
+ * Helper class to search and access Spatial MetaData, for JDO API usage with RDBMS. 
+ * This class wraps some of the spatial functions that datanucleus-geospatial offers via JDOQL in "real" Java methods and also adds extended functionality, 
  * like reading values from internal Metadata and getting CRS (Coordinate Reference System) information from the database.
  * </p>
  * <p>
- * The datatypes and terminology used in this class is (like most of datanucleus-spatial) heavily based on OGC's Simple Feature specification. 
+ * The datatypes and terminology used in this class is (like most of datanucleus-geospatial) heavily based on OGC's Simple Feature specification. 
  * See <a href="http://www.opengeospatial.org/standards/sfa">http://www.opengeospatial.org/standards/sfa</a> for details.
  * </p>
  */
 public class SpatialHelper
 {
-    protected JDOPersistenceManagerFactory pmf;
-
     protected RDBMSStoreManager storeMgr;
 
     /**
      * Creates a new <code>SpatialHelper</code> instance for the given PMF.
      * @param pmf The PMF, can't be <code>null</code> or closed.
      */
-    public SpatialHelper(JDOPersistenceManagerFactory pmf)
+    public SpatialHelper(RDBMSStoreManager storeMgr)
     {
-        if (pmf == null || pmf.isClosed())
+        if (storeMgr == null || storeMgr.isClosed())
         {
-            throw new IllegalArgumentException("pmf is null or closed. pmf = " + pmf);
+            throw new IllegalArgumentException("StoreManager is null or closed : " + storeMgr);
         }
-        this.pmf = pmf;
-        this.storeMgr = (RDBMSStoreManager) pmf.getNucleusContext().getStoreManager();
+
+        this.storeMgr = storeMgr;
     }
 
     /**
@@ -279,7 +276,7 @@ public class SpatialHelper
     {
         List fieldNames = new ArrayList();
 
-        AbstractMemberMetaData[] fieldMetaData = pmf.getNucleusContext().getMetaDataManager().getMetaDataForClass(pc, null).getManagedMembers();
+        AbstractMemberMetaData[] fieldMetaData = storeMgr.getMetaDataManager().getMetaDataForClass(pc, null).getManagedMembers();
         for (int i = 0; i < fieldMetaData.length; i++)
         {
             Column c = getColumn(pc, fieldMetaData[i]);
@@ -311,19 +308,19 @@ public class SpatialHelper
 
     protected Table getTable(Class pc)
     {
-        ClassLoaderResolver clr = pmf.getNucleusContext().getClassLoaderResolver(getClass().getClassLoader());
+        ClassLoaderResolver clr = storeMgr.getNucleusContext().getClassLoaderResolver(getClass().getClassLoader());
         return storeMgr.getDatastoreClass(pc.getName(), clr);
     }
 
     protected Column getColumn(Class pc, String fieldName)
     {
-        ClassLoaderResolver clr = pmf.getNucleusContext().getClassLoaderResolver(getClass().getClassLoader());
+        ClassLoaderResolver clr = storeMgr.getNucleusContext().getClassLoaderResolver(getClass().getClassLoader());
         return storeMgr.getDatastoreClass(pc.getName(), clr).getMemberMapping(fieldName).getColumnMappings()[0].getColumn();
     }
 
     protected Column getColumn(Class pc, AbstractMemberMetaData mmd)
     {
-        ClassLoaderResolver clr = pmf.getNucleusContext().getClassLoaderResolver(getClass().getClassLoader());
+        ClassLoaderResolver clr = storeMgr.getNucleusContext().getClassLoaderResolver(getClass().getClassLoader());
         return storeMgr.getDatastoreClass(pc.getName(), clr).getMemberMapping(mmd).getColumnMappings()[0].getColumn();
     }
 
