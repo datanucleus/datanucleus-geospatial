@@ -53,7 +53,7 @@ public class SpatialHelper
 
     /**
      * Creates a new <code>SpatialHelper</code> instance for the given PMF.
-     * @param pmf The PMF, can't be <code>null</code> or closed.
+     * @param storeMgr The Store manager (RDBMS)
      */
     public SpatialHelper(RDBMSStoreManager storeMgr)
     {

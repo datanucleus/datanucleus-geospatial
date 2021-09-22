@@ -180,6 +180,7 @@ public class GeometryMapping extends SingleFieldMultiMapping
 
     /**
      * Oracle specific handling for BLOB/CLOBs (for the userdata), where it inserts an empty BLOB/CLOB and then you put the value in after.
+     * @param op StateManager
      */
     public void setValuePostProcessing(ObjectProvider op)
     {
