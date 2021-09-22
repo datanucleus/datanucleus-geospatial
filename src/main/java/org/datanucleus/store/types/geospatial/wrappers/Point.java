@@ -39,7 +39,7 @@ public class Point extends java.awt.Point implements SCO<java.awt.Point>
 
     /**
      * Creates a <i>Point</i> object. Assigns owning object and field name.
-     * @param op ObjectProvider for the owning object
+     * @param op StateManager for the owning object
      * @param mmd Metadata for the member
      */
     public Point(ObjectProvider op, AbstractMemberMetaData mmd)
