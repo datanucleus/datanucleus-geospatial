@@ -31,7 +31,7 @@ import org.datanucleus.store.types.SCO;
  */
 public class Point extends java.awt.Point implements SCO<java.awt.Point>
 {
-    protected transient ObjectProvider ownerOP;
+    protected transient ObjectProvider ownerSM;
 
     protected transient String fieldName;
 
@@ -39,14 +39,14 @@ public class Point extends java.awt.Point implements SCO<java.awt.Point>
 
     /**
      * Creates a <i>Point</i> object. Assigns owning object and field name.
-     * @param op StateManager for the owning object
+     * @param sm StateManager for the owning object
      * @param mmd Metadata for the member
      */
-    public Point(ObjectProvider op, AbstractMemberMetaData mmd)
+    public Point(ObjectProvider sm, AbstractMemberMetaData mmd)
     {
         super();
 
-        this.ownerOP = op;
+        this.ownerSM = sm;
         this.fieldName = mmd.getName();
     }
 
@@ -92,7 +92,7 @@ public class Point extends java.awt.Point implements SCO<java.awt.Point>
      **/
     public void unsetOwner()
     {
-        ownerOP = null;
+        ownerSM = null;
     }
 
     /**
@@ -101,7 +101,7 @@ public class Point extends java.awt.Point implements SCO<java.awt.Point>
      */
     public Object getOwner()
     {
-        return (ownerOP != null ? ownerOP.getObject() : null);
+        return (ownerSM != null ? ownerSM.getObject() : null);
     }
 
     /**
@@ -118,9 +118,9 @@ public class Point extends java.awt.Point implements SCO<java.awt.Point>
      */
     public void makeDirty()
     {
-        if (ownerOP != null && !initialising)
+        if (ownerSM != null && !initialising)
         {
-            ownerOP.getExecutionContext().getApiAdapter().makeDirty(ownerOP.getObject(), fieldName);
+            ownerSM.getExecutionContext().getApiAdapter().makeDirty(ownerSM.getObject(), fieldName);
         }
     }
 

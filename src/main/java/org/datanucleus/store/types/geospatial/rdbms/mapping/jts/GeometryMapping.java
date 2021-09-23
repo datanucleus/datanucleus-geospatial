@@ -180,15 +180,15 @@ public class GeometryMapping extends SingleFieldMultiMapping
 
     /**
      * Oracle specific handling for BLOB/CLOBs (for the userdata), where it inserts an empty BLOB/CLOB and then you put the value in after.
-     * @param op StateManager
+     * @param sm StateManager
      */
-    public void setValuePostProcessing(ObjectProvider op)
+    public void setValuePostProcessing(ObjectProvider sm)
     {
         if (!mapUserdataObject || !(columnMappings[1] instanceof OracleBlobColumnMapping))
         {
             return;
         }
-        Object geom = op.provideField(mmd.getAbsoluteFieldNumber());
+        Object geom = sm.provideField(mmd.getAbsoluteFieldNumber());
         if (geom == null || !(geom instanceof Geometry) || ((Geometry) geom).getUserData() == null)
         {
             return;
@@ -210,7 +210,7 @@ public class GeometryMapping extends SingleFieldMultiMapping
         }
 
         // Update the BLOB
-        ((ColumnMappingPostSet)columnMappings[1]).setPostProcessing(op, bytes);
+        ((ColumnMappingPostSet)columnMappings[1]).setPostProcessing(sm, bytes);
     }
 
     /**
