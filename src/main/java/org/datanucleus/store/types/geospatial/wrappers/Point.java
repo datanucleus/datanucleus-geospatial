@@ -23,7 +23,7 @@ import java.io.ObjectStreamException;
 
 import org.datanucleus.metadata.AbstractMemberMetaData;
 import org.datanucleus.FetchPlanState;
-import org.datanucleus.state.ObjectProvider;
+import org.datanucleus.state.DNStateManager;
 import org.datanucleus.store.types.SCO;
 
 /**
@@ -31,7 +31,7 @@ import org.datanucleus.store.types.SCO;
  */
 public class Point extends java.awt.Point implements SCO<java.awt.Point>
 {
-    protected transient ObjectProvider ownerSM;
+    protected transient DNStateManager ownerSM;
 
     protected transient String fieldName;
 
@@ -42,7 +42,7 @@ public class Point extends java.awt.Point implements SCO<java.awt.Point>
      * @param sm StateManager for the owning object
      * @param mmd Metadata for the member
      */
-    public Point(ObjectProvider sm, AbstractMemberMetaData mmd)
+    public Point(DNStateManager sm, AbstractMemberMetaData mmd)
     {
         super();
 

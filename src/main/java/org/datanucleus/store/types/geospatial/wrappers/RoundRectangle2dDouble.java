@@ -24,7 +24,7 @@ import java.awt.geom.RoundRectangle2D;
 
 import org.datanucleus.metadata.AbstractMemberMetaData;
 import org.datanucleus.FetchPlanState;
-import org.datanucleus.state.ObjectProvider;
+import org.datanucleus.state.DNStateManager;
 import org.datanucleus.store.types.SCO;
 
 /**
@@ -34,7 +34,7 @@ public class RoundRectangle2dDouble extends java.awt.geom.RoundRectangle2D.Doubl
 {
     private static final long serialVersionUID = 1077370324877552921L;
 
-    protected transient ObjectProvider ownerOP;
+    protected transient DNStateManager ownerOP;
 
     protected transient String fieldName;
 
@@ -43,7 +43,7 @@ public class RoundRectangle2dDouble extends java.awt.geom.RoundRectangle2D.Doubl
      * @param ownerSM the owning object
      * @param mmd Metadata for the member
      */
-    public RoundRectangle2dDouble(ObjectProvider ownerSM, AbstractMemberMetaData mmd)
+    public RoundRectangle2dDouble(DNStateManager ownerSM, AbstractMemberMetaData mmd)
     {
         super();
 

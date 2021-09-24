@@ -22,7 +22,7 @@ import java.awt.geom.Point2D;
 
 import org.datanucleus.metadata.AbstractMemberMetaData;
 import org.datanucleus.FetchPlanState;
-import org.datanucleus.state.ObjectProvider;
+import org.datanucleus.state.DNStateManager;
 import org.datanucleus.store.types.SCO;
 
 /**
@@ -32,7 +32,7 @@ public class CubicCurve2dDouble extends java.awt.geom.CubicCurve2D.Double implem
 {
     private static final long serialVersionUID = -8559018383282011628L;
 
-    protected transient ObjectProvider ownerOP;
+    protected transient DNStateManager ownerOP;
 
     protected transient String fieldName;
 
@@ -41,7 +41,7 @@ public class CubicCurve2dDouble extends java.awt.geom.CubicCurve2D.Double implem
      * @param ownerSM the owning object
      * @param mmd Metadata for the member
      */
-    public CubicCurve2dDouble(ObjectProvider ownerSM, AbstractMemberMetaData mmd)
+    public CubicCurve2dDouble(DNStateManager ownerSM, AbstractMemberMetaData mmd)
     {
         super();
 

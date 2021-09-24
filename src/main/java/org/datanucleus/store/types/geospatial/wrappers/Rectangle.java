@@ -22,7 +22,7 @@ import java.awt.Point;
 
 import org.datanucleus.metadata.AbstractMemberMetaData;
 import org.datanucleus.FetchPlanState;
-import org.datanucleus.state.ObjectProvider;
+import org.datanucleus.state.DNStateManager;
 import org.datanucleus.store.types.SCO;
 
 /**
@@ -32,7 +32,7 @@ public class Rectangle extends java.awt.Rectangle implements SCO<java.awt.Rectan
 {
     private static final long serialVersionUID = -1108519549093893431L;
 
-    protected transient ObjectProvider ownerOP;
+    protected transient DNStateManager ownerOP;
 
     protected transient String fieldName;
 
@@ -41,7 +41,7 @@ public class Rectangle extends java.awt.Rectangle implements SCO<java.awt.Rectan
      * @param ownerSM the owning object
      * @param mmd Metadata for the member
      */
-    public Rectangle(ObjectProvider ownerSM, AbstractMemberMetaData mmd)
+    public Rectangle(DNStateManager ownerSM, AbstractMemberMetaData mmd)
     {
         super();
 

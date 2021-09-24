@@ -23,7 +23,7 @@ import java.awt.geom.Rectangle2D;
 
 import org.datanucleus.metadata.AbstractMemberMetaData;
 import org.datanucleus.FetchPlanState;
-import org.datanucleus.state.ObjectProvider;
+import org.datanucleus.state.DNStateManager;
 import org.datanucleus.store.types.SCO;
 
 /**
@@ -33,7 +33,7 @@ public class Rectangle2dFloat extends java.awt.geom.Rectangle2D.Float implements
 {
     private static final long serialVersionUID = 6204949069264230370L;
 
-    protected transient ObjectProvider ownerOP;
+    protected transient DNStateManager ownerOP;
 
     protected transient String fieldName;
 
@@ -42,7 +42,7 @@ public class Rectangle2dFloat extends java.awt.geom.Rectangle2D.Float implements
      * @param ownerSM the owning object
      * @param mmd Metadata for the member
      */
-    public Rectangle2dFloat(ObjectProvider ownerSM, AbstractMemberMetaData mmd)
+    public Rectangle2dFloat(DNStateManager ownerSM, AbstractMemberMetaData mmd)
     {
         super();
 

@@ -22,7 +22,7 @@ import java.awt.geom.Point2D;
 
 import org.datanucleus.metadata.AbstractMemberMetaData;
 import org.datanucleus.FetchPlanState;
-import org.datanucleus.state.ObjectProvider;
+import org.datanucleus.state.DNStateManager;
 import org.datanucleus.store.types.SCO;
 
 /**
@@ -32,7 +32,7 @@ public class Line2dFloat extends java.awt.geom.Line2D.Float implements SCO<java.
 {
     private static final long serialVersionUID = 7554204283366263638L;
 
-    protected transient ObjectProvider ownerOP;
+    protected transient DNStateManager ownerOP;
 
     protected transient String fieldName;
 
@@ -41,7 +41,7 @@ public class Line2dFloat extends java.awt.geom.Line2D.Float implements SCO<java.
      * @param ownerSM the owning object
      * @param mmd Metadata for the member
      */
-    public Line2dFloat(ObjectProvider ownerSM, AbstractMemberMetaData mmd)
+    public Line2dFloat(DNStateManager ownerSM, AbstractMemberMetaData mmd)
     {
         super();
 

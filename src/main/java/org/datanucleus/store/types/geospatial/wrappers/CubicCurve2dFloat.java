@@ -22,7 +22,7 @@ import java.awt.geom.Point2D;
 
 import org.datanucleus.metadata.AbstractMemberMetaData;
 import org.datanucleus.FetchPlanState;
-import org.datanucleus.state.ObjectProvider;
+import org.datanucleus.state.DNStateManager;
 import org.datanucleus.store.types.SCO;
 
 /**
@@ -32,7 +32,7 @@ public class CubicCurve2dFloat extends java.awt.geom.CubicCurve2D.Float implemen
 {
     private static final long serialVersionUID = 7837444931772565932L;
 
-    protected transient ObjectProvider ownerOP;
+    protected transient DNStateManager ownerOP;
 
     protected transient String fieldName;
 
@@ -41,7 +41,7 @@ public class CubicCurve2dFloat extends java.awt.geom.CubicCurve2D.Float implemen
      * @param ownerSM the owning object
      * @param mmd Metadata for the member
      */
-    public CubicCurve2dFloat(ObjectProvider ownerSM, AbstractMemberMetaData mmd)
+    public CubicCurve2dFloat(DNStateManager ownerSM, AbstractMemberMetaData mmd)
     {
         super();
 

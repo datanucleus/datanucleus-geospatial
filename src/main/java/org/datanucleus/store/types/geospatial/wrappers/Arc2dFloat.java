@@ -24,7 +24,7 @@ import java.awt.geom.Rectangle2D;
 
 import org.datanucleus.metadata.AbstractMemberMetaData;
 import org.datanucleus.FetchPlanState;
-import org.datanucleus.state.ObjectProvider;
+import org.datanucleus.state.DNStateManager;
 import org.datanucleus.store.types.SCO;
 
 /**
@@ -34,7 +34,7 @@ public class Arc2dFloat extends java.awt.geom.Arc2D.Float implements SCO<java.aw
 {
     private static final long serialVersionUID = 5319768140588872943L;
 
-    protected transient ObjectProvider ownerOP;
+    protected transient DNStateManager ownerOP;
 
     protected transient String fieldName;
 
@@ -43,7 +43,7 @@ public class Arc2dFloat extends java.awt.geom.Arc2D.Float implements SCO<java.aw
      * @param ownerSM the owning object
      * @param mmd Metadata for the member
      */
-    public Arc2dFloat(ObjectProvider ownerSM, AbstractMemberMetaData mmd)
+    public Arc2dFloat(DNStateManager ownerSM, AbstractMemberMetaData mmd)
     {
         super();
 

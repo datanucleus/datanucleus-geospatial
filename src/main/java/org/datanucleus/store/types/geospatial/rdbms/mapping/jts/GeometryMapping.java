@@ -28,7 +28,7 @@ import org.datanucleus.ClassNameConstants;
 import org.datanucleus.ExecutionContext;
 import org.datanucleus.metadata.AbstractMemberMetaData;
 import org.datanucleus.metadata.MetaDataUtils;
-import org.datanucleus.state.ObjectProvider;
+import org.datanucleus.state.DNStateManager;
 import org.datanucleus.store.rdbms.RDBMSStoreManager;
 import org.datanucleus.store.rdbms.mapping.column.ColumnMapping;
 import org.datanucleus.store.rdbms.mapping.column.ColumnMappingPostSet;
@@ -117,9 +117,9 @@ public class GeometryMapping extends SingleFieldMultiMapping
     /*
      * (non-Javadoc)
      * @see org.datanucleus.store.rdbms.mapping.JavaTypeMapping#getObject(org.datanucleus.ExecutionContext,
-     * java.lang.Object, int[], org.datanucleus.state.ObjectProvider, int)
+     * java.lang.Object, int[], org.datanucleus.state.DNStateManager, int)
      */
-    public Object getObject(ExecutionContext ec, ResultSet rs, int[] exprIndex, ObjectProvider ownerSM, int ownerFieldNumber)
+    public Object getObject(ExecutionContext ec, ResultSet rs, int[] exprIndex, DNStateManager ownerSM, int ownerFieldNumber)
     {
         return getObject(ec, rs, exprIndex);
     }
@@ -145,9 +145,9 @@ public class GeometryMapping extends SingleFieldMultiMapping
     /*
      * (non-Javadoc)
      * @see org.datanucleus.store.rdbms.mapping.JavaTypeMapping#setObject(org.datanucleus.ExecutionContext,
-     * java.lang.Object, int[], java.lang.Object, org.datanucleus.state.ObjectProvider, int)
+     * java.lang.Object, int[], java.lang.Object, org.datanucleus.state.DNStateManager, int)
      */
-    public void setObject(ExecutionContext ec, PreparedStatement ps, int[] exprIndex, Object value, ObjectProvider ownerSM,
+    public void setObject(ExecutionContext ec, PreparedStatement ps, int[] exprIndex, Object value, DNStateManager ownerSM,
             int ownerFieldNumber)
     {
         setObject(ec, ps, exprIndex, value);
@@ -182,7 +182,7 @@ public class GeometryMapping extends SingleFieldMultiMapping
      * Oracle specific handling for BLOB/CLOBs (for the userdata), where it inserts an empty BLOB/CLOB and then you put the value in after.
      * @param sm StateManager
      */
-    public void setValuePostProcessing(ObjectProvider sm)
+    public void setValuePostProcessing(DNStateManager sm)
     {
         if (!mapUserdataObject || !(columnMappings[1] instanceof OracleBlobColumnMapping))
         {

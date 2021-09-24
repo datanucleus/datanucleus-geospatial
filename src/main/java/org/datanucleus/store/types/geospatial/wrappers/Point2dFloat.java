@@ -21,7 +21,7 @@ import java.awt.geom.Point2D;
 
 import org.datanucleus.metadata.AbstractMemberMetaData;
 import org.datanucleus.FetchPlanState;
-import org.datanucleus.state.ObjectProvider;
+import org.datanucleus.state.DNStateManager;
 import org.datanucleus.store.types.SCO;
 
 /**
@@ -31,20 +31,20 @@ public class Point2dFloat extends java.awt.geom.Point2D.Float implements SCO<jav
 {
     private static final long serialVersionUID = -1944393892272029363L;
 
-    protected transient ObjectProvider ownerOP;
+    protected transient DNStateManager ownerOP;
 
     protected transient String fieldName;
 
     /**
      * Assigns owning object and field name.
-     * @param ownerOP the owning object
+     * @param ownerSM the owning object
      * @param mmd Metadata for the member
      */
-    public Point2dFloat(ObjectProvider ownerOP, AbstractMemberMetaData mmd)
+    public Point2dFloat(DNStateManager ownerSM, AbstractMemberMetaData mmd)
     {
         super();
 
-        this.ownerOP = ownerOP;
+        this.ownerOP = ownerSM;
         this.fieldName = mmd.getName();
     }
 

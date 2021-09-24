@@ -24,7 +24,7 @@ import java.awt.geom.Rectangle2D;
 
 import org.datanucleus.metadata.AbstractMemberMetaData;
 import org.datanucleus.FetchPlanState;
-import org.datanucleus.state.ObjectProvider;
+import org.datanucleus.state.DNStateManager;
 import org.datanucleus.store.types.SCO;
 
 /**
@@ -34,7 +34,7 @@ public class Ellipse2dFloat extends java.awt.geom.Ellipse2D.Float implements SCO
 {
     private static final long serialVersionUID = -5951938691019092752L;
 
-    protected transient ObjectProvider ownerOP;
+    protected transient DNStateManager ownerOP;
 
     protected transient String fieldName;
 
@@ -43,7 +43,7 @@ public class Ellipse2dFloat extends java.awt.geom.Ellipse2D.Float implements SCO
      * @param ownerSM the owning object
      * @param mmd Metadata for the member
      */
-    public Ellipse2dFloat(ObjectProvider ownerSM, AbstractMemberMetaData mmd)
+    public Ellipse2dFloat(DNStateManager ownerSM, AbstractMemberMetaData mmd)
     {
         super();
 

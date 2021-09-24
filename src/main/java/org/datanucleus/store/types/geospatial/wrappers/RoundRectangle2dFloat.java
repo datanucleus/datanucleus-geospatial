@@ -24,7 +24,7 @@ import java.awt.geom.RoundRectangle2D;
 
 import org.datanucleus.metadata.AbstractMemberMetaData;
 import org.datanucleus.FetchPlanState;
-import org.datanucleus.state.ObjectProvider;
+import org.datanucleus.state.DNStateManager;
 import org.datanucleus.store.types.SCO;
 
 /**
@@ -34,7 +34,7 @@ public class RoundRectangle2dFloat extends java.awt.geom.RoundRectangle2D.Float 
 {
     private static final long serialVersionUID = -4033294320394338528L;
 
-    protected transient ObjectProvider ownerOP;
+    protected transient DNStateManager ownerOP;
 
     protected transient String fieldName;
 
@@ -43,7 +43,7 @@ public class RoundRectangle2dFloat extends java.awt.geom.RoundRectangle2D.Float 
      * @param ownerSM the owning object
      * @param mmd Metadata for the member
      */
-    public RoundRectangle2dFloat(ObjectProvider ownerSM, AbstractMemberMetaData mmd)
+    public RoundRectangle2dFloat(DNStateManager ownerSM, AbstractMemberMetaData mmd)
     {
         super();
         this.ownerOP = ownerSM;
