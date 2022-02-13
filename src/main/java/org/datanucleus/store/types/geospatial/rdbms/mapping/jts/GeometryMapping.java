@@ -27,6 +27,7 @@ import org.datanucleus.ClassLoaderResolver;
 import org.datanucleus.ClassNameConstants;
 import org.datanucleus.ExecutionContext;
 import org.datanucleus.metadata.AbstractMemberMetaData;
+import org.datanucleus.metadata.MemberComponent;
 import org.datanucleus.metadata.MetaDataUtils;
 import org.datanucleus.state.DNStateManager;
 import org.datanucleus.store.rdbms.RDBMSStoreManager;
@@ -114,12 +115,8 @@ public class GeometryMapping extends SingleFieldMultiMapping
         return Geometry.class;
     }
 
-    /*
-     * (non-Javadoc)
-     * @see org.datanucleus.store.rdbms.mapping.JavaTypeMapping#getObject(org.datanucleus.ExecutionContext,
-     * java.lang.Object, int[], org.datanucleus.state.DNStateManager, int)
-     */
-    public Object getObject(ExecutionContext ec, ResultSet rs, int[] exprIndex, DNStateManager ownerSM, int ownerFieldNumber)
+    @Override
+    public Object getObject(ExecutionContext ec, ResultSet rs, int[] exprIndex, DNStateManager ownerSM, int ownerFieldNumber, MemberComponent ownerMemberCmpt)
     {
         return getObject(ec, rs, exprIndex);
     }
@@ -142,13 +139,9 @@ public class GeometryMapping extends SingleFieldMultiMapping
         return geom;
     }
 
-    /*
-     * (non-Javadoc)
-     * @see org.datanucleus.store.rdbms.mapping.JavaTypeMapping#setObject(org.datanucleus.ExecutionContext,
-     * java.lang.Object, int[], java.lang.Object, org.datanucleus.state.DNStateManager, int)
-     */
+    @Override
     public void setObject(ExecutionContext ec, PreparedStatement ps, int[] exprIndex, Object value, DNStateManager ownerSM,
-            int ownerFieldNumber)
+            int ownerFieldNumber, MemberComponent ownerMemberCmpt)
     {
         setObject(ec, ps, exprIndex, value);
     }
