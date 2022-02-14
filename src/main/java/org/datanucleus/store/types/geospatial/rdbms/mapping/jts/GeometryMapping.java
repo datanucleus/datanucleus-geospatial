@@ -27,7 +27,6 @@ import org.datanucleus.ClassLoaderResolver;
 import org.datanucleus.ClassNameConstants;
 import org.datanucleus.ExecutionContext;
 import org.datanucleus.metadata.AbstractMemberMetaData;
-import org.datanucleus.metadata.MemberComponent;
 import org.datanucleus.metadata.MetaDataUtils;
 import org.datanucleus.state.DNStateManager;
 import org.datanucleus.store.rdbms.RDBMSStoreManager;
@@ -116,7 +115,7 @@ public class GeometryMapping extends SingleFieldMultiMapping
     }
 
     @Override
-    public Object getObject(ExecutionContext ec, ResultSet rs, int[] exprIndex, DNStateManager ownerSM, int ownerFieldNumber, MemberComponent ownerMemberCmpt)
+    public Object getObject(ExecutionContext ec, ResultSet rs, int[] exprIndex, DNStateManager ownerSM, int ownerFieldNumber)
     {
         return getObject(ec, rs, exprIndex);
     }
@@ -141,7 +140,7 @@ public class GeometryMapping extends SingleFieldMultiMapping
 
     @Override
     public void setObject(ExecutionContext ec, PreparedStatement ps, int[] exprIndex, Object value, DNStateManager ownerSM,
-            int ownerFieldNumber, MemberComponent ownerMemberCmpt)
+            int ownerFieldNumber)
     {
         setObject(ec, ps, exprIndex, value);
     }
