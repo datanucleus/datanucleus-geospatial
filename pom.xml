@@ -144,6 +144,7 @@
                             javax.jdo*;version="${jdo.version}",
                             org.datanucleus.api.jdo*;version="${dn.api.jdo.version}";resolution:=optional,
                             org.datanucleus.store.rdbms*;version="${dn.rdbms.version}";resolution:=optional,
+                            !org.datanucleus.store.types.geospatial*,
                             org.datanucleus*;version="${dn.core.version}",
                             *;resolution:=optional
                         </Import-Package>
